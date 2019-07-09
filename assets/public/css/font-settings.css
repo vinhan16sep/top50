@@ -1,0 +1,60 @@
+@font-face{
+	font-family: 'webFont_N';
+	src: url(../library/fonts/OpenSans-Regular.ttf);
+}
+
+@font-face{
+	font-family: 'webFont_B';
+	src: url(../library/fonts/OpenSans-Bold.ttf);
+}
+
+body{
+	font-family: 'Itim', cursive;
+	color: #515151;
+}
+
+h1{font-size:2.25em;}
+h2{font-size:1.875em;}
+h3{font-size:1.5em;}
+h4{font-size:1.125em;}
+p{font-size:1.125em;}
+
+h1, h2, h3, h4, h5 {
+	font-family: 'Pacifico', cursive;
+}
+
+.navbar-default .navbar-nav > li > a{
+	font-size: 1.3em;
+}
+
+.navbar-nav li ul li{
+	font-size: 1.5em;
+}
+
+#infoNumber .info_number{
+	font-size: 	3.975em;
+}
+
+.bottom_nav ul li a{
+	font-size: 1.125em;
+}
+
+.category ul li a{
+	font-size: 1.25em;
+}
+
+article p, article ol, article ul, article table{
+	font-size: 1.125em;
+}
+
+a.btn{
+	font-size: 1.125em;
+}
+
+.footer h3{
+	font-size: 1.125em;
+}
+
+.footer ul.list-unstyled li{
+	font-size: 1em;
+}

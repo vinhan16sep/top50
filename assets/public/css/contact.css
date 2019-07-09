@@ -1,0 +1,22 @@
+
+.main_content .container{
+	margin-bottom: 15em;
+}
+
+.container .left h1, .container .right h1{
+	margin-bottom: 50px;
+}
+
+.social_network{
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.social_network li a{
+	color: #333;
+}
+
+.form-horizontal .form-group{
+	margin-left: 0;
+	margin-right: 0;
+}

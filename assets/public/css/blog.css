@@ -1,0 +1,98 @@
+/*
+
+CSS for Blogs View
+
+Author: hung.luong@matocreative.vn
+
+*/
+
+.main_content > .container{
+	background-color: #fff;
+}
+
+.cover{
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.cover img{
+	width: 100%;
+}
+
+.category ul li a{
+	color: #333;
+}
+
+.blogs .item{
+	padding: 15px 15px 30px;
+	border-radius: 37px;
+}
+
+.blogs .item img{
+	width: 100%;
+	border-radius: 37px;
+}
+
+.blogs .blog_title{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	line-height: 1.8em;
+	max-height: 6em;
+	-webkit-line-clamp:3;
+	-webkit-box-orient:vertical;
+}
+
+.blogs .blog_description{
+	height: 3.375em;
+	overflow-y: hidden;
+	margin-bottom: 15px;
+}
+
+.blogs .blog_img{
+	width: 600px;
+	max-height: 400px;
+}
+
+.blogs .comments{
+	margin-top: 50px;
+	padding-top: 30px;
+}
+
+.blogs .comments textarea {
+    resize: none;
+}
+
+.container-fluid#registerScreen{
+	padding-bottom: 8em;
+}
+
+#comment_readmore{
+	padding-top: 2em;
+	padding-bottom: 1em;
+	display: none;
+}
+
+.item iframe{
+	min-height: 500px;
+}
+
+.screen_title{
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+
+article > table, article table, article ol table{
+	width: 100% !important;
+	border: 1px solid #eaeaea !important;
+}
+
+article > table tr, article > table td{
+	border: 1px solid #eaeaea !important;
+	padding: 5px !important;
+}
+
+article img{
+	width: 100%;
+	height: auto;
+}

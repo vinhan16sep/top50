@@ -1,0 +1,75 @@
+/*
+
+CSS for About us
+
+Author: hung.luong@matocreative.vn
+
+*/
+
+.cover{
+	padding-left: 0;
+	padding-right: 0;
+	
+}
+
+.cover img{
+	width: 100%;
+}
+
+.main_content .jumbotron{
+	background:none;
+}
+
+.main_content .container{
+    position: relative;
+}
+
+.img_frame img{
+    position:absolute;
+    z-index: 99;
+}
+
+img#frame_01{
+    left: -20%;
+    top: 15%;
+    margin-top: -134px;
+    margin-left: -123px;
+}
+
+img#frame_02{
+    right: -30%;
+    top: 30%;
+    margin-top: -150px;
+    margin-left: -148px;
+}
+
+img#frame_03{
+    left: -15%;
+    top: 45%;
+    margin-top: -121px;
+    margin-left: -109px;
+}
+
+
+#infoNumber{
+	margin-top: 50px;
+	padding-top: 5em;
+	padding-bottom: 5em;
+	color: #fff;
+	
+	position: relative;
+	
+	background: rgba(66,183,69,1);
+	background: -moz-linear-gradient(top, rgba(66,183,69,1) 0%, rgba(50,137,52,1) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(66,183,69,1)), color-stop(100%, rgba(50,137,52,1)));
+	background: -webkit-linear-gradient(top, rgba(66,183,69,1) 0%, rgba(50,137,52,1) 100%);
+	background: -o-linear-gradient(top, rgba(66,183,69,1) 0%, rgba(50,137,52,1) 100%);
+	background: -ms-linear-gradient(top, rgba(66,183,69,1) 0%, rgba(50,137,52,1) 100%);
+	background: linear-gradient(to bottom, rgba(66,183,69,1) 0%, rgba((50,137,52,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#e73827', GradientType=1 );
+}
+
+.container-fluid#registerScreen{
+	padding-bottom: 10em;
+}
+

@@ -1,0 +1,11 @@
+.navbar-inverse{
+	border-radius: 0;
+}
+
+a:hover{
+	text-decoration: none;
+}
+
+.media {
+    margin-top: 0px;
+}

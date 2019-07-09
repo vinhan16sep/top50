@@ -1,0 +1,62 @@
+/*
+
+CSS for Re-Edit Style for Mobile
+
+Author: hung.luong@matocreative.vn
+
+*/
+
+@media (max-width: 768px){
+
+    .navbar-brand img {
+        width: 155px;
+        margin-left: 0;
+    }
+
+    .navbar-toggle{
+        margin-top: 40px;
+    }
+
+    .screen_title {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .main_content > .container > .row > h3{
+        padding-left: 15px;
+    }
+
+    .container-fluid#blogs ul.media-list .media-left, .container-fluid#blogs ul.media-list .media-body{
+        width: 100%;
+        float: left;
+    }
+
+    #registerScreen{
+        padding-top: 5em;
+        padding-bottom: 15em !important;
+    }
+
+    #registerScreen img{
+        width: 100%;
+    }
+
+    #register_image {
+        height: 470px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 992px){
+    .navbar-brand img {
+        width: 155px;
+        margin-left: 0;
+    }
+
+    .navbar-right .dropdown-menu {
+        right: auto;
+        left: 0;
+    }
+}
+
+@media (min-width: 992px){
+	
+}

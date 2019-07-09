@@ -1,0 +1,25 @@
+/*
+
+CSS for Register View
+
+Author: hung.luong@matocreative.vn
+
+*/
+
+.cover{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.cover img{
+    width: 100%;
+}
+
+.container#registerScreen{
+    padding-bottom: 12em;
+}
+
+.form-horizontal .form-group {
+    margin-right: 0;
+    margin-left: -0;
+}

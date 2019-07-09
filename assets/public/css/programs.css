@@ -1,0 +1,45 @@
+.container .left h1, .container .right h1{
+	color: #f4aa1c;
+	margin-bottom: 50px;
+}
+
+.container .left img{
+	width: 100%;
+}
+
+.social_network{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-top: 3px dashed #f4aa1c;
+}
+
+.social_network li a{
+	color: #333;
+}
+
+.social_network li a:hover{
+	color: #f4aa1c;
+}
+
+.programs .item{
+	padding: 15px 15px 30px;
+	border-radius: 37px;
+}
+
+.programs .item img{
+	width: 100%;
+	border-radius: 37px;
+	border: 3px solid #f4aa1c;
+}
+
+.programs .blog_title{
+	color: #f4aa1c;
+	height: 3em;
+	overflow-y: hidden;
+}
+
+.programs .blog_description{
+	height: 3.375em;
+	overflow-y: hidden;
+	margin-bottom: 15px;
+}

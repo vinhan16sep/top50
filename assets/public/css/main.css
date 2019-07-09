@@ -1,0 +1,281 @@
+/*
+
+CSS for main HTML
+
+Author: hung.luong@matocreative.vn
+
+*/
+
+body{
+	width: 100%;
+	overflow-x: hidden;
+}
+
+/* CSS Header */
+
+header{
+	position:relative;
+}
+
+header .cover{
+	width:100%;
+	min-height:200px;
+}
+
+.navbar-default{
+	background-color:transparent;
+	border-color:transparent;
+}
+
+.navbar-brand{
+	height: auto;
+}
+
+.navbar-nav{
+	margin-top: 35px !important;
+}
+
+.navbar-nav li ul li{
+	
+}
+
+.navbar-nav li > a:hover{
+	border-radius: 10px;
+}
+
+.navbar-nav li.cyan > a{
+	color: #6bbfc2;
+}
+
+.navbar-nav li.orange > a{
+	color: #f26f5a;
+}
+
+.navbar-nav li.yellow > a{
+	color: #f4aa1c;
+}
+
+.navbar-nav li.pink > a{
+	color: #f38991;
+}
+
+.navbar-nav li.cyan > a:hover{
+	background: #6bbfc2;
+	color: #fff;
+}
+
+.navbar-nav li.orange > a:hover{
+	background: #f26f5a;
+	color: #fff;
+}
+
+.navbar-nav li.yellow > a:hover{
+	background: #f4aa1c;
+	color: #fff;
+}
+
+.navbar-nav li.pink > a:hover{
+	background: #f38991;
+	color: #fff;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus{
+	border-radius: 10px;
+}
+
+.dropdown-menu{
+	border-radius: 10px;
+}
+
+ul.cyan li a:hover{
+	background: #6bbfc2;
+	color: #fff;
+}
+
+ul.orange li a:hover{
+	background: #f26f5a;
+	color: #fff;
+}
+
+ul.yellow li a:hover{
+	background: #f4aa1c;
+	color: #fff;
+}
+
+ul.pink li a:hover{
+	background: #f38991;
+	color: #fff;
+}
+
+.nav > li > a{
+	padding: 10px;
+}
+
+/* CSS Main Content */
+
+.screen_title{
+	width: 50%;
+	margin-top: 10%;
+	margin-left: 25%;
+	margin-bottom: 100px;
+	text-align: center;
+}
+
+textarea {
+	overflow: hidden;
+	resize: none;
+}
+
+.page strong{
+	border: 1px solid #337ab7;
+	border-radius: 3px;
+	margin-right: 3px;
+	padding: 5px 10px;
+	color: #fff;
+	cursor: pointer;
+	background-color: #337ab7;
+	border-color: #337ab7;
+}
+.page a{
+	color: #23527c;
+	background-color: #fff;
+	border-color: #fff;
+	border-radius: 3px;
+	margin-right: 3px;
+	padding: 5px 10px;
+	cursor: pointer;
+}
+.page a:hover{
+	background: #ddd;
+}
+
+ul.list-unstyled li{
+	background-repeat: no-repeat;
+	background-position: 5px 20px;
+}
+
+.list-group-item {
+	padding: 10px 25px;
+}
+
+.category .panel{
+	border-radius: 0;
+	margin-bottom: 0;
+}
+
+.category .panel .panel-heading {
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+}
+
+.category .panel .panel-heading h2{
+	margin-top: 0;
+}
+
+.category > img{
+	width: 100%;
+}
+
+/* CSS Footer */
+
+.footer #main_logo{
+	margin-left: 0;
+}
+
+.footer h2{
+	margin-top: 0;
+}
+
+.subscribe {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	color: #fff;
+	border-top: 3px dashed#fff;
+	border-bottom: 3px dashed #fff;
+	margin-bottom: 30px;
+}
+
+.bottom_nav ul li a{
+	color: #fff;
+}
+
+.bottom_nav h3{
+	color: #fff;
+}
+
+.footer .table thead, .footer .table tbody, .footer .table a{
+	color: #fff;
+}
+
+.footer ul.list-unstyled li{
+	background-image: none;
+}
+
+.footer .form-horizontal, .footer p{
+	color: #fff;
+}
+
+.scrollup {
+	padding: 10px;
+	position: fixed;
+	z-index: 999;
+	bottom: 50px;
+	right: 50px;
+	display: none;
+	text-align: center;
+	background: #50b748;
+	background: -moz-linear-gradient(45deg, #50b748 0%, #008b44 100%);
+	background: -webkit-gradient(left bottom, right top, color-stop(0%, #50b748), color-stop(100%, #008b44));
+	background: -webkit-linear-gradient(45deg, #50b748 0%, #008b44 100%);
+	background: -o-linear-gradient(45deg, #50b748 0%, #008b44 100%);
+	background: -ms-linear-gradient(45deg, #50b748 0%, #008b44 100%);
+	background: linear-gradient(45deg, #50b748 0%, #008b44 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#50b748', endColorstr='#008b44', GradientType=1 );
+	color: #fff;
+	border-radius: 50%;
+}
+
+.scrollup:hover{
+	cursor: pointer;
+}
+
+button#surveyOn{
+	position: fixed;
+	top:50%;
+	right: 0;
+	z-index: 999;
+	border-radius: 50%;
+
+	transform: scale(0.5,0.5);
+	-webkit-transform: scale(0.5,0.5);
+	-moz-transform: scale(0.5,0.5);
+	-o-transform: scale(0.5,0.5);
+	transform-origin: right;
+	-webkit-transform-origin: right;
+	-moz-transform-origin: right;
+	-o-transform-origin: right;
+	transition: all ease 0.5s;
+	-webkit-transition: all ease 0.5s;
+	-moz-transition: all ease 0.5s;
+	-o-transition: all ease 0.5s;
+}
+
+button#surveyOn:hover{
+	transform: scale(1,1);
+	-webkit-transform: scale(1,1);
+	-moz-transform: scale(1,1));
+	-o-transform: scale((1,1);
+	transition: all ease 0.5s;
+	-webkit-transition: all ease 0.5s;
+	-moz-transition: all ease 0.5s;
+	-o-transition: all ease 0.5s;
+}
+
+.modal#survey_modal .modal-header{
+	min-height: 75px;
+	background-size: cover;
+	background-position: bottom;
+	background-repeat: no-repeat;
+}
+
+
