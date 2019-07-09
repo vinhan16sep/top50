@@ -3,6 +3,21 @@
     .error{
         color: red;
     }
+    .table tr:nth-child(2) td, .table tr:nth-child(1) th{
+        text-align: center;
+    }
+    .table tr:nth-child(2) td{
+        font-weight: bold;
+    }
+    .table tr:nth-child(2) td i{
+        font-weight: 500;
+    }
+    .table tr:nth-child(1) th:nth-child(1){
+        line-height: 70px;
+    }
+    .table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td{
+        border:1px solid #ccc;
+    }
 </style>
 <div class="content-wrapper" style="min-height: 916px;">
     <section class="content">
@@ -217,91 +232,179 @@
                 <div class="form-group">
                     <h4>1. NĂNG LỰC TÀI CHÍNH</h4>
                 </div>
-                <div class="form-group">
+                <!-- div class="form-group">
                     <div class="row">
                         <div class="col-sm-3 col-md-3 col-sx-12">
                             <?php
-                            echo form_label('Vốn điều lệ', 'equity_1');
+                            // echo form_label('Vốn điều lệ', 'equity_1');
                             ?>
                         </div>
                         <div class="col-sm-9 col-md-9 col-sx-12">
                             <div class="row">
-                                <p><?php echo 'Năm' . $rule2Year[0] ?></p>
+                                <p><?php // echo 'Năm' . $rule2Year[0] ?></p>
                                 <?php
-                                echo form_label('Số tuyệt đối (triệu đồng)', 'equity_1');
-                                echo form_error('equity_1', '<div class="error">', '</div>');
-                                echo form_input('equity_1', set_value('equity_1'), 'class="form-control"');
+                                // echo form_label('Số tuyệt đối (triệu đồng)', 'equity_1');
+                                // echo form_error('equity_1', '<div class="error">', '</div>');
+                                // echo form_input('equity_1', set_value('equity_1'), 'class="form-control"');
                                 ?>
                             </div>
                             <div class="row">
                                 <?php
-                                echo form_label('So với năm trước (%)', 'equity_percent_1');
-                                echo form_error('equity_percent_1', '<div class="error">', '</div>');
-                                echo form_input('equity_percent_1', set_value('equity_percent_1'), 'class="form-control"');
+                                // echo form_label('So với năm trước (%)', 'equity_percent_1');
+                                // echo form_error('equity_percent_1', '<div class="error">', '</div>');
+                                // echo form_input('equity_percent_1', set_value('equity_percent_1'), 'class="form-control"');
                                 ?>
                             </div>
                             <hr>
                             <div class="row">
-                                <p><?php echo 'Năm' . $rule2Year[1] ?></p>
+                                <p><?php // echo 'Năm' . $rule2Year[1] ?></p>
                                 <?php
-                                echo form_label('Số tuyệt đối (triệu đồng)', 'equity_2');
-                                echo form_error('equity_2', '<div class="error">', '</div>');
-                                echo form_input('equity_2', set_value('equity_2'), 'class="form-control"');
+                                // echo form_label('Số tuyệt đối (triệu đồng)', 'equity_2');
+                                // echo form_error('equity_2', '<div class="error">', '</div>');
+                                // echo form_input('equity_2', set_value('equity_2'), 'class="form-control"');
                                 ?>
                             </div>
                             <div class="row">
                                 <?php
-                                echo form_label('So với năm trước (%)', 'equity_percent_2');
-                                echo form_error('equity_percent_2', '<div class="error">', '</div>');
-                                echo form_input('equity_percent_2', set_value('equity_percent_2'), 'class="form-control"');
+                                // echo form_label('So với năm trước (%)', 'equity_percent_2');
+                                // echo form_error('equity_percent_2', '<div class="error">', '</div>');
+                               //  echo form_input('equity_percent_2', set_value('equity_percent_2'), 'class="form-control"');
                                 ?>
                             </div>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <table class="table table-bordered" >
+                              <tr>
+                                <th colspan="2" rowspan="2">Chỉ số</th>
+                                <th colspan="4"><?php echo 'Năm ' . $rule2Year[0] ?></th>
+                                <th colspan="4"><?php echo 'Năm ' . $rule2Year[1] ?></th>
+                              </tr>
+                              <tr>
+                                <td colspan="2">Số tuyệt đối <i>(Triệu đồng)</i></td>
+                                <td colspan="2">So với năm trước <i>(%)</i></td>
+                                <td colspan="2">Số tuyệt đối <i>(Triệu đồng)</i></td>
+                                <td colspan="2">So với năm trước <i>(%)</i></td>
+                              </tr>
+                              <tr>
+                                <td colspan="2" style="width: 200px;">
+                                    <?php
+                                        echo form_label('1. Vốn điều lệ', 'equity_1');
+                                    ?>
+                                </td>
+                                <td colspan="2">
+                                    <?php echo form_input('equity_1', set_value('equity_1'), 'class="form-control"'); 
+                                    ?>
+                                </td>
+                                <td colspan="2">
+                                    <?php echo form_input('equity_percent_1', set_value('equity_percent_1'), 'class="form-control"'); 
+                                    ?>
+                                </td>
+                                <td colspan="2">
+                                    <?php echo form_input('equity_2', set_value('equity_2'), 'class="form-control"'); 
+                                    ?>
+                                </td>
+                                <td colspan="2">
+                                    <?php echo form_input('equity_percent_2', set_value('equity_percent_2'), 'class="form-control"'); 
+                                    ?>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td colspan="2">
+                                    <?php
+                                        echo form_label('2. Vốn chủ sở hữu', 'owner_equity');
+                                    ?>
+                                </td>
+                                <td colspan="2">
+                                    <?php echo form_input('owner_equity_1', set_value('owner_equity_1'), 'class="form-control"'); 
+                                    ?>
+                                </td>
+                                <td colspan="2">
+                                    <?php echo form_input('owner_equity_percent_1', set_value('owner_equity_percent_1'), 'class="form-control"'); 
+                                    ?>
+                                </td>
+                                <td colspan="2">
+                                    <?php echo form_input('owner_equity_2', set_value('owner_equity_2'), 'class="form-control"'); 
+                                    ?>
+                                </td>
+                                <td colspan="2">
+                                    <?php echo form_input('owner_equity_percent_2', set_value('owner_equity_percent_2'), 'class="form-control"'); 
+                                    ?>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td colspan="2">
+                                    <?php
+                                        echo form_label('3. Tổng tài sản', 'total_equity');
+                                    ?>
+                                </td>
+                                <td colspan="2">
+                                    <?php echo form_input('total_equity_1', set_value('total_equity _1'), 'class="form-control"'); 
+                                    ?>
+                                </td>
+                                <td colspan="2">
+                                    <?php echo form_input('total_equity_percent_1', set_value('total_equity _percent_1'), 'class="form-control"'); 
+                                    ?>
+                                </td>
+                                <td colspan="2">
+                                    <?php echo form_input('total_equity_2', set_value('total_equity _2'), 'class="form-control"'); 
+                                    ?>
+                                </td>
+                                <td colspan="2">
+                                    <?php echo form_input('total_equity_percent_2', set_value('total_equity _percent_2'), 'class="form-control"'); 
+                                    ?>
+                                </td>
+                              </tr>
+                            </table>
                         </div>
                     </div>
                 </div>
                 <hr style="border-bottom: 1px solid white;">
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <div class="row">
                         <div class="col-sm-3 col-md-3 col-sx-12">
                             <?php
-                            echo form_label('Vốn chủ sở hữu', 'owner_equity');
+                            //  echo form_label('Vốn chủ sở hữu', 'owner_equity');
                             ?>
                         </div>
                         <div class="col-sm-9 col-md-9 col-sx-12">
                             <div class="row">
-                                <p><?php echo 'Năm' . $rule2Year[0] ?></p>
+                                <p><?php //     echo 'Năm' . $rule2Year[0] ?></p>
                                 <?php
-                                echo form_label('Số tuyệt đối (triệu đồng)', 'owner_equity_1');
-                                echo form_error('owner_equity_1', '<div class="error">', '</div>');
-                                echo form_input('owner_equity_1', set_value('owner_equity_1'), 'class="form-control"');
+                                //  echo form_label('Số tuyệt đối (triệu đồng)', 'owner_equity_1');
+                                //  echo form_error('owner_equity_1', '<div class="error">', '</div>');
+                                //  echo form_input('owner_equity_1', set_value('owner_equity_1'), 'class="form-control"');
                                 ?>
                             </div>
                             <div class="row">
                                 <?php
-                                echo form_label('So với năm trước (%)', 'owner_equity_percent_1');
-                                echo form_error('owner_equity_percent_1', '<div class="error">', '</div>');
-                                echo form_input('owner_equity_percent_1', set_value('owner_equity_percent_1'), 'class="form-control"');
+                                //  echo form_label('So với năm trước (%)', 'owner_equity_percent_1');
+                                //  echo form_error('owner_equity_percent_1', '<div class="error">', '</div>');
+                                //  echo form_input('owner_equity_percent_1', set_value('owner_equity_percent_1'), 'class="form-control"');
                                 ?>
                             </div>
                             <hr>
                             <div class="row">
-                                <p><?php echo 'Năm' . $rule2Year[1] ?></p>
+                                <p><?php //     echo 'Năm' . $rule2Year[1] ?></p>
                                 <?php
-                                echo form_label('Số tuyệt đối (triệu đồng)', 'owner_equity_2');
-                                echo form_error('owner_equity_2', '<div class="error">', '</div>');
-                                echo form_input('owner_equity_2', set_value('owner_equity_2'), 'class="form-control"');
+                                //  echo form_label('Số tuyệt đối (triệu đồng)', 'owner_equity_2');
+                                //  echo form_error('owner_equity_2', '<div class="error">', '</div>');
+                                //  echo form_input('owner_equity_2', set_value('owner_equity_2'), 'class="form-control"');
                                 ?>
                             </div>
                             <div class="row">
                                 <?php
-                                echo form_label('So với năm trước (%)', 'owner_equity_percent_2');
-                                echo form_error('owner_equity_percent_2', '<div class="error">', '</div>');
-                                echo form_input('owner_equity_percent_2', set_value('owner_equity_percent_2'), 'class="form-control"');
+                                //  echo form_label('So với năm trước (%)', 'owner_equity_percent_2');
+                                //  echo form_error('owner_equity_percent_2', '<div class="error">', '</div>');
+                                //  echo form_input('owner_equity_percent_2', set_value('owner_equity_percent_2'), 'class="form-control"');
                                 ?>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <hr style="border-bottom: 1px solid white;">
                 <div class="form-group">
                     <div class="row">
