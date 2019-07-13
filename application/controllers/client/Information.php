@@ -36,7 +36,9 @@ class Information extends Client_Controller {
     }
 
     public function extra() {
-        $this->data['submitted'] = $this->information_model->fetch_extra_by_identity('information', $this->data['user']->username);
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $this->data['extra'] = $this->information_model->fetch_extra_by_identity('information', $this->data['user']->username);
         $this->data['hasCurrentYearCompanyData'] = $this->information_model->getCurrentYearCompany($this->data['user']->username, $this->data['eventYear']);
         $this->render('client/information/detail_extra_view');
     }
@@ -194,7 +196,6 @@ class Information extends Client_Controller {
         $id = isset($request_id) ? (int) $request_id : (int) $this->input->post('id');
         $this->data['extra'] = $this->information_model->fetch_by_user_identity('information', $this->data['user']->username);
         if ($this->form_validation->run() == FALSE) {
-
             if (!$this->data['extra']) {
                 redirect('client/information', 'refresh');
             }

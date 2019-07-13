@@ -999,9 +999,6 @@
                         triệu đồng
                     </h5>
                 </div>
-                
-
-
                 <div class="form-group">
                     <h3>VI. HOẠT ĐỘNG KHOA HỌC VÀ CÔNG NGHỆ</h3>
                 </div>
@@ -1103,14 +1100,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
-
-
                 <br>
                 <div class="form-group col-sm-12 text-right submit-extra-form">
                     <div class="col-sm-3 col-md-3 col-sx-12">

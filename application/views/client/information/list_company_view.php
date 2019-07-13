@@ -32,7 +32,7 @@
                                                         <a style="width:132px;" href="<?php echo base_url('client/information/edit_company?year=' . $value['year']); ?>" class="btn btn-primary btn-block">Sửa thông tin</a>
                                                     </td>
                                                     <td style="text-align: center;width:110px;">
-                                                        <a id="complete" onclick="return complete();" <?php echo ($status['is_product'] == 0) ? 'disabled="disabled"' : '';?> style="display: inline;" href="#" class="btn btn-warning pull-right">Hoàn thành đăng ký</a>
+                                                        <a id="complete" onclick="return complete();" <?php echo ($status['is_information'] == 0) ? 'disabled="disabled"' : '';?> style="display: inline;" href="#" class="btn btn-warning pull-right">Hoàn thành đăng ký</a>
                                                     </td>
                                                     <?php } else { ?>
                                                         <h4 style="color:red">Thông tin đã được gửi</h4>
