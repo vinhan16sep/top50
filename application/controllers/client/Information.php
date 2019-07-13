@@ -383,6 +383,9 @@ class Information extends Client_Controller {
                         'overview' => $this->input->post('overview'),
                         'active_area' => $this->input->post('active_area'),
                         'product' => $this->input->post('product'),
+
+
+
                         'equity_1' => $this->input->post('equity_1'),
                         'equity_2' => $this->input->post('equity_2'),
                         'equity_percent_1' => $this->input->post('equity_percent_1'),
@@ -391,8 +394,40 @@ class Information extends Client_Controller {
                         'owner_equity_2' => $this->input->post('owner_equity_2'),
                         'owner_equity_percent_1' => $this->input->post('owner_equity_percent_1'),
                         'owner_equity_percent_2' => $this->input->post('owner_equity_percent_2'),
+
+                        // Tổng tài sản
+                        // New
+                        'total_assets_1' => $this->input->post('total_assets_1'),
+                        'total_assets_2' => $this->input->post('total_assets_2'),
+                        'total_assets_percent_1' => $this->input->post('total_assets_percent_1'),
+                        'total_assets_percent_2' => $this->input->post('total_assets_percent_2'),
+                        // End New
+
+                        // Tổng doanh thu doanh nghiệp
                         'total_income_1' => $this->input->post('total_income_1'),
                         'total_income_2' => $this->input->post('total_income_2'),
+                        // New
+                        // End New
+                        'total_income_percent_1' => $this->input->post('total_income_percent_1'),
+                        'total_income_percent_2' => $this->input->post('total_income_percent_2'),
+                        'total_income_6_months' => $this->input->post('total_income_6_months'),
+                        // End New
+
+                        // Bình quân doanh thu/đầu người
+                        // New
+                        'per_capita_income_1' => $this->input->post('per_capita_income_1'),
+                        'per_capita_income_2' => $this->input->post('per_capita_income_2'),
+                        'per_capita_income_percent_1' => $this->input->post('per_capita_percent_income_1'),
+                        'per_capita_income_percent_2' => $this->input->post('per_capita_percent_income_2'),
+                        'per_capita_income_6_months' => $this->input->post('per_capita_income_6_months'),
+                        // End New
+
+
+
+
+
+
+
                         'software_income_1' => $this->input->post('software_income_1'),
                         'software_income_2' => $this->input->post('software_income_2'),
                         'it_income_1' => $this->input->post('it_income_1'),

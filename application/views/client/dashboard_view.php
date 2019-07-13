@@ -3,9 +3,6 @@
     <div class="box-body pad table-responsive" style="box-shadow: 2px 2px 1px grey;">
         <strong style="color: #2d76b8; font-size: 18px">Quý doanh nghiệp vui lòng khai đầy đủ thông tin theo các bước sau:</strong>
         <a target="_blank" href="http://danhhieusaokhue.vn/"><img style="width: 100% !important;" src="<?php echo site_url('assets/public/img/flow3.png'); ?>" /></a>
-        <i style="color: #2d76b8; font-size: 15px">Thời hạn nộp hồ sơ: 05/03/2019</i><br>
-        <i style="color: #2d76b8; font-size: 15px"><ins>Cán bộ hỗ trợ:</ins> Ms. Cao Ánh Hằng, mobile: 0974 29 87 86, email: hangca@vinasa.org.vn</i>
-<!--        <h3>Trang thông tin: <span style="color:red;">--><?php //echo $user->company; ?><!--</span></h3>-->
     </div>
     <section class="content">
 
