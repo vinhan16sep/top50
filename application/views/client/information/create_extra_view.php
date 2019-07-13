@@ -3,6 +3,12 @@
     .error{
         color: red;
     }
+    form .form-group label{
+        padding-top: 5px;
+    }
+    .float-right > label{
+        float: right;
+    }
 </style>
 <div class="content-wrapper" style="min-height: 916px;">
     <section class="content">
@@ -44,13 +50,170 @@
                     <div class="row">
                         <div class="col-sm-3 col-md-3 col-sx-12">
                             <?php
-                            echo form_label('Tên người đại diện pháp luật <span style="color: red">(*)</span>', 'legal_representative');
+                                echo form_label('Tên công ty <span style="color: red">(*)</span>', 'company');
                             ?>
                         </div>
                         <div class="col-sm-9 col-md-9 col-sx-12">
                             <?php
-                            echo form_error('legal_representative', '<div class="error">', '</div>');
-                            echo form_input('legal_representative', set_value('legal_representative'), 'class="form-control"');
+                                echo form_error('company', '<div class="error">', '</div>');
+                                echo form_input('company', set_value('company',$user->company), 'class="form-control"');
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3 col-sx-12">
+                            <?php
+                                echo form_label('Ngày thành lập <span style="color: red">(*)</span>', 'company');
+                            ?>
+                        </div>
+                        <div class="col-sm-9 col-md-9 col-sx-12">
+                            <?php
+                                echo form_error('company', '<div class="error">', '</div>');
+                                echo form_input('company', set_value('company'), 'class="form-control datetimepicker7" ');
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3 col-sx-12">
+                            <?php
+                                echo form_label('Giấy phép đăng ký kinh doanh số <span style="color: red">(*)</span>', 'company');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-sx-12">
+                            <?php
+                                echo form_error('company', '<div class="error">', '</div>');
+                                echo form_input('company', set_value('company'), 'class="form-control" ');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-sx-12 float-right">
+                            <?php
+                                echo form_label('Ngày cấp <span style="color: red">(*)</span>', 'company');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-sx-12">
+                            <?php
+                                echo form_error('company', '<div class="error">', '</div>');
+                                echo form_input('company', set_value('company'), 'class="form-control datetimepicker7" ');
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3 col-sx-12">
+                            <?php
+                                echo form_label('Trụ sở/ Địa chỉ giao dịch thư tín: <span style="color: red">(*)</span>', 'company');
+                            ?>
+                        </div>
+                        <div class="col-sm-9 col-md-9 col-sx-12">
+                            <?php
+                                echo form_error('company', '<div class="error">', '</div>');
+                                echo form_input('company', set_value('company'), 'class="form-control datetimepicker7" ');
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3 col-sx-12">
+                            <?php
+                                echo form_label('Điện thoại <span style="color: red">(*)</span>', 'company');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-sx-12">
+                            <?php
+                                echo form_error('company', '<div class="error">', '</div>');
+                                echo form_input('company', set_value('company'), 'class="form-control" ');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-sx-12 float-right">
+                            <?php
+                                echo form_label('Fax <span style="color: red">(*)</span>', 'company');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-sx-12">
+                            <?php
+                                echo form_error('company', '<div class="error">', '</div>');
+                                echo form_input('company', set_value('company'), 'class="form-control datetimepicker7" ');
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3 col-sx-12">
+                            <?php
+                                echo form_label('E-mail <span style="color: red">(*)</span>', 'company');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-sx-12">
+                            <?php
+                                echo form_error('company', '<div class="error">', '</div>');
+                                echo form_input('company', set_value('company'), 'class="form-control" ');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-sx-12 float-right">
+                            <?php
+                                echo form_label('Website <span style="color: red">(*)</span>', 'company');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-sx-12">
+                            <?php
+                                echo form_error('company', '<div class="error">', '</div>');
+                                echo form_input('company', set_value('company'), 'class="form-control datetimepicker7" ');
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3 col-sx-12">
+                            <?php
+                                echo form_label('Lãnh đạo <span style="color: red">(*)</span>', 'company');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-sx-12">
+                            <?php
+                                echo form_error('company', '<div class="error">', '</div>');
+                                echo form_input('company', set_value('company'), 'class="form-control" ');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-sx-12 float-right">
+                            <?php
+                                echo form_label('Chức danh <span style="color: red">(*)</span>', 'company');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-sx-12">
+                            <?php
+                                echo form_error('company', '<div class="error">', '</div>');
+                                echo form_input('company', set_value('company'), 'class="form-control datetimepicker7" ');
+                            ?>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3 col-sx-12">
+                            <?php
+                                echo form_label('Tên người đại diện pháp luật <span style="color: red">(*)</span>', 'legal_representative');
+                            ?>
+                        </div>
+                        <div class="col-sm-9 col-md-9 col-sx-12">
+                            <?php
+                                echo form_error('legal_representative', '<div class="error">', '</div>');
+                                echo form_input('legal_representative', set_value('legal_representative'), 'class="form-control"');
                             ?>
                         </div>
                     </div>
@@ -279,5 +442,12 @@
                 required: 'Link download PĐK của DN'
             }
         }
+    });
+</script>
+ <script type="text/javascript">
+    $(function () {
+        $('.datetimepicker7').datetimepicker({
+            format: 'DD/MM/Y'
+        });
     });
 </script>

@@ -17,6 +17,7 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo site_url('assets/admin/'); ?>dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/admin/'); ?>datetimepicker/bootstrap-datetimepicker.css">
   <!-- Date Picker -->
 <!--  <link rel="stylesheet" href="--><?php //echo site_url('assets/admin/'); ?><!--bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">-->
   <!-- Color picker -->
@@ -61,6 +62,8 @@
 
   <script type="text/javascript" src="<?php echo site_url('tinymce/tinymce.min.js'); ?>"></script>
   <script type="text/javascript" src="<?php echo site_url('tinymce/tinymce.min.js'); ?>"></script>
+  <script src="<?php echo site_url('assets/admin/'); ?>datetimepicker/moment.js"></script>
+  <script src="<?php echo site_url('assets/admin/'); ?>datetimepicker/bootstrap-datetimepicker.js"></script>
 
     <style>
         @font-face{

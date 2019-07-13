@@ -57,6 +57,10 @@
     .message__{
         color: blue;
     }
+    h5{
+        font-size: 14px;
+        font-family: webFont_N;
+    }
 </style>
 <div class="content-wrapper" style="min-height: 916px;">
     <section class="content">
@@ -271,48 +275,6 @@
                 <div class="form-group">
                     <h4>1. NĂNG LỰC TÀI CHÍNH</h4>
                 </div>
-                <!-- div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-3 col-md-3 col-sx-12">
-                            <?php
-                            // echo form_label('Vốn điều lệ', 'equity_1');
-                            ?>
-                        </div>
-                        <div class="col-sm-9 col-md-9 col-sx-12">
-                            <div class="row">
-                                <p><?php // echo 'Năm' . $rule2Year[0] ?></p>
-                                <?php
-                                // echo form_label('Số tuyệt đối (triệu đồng)', 'equity_1');
-                                // echo form_error('equity_1', '<div class="error">', '</div>');
-                                // echo form_input('equity_1', set_value('equity_1'), 'class="form-control"');
-                                ?>
-                            </div>
-                            <div class="row">
-                                <?php
-                                // echo form_label('So với năm trước (%)', 'equity_percent_1');
-                                // echo form_error('equity_percent_1', '<div class="error">', '</div>');
-                                // echo form_input('equity_percent_1', set_value('equity_percent_1'), 'class="form-control"');
-                                ?>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <p><?php // echo 'Năm' . $rule2Year[1] ?></p>
-                                <?php
-                                // echo form_label('Số tuyệt đối (triệu đồng)', 'equity_2');
-                                // echo form_error('equity_2', '<div class="error">', '</div>');
-                                // echo form_input('equity_2', set_value('equity_2'), 'class="form-control"');
-                                ?>
-                            </div>
-                            <div class="row">
-                                <?php
-                                // echo form_label('So với năm trước (%)', 'equity_percent_2');
-                                // echo form_error('equity_percent_2', '<div class="error">', '</div>');
-                               //  echo form_input('equity_percent_2', set_value('equity_percent_2'), 'class="form-control"');
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
                 <div class="form-group m-l-30">
                     <div class="row">
                         <div class="col-xs-12">
@@ -398,92 +360,6 @@
                                 </td>
                               </tr>
                             </table>
-                        </div>
-                    </div>
-                </div>
-                <hr style="border-bottom: 1px solid white;">
-                <!-- <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-3 col-md-3 col-sx-12">
-                            <?php
-                            //  echo form_label('Vốn chủ sở hữu', 'owner_equity');
-                            ?>
-                        </div>
-                        <div class="col-sm-9 col-md-9 col-sx-12">
-                            <div class="row">
-                                <p><?php //     echo 'Năm' . $rule2Year[0] ?></p>
-                                <?php
-                                //  echo form_label('Số tuyệt đối (triệu đồng)', 'owner_equity_1');
-                                //  echo form_error('owner_equity_1', '<div class="error">', '</div>');
-                                //  echo form_input('owner_equity_1', set_value('owner_equity_1'), 'class="form-control"');
-                                ?>
-                            </div>
-                            <div class="row">
-                                <?php
-                                //  echo form_label('So với năm trước (%)', 'owner_equity_percent_1');
-                                //  echo form_error('owner_equity_percent_1', '<div class="error">', '</div>');
-                                //  echo form_input('owner_equity_percent_1', set_value('owner_equity_percent_1'), 'class="form-control"');
-                                ?>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <p><?php //     echo 'Năm' . $rule2Year[1] ?></p>
-                                <?php
-                                //  echo form_label('Số tuyệt đối (triệu đồng)', 'owner_equity_2');
-                                //  echo form_error('owner_equity_2', '<div class="error">', '</div>');
-                                //  echo form_input('owner_equity_2', set_value('owner_equity_2'), 'class="form-control"');
-                                ?>
-                            </div>
-                            <div class="row">
-                                <?php
-                                //  echo form_label('So với năm trước (%)', 'owner_equity_percent_2');
-                                //  echo form_error('owner_equity_percent_2', '<div class="error">', '</div>');
-                                //  echo form_input('owner_equity_percent_2', set_value('owner_equity_percent_2'), 'class="form-control"');
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-                <hr style="border-bottom: 1px solid white;">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-3 col-md-3 col-sx-12">
-                            <?php
-                            echo form_label('Tổng doanh thu doanh nghiệp', 'total_income');
-                            ?>
-                        </div>
-                        <div class="col-sm-9 col-md-9 col-sx-12">
-                            <div class="row">
-                                <p><?php echo 'Năm' . $rule2Year[0] ?></p>
-                                <?php
-                                echo form_label('Số tuyệt đối (triệu đồng)', 'total_income_1');
-                                echo form_error('total_income_1', '<div class="error">', '</div>');
-                                echo form_input('total_income_1', set_value('total_income_1'), 'class="form-control"');
-                                ?>
-                            </div>
-                            <div class="row">
-                                <?php
-                                echo form_label('So với năm trước (%)', 'total_income_percent_1');
-                                echo form_error('total_income_percent_1', '<div class="error">', '</div>');
-                                echo form_input('total_income_percent_1', set_value('total_income_percent_1'), 'class="form-control"');
-                                ?>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <p><?php echo 'Năm' . $rule2Year[1] ?></p>
-                                <?php
-                                echo form_label('Số tuyệt đối (triệu đồng)', 'total_income_2');
-                                echo form_error('total_income_2', '<div class="error">', '</div>');
-                                echo form_input('total_income_2', set_value('total_income_2'), 'class="form-control"');
-                                ?>
-                            </div>
-                            <div class="row">
-                                <?php
-                                echo form_label('So với năm trước (%)', 'total_income_percent_2');
-                                echo form_error('total_income_percent_2', '<div class="error">', '</div>');
-                                echo form_input('total_income_percent_2', set_value('total_income_percent_2'), 'class="form-control"');
-                                ?>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -813,154 +689,6 @@
                     </div>
                 </div>
 
-
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-3 col-md-3 col-sx-12">
-                            <?php
-                            echo form_label('Tổng doanh thu lĩnh vực sản xuất phần mềm (triệu VNĐ)', 'software_income');
-                            ?>
-                        </div>
-                        <div class="col-sm-9 col-md-9 col-sx-12">
-                            <div class="row">
-                                <?php
-                                echo form_label('Năm ' . $rule2Year[0], 'software_income_1');
-                                echo form_error('software_income_1', '<div class="error">', '</div>');
-                                echo form_input('software_income_1', set_value('software_income_1'), 'class="form-control"');
-                                ?>
-                            </div>
-                            <div class="row">
-                                <?php
-                                echo form_label('Năm ' . $rule2Year[1], 'software_income_2');
-                                echo form_error('software_income_2', '<div class="error">', '</div>');
-                                echo form_input('software_income_2', set_value('software_income_2'), 'class="form-control"');
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr style="border-bottom: 1px solid white;">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-3 col-md-3 col-sx-12">
-                            <?php
-                            echo form_label('Tổng doanh thu dịch vụ CNTT (triệu VNĐ)', 'it_income');
-                            ?>
-                        </div>
-                        <div class="col-sm-9 col-md-9 col-sx-12">
-                            <div class="row">
-                                <?php
-                                echo form_label('Năm ' . $rule2Year[0], 'it_income_1');
-                                echo form_error('it_income_1', '<div class="error">', '</div>');
-                                echo form_input('it_income_1', set_value('it_income_1'), 'class="form-control"');
-                                ?>
-                            </div>
-                            <div class="row">
-                                <?php
-                                echo form_label('Năm ' . $rule2Year[1], 'it_income_2');
-                                echo form_error('it_income_2', '<div class="error">', '</div>');
-                                echo form_input('it_income_2', set_value('it_income_2'), 'class="form-control"');
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr style="border-bottom: 1px solid white;">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-3 col-md-3 col-sx-12">
-                            <?php
-                            echo form_label('Tổng doanh thu xuất khẩu (USD)', 'export_income');
-                            ?>
-                        </div>
-                        <div class="col-sm-9 col-md-9 col-sx-12">
-                            <div class="row">
-                                <?php
-                                echo form_label('Năm ' . $rule2Year[0], 'export_income_1');
-                                echo form_error('export_income_1', '<div class="error">', '</div>');
-                                echo form_input('export_income_1', set_value('export_income_1'), 'class="form-control"');
-                                ?>
-                            </div>
-                            <div class="row">
-                                <?php
-                                echo form_label('Năm ' . $rule2Year[1], 'export_income_2');
-                                echo form_error('export_income_2', '<div class="error">', '</div>');
-                                echo form_input('export_income_2', set_value('export_income_2'), 'class="form-control"');
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr style="border-bottom: 1px solid white;">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-3 col-md-3 col-sx-12">
-                            <?php
-                            echo form_label('Tổng số lao động của doanh nghiệp', 'total_labor');
-                            ?>
-                        </div>
-                        <div class="col-sm-9 col-md-9 col-sx-12">
-                            <div class="row">
-                                <?php
-                                echo form_label('Năm ' . $rule2Year[0], 'total_labor_1');
-                                echo form_error('total_labor_1', '<div class="error">', '</div>');
-                                echo form_input('total_labor_1', set_value('total_labor_1'), 'class="form-control"');
-                                ?>
-                            </div>
-                            <div class="row">
-                                <?php
-                                echo form_label('Năm ' . $rule2Year[1], 'total_labor_2');
-                                echo form_error('total_labor_2', '<div class="error">', '</div>');
-                                echo form_input('total_labor_2', set_value('total_labor_2'), 'class="form-control"');
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr style="border-bottom: 1px solid white;">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-3 col-md-3 col-sx-12">
-                            <?php
-                            echo form_label('Tổng số lập trình viên', 'total_ltv');
-                            ?>
-                        </div>
-                        <div class="col-sm-9 col-md-9 col-sx-12">
-                            <div class="row">
-                                <?php
-                                echo form_label('Năm ' . $rule2Year[0], 'total_ltv_1');
-                                echo form_error('total_ltv_1', '<div class="error">', '</div>');
-                                echo form_input('total_ltv_1', set_value('total_ltv_1'), 'class="form-control"');
-                                ?>
-                            </div>
-                            <div class="row">
-                                <?php
-                                echo form_label('Năm ' . $rule2Year[1], 'total_ltv_2');
-                                echo form_error('total_ltv_2', '<div class="error">', '</div>');
-                                echo form_input('total_ltv_2', set_value('total_ltv_2'), 'class="form-control"');
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr style="border-bottom: 1px solid white;">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-3 col-md-3 col-sx-12">
-                            <?php
-                            echo form_label('Giới thiệu chung về doanh nghiệp (nêu thông tin về lịch sử hình thành, đội ngũ lãnh đạo doanh nghiệp, định hướng phát triển/chiến lược của doanh nghiệp, thế mạnh của doanh nghiệp...)', 'description');
-                            ?>
-                        </div>
-                        <div class="col-sm-9 col-md-9 col-sx-12">
-                            <div class="row">
-                                <?php
-                                echo form_error('description', '<div class="error">', '</div>');
-                                echo form_textarea('description', set_value('description'), 'class="form-control tinymce-area"');
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="form-group">
                     <h3>III. THÔNG TIN NHÂN LỰC</h3>
