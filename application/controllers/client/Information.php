@@ -494,23 +494,28 @@ class Information extends Client_Controller {
                         'japanese_employee_percent' => $this->input->post('japanese_employee_percent'),
                         'other_language_employee' => $this->input->post('other_language_employee'),
                         'other_language_employee_percent' => $this->input->post('other_language_employee_percent'),
+                        // Trình độ chuyên môn
                         'qualification' => $this->input->post('qualification'),
+                        // Mức lương trung bình/năm
                         'average_salary' => $this->input->post('average_salary'),
+                        // Số nhân viên thuộc bộ phận chăm sóc khách hàng
                         'customer_supporter' => $this->input->post('customer_supporter'),
+                        // Công tác đào tạo, bồi dưỡng nhân lực
                         'training_process' => $this->input->post('training_process'),
+                        // Hoạt động tuyển dụng nhân sự
                         'recruitment_staff' => $this->input->post('recruitment_staff'),
                         'recruitment_budget' => $this->input->post('recruitment_budget'),
-
+                        // Chi phí đầu tư cho hoạt động R&D
                         'investment_fund_r_and_d' => $this->input->post('investment_fund_r_and_d'),
                         'investment_fund_r_and_d_percent' => $this->input->post('investment_fund_r_and_d_percent'),
                         'staff_r_and_d' => $this->input->post('staff_r_and_d'),
                         'result_r_and_d' => $this->input->post('result_r_and_d'),
-
+                        // Chế độ bảo mật của công ty và bảo mật cho khách hàng
                         'security_certificate' => $this->input->post('security_certificate'),
                         'security_process' => $this->input->post('security_process'),
-
+                        // Quản lý công nghệ, chất lượng
                         'technique_certificate' => $this->input->post('technique_certificate'),
-
+                        // HOẠT ĐỘNG CỘNG ĐỒNG, CÁC GIẢI THƯỞNG, DANH HIỆU VÀ CÁC THÀNH TÍCH ĐẶC BIỆT DOANH NGHIỆP ĐÃ ĐẠT ĐƯỢC
                         'reward' => $this->input->post('reward'),
                         // End New
 

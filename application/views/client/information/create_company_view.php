@@ -402,23 +402,23 @@
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_a', set_value('name_a'), 'class="form-control"'); 
+                                    <?php echo form_input('total_income_1', set_value('total_income_1'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_a1', set_value('name_a1'), 'class="form-control"'); 
+                                    <?php echo form_input('total_income_percent_1', set_value('total_income_percent_1'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_a2', set_value('name_a2'), 'class="form-control"'); 
+                                    <?php echo form_input('total_income_2', set_value('total_income_2'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_a3', set_value('name_a3'), 'class="form-control"'); 
+                                    <?php echo form_input('total_income_percent_2', set_value('total_income_percent_2'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_a4', set_value('name_a4'), 'class="form-control"'); 
+                                    <?php echo form_input('total_income_6_months', set_value('total_income_6_months'), 'class="form-control"');
                                     ?>
                                 </td>
                               </tr>
@@ -437,23 +437,23 @@
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_b', set_value('name_b'), 'class="form-control"'); 
+                                    <?php echo form_input('per_capita_income_1', set_value('per_capita_income_1'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_b1', set_value('name_b1'), 'class="form-control"'); 
+                                    <?php echo form_input('per_capita_income_percent_1', set_value('per_capita_income_percent_1'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_b2', set_value('name_b2'), 'class="form-control"'); 
+                                    <?php echo form_input('per_capita_income_2', set_value('per_capita_income_2'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_b3', set_value('name_b3'), 'class="form-control"'); 
+                                    <?php echo form_input('per_capita_income_percent_2', set_value('per_capita_income_percent_2'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td colspan="1">
-                                    <?php echo form_input('name_b4', set_value('name_b4'), 'class="form-control"'); 
+                                    <?php echo form_input('per_capita_income_6_months', set_value('per_capita_income_6_months'), 'class="form-control"');
                                     ?>
                                 </td>
                               </tr>
@@ -470,23 +470,23 @@
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_c', set_value('name_c'), 'class="form-control"'); 
+                                    <?php echo form_input('software_income_1', set_value('software_income_1'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_c1', set_value('name_c1'), 'class="form-control"'); 
+                                    <?php echo form_input('software_income_percent_1', set_value('software_income_percent_1'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_c2', set_value('name_c2'), 'class="form-control"'); 
+                                    <?php echo form_input('software_income_2', set_value('software_income_2'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_c3', set_value('name_c3'), 'class="form-control"'); 
+                                    <?php echo form_input('software_income_percent_2', set_value('software_income_percent_2'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td colspan="1">
-                                    <?php echo form_input('name_c4', set_value('name_c4'), 'class="form-control"'); 
+                                    <?php echo form_input('software_income_6_months', set_value('software_income_6_months'), 'class="form-control"');
                                     ?>
                                 </td>
                               </tr>
@@ -503,23 +503,23 @@
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_d', set_value('name_d'), 'class="form-control"'); 
+                                    <?php echo form_input('it_income_1', set_value('it_income_1'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_d1', set_value('name_d1'), 'class="form-control"'); 
+                                    <?php echo form_input('it_income_percent_1', set_value('it_income_percent_1'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_d2', set_value('name_d2'), 'class="form-control"'); 
+                                    <?php echo form_input('it_income_2', set_value('it_income_2'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_d3', set_value('name_d3'), 'class="form-control"'); 
+                                    <?php echo form_input('it_income_percent_2', set_value('it_income_percent_2'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td colspan="1">
-                                    <?php echo form_input('name_d4', set_value('name_d4'), 'class="form-control"'); 
+                                    <?php echo form_input('it_income_6_months', set_value('it_income_6_months'), 'class="form-control"');
                                     ?>
                                 </td>
                               </tr>
@@ -537,23 +537,23 @@
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_e', set_value('name_e'), 'class="form-control"'); 
+                                    <?php echo form_input('export_income_1', set_value('export_income_1'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_e1', set_value('name_e1'), 'class="form-control"'); 
+                                    <?php echo form_input('export_income_percent_1', set_value('export_income_percent_1'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_e2', set_value('name_e2'), 'class="form-control"'); 
+                                    <?php echo form_input('export_income_2', set_value('export_income_2'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_e3', set_value('name_e3'), 'class="form-control"'); 
+                                    <?php echo form_input('export_income_percent_2', set_value('export_income_percent_2'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td colspan="1">
-                                    <?php echo form_input('name_e4', set_value('name_e4'), 'class="form-control"'); 
+                                    <?php echo form_input('export_income_6_months', set_value('export_income_6_months'), 'class="form-control"');
                                     ?>
                                 </td>
                               </tr>
@@ -571,23 +571,23 @@
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_f', set_value('name_f'), 'class="form-control"'); 
+                                    <?php echo form_input('international_income_1', set_value('international_income_1'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_f1', set_value('name_f1'), 'class="form-control"'); 
+                                    <?php echo form_input('international_income_percent_1', set_value('international_income_percent_1'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_f2', set_value('name_f2'), 'class="form-control"'); 
+                                    <?php echo form_input('international_income_2', set_value('international_income_2'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_f3', set_value('name_f3'), 'class="form-control"'); 
+                                    <?php echo form_input('international_income_percent_2', set_value('international_income_percent_2'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td colspan="1">
-                                    <?php echo form_input('name_f4', set_value('name_f4'), 'class="form-control"'); 
+                                    <?php echo form_input('international_income_6_months', set_value('international_income_6_months'), 'class="form-control"');
                                     ?>
                                 </td>
                               </tr>
@@ -1072,7 +1072,7 @@
     $('.submit-extra-form').css({'display':'none'});
     $('.confirm input[type="checkbox"]').change(function(){
         if($(this).is(':checked')){
-            window.open($(this).attr('data-href'),'_blank');
+            // window.open($(this).attr('data-href'),'_blank');
         }
         if ($('#checkone').is(':checked') && $('#checktwo').is(':checked')) {
             $('.submit-extra-form').css({'display':'block'});
