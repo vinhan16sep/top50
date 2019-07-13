@@ -30,7 +30,7 @@ class Dashboard extends Client_Controller {
         }
 
         $this->data['noMoreTemporaryData'] = 0;
-        if($this->data['reg_status']['is_information'] == 1 && $this->data['reg_status']['is_company'] == 1 && $this->data['reg_status']['is_product'] == 1){
+        if($this->data['reg_status']['is_information'] == 1 && $this->data['reg_status']['is_company'] == 1){
             $this->data['noMoreTemporaryData'] = 1;
         }
 
