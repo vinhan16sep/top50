@@ -98,18 +98,29 @@ class Information extends Client_Controller {
                 }
                 $data = array(
                     'client_id' => $this->data['user']->id,
+                    // New
+                    'founding_date' => date('Y-m-d H:i:s', strtotime(str_replace('/', '-', $this->input->post('founding_date')))),
+                    'certificate' => $this->input->post('certificate'),
+                    'certificate_date' => date('Y-m-d H:i:s', strtotime(str_replace('/', '-', $this->input->post('certificate_date')))),
+                    'headquarters' => $this->input->post('headquarters'),
+                    'h_phone' => $this->input->post('h_phone'),
+                    'h_fax' => $this->input->post('h_fax'),
+                    'h_email' => $this->input->post('h_email'),
+                    // End New
+
+                    'website' => $this->input->post('website'),
+
                     'legal_representative' => $this->input->post('legal_representative'),
                     'lp_position' => $this->input->post('lp_position'),
                     'lp_email' => $this->input->post('lp_email'),
                     'lp_phone' => $this->input->post('lp_phone'),
+
                     'connector' => $this->input->post('connector'),
                     'c_position' => $this->input->post('c_position'),
                     'c_email' => $this->input->post('c_email'),
                     'c_phone' => $this->input->post('c_phone'),
-                    'website' => $this->input->post('website'),
-//                    'link' => $this->input->post('link'),
+
                     'identity' => $this->data['user']->username,
-//                    'is_submit' => 1,
                     'created_at' => $this->author_info['created_at'],
                     'created_by' => $this->author_info['created_by'],
                     'modified_at' => $this->author_info['modified_at'],
@@ -124,7 +135,7 @@ class Information extends Client_Controller {
                     unset($data['created_by']);
                     $update = $this->information_model->update_by_identity('information', $this->data['user']->username, $data);
                     $this->status_model->update('status', $this->data['user']->id, array('is_information' => 1, 'year' => $this->data['eventYear']));
-                    $this->users_model->update('users', $this->data['user']->id, array('information_id' => $exist['id']));
+                    $this->users_model->update('users', $this->data['user']->id, array('information_id' => $exist['id'], 'company' => $this->input->post('company')));
                 }else{
                     $insert = $this->information_model->insert('information', $data);
                     if (!$insert) {
@@ -132,7 +143,7 @@ class Information extends Client_Controller {
                     }
                     $this->load->model('status_model');
                     $this->status_model->update('status', $this->data['user']->id, array('is_information' => 1));
-                    $this->users_model->update('users', $this->data['user']->id, array('information_id' => $insert));
+                    $this->users_model->update('users', $this->data['user']->id, array('information_id' => $insert, 'company' => $this->input->post('company')));
                     $this->session->set_flashdata('message', 'Item added successfully');
                 }
 
@@ -202,6 +213,14 @@ class Information extends Client_Controller {
                 }
 
                 $data = array(
+                    'founding_date' => date('Y-m-d H:i:s', strtotime(str_replace('/', '-', $this->input->post('founding_date')))),
+                    'certificate' => $this->input->post('certificate'),
+                    'certificate_date' => date('Y-m-d H:i:s', strtotime(str_replace('/', '-', $this->input->post('certificate_date')))),
+                    'headquarters' => $this->input->post('headquarters'),
+                    'h_phone' => $this->input->post('h_phone'),
+                    'h_fax' => $this->input->post('h_fax'),
+                    'h_email' => $this->input->post('h_email'),
+
                     'legal_representative' => $this->input->post('legal_representative'),
                     'lp_position' => $this->input->post('lp_position'),
                     'lp_email' => $this->input->post('lp_email'),
