@@ -95,10 +95,13 @@
                             ?>
                         </div>
                         <hr>
-                        <div class="col-xs-12">
+                        <div class="col-xs-12 textarea-h">
+                            <div>
                                 <?php
-                                echo $company['overview'];
+                                echo htmlspecialchars_decode($company['overview']);
                                 ?>
+                            </div>
+                                
                         </div>
                     </div>
                 </div>
@@ -111,10 +114,11 @@
                             ?>
                         </div>
                         <hr>
-                        <div class="col-xs-12">
+                        <div class="col-xs-12 textarea-h">
+                            <div>
                                 <?php
-                                echo $company['active_area'];
-                                ?>
+                                echo htmlspecialchars_decode($company['active_area']);
+                                ?></div>
                         </div>
                     </div>
                 </div>
@@ -127,10 +131,11 @@
                             ?>
                         </div>
                         <hr>
-                        <div class="col-xs-12">
+                        <div class="col-xs-12 textarea-h">
+                            <div>
                                 <?php
-                                echo $company['product'];
-                                ?>
+                                echo htmlspecialchars_decode($company['product']);
+                                ?></div>
                         </div>
                     </div>
                 </div>
@@ -730,10 +735,11 @@
                         <div class="col-xs-12" style="padding-bottom: 15px;">
                             <b>(Cấu trúc nhân sự theo trình độ học vấn, theo các vị trí công việc, các cấp độ kỹ năng, các vị trí chuyên môn,...):</b>
                         </div>
-                        <div class="col-xs-12">
+                        <div class="col-xs-12 textarea-h">
+                            <div>
                              <?php
-                                echo $company['qualification'];
-                            ?>
+                                echo htmlspecialchars_decode($company['qualification']);
+                            ?></div>
                         </div>
                     </div>
                 </div>
@@ -765,10 +771,11 @@
                 </div>
                 <div class="form-group m-l-30">
                     <div class="row">
-                        <div class="col-xs-12">
+                        <div class="col-xs-12 textarea-h">
+                            <div>
                              <?php
-                                echo $company['training_process'];
-                            ?>
+                                echo htmlspecialchars_decode($company['training_process']);
+                            ?></div>
                         </div>
                     </div>
                 </div>
@@ -846,10 +853,11 @@
                         <div class="col-xs-12" style="padding-bottom: 15px;">
                             <b>- Thành quả nổi bật của hoạt động R&D :</b>
                         </div>
-                        <div class="col-xs-12">
+                        <div class="col-xs-12 textarea-h">
+                            <div>
                              <?php
-                                echo $company['result_r_and_d'];
-                            ?>
+                                echo htmlspecialchars_decode($company['result_r_and_d']);
+                            ?></div>
                         </div>
                     </div>
                 </div>
@@ -863,10 +871,11 @@
                         <div class="col-xs-12" style="padding-bottom: 15px;">
                             <b>- Các chứng chỉ bảo mật – nếu có (nêu loại chứng chỉ đạt được, tổ chức cấp chứng chỉ, thời gian được cấp chứng chỉ,…. tối đa 100 từ)</b>
                         </div>
-                        <div class="col-xs-12">
+                        <div class="col-xs-12 textarea-h">
+                            <div>
                              <?php
-                                echo $company['security_certificate'];
-                            ?>
+                                echo htmlspecialchars_decode($company['security_certificate']);
+                            ?></div>
                         </div>
                     </div>
                 </div>
@@ -875,10 +884,11 @@
                         <div class="col-xs-12" style="padding-bottom: 15px;">
                             <b>- Các quy trình/các biện pháp an ninh, bảo mật cơ sở dữ liệu và thông tin của công ty (tối đa 100 từ):</b>
                         </div>
-                        <div class="col-xs-12">
+                        <div class="col-xs-12 textarea-h">
+                            <div>
                              <?php
-                                echo $company['security_process'];
-                            ?>
+                                echo htmlspecialchars_decode($company['security_process']);
+                            ?></div>
                         </div>
                     </div>
                 </div>
@@ -887,10 +897,11 @@
                 </div>
                 <div class="form-group h5 m-l-30">
                     <div class="row">
-                        <div class="col-xs-12">
+                        <div class="col-xs-12 textarea-h">
+                            <div>
                              <?php
-                                echo $company['technique_certificate'];
-                            ?>
+                                echo htmlspecialchars_decode($company['technique_certificate']);
+                            ?></div>
                         </div>
                     </div>
                 </div>
@@ -922,5 +933,13 @@
 </div>
 <script type="text/javascript">
     $('.tab-content input').attr('readonly','readonly');
+    $('.tab-content textarea').attr('readonly','readonly');
+    textarea_h = $('.textarea-h');
+    for (var i = 0; i < textarea_h.length; i++) {
+        console.log($(textarea_h[i]).html().trim().length);
+        if ($(textarea_h[i]).find('>div').html().trim().length > 0) {
+            $(textarea_h[i]).find('>div').css({'background':'#ccc','color':'#555!important','padding':'10px'});
+        }
+    }
 </script>
         

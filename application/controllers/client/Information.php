@@ -288,80 +288,347 @@ class Information extends Client_Controller {
         $this->load->library('form_validation');
 
         if($this->input->post('submit') == 'Hoàn thành') {
-            $this->form_validation->set_rules('equity_1', 'Vốn điều lệ ' . $this->data['rule2Year'][0], 'trim|required|numeric|max_length[10]', array(
+            $this->form_validation->set_rules('equity_1', 'Vốn điều lệ ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
-            ));
-            $this->form_validation->set_rules('equity_percent_1', 'Vốn điều lệ ' . $this->data['rule2Year'][0], 'trim|required|numeric|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('equity_percent_1', 'Vốn điều lệ ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
-            ));
-            $this->form_validation->set_rules('equity_2', 'Vốn điều lệ ' . $this->data['rule2Year'][1], 'trim|required|numeric|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('equity_2', 'Vốn điều lệ ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('equity_percent_2', 'Vốn điều lệ ' . $this->data['rule2Year'][0], 'trim|required|numeric|max_length[10]', array(
+            $this->form_validation->set_rules('equity_percent_2', 'Vốn điều lệ ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
-            ));
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
             /** =================================================== */
-            $this->form_validation->set_rules('owner_equity_1', 'Vốn chủ sở hữu ' . $this->data['rule2Year'][0], 'trim|required|numeric|max_length[10]', array(
+            $this->form_validation->set_rules('owner_equity_1', 'Vốn chủ sở hữu ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
-            ));
-            $this->form_validation->set_rules('owner_equity_percent_1', 'Vốn điều lệ ' . $this->data['rule2Year'][0], 'trim|required|numeric|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('owner_equity_percent_1', 'Vốn chủ sở hữu ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
-            ));
-            $this->form_validation->set_rules('owner_equity_2', 'Vốn chủ sở hữu ' . $this->data['rule2Year'][1], 'trim|required|numeric|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('owner_equity_2', 'Vốn chủ sở hữu ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('owner_equity_percent_2', 'Vốn điều lệ ' . $this->data['rule2Year'][0], 'trim|required|numeric|max_length[10]', array(
+            $this->form_validation->set_rules('owner_equity_percent_2', 'Vốn chủ sở hữu ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
-            ));
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
             /** =================================================== */
-            $this->form_validation->set_rules('total_income_1', 'Tổng doanh thu DN ' . $this->data['rule2Year'][0], 'trim|required|numeric|max_length[10]', array(
+            $this->form_validation->set_rules('total_assets_1', 'Tổng tài sản ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
-            ));
-            $this->form_validation->set_rules('total_income_2', 'Tổng doanh thu DN ' . $this->data['rule2Year'][1], 'trim|required|numeric|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('total_assets_percent_1', 'Tổng tài sản ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
-            ));
-            $this->form_validation->set_rules('software_income_1', 'Tổng DT lĩnh vực sx phần mềm ' . $this->data['rule2Year'][0], 'trim|required|numeric|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('total_assets_2', 'Tổng tài sản ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('software_income_2', 'Tổng DT lĩnh vực sx phần mềm ' . $this->data['rule2Year'][1], 'trim|required|numeric|max_length[10]', array(
+            $this->form_validation->set_rules('total_assets_percent_2', 'Tổng tài sản ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
-            ));
-            $this->form_validation->set_rules('it_income_1', 'Tổng doanh thu dịch vụ CNTT ' . $this->data['rule2Year'][0], 'trim|required|numeric|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('total_income_1', 'Tổng doanh thu doanh nghiệp ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
-            ));
-            $this->form_validation->set_rules('it_income_2', 'Tổng doanh thu dịch vụ CNTT ' . $this->data['rule2Year'][1], 'trim|required|numeric|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('total_income_percent_1', 'Tổng doanh thu doanh nghiệp ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
-            ));
-            $this->form_validation->set_rules('export_income_1', 'Tổng DT xuất khẩu ' . $this->data['rule2Year'][0], 'trim|required|numeric|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('total_income_2', 'Tổng doanh thu doanh nghiệp ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('export_income_2', 'Tổng DT xuất khẩu ' . $this->data['rule2Year'][1], 'trim|required|numeric|max_length[10]', array(
+            $this->form_validation->set_rules('total_income_percent_2', 'Tổng doanh thu doanh nghiệp ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('total_income_6_months', 'Tổng doanh thu doanh nghiệp 6 tháng đầu năm 2019 Số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('per_capita_income_1', 'Bình quân doanh thu/đầu người ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('per_capita_income_percent_1', 'Bình quân doanh thu/đầu người ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('per_capita_income_2', 'Bình quân doanh thu/đầu người ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
+            $this->form_validation->set_rules('per_capita_income_percent_2', 'Bình quân doanh thu/đầu người ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('per_capita_income_6_months', 'Bình quân doanh thu/đầu người 6 tháng đầu năm 2019 Số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('software_income_1', 'Tổng doanh thu lĩnh vực sản xuất phần mềm ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('software_income_percent_1', 'Tổng doanh thu lĩnh vực sản xuất phần mềm ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('software_income_2', 'Tổng doanh thu lĩnh vực sản xuất phần mềm ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));
+            $this->form_validation->set_rules('software_income_percent_2', 'Tổng doanh thu lĩnh vực sản xuất phần mềm ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('software_income_6_months', 'Tổng doanh thu lĩnh vực sản xuất phần mềm 6 tháng đầu năm 2019 Số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('it_income_1', 'Tổng doanh thu dịch vụ CNTT ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('it_income_percent_1', 'Tổng doanh thu dịch vụ CNTT ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('it_income_2', 'Tổng doanh thu dịch vụ CNTT ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));
+            $this->form_validation->set_rules('it_income_percent_2', 'Tổng doanh thu dịch vụ CNTT ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('it_income_6_months', 'Tổng doanh thu dịch vụ CNTT 6 tháng đầu năm 2019 Số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('international_income_1', 'Thị trường quốc tế ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('international_income_percent_1', 'Thị trường quốc tế ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('international_income_2', 'Thị trường quốc tế ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));
+            $this->form_validation->set_rules('international_income_percent_2', 'Thị trường quốc tế ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('international_income_6_months', 'Thị trường quốc tế 6 tháng đầu năm 2019 Số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('domestic_income_1', 'Thị trường nội địa ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('domestic_income_percent_1', 'Thị trường nội địa ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('domestic_income_1', 'Thị trường nội địa ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));
+            $this->form_validation->set_rules('domestic_income_percent_1', 'Thị trường nội địa ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('domestic_income_6_months', 'Thị trường nội địa 6 tháng đầu năm 2019 Số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('before_tax_profit_1', 'Tổng lợi nhuận trước thuế của DN ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('before_tax_profit_percent_1', 'Tổng lợi nhuận trước thuế của DN ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('before_tax_profit_2', 'Tổng lợi nhuận trước thuế của DN ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));
+            $this->form_validation->set_rules('before_tax_profit_percent_2', 'Tổng lợi nhuận trước thuế của DN ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('before_tax_profit_6_months', 'Tổng lợi nhuận trước thuế của DN 6 tháng đầu năm 2019 Số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('full_time_employee', 'Tổng số nhân viên toàn thời gian', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            /** =================================================== */
+            $this->form_validation->set_rules('average_age', 'Độ tuổi trung bình', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            /** =================================================== */
+            $this->form_validation->set_rules('employee_change_percent_1', 'Tỷ lệ tăng/giảm nhân sự năm ' . $this->data['rule2Year'][0], 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('employee_change_percent_2', 'Tỷ lệ tăng/giảm nhân sự năm ' . $this->data['rule2Year'][1], 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('english_employee', 'Số nhân viên có thể sử dụng tiếng Anh(Số người)', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('english_employee_percent', 'Số nhân viên có thể sử dụng tiếng Anh(% trên tổng số nhân viên)', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('japanese_employee', 'Số nhân viên có thể sử dụng tiếng Nhật(Số người)', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required ' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('japanese_employee_percent', 'Số nhân viên có thể sử dụng tiếng Nhật(% trên tổng số nhân viên) ', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('other_language_employee', 'Số nhân viên có thể sử dụng ngôn ngữ khác(Số người) ', 'trim|required', array(
+                'required' => '%s không được trống.'
+            ));  
+            $this->form_validation->set_rules('other_language_employee_percent', 'Số nhân viên có thể sử dụng ngôn ngữ khác(% trên tổng số nhân viên) ', 'trim|required', array(
+                'required' => '%s không được trống.'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('average_salary', 'Mức lương trung bình/năm 2018 ', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('customer_supporter', 'Số nhân viên thuộc bộ phận chăm sóc khách hàng (nếu có) ', 'trim|numeric|max_length[10]', array(
+                'numeric' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('recruitment_staff', ' Số nhân viên thuộc bộ phận tuyển dụng nhân sự ', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('recruitment_budget', 'Chi phí cho hoạt động tuyển dụng nhân sự năm 2018 ', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('investment_fund_r_and_d', ' Chi phí đầu tư cho hoạt động R&D năm 2018 (Tổng chi phí) ', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('investment_fund_r_and_d_percent', 'Chi phí đầu tư cho hoạt động R&D năm 2018 (% trên tổng doanh thu)', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('staff_r_and_d', 'Số lượng nhân viên bộ phận R&D năm 2018', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('security_certificate', 'Các chứng chỉ bảo mật ', 'trim|max_length[100]', array(
+                'max_length' => '%s Tối đa 100 từ'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('security_certificate', 'Các quy trình/các biện pháp an ninh ', 'trim|max_length[100]', array(
+                'max_length' => '%s Tối đa 100 từ'
+            ));   
             $this->form_validation->set_rules('main_service[]', 'Sản phẩm dịch vụ chính của doanh nghiệp', 'trim|required', array(
                 'required' => '%s không được trống.'
             ));
@@ -547,54 +814,285 @@ class Information extends Client_Controller {
                 }
             }
         }else{
-            $this->form_validation->set_rules('equity_1', 'Vốn điều lệ ' . $this->data['rule2Year'][0], 'trim|numeric|max_length[10]', array(
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+            
+            $this->form_validation->set_rules('equity_1', 'Vốn điều lệ ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('equity_percent_1', 'Vốn điều lệ ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('equity_2', 'Vốn điều lệ ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('equity_2', 'Vốn điều lệ ' . $this->data['rule2Year'][1], 'trim|numeric|max_length[10]', array(
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+            $this->form_validation->set_rules('equity_percent_2', 'Vốn điều lệ ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('owner_equity_1', 'Vốn chủ sở hữu ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('owner_equity_percent_1', 'Vốn chủ sở hữu ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('owner_equity_2', 'Vốn chủ sở hữu ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('owner_equity_1', 'Vốn chủ sở hữu ' . $this->data['rule2Year'][0], 'trim|numeric|max_length[10]', array(
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+            $this->form_validation->set_rules('owner_equity_percent_2', 'Vốn chủ sở hữu ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('total_assets_1', 'Tổng tài sản ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('total_assets_percent_1', 'Tổng tài sản ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('total_assets_2', 'Tổng tài sản ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('owner_equity_2', 'Vốn chủ sở hữu ' . $this->data['rule2Year'][1], 'trim|numeric|max_length[10]', array(
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+            $this->form_validation->set_rules('total_assets_percent_2', 'Tổng tài sản ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('total_income_1', 'Tổng doanh thu doanh nghiệp ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('total_income_percent_1', 'Tổng doanh thu doanh nghiệp ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('total_income_2', 'Tổng doanh thu doanh nghiệp ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('total_income_1', 'Tổng doanh thu DN ' . $this->data['rule2Year'][0], 'trim|numeric|max_length[10]', array(
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+            $this->form_validation->set_rules('total_income_percent_2', 'Tổng doanh thu doanh nghiệp ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('total_income_6_months', 'Tổng doanh thu doanh nghiệp 6 tháng đầu năm 2019 Số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('per_capita_income_1', 'Bình quân doanh thu/đầu người ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('per_capita_income_percent_1', 'Bình quân doanh thu/đầu người ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('per_capita_income_2', 'Bình quân doanh thu/đầu người ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('total_income_2', 'Tổng doanh thu DN ' . $this->data['rule2Year'][1], 'trim|numeric|max_length[10]', array(
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+            $this->form_validation->set_rules('per_capita_income_percent_2', 'Bình quân doanh thu/đầu người ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('per_capita_income_6_months', 'Bình quân doanh thu/đầu người 6 tháng đầu năm 2019 Số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('software_income_1', 'Tổng doanh thu lĩnh vực sản xuất phần mềm ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('software_income_percent_1', 'Tổng doanh thu lĩnh vực sản xuất phần mềm ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('software_income_2', 'Tổng doanh thu lĩnh vực sản xuất phần mềm ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('software_income_1', 'Tổng DT lĩnh vực sx phần mềm ' . $this->data['rule2Year'][0], 'trim|numeric|max_length[10]', array(
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+            $this->form_validation->set_rules('software_income_percent_2', 'Tổng doanh thu lĩnh vực sản xuất phần mềm ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('software_income_6_months', 'Tổng doanh thu lĩnh vực sản xuất phần mềm 6 tháng đầu năm 2019 Số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('it_income_1', 'Tổng doanh thu dịch vụ CNTT ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('it_income_percent_1', 'Tổng doanh thu dịch vụ CNTT ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('it_income_2', 'Tổng doanh thu dịch vụ CNTT ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('software_income_2', 'Tổng DT lĩnh vực sx phần mềm ' . $this->data['rule2Year'][1], 'trim|numeric|max_length[10]', array(
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+            $this->form_validation->set_rules('it_income_percent_2', 'Tổng doanh thu dịch vụ CNTT ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('it_income_6_months', 'Tổng doanh thu dịch vụ CNTT 6 tháng đầu năm 2019 Số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('international_income_1', 'Thị trường quốc tế ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('international_income_percent_1', 'Thị trường quốc tế ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('international_income_2', 'Thị trường quốc tế ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('it_income_1', 'Tổng doanh thu dịch vụ CNTT ' . $this->data['rule2Year'][0], 'trim|numeric|max_length[10]', array(
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+            $this->form_validation->set_rules('international_income_percent_2', 'Thị trường quốc tế ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('international_income_6_months', 'Thị trường quốc tế 6 tháng đầu năm 2019 Số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('domestic_income_1', 'Thị trường nội địa ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('domestic_income_percent_1', 'Thị trường nội địa ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('domestic_income_1', 'Thị trường nội địa ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('it_income_2', 'Tổng doanh thu dịch vụ CNTT ' . $this->data['rule2Year'][1], 'trim|numeric|max_length[10]', array(
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+            $this->form_validation->set_rules('domestic_income_percent_1', 'Thị trường nội địa ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('domestic_income_6_months', 'Thị trường nội địa 6 tháng đầu năm 2019 Số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('before_tax_profit_1', 'Tổng lợi nhuận trước thuế của DN ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('before_tax_profit_percent_1', 'Tổng lợi nhuận trước thuế của DN ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('before_tax_profit_2', 'Tổng lợi nhuận trước thuế của DN ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('export_income_1', 'Tổng DT xuất khẩu ' . $this->data['rule2Year'][0], 'trim|numeric|max_length[10]', array(
+            $this->form_validation->set_rules('before_tax_profit_percent_2', 'Tổng lợi nhuận trước thuế của DN ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('before_tax_profit_6_months', 'Tổng lợi nhuận trước thuế của DN 6 tháng đầu năm 2019 Số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('full_time_employee', 'Tổng số nhân viên toàn thời gian', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            /** =================================================== */
+            $this->form_validation->set_rules('average_age', 'Độ tuổi trung bình', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            /** =================================================== */
+            $this->form_validation->set_rules('employee_change_percent_1', 'Tỷ lệ tăng/giảm nhân sự năm ' . $this->data['rule2Year'][0], 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('employee_change_percent_2', 'Tỷ lệ tăng/giảm nhân sự năm ' . $this->data['rule2Year'][1], 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('english_employee', 'Số nhân viên có thể sử dụng tiếng Anh(Số người)', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('english_employee_percent', 'Số nhân viên có thể sử dụng tiếng Anh(% trên tổng số nhân viên)', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('japanese_employee', 'Số nhân viên có thể sử dụng tiếng Nhật(Số người)', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('japanese_employee_percent', 'Số nhân viên có thể sử dụng tiếng Nhật(% trên tổng số nhân viên) ', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('other_language_employee', 'Số nhân viên có thể sử dụng ngôn ngữ khác(Số người) ', 'trim', array(
+            ));  
+            $this->form_validation->set_rules('other_language_employee_percent', 'Số nhân viên có thể sử dụng ngôn ngữ khác(% trên tổng số nhân viên) ', 'trim', array(
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('average_salary', 'Mức lương trung bình/năm 2018 ', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('customer_supporter', 'Số nhân viên thuộc bộ phận chăm sóc khách hàng (nếu có) ', 'trim|numeric|max_length[10]', array(
                 'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
-            ));
-            $this->form_validation->set_rules('export_income_2', 'Tổng DT xuất khẩu ' . $this->data['rule2Year'][1], 'trim|numeric|max_length[10]', array(
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
-            ));
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('recruitment_staff', ' Số nhân viên thuộc bộ phận tuyển dụng nhân sự ', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('recruitment_budget', 'Chi phí cho hoạt động tuyển dụng nhân sự năm 2018 ', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('investment_fund_r_and_d', ' Chi phí đầu tư cho hoạt động R&D năm 2018 (Tổng chi phí) ', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('investment_fund_r_and_d_percent', 'Chi phí đầu tư cho hoạt động R&D năm 2018 (% trên tổng doanh thu)', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('staff_r_and_d', 'Số lượng nhân viên bộ phận R&D năm 2018', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('security_certificate', 'Các chứng chỉ bảo mật ', 'trim|max_length[100]', array(
+                'max_length' => '%s Tối đa 100 từ'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('security_certificate', 'Các quy trình/các biện pháp an ninh ', 'trim|max_length[100]', array(
+                'max_length' => '%s Tối đa 100 từ'
+            ));   
 
             if ($this->form_validation->run() === FALSE) {
                 if($this->data['reg_status']['is_information'] == 0){
@@ -775,66 +1273,348 @@ class Information extends Client_Controller {
         $this->load->helper('form');
         $this->load->library('form_validation');
         if($this->input->post('submit') == 'Hoàn thành') {
-            $this->form_validation->set_rules('equity_1', 'Vốn điều lệ ' . $this->data['rule2Year'][0], 'trim|required|numeric|max_length[10]', array(
+            
+            $this->form_validation->set_rules('equity_1', 'Vốn điều lệ ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
-            ));
-            $this->form_validation->set_rules('equity_2', 'Vốn điều lệ ' . $this->data['rule2Year'][1], 'trim|required|numeric|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('equity_percent_1', 'Vốn điều lệ ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
-            ));
-            $this->form_validation->set_rules('owner_equity_1', 'Vốn chủ sở hữu ' . $this->data['rule2Year'][0], 'trim|required|numeric|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('equity_2', 'Vốn điều lệ ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('owner_equity_2', 'Vốn chủ sở hữu ' . $this->data['rule2Year'][1], 'trim|required|numeric|max_length[10]', array(
+            $this->form_validation->set_rules('equity_percent_2', 'Vốn điều lệ ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
-            ));
-            $this->form_validation->set_rules('total_income_1', 'Tổng doanh thu DN ' . $this->data['rule2Year'][0], 'trim|required|numeric|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('owner_equity_1', 'Vốn chủ sở hữu ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
-            ));
-            $this->form_validation->set_rules('total_income_2', 'Tổng doanh thu DN ' . $this->data['rule2Year'][1], 'trim|required|numeric|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('owner_equity_percent_1', 'Vốn chủ sở hữu ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
-            ));
-            $this->form_validation->set_rules('software_income_1', 'Tổng DT lĩnh vực sx phần mềm ' . $this->data['rule2Year'][0], 'trim|required|numeric|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('owner_equity_2', 'Vốn chủ sở hữu ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('software_income_2', 'Tổng DT lĩnh vực sx phần mềm ' . $this->data['rule2Year'][1], 'trim|required|numeric|max_length[10]', array(
+            $this->form_validation->set_rules('owner_equity_percent_2', 'Vốn chủ sở hữu ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
-            ));
-            $this->form_validation->set_rules('it_income_1', 'Tổng doanh thu dịch vụ CNTT ' . $this->data['rule2Year'][0], 'trim|required|numeric|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('total_assets_1', 'Tổng tài sản ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
-            ));
-            $this->form_validation->set_rules('it_income_2', 'Tổng doanh thu dịch vụ CNTT ' . $this->data['rule2Year'][1], 'trim|required|numeric|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('total_assets_percent_1', 'Tổng tài sản ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
-            ));
-            $this->form_validation->set_rules('export_income_1', 'Tổng DT xuất khẩu ' . $this->data['rule2Year'][0], 'trim|required|numeric|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('total_assets_2', 'Tổng tài sản ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('export_income_2', 'Tổng DT xuất khẩu ' . $this->data['rule2Year'][1], 'trim|required|numeric|max_length[10]', array(
+            $this->form_validation->set_rules('total_assets_percent_2', 'Tổng tài sản ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('total_income_1', 'Tổng doanh thu doanh nghiệp ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('total_income_percent_1', 'Tổng doanh thu doanh nghiệp ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('total_income_2', 'Tổng doanh thu doanh nghiệp ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
+            $this->form_validation->set_rules('total_income_percent_2', 'Tổng doanh thu doanh nghiệp ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('total_income_6_months', 'Tổng doanh thu doanh nghiệp 6 tháng đầu năm 2019 Số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('per_capita_income_1', 'Bình quân doanh thu/đầu người ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('per_capita_income_percent_1', 'Bình quân doanh thu/đầu người ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('per_capita_income_2', 'Bình quân doanh thu/đầu người ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));
+            $this->form_validation->set_rules('per_capita_income_percent_2', 'Bình quân doanh thu/đầu người ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('per_capita_income_6_months', 'Bình quân doanh thu/đầu người 6 tháng đầu năm 2019 Số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('software_income_1', 'Tổng doanh thu lĩnh vực sản xuất phần mềm ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('software_income_percent_1', 'Tổng doanh thu lĩnh vực sản xuất phần mềm ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('software_income_2', 'Tổng doanh thu lĩnh vực sản xuất phần mềm ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));
+            $this->form_validation->set_rules('software_income_percent_2', 'Tổng doanh thu lĩnh vực sản xuất phần mềm ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('software_income_6_months', 'Tổng doanh thu lĩnh vực sản xuất phần mềm 6 tháng đầu năm 2019 Số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('it_income_1', 'Tổng doanh thu dịch vụ CNTT ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('it_income_percent_1', 'Tổng doanh thu dịch vụ CNTT ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('it_income_2', 'Tổng doanh thu dịch vụ CNTT ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));
+            $this->form_validation->set_rules('it_income_percent_2', 'Tổng doanh thu dịch vụ CNTT ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('it_income_6_months', 'Tổng doanh thu dịch vụ CNTT 6 tháng đầu năm 2019 Số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('international_income_1', 'Thị trường quốc tế ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('international_income_percent_1', 'Thị trường quốc tế ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('international_income_2', 'Thị trường quốc tế ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));
+            $this->form_validation->set_rules('international_income_percent_2', 'Thị trường quốc tế ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('international_income_6_months', 'Thị trường quốc tế 6 tháng đầu năm 2019 Số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('domestic_income_1', 'Thị trường nội địa ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('domestic_income_percent_1', 'Thị trường nội địa ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('domestic_income_1', 'Thị trường nội địa ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));
+            $this->form_validation->set_rules('domestic_income_percent_1', 'Thị trường nội địa ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('domestic_income_6_months', 'Thị trường nội địa 6 tháng đầu năm 2019 Số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('before_tax_profit_1', 'Tổng lợi nhuận trước thuế của DN ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('before_tax_profit_percent_1', 'Tổng lợi nhuận trước thuế của DN ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('before_tax_profit_2', 'Tổng lợi nhuận trước thuế của DN ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));
+            $this->form_validation->set_rules('before_tax_profit_percent_2', 'Tổng lợi nhuận trước thuế của DN ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('before_tax_profit_6_months', 'Tổng lợi nhuận trước thuế của DN 6 tháng đầu năm 2019 Số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('full_time_employee', 'Tổng số nhân viên toàn thời gian', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            /** =================================================== */
+            $this->form_validation->set_rules('average_age', 'Độ tuổi trung bình', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            /** =================================================== */
+            $this->form_validation->set_rules('employee_change_percent_1', 'Tỷ lệ tăng/giảm nhân sự năm ' . $this->data['rule2Year'][0], 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('employee_change_percent_2', 'Tỷ lệ tăng/giảm nhân sự năm ' . $this->data['rule2Year'][1], 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('english_employee', 'Số nhân viên có thể sử dụng tiếng Anh(Số người)', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('english_employee_percent', 'Số nhân viên có thể sử dụng tiếng Anh(% trên tổng số nhân viên)', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('japanese_employee', 'Số nhân viên có thể sử dụng tiếng Nhật(Số người)', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required ' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('japanese_employee_percent', 'Số nhân viên có thể sử dụng tiếng Nhật(% trên tổng số nhân viên) ', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('other_language_employee', 'Số nhân viên có thể sử dụng ngôn ngữ khác(Số người) ', 'trim|required', array(
+                'required' => '%s không được trống.'
+            ));  
+            $this->form_validation->set_rules('other_language_employee_percent', 'Số nhân viên có thể sử dụng ngôn ngữ khác(% trên tổng số nhân viên) ', 'trim|required', array(
+                'required' => '%s không được trống.'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('average_salary', 'Mức lương trung bình/năm 2018 ', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('customer_supporter', 'Số nhân viên thuộc bộ phận chăm sóc khách hàng (nếu có) ', 'trim|numeric|max_length[10]', array(
+                'numeric' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('recruitment_staff', ' Số nhân viên thuộc bộ phận tuyển dụng nhân sự ', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('recruitment_budget', 'Chi phí cho hoạt động tuyển dụng nhân sự năm 2018 ', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('investment_fund_r_and_d', ' Chi phí đầu tư cho hoạt động R&D năm 2018 (Tổng chi phí) ', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('investment_fund_r_and_d_percent', 'Chi phí đầu tư cho hoạt động R&D năm 2018 (% trên tổng doanh thu)', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('staff_r_and_d', 'Số lượng nhân viên bộ phận R&D năm 2018', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('security_certificate', 'Các chứng chỉ bảo mật ', 'trim|max_length[100]', array(
+                'max_length' => '%s Tối đa 100 từ'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('security_certificate', 'Các quy trình/các biện pháp an ninh ', 'trim|max_length[100]', array(
+                'max_length' => '%s Tối đa 100 từ'
+            ));   
             $this->form_validation->set_rules('main_service[]', 'Sản phẩm dịch vụ chính của doanh nghiệp', 'trim|required', array(
                 'required' => '%s không được trống.'
             ));
@@ -1016,54 +1796,285 @@ class Information extends Client_Controller {
                 }
             }
         }else{
-            $this->form_validation->set_rules('equity_1', 'Vốn điều lệ ' . $this->data['rule2Year'][0], 'trim|numeric|max_length[10]', array(
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+            
+            $this->form_validation->set_rules('equity_1', 'Vốn điều lệ ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('equity_percent_1', 'Vốn điều lệ ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('equity_2', 'Vốn điều lệ ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('equity_2', 'Vốn điều lệ ' . $this->data['rule2Year'][1], 'trim|numeric|max_length[10]', array(
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+            $this->form_validation->set_rules('equity_percent_2', 'Vốn điều lệ ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('owner_equity_1', 'Vốn chủ sở hữu ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('owner_equity_percent_1', 'Vốn chủ sở hữu ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('owner_equity_2', 'Vốn chủ sở hữu ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('owner_equity_1', 'Vốn chủ sở hữu ' . $this->data['rule2Year'][0], 'trim|numeric|max_length[10]', array(
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+            $this->form_validation->set_rules('owner_equity_percent_2', 'Vốn chủ sở hữu ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('total_assets_1', 'Tổng tài sản ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('total_assets_percent_1', 'Tổng tài sản ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('total_assets_2', 'Tổng tài sản ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('owner_equity_2', 'Vốn chủ sở hữu ' . $this->data['rule2Year'][1], 'trim|numeric|max_length[10]', array(
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+            $this->form_validation->set_rules('total_assets_percent_2', 'Tổng tài sản ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('total_income_1', 'Tổng doanh thu doanh nghiệp ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('total_income_percent_1', 'Tổng doanh thu doanh nghiệp ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('total_income_2', 'Tổng doanh thu doanh nghiệp ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('total_income_1', 'Tổng doanh thu DN ' . $this->data['rule2Year'][0], 'trim|numeric|max_length[10]', array(
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+            $this->form_validation->set_rules('total_income_percent_2', 'Tổng doanh thu doanh nghiệp ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('total_income_6_months', 'Tổng doanh thu doanh nghiệp 6 tháng đầu năm 2019 Số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('per_capita_income_1', 'Bình quân doanh thu/đầu người ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('per_capita_income_percent_1', 'Bình quân doanh thu/đầu người ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('per_capita_income_2', 'Bình quân doanh thu/đầu người ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('total_income_2', 'Tổng doanh thu DN ' . $this->data['rule2Year'][1], 'trim|numeric|max_length[10]', array(
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+            $this->form_validation->set_rules('per_capita_income_percent_2', 'Bình quân doanh thu/đầu người ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('per_capita_income_6_months', 'Bình quân doanh thu/đầu người 6 tháng đầu năm 2019 Số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('software_income_1', 'Tổng doanh thu lĩnh vực sản xuất phần mềm ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('software_income_percent_1', 'Tổng doanh thu lĩnh vực sản xuất phần mềm ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('software_income_2', 'Tổng doanh thu lĩnh vực sản xuất phần mềm ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('software_income_1', 'Tổng DT lĩnh vực sx phần mềm ' . $this->data['rule2Year'][0], 'trim|numeric|max_length[10]', array(
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+            $this->form_validation->set_rules('software_income_percent_2', 'Tổng doanh thu lĩnh vực sản xuất phần mềm ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('software_income_6_months', 'Tổng doanh thu lĩnh vực sản xuất phần mềm 6 tháng đầu năm 2019 Số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('it_income_1', 'Tổng doanh thu dịch vụ CNTT ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('it_income_percent_1', 'Tổng doanh thu dịch vụ CNTT ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('it_income_2', 'Tổng doanh thu dịch vụ CNTT ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('software_income_2', 'Tổng DT lĩnh vực sx phần mềm ' . $this->data['rule2Year'][1], 'trim|numeric|max_length[10]', array(
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+            $this->form_validation->set_rules('it_income_percent_2', 'Tổng doanh thu dịch vụ CNTT ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('it_income_6_months', 'Tổng doanh thu dịch vụ CNTT 6 tháng đầu năm 2019 Số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('international_income_1', 'Thị trường quốc tế ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('international_income_percent_1', 'Thị trường quốc tế ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('international_income_2', 'Thị trường quốc tế ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('it_income_1', 'Tổng doanh thu dịch vụ CNTT ' . $this->data['rule2Year'][0], 'trim|numeric|max_length[10]', array(
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+            $this->form_validation->set_rules('international_income_percent_2', 'Thị trường quốc tế ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('international_income_6_months', 'Thị trường quốc tế 6 tháng đầu năm 2019 Số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('domestic_income_1', 'Thị trường nội địa ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('domestic_income_percent_1', 'Thị trường nội địa ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('domestic_income_1', 'Thị trường nội địa ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('it_income_2', 'Tổng doanh thu dịch vụ CNTT ' . $this->data['rule2Year'][1], 'trim|numeric|max_length[10]', array(
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+            $this->form_validation->set_rules('domestic_income_percent_1', 'Thị trường nội địa ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('domestic_income_6_months', 'Thị trường nội địa 6 tháng đầu năm 2019 Số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('before_tax_profit_1', 'Tổng lợi nhuận trước thuế của DN ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('before_tax_profit_percent_1', 'Tổng lợi nhuận trước thuế của DN ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('before_tax_profit_2', 'Tổng lợi nhuận trước thuế của DN ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('export_income_1', 'Tổng DT xuất khẩu ' . $this->data['rule2Year'][0], 'trim|numeric|max_length[10]', array(
+            $this->form_validation->set_rules('before_tax_profit_percent_2', 'Tổng lợi nhuận trước thuế của DN ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('before_tax_profit_6_months', 'Tổng lợi nhuận trước thuế của DN 6 tháng đầu năm 2019 Số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('full_time_employee', 'Tổng số nhân viên toàn thời gian', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            /** =================================================== */
+            $this->form_validation->set_rules('average_age', 'Độ tuổi trung bình', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            /** =================================================== */
+            $this->form_validation->set_rules('employee_change_percent_1', 'Tỷ lệ tăng/giảm nhân sự năm ' . $this->data['rule2Year'][0], 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('employee_change_percent_2', 'Tỷ lệ tăng/giảm nhân sự năm ' . $this->data['rule2Year'][1], 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('english_employee', 'Số nhân viên có thể sử dụng tiếng Anh(Số người)', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('english_employee_percent', 'Số nhân viên có thể sử dụng tiếng Anh(% trên tổng số nhân viên)', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('japanese_employee', 'Số nhân viên có thể sử dụng tiếng Nhật(Số người)', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('japanese_employee_percent', 'Số nhân viên có thể sử dụng tiếng Nhật(% trên tổng số nhân viên) ', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('other_language_employee', 'Số nhân viên có thể sử dụng ngôn ngữ khác(Số người) ', 'trim', array(
+            ));  
+            $this->form_validation->set_rules('other_language_employee_percent', 'Số nhân viên có thể sử dụng ngôn ngữ khác(% trên tổng số nhân viên) ', 'trim', array(
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('average_salary', 'Mức lương trung bình/năm 2018 ', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('customer_supporter', 'Số nhân viên thuộc bộ phận chăm sóc khách hàng (nếu có) ', 'trim|numeric|max_length[10]', array(
                 'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
-            ));
-            $this->form_validation->set_rules('export_income_2', 'Tổng DT xuất khẩu ' . $this->data['rule2Year'][1], 'trim|numeric|max_length[10]', array(
-                'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
-            ));
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('recruitment_staff', ' Số nhân viên thuộc bộ phận tuyển dụng nhân sự ', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('recruitment_budget', 'Chi phí cho hoạt động tuyển dụng nhân sự năm 2018 ', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('investment_fund_r_and_d', ' Chi phí đầu tư cho hoạt động R&D năm 2018 (Tổng chi phí) ', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            $this->form_validation->set_rules('investment_fund_r_and_d_percent', 'Chi phí đầu tư cho hoạt động R&D năm 2018 (% trên tổng doanh thu)', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('staff_r_and_d', 'Số lượng nhân viên bộ phận R&D năm 2018', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('security_certificate', 'Các chứng chỉ bảo mật ', 'trim|max_length[100]', array(
+                'max_length' => '%s Tối đa 100 từ'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('security_certificate', 'Các quy trình/các biện pháp an ninh ', 'trim|max_length[100]', array(
+                'max_length' => '%s Tối đa 100 từ'
+            ));   
             if ($this->form_validation->run() == FALSE) {
                 $this->data['company'] = $this->information_model->fetch_company_by_identity_and_year('company', $this->data['user']->username, $this->input->get('year'));
                 if (!$this->data['company']) {
@@ -1303,12 +2314,12 @@ class Information extends Client_Controller {
             $this->form_validation->set_rules('income_2016', 'Data', 'trim|required|numeric|max_length[10]', array(
                 'required' => '%s không được trống.',
                 'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
             $this->form_validation->set_rules('income_2017', 'Data', 'trim|required|numeric|max_length[10]', array(
                 'required' => '%s không được trống.',
                 'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
             $this->form_validation->set_rules('area', 'Data', 'trim|required', array(
                 'required' => '%s không được trống.',
@@ -1399,11 +2410,11 @@ class Information extends Client_Controller {
             ));
             $this->form_validation->set_rules('income_2016', 'Data', 'trim|numeric|max_length[10]', array(
                 'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
             $this->form_validation->set_rules('income_2017', 'Data', 'trim|numeric|max_length[10]', array(
                 'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
 
             if ($this->form_validation->run() == FALSE) {
@@ -1496,12 +2507,12 @@ class Information extends Client_Controller {
             $this->form_validation->set_rules('income_2016', 'Data', 'trim|required|numeric|max_length[10]', array(
                 'required' => '%s không được trống.',
                 'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
             $this->form_validation->set_rules('income_2017', 'Data', 'trim|required|numeric|max_length[10]', array(
                 'required' => '%s không được trống.',
                 'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
             $this->form_validation->set_rules('area', 'Data', 'trim|required', array(
                 'required' => '%s không được trống.',
@@ -1586,11 +2597,11 @@ class Information extends Client_Controller {
             ));
             $this->form_validation->set_rules('income_2016', 'Data', 'trim|numeric|max_length[10]', array(
                 'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
             $this->form_validation->set_rules('income_2017', 'Data', 'trim|numeric|max_length[10]', array(
                 'numeric' => '%s phải là số.',
-                'max_length' => 'Tối đa 10 chữ số'
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
             $id = isset($request_id) ? (int) $request_id : (int) $this->input->post('id');
             if ($this->form_validation->run() == FALSE) {
