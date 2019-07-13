@@ -29,6 +29,8 @@
   
   <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/admin/'); ?>js/admin/colorbox/example1/colorbox.css">
   <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/admin/bower_components/iCheck/square/blue.css'); ?>">
+  
+  <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/admin/'); ?>datetimepicker/bootstrap-datetimepicker.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -64,6 +66,8 @@
 
   <script type="text/javascript" src="<?php echo site_url('tinymce/tinymce.min.js'); ?>"></script>
   <script type="text/javascript" src="<?php echo site_url('tinymce/tinymce.min.js'); ?>"></script>
+
+  <script src="<?php echo site_url('assets/admin/'); ?>datetimepicker/bootstrap-datetimepicker.js"></script>
 
     <style>
         @font-face{

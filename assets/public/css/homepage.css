@@ -68,7 +68,34 @@ Author: hung.luong@matocreative.vn
 		border-left: none !important;
 	}
 }
+div.logo {
+	width: 120px;
+	float: left;
+}
+div.logo  img {
+	width: 100%;
+}
+div.banner {
+	width: calc(100% - 120px);
+	float: left;
+}
 
+@media (max-width: 991px){
+	div.logo {
+		width: 80px;
+		float: left;
+	}
+	div.logo  img {
+		width: 100%;
+	}
+	div.banner {
+		width: calc(100% - 80px);
+		float: left;
+	}
+}
+.company-border a{
+	display: inline-block!important;
+}
 
 
 
