@@ -257,6 +257,8 @@ class Information extends Client_Controller {
     }
 
     public function company(){
+        
+        $this->load->helper('form');
         if($this->input->get('year')){
             $this->data['company'] = $this->information_model->fetch_company_by_identity_and_year('company', $this->data['user']->username, $this->input->get('year'));
             $this->render('client/information/detail_company_view');
