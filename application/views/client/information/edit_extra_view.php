@@ -3,6 +3,17 @@
     .error{
         color: red;
     }
+    form .form-group label{
+        padding-top: 5px;
+    }
+    .float-right > label{
+        float: right;
+    }
+    form > hr{
+        margin:5px -15px;
+        margin-bottom:10px ;
+        margin-top:-5px ;
+    }
 </style>
 <div class="content-wrapper" style="min-height: 916px;">
     <section class="content">
@@ -43,6 +54,257 @@
                         </div>
                     </div>
                 </div>
+
+                
+
+                <hr style="padding: 1px 0px; background-color: #fff;">
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3 col-xs-12">
+                            <?php
+                                echo form_label('Tên công ty <span style="color: red">(*)</span>', 'company');
+                            ?>
+                        </div>
+                        <div class="col-sm-9 col-md-9 col-xs-12">
+                            <?php
+                                echo form_error('company', '<div class="error">', '</div>');
+                                echo form_input('company', set_value('company',$user->company), 'class="form-control"');
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <hr style="padding: 1px 0px; background-color: #fff;">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3 col-xs-12">
+                            <?php
+                                echo form_label('Ngày thành lập <span style="color: red">(*)</span>', 'ngaythanhlap');
+                            ?>
+                        </div>
+                        <div class="col-sm-9 col-md-9 col-xs-12">
+                            <?php
+                                echo form_error('ngaythanhlap', '<div class="error">', '</div>');
+                                echo form_input('ngaythanhlap', set_value('ngaythanhlap'), 'class="form-control datetimepicker7" ');
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <hr style="padding: 1px 0px; background-color: #fff;">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3 col-xs-12">
+                            <?php
+                                echo form_label('Giấy phép đăng ký kinh doanh số <span style="color: red">(*)</span>', 'giayphepdangky');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-xs-12">
+                            <?php
+                                echo form_error('giayphepdangky', '<div class="error">', '</div>');
+                                echo form_input('giayphepdangky', set_value('giayphepdangky'), 'class="form-control" ');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-xs-12 float-right">
+                            <?php
+                                echo form_label('Ngày cấp <span style="color: red">(*)</span>', 'ngaycap');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-xs-12">
+                            <?php
+                                echo form_error('ngaycap', '<div class="error">', '</div>');
+                                echo form_input('ngaycap', set_value('ngaycap'), 'class="form-control datetimepicker7" ');
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <hr style="padding: 1px 0px; background-color: #fff;">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3 col-xs-12">
+                            <?php
+                                echo form_label('Trụ sở/ Địa chỉ giao dịch thư tín: <span style="color: red">(*)</span>', 'truso');
+                            ?>
+                        </div>
+                        <div class="col-sm-9 col-md-9 col-xs-12">
+                            <?php
+                                echo form_error('truso', '<div class="error">', '</div>');
+                                echo form_textarea('truso', set_value('truso'), 'class="form-control" ');
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3 col-xs-12">
+                            <?php
+                                echo form_label('Điện thoại <span style="color: red">(*)</span>', 'dienthoai');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-xs-12">
+                            <?php
+                                echo form_error('dienthoai', '<div class="error">', '</div>');
+                                echo form_input('dienthoai', set_value('dienthoai'), 'class="form-control" ');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-xs-12 float-right">
+                            <?php
+                                echo form_label('Fax <span style="color: red">(*)</span>', 'fax');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-xs-12">
+                            <?php
+                                echo form_error('fax', '<div class="error">', '</div>');
+                                echo form_input('fax', set_value('fax'), 'class="form-control" ');
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3 col-xs-12">
+                            <?php
+                                echo form_label('Email <span style="color: red">(*)</span>', 'email');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-xs-12">
+                            <?php
+                                echo form_error('email', '<div class="error">', '</div>');
+                                echo form_input('email', set_value('email'), 'class="form-control" ');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-xs-12 float-right">
+                            <?php
+                                echo form_label('Website <span style="color: red">(*)</span>', 'website');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-xs-12">
+                            <?php
+                                echo form_error('website', '<div class="error">', '</div>');
+                                echo form_input('website', set_value('website'), 'class="form-control" ');
+                            ?>
+                        </div>
+                    </div>
+                </div>
+
+                <hr style="padding: 1px 0px; background-color: #fff;">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3 col-xs-12">
+                            <?php
+                                echo form_label('Lãnh đạo <span style="color: red">(*)</span>', 'lanhdao');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-xs-12">
+                            <?php
+                                echo form_error('lanhdao', '<div class="error">', '</div>');
+                                echo form_input('lanhdao', set_value('lanhdao'), 'class="form-control" ');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-xs-12 float-right">
+                            <?php
+                                echo form_label('Chức danh <span style="color: red">(*)</span>', 'chucdanh');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-xs-12">
+                            <?php
+                                echo form_error('chucdanh', '<div class="error">', '</div>');
+                                echo form_input('chucdanh', set_value('chucdanh'), 'class="form-control" ');
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3 col-xs-12">
+                            <?php
+                                echo form_label('Email <span style="color: red">(*)</span>', 'email1');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-xs-12">
+                            <?php
+                                echo form_error('email1', '<div class="error">', '</div>');
+                                echo form_input('email1', set_value('email1'), 'class="form-control" ');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-xs-12 float-right">
+                            <?php
+                                echo form_label('Di động <span style="color: red">(*)</span>', 'didong');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-xs-12">
+                            <?php
+                                echo form_error('didong', '<div class="error">', '</div>');
+                                echo form_input('didong', set_value('didong'), 'class="form-control" ');
+                            ?>
+                        </div>
+                    </div>
+                </div>
+
+                <hr style="padding: 1px 0px; background-color: #fff;">
+                <div class="form-group">
+                    <div class="row">
+                        <!-- title -->
+                        <div class="col-xs-12">
+                            <?php
+                                echo form_label('Đại diện liên hệ với Ban tổ chức', '');
+                            ?>
+                        </div>
+
+
+                        <div class="col-sm-3 col-md-3 col-xs-12">
+                            <?php
+                                echo form_label('Lãnh đạo <span style="color: red">(*)</span>', 'lanhdao1');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-xs-12">
+                            <?php
+                                echo form_error('lanhdao1', '<div class="error">', '</div>');
+                                echo form_input('lanhdao1', set_value('lanhdao1'), 'class="form-control" ');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-xs-12 float-right">
+                            <?php
+                                echo form_label('Chức danh <span style="color: red">(*)</span>', 'chucdanh1');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-xs-12">
+                            <?php
+                                echo form_error('chucdanh1', '<div class="error">', '</div>');
+                                echo form_input('chucdanh1', set_value('chucdanh1'), 'class="form-control" ');
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3 col-xs-12">
+                            <?php
+                                echo form_label('Email <span style="color: red">(*)</span>', 'email2');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-xs-12">
+                            <?php
+                                echo form_error('email2', '<div class="error">', '</div>');
+                                echo form_input('email2', set_value('email2'), 'class="form-control" ');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-xs-12 float-right">
+                            <?php
+                                echo form_label('Di động <span style="color: red">(*)</span>', 'didong2');
+                            ?>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-xs-12">
+                            <?php
+                                echo form_error('didong2', '<div class="error">', '</div>');
+                                echo form_input('didong2', set_value('didong2'), 'class="form-control" ');
+                            ?>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+
                 <div class="form-group">
                     <div class="row">
                         <div class="col-sm-3 col-md-3 col-sx-12">
@@ -267,5 +529,14 @@
                 required: 'Link download PĐK của DN'
             }
         }
+    });
+</script>
+
+ <script type="text/javascript">
+    $(function () {
+        $('.datetimepicker7').datetimepicker({
+            format: 'DD/MM/Y',
+            maxDate: new Date(),
+        });
     });
 </script>
