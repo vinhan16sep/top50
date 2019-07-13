@@ -1,7 +1,20 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <style>
-    .error{
-        color: red;
+    div.error{
+        background: #FE2E2E;
+        color: #fff;
+        padding: 5px 10px;
+        padding-right:0px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        display: table;
+        border-left: 5px solid #ccc;
+        margin-top:5px;
+        cursor: pointer;
+    }
+    div.error .fa.fa-times{
+        padding: 5px;
+        z-index: 999;
     }
     .table tr:nth-child(2) td, .table tr:nth-child(1) th{
         text-align: center;
@@ -61,6 +74,9 @@
         font-size: 14px;
         font-family: webFont_N;
     }
+    .show-error-all{
+        margin-bottom:10px;
+    }
 </style>
 <div class="content-wrapper" style="min-height: 916px;">
     <section class="content">
@@ -80,6 +96,100 @@
                 <?php
                 echo form_open_multipart('client/information/create_company?year=' . $eventYear, array('class' => 'form-horizontal', 'id' => 'company-form'));
                 ?>
+                <div class="show-error-all">
+                    <?php  
+                        echo form_error('overview', '<div class="error" data-name="overview">', '</div>');
+                        echo form_error('active_area', '<div class="error" data-name="active_area">', '</div>');
+                        echo form_error('product', '<div class="error" data-name="product">', '</div>');
+                        echo form_error('main_service[]', '<div class="error" data-name="main_service[]">', '</div>');
+                        echo form_error('anonymous-service', '<div class="error" data-name="service">', '</div>');
+                        echo form_error('main_market[]', '<div class="error" data-name="main_market[]">', '</div>');
+                        echo form_error('anonymous', '<div class="error" data-name="anonymous">', '</div>');
+
+                        echo form_error('equity_1', '<div class="error" data-name="equity_1">', '</div>');
+                        echo form_error('equity_percent_1', '<div class="error" data-name="equity_percent_1">', '</div>');
+                        echo form_error('equity_2', '<div class="error" data-name="equity_2">', '</div>');
+                        echo form_error('equity_percent_2', '<div class="error" data-name="equity_percent_2">', '</div>');
+                        echo form_error('owner_equity_1', '<div class="error" data-name="owner_equity_1">', '</div>');
+                        echo form_error('owner_equity_percent_1', '<div class="error" data-name="owner_equity_percent_1">', '</div>');
+                        echo form_error('owner_equity_2', '<div class="error" data-name="owner_equity_2">', '</div>');
+                        echo form_error('owner_equity_percent_2', '<div class="error" data-name="owner_equity_percent_2">', '</div>');
+                        echo form_error('total_assets_1', '<div class="error" data-name="total_assets_1">', '</div>');
+                        echo form_error('total_assets_percent_1', '<div class="error" data-name="total_assets_percent_1">', '</div>');
+                        echo form_error('total_assets_2', '<div class="error" data-name="total_assets_2">', '</div>');
+                        echo form_error('total_assets_percent_2', '<div class="error" data-name="total_assets_percent_2">', '</div>');
+
+                        echo form_error('total_income_1', '<div class="error" data-name="total_income_1">', '</div>');
+                        echo form_error('total_income_percent_1', '<div class="error" data-name="total_income_percent_1">', '</div>');
+                        echo form_error('total_income_2', '<div class="error" data-name="total_income_2">', '</div>');
+                        echo form_error('total_income_percent_2', '<div class="error" data-name="total_income_percent_2">', '</div>');
+                        echo form_error('total_income_6_months', '<div class="error" data-name="total_income_6_months">', '</div>');
+                        echo form_error('per_capita_income_1', '<div class="error" data-name="per_capita_income_1">', '</div>');
+                        echo form_error('per_capita_income_percent_1', '<div class="error" data-name="per_capita_income_percent_1">', '</div>');
+                        echo form_error('per_capita_income_2', '<div class="error" data-name="per_capita_income_2">', '</div>');
+                        echo form_error('per_capita_income_percent_2', '<div class="error" data-name="per_capita_income_percent_2">', '</div>');
+                        echo form_error('per_capita_income_6_months', '<div class="error" data-name="per_capita_income_6_months">', '</div>');
+                        echo form_error('software_income_1', '<div class="error" data-name="software_income_1">', '</div>');
+                        echo form_error('software_income_percent_1', '<div class="error" data-name="software_income_percent_1">', '</div>');
+                        echo form_error('software_income_2', '<div class="error" data-name="software_income_2">', '</div>');
+                        echo form_error('software_income_percent_2', '<div class="error" data-name="software_income_percent_2">', '</div>');
+                        echo form_error('software_income_6_months', '<div class="error" data-name="software_income_6_months">', '</div>');
+                        echo form_error('it_income_1', '<div class="error" data-name="it_income_1">', '</div>');
+                        echo form_error('it_income_percent_1', '<div class="error" data-name="it_income_percent_1">', '</div>');
+                        echo form_error('it_income_2', '<div class="error" data-name="it_income_2">', '</div>');
+                        echo form_error('it_income_percent_2', '<div class="error" data-name="it_income_percent_2">', '</div>');
+                        echo form_error('it_income_6_months', '<div class="error" data-name="it_income_6_months">', '</div>');
+                        echo form_error('export_income_1', '<div class="error" data-name="export_income_1">', '</div>');
+                        echo form_error('export_income_percent_1', '<div class="error" data-name="export_income_percent_1">', '</div>');
+                        echo form_error('export_income_2', '<div class="error" data-name="export_income_2">', '</div>');
+                        echo form_error('export_income_percent_2', '<div class="error" data-name="export_income_percent_2">', '</div>');
+                        echo form_error('export_income_6_months', '<div class="error" data-name="export_income_6_months">', '</div>');
+                        echo form_error('international_income_1', '<div class="error" data-name="international_income_1">', '</div>');
+                        echo form_error('international_income_percent_2', '<div class="error" data-name="international_income_percent_2">', '</div>');
+                        echo form_error('international_income_1', '<div class="error" data-name="international_income_1">', '</div>');
+                        echo form_error('international_income_percent_2', '<div class="error" data-name="international_income_percent_2">', '</div>');
+                        echo form_error('international_income_6_months', '<div class="error" data-name="international_income_6_months">', '</div>');
+                        echo form_error('domestic_income_1', '<div class="error" data-name="domestic_income_1">', '</div>');
+                        echo form_error('domestic_income_percent_1', '<div class="error" data-name="domestic_income_percent_1">', '</div>');
+                        echo form_error('domestic_income_2', '<div class="error" data-name="domestic_income_2">', '</div>');
+                        echo form_error('domestic_income_percent_2', '<div class="error" data-name="domestic_income_percent_2">', '</div>');
+                        echo form_error('domestic_income_6_months', '<div class="error" data-name="domestic_income_6_months">', '</div>');
+                        echo form_error('before_tax_profit_1', '<div class="error" data-name="before_tax_profit_1">', '</div>');
+                        echo form_error('before_tax_profit_percent_1', '<div class="error" data-name="before_tax_profit_percent_1">', '</div>');
+                        echo form_error('before_tax_profit_2', '<div class="error" data-name="before_tax_profit_2">', '</div>');
+                        echo form_error('before_tax_profit_percent_2', '<div class="error" data-name="before_tax_profit_percent_2">', '</div>');
+                        echo form_error('before_tax_profit_6_months', '<div class="error" data-name="before_tax_profit_6_months">', '</div>');
+
+                        echo form_error('full_time_employee', '<div class="error" data-name="full_time_employee">', '</div>');
+                        echo form_error('average_age', '<div class="error" data-name="average_age">', '</div>');
+                        echo form_error('employee_change_percent_1', '<div class="error" data-name="employee_change_percent_1">', '</div>');
+                        echo form_error('employee_change_percent_2', '<div class="error" data-name="employee_change_percent_2">', '</div>');
+                        echo form_error('english_employee', '<div class="error" data-name="english_employee">', '</div>');
+                        echo form_error('english_employee_percent', '<div class="error" data-name="english_employee_percent">', '</div>');
+                        echo form_error('japanese_employee', '<div class="error" data-name="japanese_employee">', '</div>');
+                        echo form_error('japanese_employee_percent', '<div class="error" data-name="japanese_employee_percent">', '</div>');
+                        echo form_error('other_language_employee', '<div class="error" data-name="other_language_employee">', '</div>');
+                        echo form_error('other_language_employee_percent', '<div class="error" data-name="other_language_employee_percent">', '</div>');
+
+
+                        echo form_error('qualification', '<div class="error" data-name="qualification">', '</div>');
+                        echo form_error('average_salary', '<div class="error" data-name="average_salary">', '</div>');
+                        echo form_error('customer_supporter', '<div class="error" data-name="customer_supporter">', '</div>');
+                        echo form_error('training_process', '<div class="error" data-name="training_process">', '</div>');
+                        echo form_error('recruitment_staff', '<div class="error" data-name="recruitment_staff">', '</div>');
+                        echo form_error('recruitment_budget', '<div class="error" data-name="recruitment_budget">', '</div>');
+                        echo form_error('investment_fund_r_and_d', '<div class="error" data-name="investment_fund_r_and_d">', '</div>');
+                        echo form_error('investment_fund_r_and_d_percent', '<div class="error" data-name="investment_fund_r_and_d_percent">', '</div>');
+                        echo form_error('staff_r_and_d', '<div class="error" data-name="staff_r_and_d">', '</div>');
+                        echo form_error('result_r_and_d', '<div class="error" data-name="result_r_and_d">', '</div>');
+                        echo form_error('security_certificate', '<div class="error" data-name="security_certificate">', '</div>');
+                        echo form_error('security_process', '<div class="error" data-name="security_process">', '</div>');
+                        echo form_error('technique_certificate', '<div class="error" data-name="technique_certificate">', '</div>');
+
+
+                    ?>
+                </div>
+
                 <div class="form-group">
                     <div class="row">
                         <div class="col-sm-3 col-md-3 col-sx-12">
@@ -121,7 +231,6 @@
                         <div class="col-sm-9 col-md-9 col-sx-12">
                             <div class="row">
                                 <?php
-                                echo form_error('overview', '<div class="error">', '</div>');
                                 echo form_textarea('overview', set_value('overview'), 'class="form-control tinymce-area"');
                                 ?>
                             </div>
@@ -139,7 +248,6 @@
                         <div class="col-sm-9 col-md-9 col-sx-12">
                             <div class="row">
                                 <?php
-                                echo form_error('active_area', '<div class="error">', '</div>');
                                 echo form_textarea('active_area', set_value('active_area'), 'class="form-control tinymce-area"');
                                 ?>
                             </div>
@@ -157,7 +265,6 @@
                         <div class="col-sm-9 col-md-9 col-sx-12">
                             <div class="row">
                                 <?php
-                                echo form_error('product', '<div class="error">', '</div>');
                                 echo form_textarea('product', set_value('product'), 'class="form-control tinymce-area"');
                                 ?>
                             </div>
@@ -188,7 +295,7 @@
                                     'Tư vấn' => 'Tư vấn'
                                 );
                                 echo '<label id="main_service[]-error" class="error" for="main_service[]"></label><br />';
-                                echo form_error('main_service[]', '<div class="error"  style="margin-left: -15px">', '</div>');
+                                // echo form_error('main_service[]', '<div class="error"  style="margin-left: -15px">', '</div>');
                                 foreach ($options as $key => $value) {
                                     echo form_checkbox('main_service[]', $value, false, 'class="btn-checkbox"');
                                     echo $key.'<br>';
@@ -224,7 +331,7 @@
                         <div class="col-sm-9 col-md-9 col-sx-12" style="padding-left: 30px;">
                             <div class="row">
                                 <label style="margin-left: -15px" id="main_market[]-error" class="error" for="main_market[]"></label><br />
-                                <?php echo form_error('main_market[]', '<div class="error"  style="margin-left: -15px">', '</div>'); ?>
+                                <?php // echo form_error('main_market[]', '<div class="error"  style="margin-left: -15px">', '</div>'); ?>
                                 <strong style="margin-left: -15px">Trong nước</strong>
                                 <div class="row" style="margin-left: 20px">
                                     <?php
@@ -707,7 +814,6 @@
                                 - Tổng số nhân viên toàn thời gian (tính đến thời điểm nộp hồ sơ):
                             </div>
                             <?php
-                                echo form_error('full_time_employee', '<div class="error">', '</div>');
                                 echo form_input('full_time_employee', set_value('full_time_employee'), 'class="form-control"');
                             ?>       
                             người.
@@ -721,7 +827,6 @@
                                - Độ tuổi trung bình: 
                             </div>
                             <?php
-                                echo form_error('average_age', '<div class="error">', '</div>');
                                 echo form_input('average_age', set_value('average_age'), 'class="form-control"');
                             ?>       
                             tuổi.
@@ -738,14 +843,12 @@
                                 2018: 
                             </div>
                             <?php
-                                echo form_error('employee_change_percent_1', '<div class="error">', '</div>');
                                 echo form_input('employee_change_percent_1', set_value('employee_change_percent_1'), 'class="form-control"');
                             ?> 
                             <div>      
                                 %;   2019: 
                             </div>
                             <?php
-                                echo form_error('employee_change_percent_2', '<div class="error">', '</div>');
                                 echo form_input('employee_change_percent_2', set_value('employee_change_percent_2'), 'class="form-control"');
                             ?>
                             % (tính đến thời điểm nộp hồ sơ)
@@ -775,13 +878,11 @@
                                 <td>Tiếng Anh</td>
                                 <td>
                                     <?php 
-                                        echo form_error('english_employee', '<div class="error">', '</div>');
                                         echo form_input('english_employee', set_value('english_employee'), 'class="form-control"'); 
                                     ?>
                                 </td>
                                 <td>
                                     <?php 
-                                        echo form_error('english_employee_percent', '<div class="error">', '</div>');
                                         echo form_input('english_employee_percent', set_value('english_employee_percent'), 'class="form-control"'); 
                                     ?>
                                 </td>
@@ -790,13 +891,11 @@
                                 <td>Tiếng Nhật</td>
                                 <td>
                                     <?php 
-                                        echo form_error('japanese_employee', '<div class="error">', '</div>');
                                         echo form_input('japanese_employee', set_value('japanese_employee'), 'class="form-control"'); 
                                     ?>
                                 </td>
                                 <td>
                                     <?php 
-                                        echo form_error('japanese_employee_percent', '<div class="error">', '</div>');
                                         echo form_input('japanese_employee_percent', set_value('japanese_employee_percent'), 'class="form-control"'); 
                                     ?>
                                 </td>
@@ -805,13 +904,11 @@
                                 <td>Ngoại ngữ khác (Ghi rõ)</td>
                                 <td>
                                     <?php 
-                                        echo form_error('other_language_employee', '<div class="error">', '</div>');
                                         echo form_input('other_language_employee', set_value('other_language_employee'), 'class="form-control"'); 
                                     ?>
                                 </td>
                                 <td>
                                     <?php 
-                                        echo form_error('other_language_employee_percent', '<div class="error">', '</div>');
                                         echo form_input('other_language_employee_percent', set_value('other_language_employee_percent'), 'class="form-control"'); 
                                     ?>
                                 </td>
@@ -831,7 +928,6 @@
                         </div>
                         <div class="col-xs-12">
                              <?php
-                                echo form_error('qualification', '<div class="error">', '</div>');
                                 echo form_textarea('qualification', set_value('qualification'), 'class="form-control tinymce-area"');
                             ?>
                         </div>
@@ -842,7 +938,6 @@
                     <h4 class="text_input">
                         <div>3. Mức lương trung bình/năm 2018: </div>
                         <?php 
-                            echo form_error('average_salary', '<div class="error">', '</div>');
                             echo form_input('average_salary', set_value('average_salary'), 'class="form-control"'); 
                         ?>
                         triệu đồng/tháng/người.
@@ -853,7 +948,6 @@
                     <h4 class="text_input">
                         <div>4. Số nhân viên thuộc bộ phận chăm sóc khách hàng (nếu có): </div>
                         <?php 
-                            echo form_error('customer_supporter', '<div class="error">', '</div>');
                             echo form_input('customer_supporter', set_value('customer_supporter'), 'class="form-control"'); 
                         ?>
                         người.
@@ -867,7 +961,6 @@
                     <div class="row">
                         <div class="col-xs-12">
                              <?php
-                                echo form_error('training_process', '<div class="error">', '</div>');
                                 echo form_textarea('training_process', set_value('training_process'), 'class="form-control tinymce-area"');
                             ?>
                         </div>
@@ -881,7 +974,6 @@
                     <h5 class="text_input">
                         <div>- Số nhân viên thuộc bộ phận tuyển dụng nhân sự: </div>
                         <?php 
-                            echo form_error('recruitment_staff', '<div class="error">', '</div>');
                             echo form_input('recruitment_staff', set_value('recruitment_staff'), 'class="form-control"'); 
                         ?>
                         người.
@@ -889,7 +981,6 @@
                     <h5 class="text_input">
                         <div>- Chi phí cho hoạt động tuyển dụng nhân sự năm 2018: </div>
                         <?php 
-                            echo form_error('recruitment_budget', '<div class="error">', '</div>');
                             echo form_input('recruitment_budget', set_value('recruitment_budget'), 'class="form-control"'); 
                         ?>
                         triệu đồng
@@ -918,13 +1009,11 @@
                                 <td>2018</td>
                                 <td>
                                     <?php 
-                                        echo form_error('investment_fund_r_and_d', '<div class="error">', '</div>');
                                         echo form_input('investment_fund_r_and_d', set_value('investment_fund_r_and_d'), 'class="form-control"'); 
                                     ?>
                                 </td>
                                 <td>
                                     <?php 
-                                        echo form_error('investment_fund_r_and_d_percent', '<div class="error">', '</div>');
                                         echo form_input('investment_fund_r_and_d_percent', set_value('investment_fund_r_and_d_percent'), 'class="form-control"'); 
                                     ?>
                                 </td>
@@ -935,7 +1024,6 @@
                     <h5 class="text_input">
                         <div>- Số lượng nhân viên bộ phận R&D năm 2018: </div>
                         <?php 
-                            echo form_error('staff_r_and_d', '<div class="error">', '</div>');
                             echo form_input('staff_r_and_d', set_value('staff_r_and_d'), 'class="form-control"'); 
                         ?>
                         người.
@@ -949,7 +1037,6 @@
                         </div>
                         <div class="col-xs-12">
                              <?php
-                                echo form_error('result_r_and_d', '<div class="error">', '</div>');
                                 echo form_textarea('result_r_and_d', set_value('result_r_and_d'), 'class="form-control tinymce-area"');
                             ?>
                         </div>
@@ -967,7 +1054,6 @@
                         </div>
                         <div class="col-xs-12">
                              <?php
-                                echo form_error('security_certificate', '<div class="error">', '</div>');
                                 echo form_textarea('security_certificate', set_value('security_certificate'), 'class="form-control tinymce-area"');
                             ?>
                         </div>
@@ -980,7 +1066,6 @@
                         </div>
                         <div class="col-xs-12">
                              <?php
-                                echo form_error('security_process', '<div class="error">', '</div>');
                                 echo form_textarea('security_process', set_value('security_process'), 'class="form-control tinymce-area"');
                             ?>
                         </div>
@@ -993,7 +1078,6 @@
                     <div class="row">
                         <div class="col-xs-12">
                              <?php
-                                echo form_error('technique_certificate', '<div class="error">', '</div>');
                                 echo form_textarea('technique_certificate', set_value('technique_certificate'), 'class="form-control tinymce-area"');
                             ?>
                         </div>
@@ -1008,7 +1092,6 @@
                         </div>
                         <div class="col-xs-12">
                              <?php
-                                echo form_error('reward', '<div class="error">', '</div>');
                                 echo form_textarea('reward', set_value('reward'), 'class="form-control tinymce-area"');
                             ?>
                         </div>
@@ -1083,4 +1166,24 @@
         }
     });
 
+
+    // quyen
+    $('div.error').append('<i class="fa fa-times" aria-hidden="true" title="Xóa thông báo lỗi"></i>');
+    $('div.error').attr('title','Click để sửa Field');
+    var close = false;
+    $('div.error .fa.fa-times').click(function(){
+        close = true;
+        $(this).parent().fadeOut( "slow");
+    });
+    $('div.error').click(function(){
+        if (close) {
+            close = false;
+        }else{
+            $('[name="'+$(this).attr('data-name')+'"]').focus();
+            if (tinyMCE.get($(this).attr('data-name')) != null) {
+                tinyMCE.get($(this).attr('data-name')).focus();
+            }
+        }
+        
+    })
 </script>

@@ -1346,6 +1346,20 @@ class CI_Form_validation {
 	// --------------------------------------------------------------------
 
 	/**
+	 * Numeric
+	 *
+	 * @param	string
+	 * @return	bool
+	 */
+	public function numeric_dots_and_comma($str)
+	{
+		return (bool) preg_match('/^[\-+]?[0-9]*(\.|,)?[0-9]+$/', $str);
+
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
 	 * Integer
 	 *
 	 * @param	string
