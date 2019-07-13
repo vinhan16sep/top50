@@ -343,19 +343,19 @@
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('total_equity_1', set_value('total_equity _1'), 'class="form-control"'); 
+                                    <?php echo form_input('total_assets_1', set_value('total_assets_1'), 'class="form-control"'); 
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('total_equity_percent_1', set_value('total_equity _percent_1'), 'class="form-control"'); 
+                                    <?php echo form_input('total_assets_percent_1', set_value('total_assets_percent_1'), 'class="form-control"'); 
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('total_equity_2', set_value('total_equity _2'), 'class="form-control"'); 
+                                    <?php echo form_input('total_assets_2', set_value('total_assets_2'), 'class="form-control"'); 
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('total_equity_percent_2', set_value('total_equity _percent_2'), 'class="form-control"'); 
+                                    <?php echo form_input('total_assets_percent_2', set_value('total_assets_percent_2'), 'class="form-control"'); 
                                     ?>
                                 </td>
                               </tr>
@@ -565,31 +565,33 @@
                                 <td colspan="1" rowspan="3"  style="width:30px;">
                                     6
                                 </td>
-                                <td colspan="2">
+                                <td colspan="11">
                                     <?php
                                         echo form_label('Tổng doanh thu của lĩnh vực ứng cử:', 'name_f_label');
                                     ?>
                                 </td>
-                                <td colspan="2">
-                                    <?php echo form_input('international_income_1', set_value('international_income_1'), 'class="form-control"');
+
+                                <!-- <td colspan="2">
+                                    <?php // echo form_input('international_income_1', set_value('international_income_1'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('international_income_percent_1', set_value('international_income_percent_1'), 'class="form-control"');
+                                    <?php // echo form_input('international_income_percent_1', set_value('international_income_percent_1'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('international_income_2', set_value('international_income_2'), 'class="form-control"');
+                                    <?php // echo form_input('international_income_2', set_value('international_income_2'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('international_income_percent_2', set_value('international_income_percent_2'), 'class="form-control"');
+                                    <?php // echo form_input('international_income_percent_2', set_value('international_income_percent_2'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td colspan="1">
-                                    <?php echo form_input('international_income_6_months', set_value('international_income_6_months'), 'class="form-control"');
+                                    <?php // echo form_input('international_income_6_months', set_value('international_income_6_months'), 'class="form-control"');
                                     ?>
-                                </td>
+                                </td> -->
+
                               </tr>
 
                               <!-- 6.2 Thị trường quốc tế -->
@@ -601,23 +603,23 @@
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_g', set_value('name_g'), 'class="form-control"'); 
+                                    <?php echo form_input('international_income_1', set_value('international_income_1'), 'class="form-control"'); 
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_g1', set_value('name_g1'), 'class="form-control"'); 
+                                    <?php echo form_input('international_income_percent_1', set_value('international_income_percent_1'), 'class="form-control"'); 
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_g2', set_value('name_g2'), 'class="form-control"'); 
+                                    <?php echo form_input('international_income_2', set_value('international_income_2'), 'class="form-control"'); 
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_g3', set_value('name_g3'), 'class="form-control"'); 
+                                    <?php echo form_input('international_income_percent_2', set_value('international_income_percent_2'), 'class="form-control"'); 
                                     ?>
                                 </td>
                                 <td colspan="1">
-                                    <?php echo form_input('name_g4', set_value('name_g4'), 'class="form-control"'); 
+                                    <?php echo form_input('international_income_6_months', set_value('international_income_6_months'), 'class="form-control"'); 
                                     ?>
                                 </td>
                               </tr>
@@ -631,23 +633,23 @@
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_h', set_value('name_h'), 'class="form-control"'); 
+                                    <?php echo form_input('domestic_income_1', set_value('domestic_income_1'), 'class="form-control"'); 
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_h1', set_value('name_h1'), 'class="form-control"'); 
+                                    <?php echo form_input('domestic_income_percent_1', set_value('domestic_income_percent_1'), 'class="form-control"'); 
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_h2', set_value('name_h2'), 'class="form-control"'); 
+                                    <?php echo form_input('domestic_income_2', set_value('domestic_income_2'), 'class="form-control"'); 
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_h3', set_value('name_h3'), 'class="form-control"'); 
+                                    <?php echo form_input('domestic_income_percent_2', set_value('domestic_income_percent_2'), 'class="form-control"'); 
                                     ?>
                                 </td>
                                 <td colspan="1">
-                                    <?php echo form_input('name_h4', set_value('name_h4'), 'class="form-control"'); 
+                                    <?php echo form_input('domestic_income_6_months', set_value('domestic_income_6_months'), 'class="form-control"'); 
                                     ?>
                                 </td>
                               </tr>
@@ -664,23 +666,23 @@
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_i', set_value('name_i'), 'class="form-control"'); 
+                                    <?php echo form_input('before_tax_profit_1', set_value('before_tax_profit_1'), 'class="form-control"'); 
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_i1', set_value('name_i1'), 'class="form-control"'); 
+                                    <?php echo form_input('before_tax_profit_percent_1', set_value('before_tax_profit_percent_1'), 'class="form-control"'); 
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_i2', set_value('name_i2'), 'class="form-control"'); 
+                                    <?php echo form_input('before_tax_profit_2', set_value('before_tax_profit_2'), 'class="form-control"'); 
                                     ?>
                                 </td>
                                 <td colspan="2">
-                                    <?php echo form_input('name_i3', set_value('name_i3'), 'class="form-control"'); 
+                                    <?php echo form_input('before_tax_profit_percent_2', set_value('before_tax_profit_percent_2'), 'class="form-control"'); 
                                     ?>
                                 </td>
                                 <td colspan="1">
-                                    <?php echo form_input('name_i4', set_value('name_i4'), 'class="form-control"'); 
+                                    <?php echo form_input('before_tax_profit_6_months', set_value('before_tax_profit_6_months'), 'class="form-control"'); 
                                     ?>
                                 </td>
                               </tr>
@@ -705,8 +707,8 @@
                                 - Tổng số nhân viên toàn thời gian (tính đến thời điểm nộp hồ sơ):
                             </div>
                             <?php
-                                echo form_error('tongsonhanvien', '<div class="error">', '</div>');
-                                echo form_input('tongsonhanvien', set_value('tongsonhanvien'), 'class="form-control"');
+                                echo form_error('full_time_employee', '<div class="error">', '</div>');
+                                echo form_input('full_time_employee', set_value('full_time_employee'), 'class="form-control"');
                             ?>       
                             người.
                         </div>
@@ -719,8 +721,8 @@
                                - Độ tuổi trung bình: 
                             </div>
                             <?php
-                                echo form_error('dotuoitrungbinh', '<div class="error">', '</div>');
-                                echo form_input('dotuoitrungbinh', set_value('dotuoitrungbinh'), 'class="form-control"');
+                                echo form_error('average_age', '<div class="error">', '</div>');
+                                echo form_input('average_age', set_value('average_age'), 'class="form-control"');
                             ?>       
                             tuổi.
                         </div>
@@ -736,15 +738,15 @@
                                 2018: 
                             </div>
                             <?php
-                                echo form_error('tyletanggiam2018', '<div class="error">', '</div>');
-                                echo form_input('tyletanggiam2018', set_value('tyletanggiam2018'), 'class="form-control"');
+                                echo form_error('employee_change_percent_1', '<div class="error">', '</div>');
+                                echo form_input('employee_change_percent_1', set_value('employee_change_percent_1'), 'class="form-control"');
                             ?> 
                             <div>      
                                 %;   2019: 
                             </div>
                             <?php
-                                echo form_error('tyletanggiam2019', '<div class="error">', '</div>');
-                                echo form_input('tyletanggiam2019', set_value('tyletanggiam2019'), 'class="form-control"');
+                                echo form_error('employee_change_percent_2', '<div class="error">', '</div>');
+                                echo form_input('employee_change_percent_2', set_value('employee_change_percent_2'), 'class="form-control"');
                             ?>
                             % (tính đến thời điểm nộp hồ sơ)
                         </div>
@@ -773,14 +775,14 @@
                                 <td>Tiếng Anh</td>
                                 <td>
                                     <?php 
-                                        echo form_error('songuoi', '<div class="error">', '</div>');
-                                        echo form_input('songuoi', set_value('songuoi'), 'class="form-control"'); 
+                                        echo form_error('english_employee', '<div class="error">', '</div>');
+                                        echo form_input('english_employee', set_value('english_employee'), 'class="form-control"'); 
                                     ?>
                                 </td>
                                 <td>
                                     <?php 
-                                        echo form_error('trentongsonv', '<div class="error">', '</div>');
-                                        echo form_input('trentongsonv', set_value('trentongsonv'), 'class="form-control"'); 
+                                        echo form_error('english_employee_percent', '<div class="error">', '</div>');
+                                        echo form_input('english_employee_percent', set_value('english_employee_percent'), 'class="form-control"'); 
                                     ?>
                                 </td>
                               </tr>
@@ -788,14 +790,14 @@
                                 <td>Tiếng Nhật</td>
                                 <td>
                                     <?php 
-                                        echo form_error('songuoi', '<div class="error">', '</div>');
-                                        echo form_input('songuoi', set_value('songuoi'), 'class="form-control"'); 
+                                        echo form_error('japanese_employee', '<div class="error">', '</div>');
+                                        echo form_input('japanese_employee', set_value('japanese_employee'), 'class="form-control"'); 
                                     ?>
                                 </td>
                                 <td>
                                     <?php 
-                                        echo form_error('trentongsonv', '<div class="error">', '</div>');
-                                        echo form_input('trentongsonv', set_value('trentongsonv'), 'class="form-control"'); 
+                                        echo form_error('japanese_employee_percent', '<div class="error">', '</div>');
+                                        echo form_input('japanese_employee_percent', set_value('japanese_employee_percent'), 'class="form-control"'); 
                                     ?>
                                 </td>
                               </tr>
@@ -803,14 +805,14 @@
                                 <td>Ngoại ngữ khác (Ghi rõ)</td>
                                 <td>
                                     <?php 
-                                        echo form_error('songuoi', '<div class="error">', '</div>');
-                                        echo form_input('songuoi', set_value('songuoi'), 'class="form-control"'); 
+                                        echo form_error('other_language_employee', '<div class="error">', '</div>');
+                                        echo form_input('other_language_employee', set_value('other_language_employee'), 'class="form-control"'); 
                                     ?>
                                 </td>
                                 <td>
                                     <?php 
-                                        echo form_error('trentongsonv', '<div class="error">', '</div>');
-                                        echo form_input('trentongsonv', set_value('trentongsonv'), 'class="form-control"'); 
+                                        echo form_error('other_language_employee_percent', '<div class="error">', '</div>');
+                                        echo form_input('other_language_employee_percent', set_value('other_language_employee_percent'), 'class="form-control"'); 
                                     ?>
                                 </td>
                               </tr>
@@ -829,8 +831,8 @@
                         </div>
                         <div class="col-xs-12">
                              <?php
-                                echo form_error('cautrucnhansu', '<div class="error">', '</div>');
-                                echo form_textarea('cautrucnhansu', set_value('cautrucnhansu'), 'class="form-control tinymce-area"');
+                                echo form_error('qualification', '<div class="error">', '</div>');
+                                echo form_textarea('qualification', set_value('qualification'), 'class="form-control tinymce-area"');
                             ?>
                         </div>
                     </div>
@@ -840,8 +842,8 @@
                     <h4 class="text_input">
                         <div>3. Mức lương trung bình/năm 2018: </div>
                         <?php 
-                            echo form_error('mucluongtrungbinh', '<div class="error">', '</div>');
-                            echo form_input('mucluongtrungbinh', set_value('mucluongtrungbinh'), 'class="form-control"'); 
+                            echo form_error('average_salary', '<div class="error">', '</div>');
+                            echo form_input('average_salary', set_value('average_salary'), 'class="form-control"'); 
                         ?>
                         triệu đồng/tháng/người.
                     </h4>
@@ -851,8 +853,8 @@
                     <h4 class="text_input">
                         <div>4. Số nhân viên thuộc bộ phận chăm sóc khách hàng (nếu có): </div>
                         <?php 
-                            echo form_error('sonhanvienthuocbo', '<div class="error">', '</div>');
-                            echo form_input('sonhanvienthuocbo', set_value('sonhanvienthuocbo'), 'class="form-control"'); 
+                            echo form_error('customer_supporter', '<div class="error">', '</div>');
+                            echo form_input('customer_supporter', set_value('customer_supporter'), 'class="form-control"'); 
                         ?>
                         người.
                     </h4>
@@ -865,8 +867,8 @@
                     <div class="row">
                         <div class="col-xs-12">
                              <?php
-                                echo form_error('congtacdaotao', '<div class="error">', '</div>');
-                                echo form_textarea('congtacdaotao', set_value('congtacdaotao'), 'class="form-control tinymce-area"');
+                                echo form_error('training_process', '<div class="error">', '</div>');
+                                echo form_textarea('training_process', set_value('training_process'), 'class="form-control tinymce-area"');
                             ?>
                         </div>
                     </div>
@@ -879,16 +881,16 @@
                     <h5 class="text_input">
                         <div>- Số nhân viên thuộc bộ phận tuyển dụng nhân sự: </div>
                         <?php 
-                            echo form_error('sonhanvienthuocbophan', '<div class="error">', '</div>');
-                            echo form_input('sonhanvienthuocbophan', set_value('sonhanvienthuocbophan'), 'class="form-control"'); 
+                            echo form_error('recruitment_staff', '<div class="error">', '</div>');
+                            echo form_input('recruitment_staff', set_value('recruitment_staff'), 'class="form-control"'); 
                         ?>
                         người.
                     </h5>
                     <h5 class="text_input">
                         <div>- Chi phí cho hoạt động tuyển dụng nhân sự năm 2018: </div>
                         <?php 
-                            echo form_error('chiphihoatdong', '<div class="error">', '</div>');
-                            echo form_input('chiphihoatdong', set_value('chiphihoatdong'), 'class="form-control"'); 
+                            echo form_error('recruitment_budget', '<div class="error">', '</div>');
+                            echo form_input('recruitment_budget', set_value('recruitment_budget'), 'class="form-control"'); 
                         ?>
                         triệu đồng
                     </h5>
@@ -916,14 +918,14 @@
                                 <td>2018</td>
                                 <td>
                                     <?php 
-                                        echo form_error('tongchiphidautu', '<div class="error">', '</div>');
-                                        echo form_input('tongchiphidautu', set_value('tongchiphidautu'), 'class="form-control"'); 
+                                        echo form_error('investment_fund_r_and_d', '<div class="error">', '</div>');
+                                        echo form_input('investment_fund_r_and_d', set_value('investment_fund_r_and_d'), 'class="form-control"'); 
                                     ?>
                                 </td>
                                 <td>
                                     <?php 
-                                        echo form_error('trentongdoanhthu', '<div class="error">', '</div>');
-                                        echo form_input('trentongdoanhthu', set_value('trentongdoanhthu'), 'class="form-control"'); 
+                                        echo form_error('investment_fund_r_and_d_percent', '<div class="error">', '</div>');
+                                        echo form_input('investment_fund_r_and_d_percent', set_value('investment_fund_r_and_d_percent'), 'class="form-control"'); 
                                     ?>
                                 </td>
                               </tr>
@@ -933,8 +935,8 @@
                     <h5 class="text_input">
                         <div>- Số lượng nhân viên bộ phận R&D năm 2018: </div>
                         <?php 
-                            echo form_error('soluongnhanvienbophanrd', '<div class="error">', '</div>');
-                            echo form_input('soluongnhanvienbophanrd', set_value('soluongnhanvienbophanrd'), 'class="form-control"'); 
+                            echo form_error('staff_r_and_d', '<div class="error">', '</div>');
+                            echo form_input('staff_r_and_d', set_value('staff_r_and_d'), 'class="form-control"'); 
                         ?>
                         người.
                     </h5>
@@ -947,8 +949,8 @@
                         </div>
                         <div class="col-xs-12">
                              <?php
-                                echo form_error('thanhquanoibat', '<div class="error">', '</div>');
-                                echo form_textarea('thanhquanoibat', set_value('thanhquanoibat'), 'class="form-control tinymce-area"');
+                                echo form_error('result_r_and_d', '<div class="error">', '</div>');
+                                echo form_textarea('result_r_and_d', set_value('result_r_and_d'), 'class="form-control tinymce-area"');
                             ?>
                         </div>
                     </div>
@@ -965,8 +967,8 @@
                         </div>
                         <div class="col-xs-12">
                              <?php
-                                echo form_error('cacchungchibaomat', '<div class="error">', '</div>');
-                                echo form_textarea('cacchungchibaomat', set_value('cacchungchibaomat'), 'class="form-control tinymce-area"');
+                                echo form_error('security_certificate', '<div class="error">', '</div>');
+                                echo form_textarea('security_certificate', set_value('security_certificate'), 'class="form-control tinymce-area"');
                             ?>
                         </div>
                     </div>
@@ -978,8 +980,8 @@
                         </div>
                         <div class="col-xs-12">
                              <?php
-                                echo form_error('cacchungchibaomat', '<div class="error">', '</div>');
-                                echo form_textarea('cacchungchibaomat', set_value('cacchungchibaomat'), 'class="form-control tinymce-area"');
+                                echo form_error('security_process', '<div class="error">', '</div>');
+                                echo form_textarea('security_process', set_value('security_process'), 'class="form-control tinymce-area"');
                             ?>
                         </div>
                     </div>
@@ -991,8 +993,8 @@
                     <div class="row">
                         <div class="col-xs-12">
                              <?php
-                                echo form_error('quanlycongnghe', '<div class="error">', '</div>');
-                                echo form_textarea('quanlycongnghe', set_value('quanlycongnghe'), 'class="form-control tinymce-area"');
+                                echo form_error('technique_certificate', '<div class="error">', '</div>');
+                                echo form_textarea('technique_certificate', set_value('technique_certificate'), 'class="form-control tinymce-area"');
                             ?>
                         </div>
                     </div>
@@ -1006,8 +1008,8 @@
                         </div>
                         <div class="col-xs-12">
                              <?php
-                                echo form_error('ghiroten', '<div class="error">', '</div>');
-                                echo form_textarea('ghiroten', set_value('ghiroten'), 'class="form-control tinymce-area"');
+                                echo form_error('reward', '<div class="error">', '</div>');
+                                echo form_textarea('reward', set_value('reward'), 'class="form-control tinymce-area"');
                             ?>
                         </div>
                     </div>

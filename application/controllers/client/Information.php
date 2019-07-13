@@ -359,22 +359,6 @@ class Information extends Client_Controller {
                 'numeric' => '%s phải là số.',
                 'max_length' => 'Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('total_labor_1', 'Tổng số lao động của DN ' . $this->data['rule2Year'][0], 'trim|required|numeric', array(
-                'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-            ));
-            $this->form_validation->set_rules('total_labor_2', 'Tổng số lao động của DN ' . $this->data['rule2Year'][1], 'trim|required|numeric', array(
-                'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-            ));
-            $this->form_validation->set_rules('total_ltv_1', 'Tổng số LTV ' . $this->data['rule2Year'][0], 'trim|required|integer', array(
-                'required' => '%s không được trống.',
-                'integer' => '%s phải là số nguyên.',
-            ));
-            $this->form_validation->set_rules('total_ltv_2', 'Tổng số LTV ' . $this->data['rule2Year'][1], 'trim|required|integer', array(
-                'required' => '%s không được trống.',
-                'integer' => '%s phải là số nguyên.',
-            ));
             $this->form_validation->set_rules('main_service[]', 'Sản phẩm dịch vụ chính của doanh nghiệp', 'trim|required', array(
                 'required' => '%s không được trống.'
             ));
@@ -436,7 +420,7 @@ class Information extends Client_Controller {
                         // New
                         'per_capita_income_1' => $this->input->post('per_capita_income_1'),
                         'per_capita_income_2' => $this->input->post('per_capita_income_2'),
-                        'per_capita_income_percent_1' => $this->input->post('per_capita_percent_income_1'),
+                        'per_capita_income_percent_1' => $this->input->post('per_capita_income_percent_1'),
                         'per_capita_income_percent_2' => $this->input->post('per_capita_percent_income_2'),
                         'per_capita_income_6_months' => $this->input->post('per_capita_income_6_months'),
                         // End New
@@ -608,18 +592,6 @@ class Information extends Client_Controller {
                 'numeric' => '%s phải là số.',
                 'max_length' => 'Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('total_labor_1', 'Tổng số lao động của DN ' . $this->data['rule2Year'][0], 'trim|numeric', array(
-                'numeric' => '%s phải là số.',
-            ));
-            $this->form_validation->set_rules('total_labor_2', 'Tổng số lao động của DN ' . $this->data['rule2Year'][1], 'trim|numeric', array(
-                'numeric' => '%s phải là số.',
-            ));
-            $this->form_validation->set_rules('total_ltv_1', 'Tổng số LTV ' . $this->data['rule2Year'][0], 'trim|numeric', array(
-                'numeric' => '%s phải là số.',
-            ));
-            $this->form_validation->set_rules('total_ltv_2', 'Tổng số LTV ' . $this->data['rule2Year'][1], 'trim|numeric', array(
-                'numeric' => '%s phải là số.',
-            ));
 
             if ($this->form_validation->run() === FALSE) {
                 if($this->data['reg_status']['is_information'] == 0){
@@ -676,7 +648,7 @@ class Information extends Client_Controller {
                         // New
                         'per_capita_income_1' => $this->input->post('per_capita_income_1'),
                         'per_capita_income_2' => $this->input->post('per_capita_income_2'),
-                        'per_capita_income_percent_1' => $this->input->post('per_capita_percent_income_1'),
+                        'per_capita_income_percent_1' => $this->input->post('per_capita_income_percent_1'),
                         'per_capita_income_percent_2' => $this->input->post('per_capita_percent_income_2'),
                         'per_capita_income_6_months' => $this->input->post('per_capita_income_6_months'),
                         // End New
@@ -860,22 +832,6 @@ class Information extends Client_Controller {
                 'numeric' => '%s phải là số.',
                 'max_length' => 'Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('total_labor_1', 'Tổng số lao động của DN ' . $this->data['rule2Year'][0], 'trim|required|numeric', array(
-                'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-            ));
-            $this->form_validation->set_rules('total_labor_2', 'Tổng số lao động của DN ' . $this->data['rule2Year'][1], 'trim|required|numeric', array(
-                'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-            ));
-            $this->form_validation->set_rules('total_ltv_1', 'Tổng số LTV ' . $this->data['rule2Year'][0], 'trim|required|numeric', array(
-                'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-            ));
-            $this->form_validation->set_rules('total_ltv_2', 'Tổng số LTV ' . $this->data['rule2Year'][1], 'trim|required|numeric', array(
-                'required' => '%s không được trống.',
-                'numeric' => '%s phải là số.',
-            ));
             $this->form_validation->set_rules('main_service[]', 'Sản phẩm dịch vụ chính của doanh nghiệp', 'trim|required', array(
                 'required' => '%s không được trống.'
             ));
@@ -993,18 +949,6 @@ class Information extends Client_Controller {
             $this->form_validation->set_rules('export_income_2', 'Tổng DT xuất khẩu ' . $this->data['rule2Year'][1], 'trim|numeric|max_length[10]', array(
                 'numeric' => '%s phải là số.',
                 'max_length' => 'Tối đa 10 chữ số'
-            ));
-            $this->form_validation->set_rules('total_labor_1', 'Tổng số lao động của DN ' . $this->data['rule2Year'][0], 'trim|numeric', array(
-                'numeric' => '%s phải là số.',
-            ));
-            $this->form_validation->set_rules('total_labor_2', 'Tổng số lao động của DN ' . $this->data['rule2Year'][1], 'trim|numeric', array(
-                'numeric' => '%s phải là số.',
-            ));
-            $this->form_validation->set_rules('total_ltv_1', 'Tổng số LTV ' . $this->data['rule2Year'][0], 'trim|numeric', array(
-                'numeric' => '%s phải là số.',
-            ));
-            $this->form_validation->set_rules('total_ltv_2', 'Tổng số LTV ' . $this->data['rule2Year'][1], 'trim|numeric', array(
-                'numeric' => '%s phải là số.',
             ));
             if ($this->form_validation->run() == FALSE) {
                 $this->data['company'] = $this->information_model->fetch_company_by_identity_and_year('company', $this->data['user']->username, $this->input->get('year'));
