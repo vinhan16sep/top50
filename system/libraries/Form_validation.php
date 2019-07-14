@@ -1344,7 +1344,7 @@ class CI_Form_validation {
 	}
 
 	// --------------------------------------------------------------------
-
+	// quyen
 	/**
 	 * Numeric
 	 *
@@ -1353,7 +1353,21 @@ class CI_Form_validation {
 	 */
 	public function numeric_dots_and_comma($str)
 	{
-		return (bool) preg_match('/^[\-+]?[0-9]*(\.|,)?[0-9]+$/', $str);
+		return (bool) preg_match('/^[-+]?\d+(?:[,.]\d+)*$/', $str);
+
+	}
+
+	// --------------------------------------------------------------------
+	// quyen
+	/**
+	 * Numeric
+	 *
+	 * @param	string
+	 * @return	bool
+	 */
+	public function date_formats($str)
+	{
+		return (bool) preg_match('/^(([0-3][1-9])|([1-3][0-9])){1}[\/]{1}(([0][1-9])|([1][0-2])){1}[\/]{1}[0-9]{4}$/', $str);
 
 	}
 

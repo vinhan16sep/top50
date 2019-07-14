@@ -52,6 +52,11 @@
     .form-group h5, div.h5{
         padding-left: 20px;
     }
+    
+    .form-group.h5 div,.form-group.h5 b{
+        font-size: 14px!important;
+        font-family: webFont_N!important;
+    }
 
     div.h5 .table th{
         line-height: 30px!important;

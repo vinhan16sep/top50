@@ -80,6 +80,12 @@ class Information extends Client_Controller {
             'min_length' => '%s tối thiểu %s ký tự.',
             'max_length' => '%s tối đa %s ký tự.',
         ));
+        $this->form_validation->set_rules('founding_date', 'Ngày thành lập', 'trim|date_formats', array(
+            'date_formats' => '%s không đúng định dạng dd/mm/yyyy.',
+        ));
+        $this->form_validation->set_rules('certificate_date', 'Ngày cấp', 'trim|date_formats', array(
+            'date_formats' => '%s không đúng định dạng dd/mm/yyyy.',
+        ));
 //        $this->form_validation->set_rules('link', 'Link download PĐK của DN', 'trim|required');
 
         if ($this->form_validation->run() == FALSE) {
@@ -190,6 +196,12 @@ class Information extends Client_Controller {
             'integer' => '%s phải là số nguyên.',
             'min_length' => '%s tối thiểu %s ký tự.',
             'max_length' => '%s tối đa %s ký tự.',
+        ));
+        $this->form_validation->set_rules('founding_date', 'Ngày thành lập', 'trim|date_formats', array(
+            'date_formats' => '%s không đúng định dạng dd/mm/yyyy.',
+        ));
+        $this->form_validation->set_rules('certificate_date', 'Ngày cấp', 'trim|date_formats', array(
+            'date_formats' => '%s không đúng định dạng dd/mm/yyyy.',
         ));
 //        $this->form_validation->set_rules('link', 'Link download PĐK của DN', 'trim|required');
 
@@ -657,131 +669,127 @@ class Information extends Client_Controller {
                         'active_area' => $this->input->post('active_area'),
                         'product' => $this->input->post('product'),
 
-
                         // Vốn điều lệ
-                        'equity_1' => $this->input->post('equity_1'),
-                        'equity_2' => $this->input->post('equity_2'),
-                        'equity_percent_1' => $this->input->post('equity_percent_1'),
-                        'equity_percent_2' => $this->input->post('equity_percent_2'),
+                        'equity_1' => strstr($this->input->post('equity_1'),',') ? str_replace(',', '.', $this->input->post('equity_1')) : $this->input->post('equity_1'),
+                        'equity_percent_1' => strstr($this->input->post('equity_percent_1'),',') ? str_replace(',', '.', $this->input->post('equity_percent_1')) : $this->input->post('equity_percent_1'),
+                        'equity_2' => strstr($this->input->post('equity_2'),',') ? str_replace(',', '.', $this->input->post('equity_2')) : $this->input->post('equity_2'),
+                        'equity_percent_2' => strstr($this->input->post('equity_percent_2'),',') ? str_replace(',', '.', $this->input->post('equity_percent_2')) : $this->input->post('equity_percent_2'),
 
                         // Vốn chủ sở hữu
-                        'owner_equity_1' => $this->input->post('owner_equity_1'),
-                        'owner_equity_2' => $this->input->post('owner_equity_2'),
-                        'owner_equity_percent_1' => $this->input->post('owner_equity_percent_1'),
-                        'owner_equity_percent_2' => $this->input->post('owner_equity_percent_2'),
+                        'owner_equity_1' => strstr($this->input->post('owner_equity_1'),',') ? str_replace(',', '.', $this->input->post('owner_equity_1')) : $this->input->post('owner_equity_1'),
+                        'owner_equity_percent_1' => strstr($this->input->post('owner_equity_percent_1'),',') ? str_replace(',', '.', $this->input->post('owner_equity_percent_1')) : $this->input->post('owner_equity_percent_1'),
+                        'owner_equity_2' => strstr($this->input->post('owner_equity_2'),',') ? str_replace(',', '.', $this->input->post('owner_equity_2')) : $this->input->post('owner_equity_2'),
+                        'owner_equity_percent_2' => strstr($this->input->post('owner_equity_percent_2'),',') ? str_replace(',', '.', $this->input->post('owner_equity_percent_2')) : $this->input->post('owner_equity_percent_2'),
 
                         // Tổng tài sản
                         // New
-                        'total_assets_1' => $this->input->post('total_assets_1'),
-                        'total_assets_2' => $this->input->post('total_assets_2'),
-                        'total_assets_percent_1' => $this->input->post('total_assets_percent_1'),
-                        'total_assets_percent_2' => $this->input->post('total_assets_percent_2'),
+                        'total_assets_1' => strstr($this->input->post('total_assets_1'),',') ? str_replace(',', '.', $this->input->post('total_assets_1')) : $this->input->post('total_assets_1'),
+                        'total_assets_percent_1' => strstr($this->input->post('total_assets_percent_1'),',') ? str_replace(',', '.', $this->input->post('total_assets_percent_1')) : $this->input->post('total_assets_percent_1'),
+                        'total_assets_2' => strstr($this->input->post('total_assets_2'),',') ? str_replace(',', '.', $this->input->post('total_assets_2')) : $this->input->post('total_assets_2'),
+                        'total_assets_percent_2' => strstr($this->input->post('total_assets_percent_2'),',') ? str_replace(',', '.', $this->input->post('total_assets_percent_2')) : $this->input->post('total_assets_percent_2'),
                         // End New
 
                         // Tổng doanh thu doanh nghiệp
-                        'total_income_1' => $this->input->post('total_income_1'),
-                        'total_income_2' => $this->input->post('total_income_2'),
-                        'total_income_percent_1' => $this->input->post('total_income_percent_1'),
-                        'total_income_percent_2' => $this->input->post('total_income_percent_2'),
-                        'total_income_6_months' => $this->input->post('total_income_6_months'),
+                        'total_income_1' => strstr($this->input->post('total_income_1'),',') ? str_replace(',', '.', $this->input->post('total_income_1')) : $this->input->post('total_income_1'),
+                        'total_income_percent_1' => strstr($this->input->post('total_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('total_income_percent_1')) : $this->input->post('total_income_percent_1'),
+                        'total_income_2' => strstr($this->input->post('total_income_2'),',') ? str_replace(',', '.', $this->input->post('total_income_2')) : $this->input->post('total_income_2'),
+                        'total_income_percent_2' => strstr($this->input->post('total_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('total_income_percent_2')) : $this->input->post('total_income_percent_2'),
+                        'total_income_6_months' => strstr($this->input->post('total_income_6_months'),',') ? str_replace(',', '.', $this->input->post('total_income_6_months')) : $this->input->post('total_income_6_months'),
                         // End New
 
                         // Bình quân doanh thu/đầu người
                         // New
-                        'per_capita_income_1' => $this->input->post('per_capita_income_1'),
-                        'per_capita_income_2' => $this->input->post('per_capita_income_2'),
-                        'per_capita_income_percent_1' => $this->input->post('per_capita_income_percent_1'),
-                        'per_capita_income_percent_2' => $this->input->post('per_capita_income_percent_2'),
-                        'per_capita_income_6_months' => $this->input->post('per_capita_income_6_months'),
+                        'per_capita_income_1' => strstr($this->input->post('per_capita_income_1'),',') ? str_replace(',', '.', $this->input->post('per_capita_income_1')) : $this->input->post('per_capita_income_1'),
+                        'per_capita_income_percent_1' => strstr($this->input->post('per_capita_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('per_capita_income_percent_1')) : $this->input->post('per_capita_income_percent_1'),
+                        'per_capita_income_2' => strstr($this->input->post('per_capita_income_2'),',') ? str_replace(',', '.', $this->input->post('per_capita_income_2')) : $this->input->post('per_capita_income_2'),
+                        'per_capita_income_percent_2' => strstr($this->input->post('per_capita_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('per_capita_income_percent_2')) : $this->input->post('per_capita_income_percent_2'),
+                        'per_capita_income_6_months' => strstr($this->input->post('per_capita_income_6_months'),',') ? str_replace(',', '.', $this->input->post('per_capita_income_6_months')) : $this->input->post('per_capita_income_6_months'),
                         // End New
 
                         // Tổng doanh thu lĩnh vực sản xuất phần mềm
-                        'software_income_1' => $this->input->post('software_income_1'),
-                        'software_income_2' => $this->input->post('software_income_2'),
-                        // New
-                        'software_income_percent_1' => $this->input->post('software_income_percent_1'),
-                        'software_income_percent_2' => $this->input->post('software_income_percent_2'),
-                        'software_income_6_months' => $this->input->post('software_income_6_months'),
+                        'software_income_1' => strstr($this->input->post('software_income_1'),',') ? str_replace(',', '.', $this->input->post('software_income_1')) : $this->input->post('software_income_1'),
+                        'software_income_percent_1' => strstr($this->input->post('software_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('software_income_percent_1')) : $this->input->post('software_income_percent_1'),
+                        'software_income_2' => strstr($this->input->post('software_income_2'),',') ? str_replace(',', '.', $this->input->post('software_income_2')) : $this->input->post('software_income_2'),
+                        'software_income_percent_2' => strstr($this->input->post('software_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('software_income_percent_2')) : $this->input->post('software_income_percent_2'),
+                        'software_income_6_months' => strstr($this->input->post('software_income_6_months'),',') ? str_replace(',', '.', $this->input->post('software_income_6_months')) : $this->input->post('software_income_6_months'),
                         // End New
 
                         // Tổng doanh thu dịch vụ CNTT
-                        'it_income_1' => $this->input->post('it_income_1'),
-                        'it_income_2' => $this->input->post('it_income_2'),
-                        // New
-                        'it_income_percent_1' => $this->input->post('it_income_percent_1'),
-                        'it_income_percent_2' => $this->input->post('it_income_percent_2'),
-                        'it_income_6_months' => $this->input->post('it_income_6_months'),
+                        'it_income_1' => strstr($this->input->post('it_income_1'),',') ? str_replace(',', '.', $this->input->post('it_income_1')) : $this->input->post('it_income_1'),
+                        'it_income_percent_1' => strstr($this->input->post('it_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('it_income_percent_1')) : $this->input->post('it_income_percent_1'),
+                        'it_income_2' => strstr($this->input->post('it_income_2'),',') ? str_replace(',', '.', $this->input->post('it_income_2')) : $this->input->post('it_income_2'),
+                        'it_income_percent_2' => strstr($this->input->post('it_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('it_income_percent_2')) : $this->input->post('it_income_percent_2'),
+                        'it_income_6_months' => strstr($this->input->post('it_income_6_months'),',') ? str_replace(',', '.', $this->input->post('it_income_6_months')) : $this->input->post('it_income_6_months'),
                         // End New
 
                         // Tổng doanh thu xuất khẩu
-                        'export_income_1' => $this->input->post('export_income_1'),
-                        'export_income_2' => $this->input->post('export_income_2'),
-                        // New
-                        'export_income_percent_1' => $this->input->post('export_income_percent_1'),
-                        'export_income_percent_2' => $this->input->post('export_income_percent_2'),
-                        'export_income_6_months' => $this->input->post('export_income_6_months'),
+                        'export_income_1' => strstr($this->input->post('export_income_1'),',') ? str_replace(',', '.', $this->input->post('export_income_1')) : $this->input->post('export_income_1'),
+                        'export_income_percent_1' => strstr($this->input->post('export_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('export_income_percent_1')) : $this->input->post('export_income_percent_1'),
+                        'export_income_2' => strstr($this->input->post('export_income_2'),',') ? str_replace(',', '.', $this->input->post('export_income_2')) : $this->input->post('export_income_2'),
+                        'export_income_percent_2' => strstr($this->input->post('export_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('export_income_percent_2')) : $this->input->post('export_income_percent_2'),
+                        'export_income_6_months' => strstr($this->input->post('export_income_6_months'),',') ? str_replace(',', '.', $this->input->post('export_income_6_months')) : $this->input->post('export_income_6_months'),
                         // End New
 
                         // Tổng doanh thu của lĩnh vực ứng cử:
                         // Thị trường quốc tế
                         // New
-                        'international_income_1' => $this->input->post('international_income_1'),
-                        'international_income_2' => $this->input->post('international_income_2'),
-                        'international_income_percent_1' => $this->input->post('international_income_percent_1'),
-                        'international_income_percent_2' => $this->input->post('international_income_percent_2'),
-                        'international_income_6_months' => $this->input->post('international_income_6_months'),
+                        'international_income_1' => strstr($this->input->post('international_income_1'),',') ? str_replace(',', '.', $this->input->post('international_income_1')) : $this->input->post('international_income_1'),
+                        'international_income_percent_1' => strstr($this->input->post('international_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('international_income_percent_1')) : $this->input->post('international_income_percent_1'),
+                        'international_income_2' => strstr($this->input->post('international_income_2'),',') ? str_replace(',', '.', $this->input->post('international_income_2')) : $this->input->post('international_income_2'),
+                        'international_income_percent_2' => strstr($this->input->post('international_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('international_income_percent_2')) : $this->input->post('international_income_percent_2'),
+                        'international_income_6_months' => strstr($this->input->post('international_income_6_months'),',') ? str_replace(',', '.', $this->input->post('international_income_6_months')) : $this->input->post('international_income_6_months'),
                         // End New
 
                         // Tổng doanh thu của lĩnh vực ứng cử:
                         // Thị trường nội địa
                         // New
-                        'domestic_income_1' => $this->input->post('domestic_income_1'),
-                        'domestic_income_2' => $this->input->post('domestic_income_2'),
-                        'domestic_income_percent_1' => $this->input->post('domestic_income_percent_1'),
-                        'domestic_income_percent_2' => $this->input->post('domestic_income_percent_2'),
-                        'domestic_income_6_months' => $this->input->post('domestic_income_6_months'),
+                        'domestic_income_1' => strstr($this->input->post('domestic_income_1'),',') ? str_replace(',', '.', $this->input->post('domestic_income_1')) : $this->input->post('domestic_income_1'),
+                        'domestic_income_percent_1' => strstr($this->input->post('domestic_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('domestic_income_percent_1')) : $this->input->post('domestic_income_percent_1'),
+                        'domestic_income_2' => strstr($this->input->post('domestic_income_2'),',') ? str_replace(',', '.', $this->input->post('domestic_income_2')) : $this->input->post('domestic_income_2'),
+                        'domestic_income_percent_2' => strstr($this->input->post('domestic_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('domestic_income_percent_2')) : $this->input->post('domestic_income_percent_2'),
+                        'domestic_income_6_months' => strstr($this->input->post('domestic_income_6_months'),',') ? str_replace(',', '.', $this->input->post('domestic_income_6_months')) : $this->input->post('domestic_income_6_months'),
                         // End New
 
                         // Tổng lợi nhuận trước thuế của DN
                         // New
-                        'before_tax_profit_1' => $this->input->post('before_tax_profit_1'),
-                        'before_tax_profit_2' => $this->input->post('before_tax_profit_2'),
-                        'before_tax_profit_percent_1' => $this->input->post('before_tax_profit_percent_1'),
-                        'before_tax_profit_percent_2' => $this->input->post('before_tax_profit_percent_2'),
-                        'before_tax_profit_6_months' => $this->input->post('before_tax_profit_6_months'),
+                        'before_tax_profit_1' => strstr($this->input->post('before_tax_profit_1'),',') ? str_replace(',', '.', $this->input->post('before_tax_profit_1')) : $this->input->post('before_tax_profit_1'),
+                        'before_tax_profit_percent_1' => strstr($this->input->post('before_tax_profit_percent_1'),',') ? str_replace(',', '.', $this->input->post('before_tax_profit_percent_1')) : $this->input->post('before_tax_profit_percent_1'),
+                        'before_tax_profit_2' => strstr($this->input->post('before_tax_profit_2'),',') ? str_replace(',', '.', $this->input->post('before_tax_profit_2')) : $this->input->post('before_tax_profit_2'),
+                        'before_tax_profit_percent_2' => strstr($this->input->post('before_tax_profit_percent_2'),',') ? str_replace(',', '.', $this->input->post('before_tax_profit_percent_2')) : $this->input->post('before_tax_profit_percent_2'),
+                        'before_tax_profit_6_months' => strstr($this->input->post('before_tax_profit_6_months'),',') ? str_replace(',', '.', $this->input->post('before_tax_profit_6_months')) : $this->input->post('before_tax_profit_6_months'),
                         // End New
 
                         // New
                         // Tổng số nhân viên toàn thời gian
-                        'full_time_employee' => $this->input->post('full_time_employee'),
+                        'full_time_employee' => strstr($this->input->post('full_time_employee'),',') ? str_replace(',', '.', $this->input->post('full_time_employee')) : $this->input->post('full_time_employee'),
                         // Độ tuổi trung bình
-                        'average_age' => $this->input->post('average_age'),
+                        'average_age' => strstr($this->input->post('average_age'),',') ? str_replace(',', '.', $this->input->post('average_age')) : $this->input->post('average_age'),
                         // Tỷ lệ tăng/giảm nhân sự hàng năm trong 02 năm gần nhất:
-                        'employee_change_percent_1' => $this->input->post('employee_change_percent_1'),
-                        'employee_change_percent_2' => $this->input->post('employee_change_percent_2'),
+                        'employee_change_percent_1' => strstr($this->input->post('employee_change_percent_1'),',') ? str_replace(',', '.', $this->input->post('employee_change_percent_1')) : $this->input->post('employee_change_percent_1'),
+                        'employee_change_percent_2' => strstr($this->input->post('employee_change_percent_2'),',') ? str_replace(',', '.', $this->input->post('employee_change_percent_2')) : $this->input->post('employee_change_percent_2'),
 
                         // Số nhân viên có thể sử dụng ngoại ngữ trong công việc
-                        'english_employee' => $this->input->post('english_employee'),
-                        'english_employee_percent' => $this->input->post('english_employee_percent'),
-                        'japanese_employee' => $this->input->post('japanese_employee'),
-                        'japanese_employee_percent' => $this->input->post('japanese_employee_percent'),
+                        'english_employee' => strstr($this->input->post('english_employee'),',') ? str_replace(',', '.', $this->input->post('english_employee')) : $this->input->post('english_employee'),
+                        'english_employee_percent' => strstr($this->input->post('english_employee_percent'),',') ? str_replace(',', '.', $this->input->post('english_employee_percent')) : $this->input->post('english_employee_percent'),
+                        'japanese_employee' => strstr($this->input->post('japanese_employee'),',') ? str_replace(',', '.', $this->input->post('japanese_employee')) : $this->input->post('japanese_employee'),
+                        'japanese_employee_percent' => strstr($this->input->post('japanese_employee_percent'),',') ? str_replace(',', '.', $this->input->post('japanese_employee_percent')) : $this->input->post('japanese_employee_percent'),
                         'other_language_employee' => $this->input->post('other_language_employee'),
                         'other_language_employee_percent' => $this->input->post('other_language_employee_percent'),
                         // Trình độ chuyên môn
                         'qualification' => $this->input->post('qualification'),
                         // Mức lương trung bình/năm
-                        'average_salary' => $this->input->post('average_salary'),
+                        'average_salary' => strstr($this->input->post('average_salary'),',') ? str_replace(',', '.', $this->input->post('average_salary')) : $this->input->post('average_salary'),
                         // Số nhân viên thuộc bộ phận chăm sóc khách hàng
-                        'customer_supporter' => $this->input->post('customer_supporter'),
+                        'customer_supporter' => strstr($this->input->post('customer_supporter'),',') ? str_replace(',', '.', $this->input->post('customer_supporter')) : $this->input->post('customer_supporter'),
                         // Công tác đào tạo, bồi dưỡng nhân lực
                         'training_process' => $this->input->post('training_process'),
                         // Hoạt động tuyển dụng nhân sự
-                        'recruitment_staff' => $this->input->post('recruitment_staff'),
-                        'recruitment_budget' => $this->input->post('recruitment_budget'),
+                        'recruitment_staff' => strstr($this->input->post('recruitment_staff'),',') ? str_replace(',', '.', $this->input->post('recruitment_staff')) : $this->input->post('recruitment_staff'),
+                        'recruitment_budget' => strstr($this->input->post('recruitment_budget'),',') ? str_replace(',', '.', $this->input->post('recruitment_budget')) : $this->input->post('recruitment_budget'),
                         // Chi phí đầu tư cho hoạt động R&D
-                        'investment_fund_r_and_d' => $this->input->post('investment_fund_r_and_d'),
-                        'investment_fund_r_and_d_percent' => $this->input->post('investment_fund_r_and_d_percent'),
-                        'staff_r_and_d' => $this->input->post('staff_r_and_d'),
+                        'investment_fund_r_and_d' => strstr($this->input->post('investment_fund_r_and_d'),',') ? str_replace(',', '.', $this->input->post('investment_fund_r_and_d')) : $this->input->post('investment_fund_r_and_d'),
+                        'investment_fund_r_and_d_percent' => strstr($this->input->post('investment_fund_r_and_d_percent'),',') ? str_replace(',', '.', $this->input->post('investment_fund_r_and_d_percent')) : $this->input->post('investment_fund_r_and_d_percent'),
+                        'staff_r_and_d' => strstr($this->input->post('staff_r_and_d'),',') ? str_replace(',', '.', $this->input->post('staff_r_and_d')) : $this->input->post('staff_r_and_d'),
                         'result_r_and_d' => $this->input->post('result_r_and_d'),
                         // Chế độ bảo mật của công ty và bảo mật cho khách hàng
                         'security_certificate' => $this->input->post('security_certificate'),
@@ -800,6 +808,8 @@ class Information extends Client_Controller {
                         'created_by' => $this->author_info['created_by'],
                         'modified_at' => $this->author_info['modified_at'],
                         'modified_by' => $this->author_info['modified_by']
+
+                        
                     );
 
                     $insert = $this->information_model->insert_company('company', $data);
@@ -1118,131 +1128,135 @@ class Information extends Client_Controller {
 
 
                         // Vốn điều lệ
-                        'equity_1' => $this->input->post('equity_1'),
-                        'equity_2' => $this->input->post('equity_2'),
-                        'equity_percent_1' => $this->input->post('equity_percent_1'),
-                        'equity_percent_2' => $this->input->post('equity_percent_2'),
+                        'equity_1' => strstr($this->input->post('equity_1'),',') ? str_replace(',', '.', $this->input->post('equity_1')) : $this->input->post('equity_1'),
+                        'equity_percent_1' => strstr($this->input->post('equity_percent_1'),',') ? str_replace(',', '.', $this->input->post('equity_percent_1')) : $this->input->post('equity_percent_1'),
+                        'equity_2' => strstr($this->input->post('equity_2'),',') ? str_replace(',', '.', $this->input->post('equity_2')) : $this->input->post('equity_2'),
+                        'equity_percent_2' => strstr($this->input->post('equity_percent_2'),',') ? str_replace(',', '.', $this->input->post('equity_percent_2')) : $this->input->post('equity_percent_2'),
 
                         // Vốn chủ sở hữu
-                        'owner_equity_1' => $this->input->post('owner_equity_1'),
-                        'owner_equity_2' => $this->input->post('owner_equity_2'),
-                        'owner_equity_percent_1' => $this->input->post('owner_equity_percent_1'),
-                        'owner_equity_percent_2' => $this->input->post('owner_equity_percent_2'),
+                        'owner_equity_1' => strstr($this->input->post('owner_equity_1'),',') ? str_replace(',', '.', $this->input->post('owner_equity_1')) : $this->input->post('owner_equity_1'),
+                        'owner_equity_percent_1' => strstr($this->input->post('owner_equity_percent_1'),',') ? str_replace(',', '.', $this->input->post('owner_equity_percent_1')) : $this->input->post('owner_equity_percent_1'),
+                        'owner_equity_2' => strstr($this->input->post('owner_equity_2'),',') ? str_replace(',', '.', $this->input->post('owner_equity_2')) : $this->input->post('owner_equity_2'),
+                        'owner_equity_percent_2' => strstr($this->input->post('owner_equity_percent_2'),',') ? str_replace(',', '.', $this->input->post('owner_equity_percent_2')) : $this->input->post('owner_equity_percent_2'),
 
                         // Tổng tài sản
                         // New
-                        'total_assets_1' => $this->input->post('total_assets_1'),
-                        'total_assets_2' => $this->input->post('total_assets_2'),
-                        'total_assets_percent_1' => $this->input->post('total_assets_percent_1'),
-                        'total_assets_percent_2' => $this->input->post('total_assets_percent_2'),
+                        'total_assets_1' => strstr($this->input->post('total_assets_1'),',') ? str_replace(',', '.', $this->input->post('total_assets_1')) : $this->input->post('total_assets_1'),
+                        'total_assets_percent_1' => strstr($this->input->post('total_assets_percent_1'),',') ? str_replace(',', '.', $this->input->post('total_assets_percent_1')) : $this->input->post('total_assets_percent_1'),
+                        'total_assets_2' => strstr($this->input->post('total_assets_2'),',') ? str_replace(',', '.', $this->input->post('total_assets_2')) : $this->input->post('total_assets_2'),
+                        'total_assets_percent_2' => strstr($this->input->post('total_assets_percent_2'),',') ? str_replace(',', '.', $this->input->post('total_assets_percent_2')) : $this->input->post('total_assets_percent_2'),
                         // End New
 
                         // Tổng doanh thu doanh nghiệp
-                        'total_income_1' => $this->input->post('total_income_1'),
-                        'total_income_2' => $this->input->post('total_income_2'),
-                        'total_income_percent_1' => $this->input->post('total_income_percent_1'),
-                        'total_income_percent_2' => $this->input->post('total_income_percent_2'),
-                        'total_income_6_months' => $this->input->post('total_income_6_months'),
+                        'total_income_1' => strstr($this->input->post('total_income_1'),',') ? str_replace(',', '.', $this->input->post('total_income_1')) : $this->input->post('total_income_1'),
+                        'total_income_percent_1' => strstr($this->input->post('total_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('total_income_percent_1')) : $this->input->post('total_income_percent_1'),
+                        'total_income_2' => strstr($this->input->post('total_income_2'),',') ? str_replace(',', '.', $this->input->post('total_income_2')) : $this->input->post('total_income_2'),
+                        'total_income_percent_2' => strstr($this->input->post('total_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('total_income_percent_2')) : $this->input->post('total_income_percent_2'),
+                        'total_income_6_months' => strstr($this->input->post('total_income_6_months'),',') ? str_replace(',', '.', $this->input->post('total_income_6_months')) : $this->input->post('total_income_6_months'),
                         // End New
 
                         // Bình quân doanh thu/đầu người
                         // New
-                        'per_capita_income_1' => $this->input->post('per_capita_income_1'),
-                        'per_capita_income_2' => $this->input->post('per_capita_income_2'),
-                        'per_capita_income_percent_1' => $this->input->post('per_capita_income_percent_1'),
-                        'per_capita_income_percent_2' => $this->input->post('per_capita_income_percent_2'),
-                        'per_capita_income_6_months' => $this->input->post('per_capita_income_6_months'),
+                        'per_capita_income_1' => strstr($this->input->post('per_capita_income_1'),',') ? str_replace(',', '.', $this->input->post('per_capita_income_1')) : $this->input->post('per_capita_income_1'),
+                        'per_capita_income_percent_1' => strstr($this->input->post('per_capita_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('per_capita_income_percent_1')) : $this->input->post('per_capita_income_percent_1'),
+                        'per_capita_income_2' => strstr($this->input->post('per_capita_income_2'),',') ? str_replace(',', '.', $this->input->post('per_capita_income_2')) : $this->input->post('per_capita_income_2'),
+                        'per_capita_income_percent_2' => strstr($this->input->post('per_capita_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('per_capita_income_percent_2')) : $this->input->post('per_capita_income_percent_2'),
+                        'per_capita_income_6_months' => strstr($this->input->post('per_capita_income_6_months'),',') ? str_replace(',', '.', $this->input->post('per_capita_income_6_months')) : $this->input->post('per_capita_income_6_months'),
                         // End New
 
                         // Tổng doanh thu lĩnh vực sản xuất phần mềm
-                        'software_income_1' => $this->input->post('software_income_1'),
-                        'software_income_2' => $this->input->post('software_income_2'),
-                        // New
-                        'software_income_percent_1' => $this->input->post('software_income_percent_1'),
-                        'software_income_percent_2' => $this->input->post('software_income_percent_2'),
-                        'software_income_6_months' => $this->input->post('software_income_6_months'),
+                        'software_income_1' => strstr($this->input->post('software_income_1'),',') ? str_replace(',', '.', $this->input->post('software_income_1')) : $this->input->post('software_income_1'),
+                        'software_income_percent_1' => strstr($this->input->post('software_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('software_income_percent_1')) : $this->input->post('software_income_percent_1'),
+                        'software_income_2' => strstr($this->input->post('software_income_2'),',') ? str_replace(',', '.', $this->input->post('software_income_2')) : $this->input->post('software_income_2'),
+                        'software_income_percent_2' => strstr($this->input->post('software_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('software_income_percent_2')) : $this->input->post('software_income_percent_2'),
+                        'software_income_6_months' => strstr($this->input->post('software_income_6_months'),',') ? str_replace(',', '.', $this->input->post('software_income_6_months')) : $this->input->post('software_income_6_months'),
                         // End New
 
                         // Tổng doanh thu dịch vụ CNTT
-                        'it_income_1' => $this->input->post('it_income_1'),
-                        'it_income_2' => $this->input->post('it_income_2'),
-                        // New
-                        'it_income_percent_1' => $this->input->post('it_income_percent_1'),
-                        'it_income_percent_2' => $this->input->post('it_income_percent_2'),
-                        'it_income_6_months' => $this->input->post('it_income_6_months'),
+                        'it_income_1' => strstr($this->input->post('it_income_1'),',') ? str_replace(',', '.', $this->input->post('it_income_1')) : $this->input->post('it_income_1'),
+                        'it_income_percent_1' => strstr($this->input->post('it_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('it_income_percent_1')) : $this->input->post('it_income_percent_1'),
+                        'it_income_2' => strstr($this->input->post('it_income_2'),',') ? str_replace(',', '.', $this->input->post('it_income_2')) : $this->input->post('it_income_2'),
+                        'it_income_percent_2' => strstr($this->input->post('it_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('it_income_percent_2')) : $this->input->post('it_income_percent_2'),
+                        'it_income_6_months' => strstr($this->input->post('it_income_6_months'),',') ? str_replace(',', '.', $this->input->post('it_income_6_months')) : $this->input->post('it_income_6_months'),
                         // End New
 
                         // Tổng doanh thu xuất khẩu
-                        'export_income_1' => $this->input->post('export_income_1'),
-                        'export_income_2' => $this->input->post('export_income_2'),
-                        // New
-                        'export_income_percent_1' => $this->input->post('export_income_percent_1'),
-                        'export_income_percent_2' => $this->input->post('export_income_percent_2'),
-                        'export_income_6_months' => $this->input->post('export_income_6_months'),
+                        'export_income_1' => strstr($this->input->post('export_income_1'),',') ? str_replace(',', '.', $this->input->post('export_income_1')) : $this->input->post('export_income_1'),
+                        'export_income_percent_1' => strstr($this->input->post('export_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('export_income_percent_1')) : $this->input->post('export_income_percent_1'),
+                        'export_income_2' => strstr($this->input->post('export_income_2'),',') ? str_replace(',', '.', $this->input->post('export_income_2')) : $this->input->post('export_income_2'),
+                        'export_income_percent_2' => strstr($this->input->post('export_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('export_income_percent_2')) : $this->input->post('export_income_percent_2'),
+                        'export_income_6_months' => strstr($this->input->post('export_income_6_months'),',') ? str_replace(',', '.', $this->input->post('export_income_6_months')) : $this->input->post('export_income_6_months'),
                         // End New
 
                         // Tổng doanh thu của lĩnh vực ứng cử:
                         // Thị trường quốc tế
                         // New
-                        'international_income_1' => $this->input->post('international_income_1'),
-                        'international_income_2' => $this->input->post('international_income_2'),
-                        'international_income_percent_1' => $this->input->post('international_income_percent_1'),
-                        'international_income_percent_2' => $this->input->post('international_income_percent_2'),
-                        'international_income_6_months' => $this->input->post('international_income_6_months'),
+                        'international_income_1' => strstr($this->input->post('international_income_1'),',') ? str_replace(',', '.', $this->input->post('international_income_1')) : $this->input->post('international_income_1'),
+                        'international_income_percent_1' => strstr($this->input->post('international_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('international_income_percent_1')) : $this->input->post('international_income_percent_1'),
+                        'international_income_2' => strstr($this->input->post('international_income_2'),',') ? str_replace(',', '.', $this->input->post('international_income_2')) : $this->input->post('international_income_2'),
+                        'international_income_percent_2' => strstr($this->input->post('international_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('international_income_percent_2')) : $this->input->post('international_income_percent_2'),
+                        'international_income_6_months' => strstr($this->input->post('international_income_6_months'),',') ? str_replace(',', '.', $this->input->post('international_income_6_months')) : $this->input->post('international_income_6_months'),
                         // End New
 
                         // Tổng doanh thu của lĩnh vực ứng cử:
                         // Thị trường nội địa
                         // New
-                        'domestic_income_1' => $this->input->post('domestic_income_1'),
-                        'domestic_income_2' => $this->input->post('domestic_income_2'),
-                        'domestic_income_percent_1' => $this->input->post('domestic_income_percent_1'),
-                        'domestic_income_percent_2' => $this->input->post('domestic_income_percent_2'),
-                        'domestic_income_6_months' => $this->input->post('domestic_income_6_months'),
+                        'domestic_income_1' => strstr($this->input->post('domestic_income_1'),',') ? str_replace(',', '.', $this->input->post('domestic_income_1')) : $this->input->post('domestic_income_1'),
+                        'domestic_income_percent_1' => strstr($this->input->post('domestic_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('domestic_income_percent_1')) : $this->input->post('domestic_income_percent_1'),
+                        'domestic_income_2' => strstr($this->input->post('domestic_income_2'),',') ? str_replace(',', '.', $this->input->post('domestic_income_2')) : $this->input->post('domestic_income_2'),
+                        'domestic_income_percent_2' => strstr($this->input->post('domestic_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('domestic_income_percent_2')) : $this->input->post('domestic_income_percent_2'),
+                        'domestic_income_6_months' => strstr($this->input->post('domestic_income_6_months'),',') ? str_replace(',', '.', $this->input->post('domestic_income_6_months')) : $this->input->post('domestic_income_6_months'),
                         // End New
 
                         // Tổng lợi nhuận trước thuế của DN
                         // New
-                        'before_tax_profit_1' => $this->input->post('before_tax_profit_1'),
-                        'before_tax_profit_2' => $this->input->post('before_tax_profit_2'),
-                        'before_tax_profit_percent_1' => $this->input->post('before_tax_profit_percent_1'),
-                        'before_tax_profit_percent_2' => $this->input->post('before_tax_profit_percent_2'),
-                        'before_tax_profit_6_months' => $this->input->post('before_tax_profit_6_months'),
+                        'before_tax_profit_1' => strstr($this->input->post('before_tax_profit_1'),',') ? str_replace(',', '.', $this->input->post('before_tax_profit_1')) : $this->input->post('before_tax_profit_1'),
+                        'before_tax_profit_percent_1' => strstr($this->input->post('before_tax_profit_percent_1'),',') ? str_replace(',', '.', $this->input->post('before_tax_profit_percent_1')) : $this->input->post('before_tax_profit_percent_1'),
+                        'before_tax_profit_2' => strstr($this->input->post('before_tax_profit_2'),',') ? str_replace(',', '.', $this->input->post('before_tax_profit_2')) : $this->input->post('before_tax_profit_2'),
+                        'before_tax_profit_percent_2' => strstr($this->input->post('before_tax_profit_percent_2'),',') ? str_replace(',', '.', $this->input->post('before_tax_profit_percent_2')) : $this->input->post('before_tax_profit_percent_2'),
+                        'before_tax_profit_6_months' => strstr($this->input->post('before_tax_profit_6_months'),',') ? str_replace(',', '.', $this->input->post('before_tax_profit_6_months')) : $this->input->post('before_tax_profit_6_months'),
                         // End New
 
+
+                        
                         // New
                         // Tổng số nhân viên toàn thời gian
-                        'full_time_employee' => $this->input->post('full_time_employee'),
+                        'full_time_employee' => strstr($this->input->post('full_time_employee'),',') ? str_replace(',', '.', $this->input->post('full_time_employee')) : $this->input->post('full_time_employee'),
                         // Độ tuổi trung bình
-                        'average_age' => $this->input->post('average_age'),
+                        'average_age' => strstr($this->input->post('average_age'),',') ? str_replace(',', '.', $this->input->post('average_age')) : $this->input->post('average_age'),
                         // Tỷ lệ tăng/giảm nhân sự hàng năm trong 02 năm gần nhất:
-                        'employee_change_percent_1' => $this->input->post('employee_change_percent_1'),
-                        'employee_change_percent_2' => $this->input->post('employee_change_percent_2'),
+                        'employee_change_percent_1' => strstr($this->input->post('employee_change_percent_1'),',') ? str_replace(',', '.', $this->input->post('employee_change_percent_1')) : $this->input->post('employee_change_percent_1'),
+                        'employee_change_percent_2' => strstr($this->input->post('employee_change_percent_2'),',') ? str_replace(',', '.', $this->input->post('employee_change_percent_2')) : $this->input->post('employee_change_percent_2'),
 
                         // Số nhân viên có thể sử dụng ngoại ngữ trong công việc
-                        'english_employee' => $this->input->post('english_employee'),
-                        'english_employee_percent' => $this->input->post('english_employee_percent'),
-                        'japanese_employee' => $this->input->post('japanese_employee'),
-                        'japanese_employee_percent' => $this->input->post('japanese_employee_percent'),
+                        'english_employee' => strstr($this->input->post('english_employee'),',') ? str_replace(',', '.', $this->input->post('english_employee')) : $this->input->post('english_employee'),
+                        'english_employee_percent' => strstr($this->input->post('english_employee_percent'),',') ? str_replace(',', '.', $this->input->post('english_employee_percent')) : $this->input->post('english_employee_percent'),
+                        'japanese_employee' => strstr($this->input->post('japanese_employee'),',') ? str_replace(',', '.', $this->input->post('japanese_employee')) : $this->input->post('japanese_employee'),
+                        'japanese_employee_percent' => strstr($this->input->post('japanese_employee_percent'),',') ? str_replace(',', '.', $this->input->post('japanese_employee_percent')) : $this->input->post('japanese_employee_percent'),
                         'other_language_employee' => $this->input->post('other_language_employee'),
                         'other_language_employee_percent' => $this->input->post('other_language_employee_percent'),
+                        // Trình độ chuyên môn
                         'qualification' => $this->input->post('qualification'),
-                        'average_salary' => $this->input->post('average_salary'),
-                        'customer_supporter' => $this->input->post('customer_supporter'),
+                        // Mức lương trung bình/năm
+                        'average_salary' => strstr($this->input->post('average_salary'),',') ? str_replace(',', '.', $this->input->post('average_salary')) : $this->input->post('average_salary'),
+                        // Số nhân viên thuộc bộ phận chăm sóc khách hàng
+                        'customer_supporter' => strstr($this->input->post('customer_supporter'),',') ? str_replace(',', '.', $this->input->post('customer_supporter')) : $this->input->post('customer_supporter'),
+                        // Công tác đào tạo, bồi dưỡng nhân lực
                         'training_process' => $this->input->post('training_process'),
-                        'recruitment_staff' => $this->input->post('recruitment_staff'),
-                        'recruitment_budget' => $this->input->post('recruitment_budget'),
-
-                        'investment_fund_r_and_d' => $this->input->post('investment_fund_r_and_d'),
-                        'investment_fund_r_and_d_percent' => $this->input->post('investment_fund_r_and_d_percent'),
-                        'staff_r_and_d' => $this->input->post('staff_r_and_d'),
+                        // Hoạt động tuyển dụng nhân sự
+                        'recruitment_staff' => strstr($this->input->post('recruitment_staff'),',') ? str_replace(',', '.', $this->input->post('recruitment_staff')) : $this->input->post('recruitment_staff'),
+                        'recruitment_budget' => strstr($this->input->post('recruitment_budget'),',') ? str_replace(',', '.', $this->input->post('recruitment_budget')) : $this->input->post('recruitment_budget'),
+                        // Chi phí đầu tư cho hoạt động R&D
+                        'investment_fund_r_and_d' => strstr($this->input->post('investment_fund_r_and_d'),',') ? str_replace(',', '.', $this->input->post('investment_fund_r_and_d')) : $this->input->post('investment_fund_r_and_d'),
+                        'investment_fund_r_and_d_percent' => strstr($this->input->post('investment_fund_r_and_d_percent'),',') ? str_replace(',', '.', $this->input->post('investment_fund_r_and_d_percent')) : $this->input->post('investment_fund_r_and_d_percent'),
+                        'staff_r_and_d' => strstr($this->input->post('staff_r_and_d'),',') ? str_replace(',', '.', $this->input->post('staff_r_and_d')) : $this->input->post('staff_r_and_d'),
                         'result_r_and_d' => $this->input->post('result_r_and_d'),
-
+                        // Chế độ bảo mật của công ty và bảo mật cho khách hàng
                         'security_certificate' => $this->input->post('security_certificate'),
                         'security_process' => $this->input->post('security_process'),
-
+                        // Quản lý công nghệ, chất lượng
                         'technique_certificate' => $this->input->post('technique_certificate'),
-
+                        // HOẠT ĐỘNG CỘNG ĐỒNG, CÁC GIẢI THƯỞNG, DANH HIỆU VÀ CÁC THÀNH TÍCH ĐẶC BIỆT DOANH NGHIỆP ĐÃ ĐẠT ĐƯỢC
                         'reward' => $this->input->post('reward'),
                         // End New
 
@@ -1649,132 +1663,134 @@ class Information extends Client_Controller {
                         'product' => $this->input->post('product'),
 
 
-                        // Vốn điều lệ
-                        'equity_1' => $this->input->post('equity_1'),
-                        'equity_2' => $this->input->post('equity_2'),
-                        'equity_percent_1' => $this->input->post('equity_percent_1'),
-                        'equity_percent_2' => $this->input->post('equity_percent_2'),
+                        /// Vốn điều lệ
+                        'equity_1' => strstr($this->input->post('equity_1'),',') ? str_replace(',', '.', $this->input->post('equity_1')) : $this->input->post('equity_1'),
+                        'equity_percent_1' => strstr($this->input->post('equity_percent_1'),',') ? str_replace(',', '.', $this->input->post('equity_percent_1')) : $this->input->post('equity_percent_1'),
+                        'equity_2' => strstr($this->input->post('equity_2'),',') ? str_replace(',', '.', $this->input->post('equity_2')) : $this->input->post('equity_2'),
+                        'equity_percent_2' => strstr($this->input->post('equity_percent_2'),',') ? str_replace(',', '.', $this->input->post('equity_percent_2')) : $this->input->post('equity_percent_2'),
 
                         // Vốn chủ sở hữu
-                        'owner_equity_1' => $this->input->post('owner_equity_1'),
-                        'owner_equity_2' => $this->input->post('owner_equity_2'),
-                        'owner_equity_percent_1' => $this->input->post('owner_equity_percent_1'),
-                        'owner_equity_percent_2' => $this->input->post('owner_equity_percent_2'),
+                        'owner_equity_1' => strstr($this->input->post('owner_equity_1'),',') ? str_replace(',', '.', $this->input->post('owner_equity_1')) : $this->input->post('owner_equity_1'),
+                        'owner_equity_percent_1' => strstr($this->input->post('owner_equity_percent_1'),',') ? str_replace(',', '.', $this->input->post('owner_equity_percent_1')) : $this->input->post('owner_equity_percent_1'),
+                        'owner_equity_2' => strstr($this->input->post('owner_equity_2'),',') ? str_replace(',', '.', $this->input->post('owner_equity_2')) : $this->input->post('owner_equity_2'),
+                        'owner_equity_percent_2' => strstr($this->input->post('owner_equity_percent_2'),',') ? str_replace(',', '.', $this->input->post('owner_equity_percent_2')) : $this->input->post('owner_equity_percent_2'),
 
                         // Tổng tài sản
                         // New
-                        'total_assets_1' => $this->input->post('total_assets_1'),
-                        'total_assets_2' => $this->input->post('total_assets_2'),
-                        'total_assets_percent_1' => $this->input->post('total_assets_percent_1'),
-                        'total_assets_percent_2' => $this->input->post('total_assets_percent_2'),
+                        'total_assets_1' => strstr($this->input->post('total_assets_1'),',') ? str_replace(',', '.', $this->input->post('total_assets_1')) : $this->input->post('total_assets_1'),
+                        'total_assets_percent_1' => strstr($this->input->post('total_assets_percent_1'),',') ? str_replace(',', '.', $this->input->post('total_assets_percent_1')) : $this->input->post('total_assets_percent_1'),
+                        'total_assets_2' => strstr($this->input->post('total_assets_2'),',') ? str_replace(',', '.', $this->input->post('total_assets_2')) : $this->input->post('total_assets_2'),
+                        'total_assets_percent_2' => strstr($this->input->post('total_assets_percent_2'),',') ? str_replace(',', '.', $this->input->post('total_assets_percent_2')) : $this->input->post('total_assets_percent_2'),
                         // End New
 
                         // Tổng doanh thu doanh nghiệp
-                        'total_income_1' => $this->input->post('total_income_1'),
-                        'total_income_2' => $this->input->post('total_income_2'),
-                        'total_income_percent_1' => $this->input->post('total_income_percent_1'),
-                        'total_income_percent_2' => $this->input->post('total_income_percent_2'),
-                        'total_income_6_months' => $this->input->post('total_income_6_months'),
+                        'total_income_1' => strstr($this->input->post('total_income_1'),',') ? str_replace(',', '.', $this->input->post('total_income_1')) : $this->input->post('total_income_1'),
+                        'total_income_percent_1' => strstr($this->input->post('total_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('total_income_percent_1')) : $this->input->post('total_income_percent_1'),
+                        'total_income_2' => strstr($this->input->post('total_income_2'),',') ? str_replace(',', '.', $this->input->post('total_income_2')) : $this->input->post('total_income_2'),
+                        'total_income_percent_2' => strstr($this->input->post('total_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('total_income_percent_2')) : $this->input->post('total_income_percent_2'),
+                        'total_income_6_months' => strstr($this->input->post('total_income_6_months'),',') ? str_replace(',', '.', $this->input->post('total_income_6_months')) : $this->input->post('total_income_6_months'),
                         // End New
 
                         // Bình quân doanh thu/đầu người
                         // New
-                        'per_capita_income_1' => $this->input->post('per_capita_income_1'),
-                        'per_capita_income_2' => $this->input->post('per_capita_income_2'),
-                        'per_capita_income_percent_1' => $this->input->post('per_capita_income_percent_1'),
-                        'per_capita_income_percent_2' => $this->input->post('per_capita_income_percent_2'),
-                        'per_capita_income_6_months' => $this->input->post('per_capita_income_6_months'),
+                        'per_capita_income_1' => strstr($this->input->post('per_capita_income_1'),',') ? str_replace(',', '.', $this->input->post('per_capita_income_1')) : $this->input->post('per_capita_income_1'),
+                        'per_capita_income_percent_1' => strstr($this->input->post('per_capita_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('per_capita_income_percent_1')) : $this->input->post('per_capita_income_percent_1'),
+                        'per_capita_income_2' => strstr($this->input->post('per_capita_income_2'),',') ? str_replace(',', '.', $this->input->post('per_capita_income_2')) : $this->input->post('per_capita_income_2'),
+                        'per_capita_income_percent_2' => strstr($this->input->post('per_capita_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('per_capita_income_percent_2')) : $this->input->post('per_capita_income_percent_2'),
+                        'per_capita_income_6_months' => strstr($this->input->post('per_capita_income_6_months'),',') ? str_replace(',', '.', $this->input->post('per_capita_income_6_months')) : $this->input->post('per_capita_income_6_months'),
                         // End New
 
                         // Tổng doanh thu lĩnh vực sản xuất phần mềm
-                        'software_income_1' => $this->input->post('software_income_1'),
-                        'software_income_2' => $this->input->post('software_income_2'),
-                        // New
-                        'software_income_percent_1' => $this->input->post('software_income_percent_1'),
-                        'software_income_percent_2' => $this->input->post('software_income_percent_2'),
-                        'software_income_6_months' => $this->input->post('software_income_6_months'),
+                        'software_income_1' => strstr($this->input->post('software_income_1'),',') ? str_replace(',', '.', $this->input->post('software_income_1')) : $this->input->post('software_income_1'),
+                        'software_income_percent_1' => strstr($this->input->post('software_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('software_income_percent_1')) : $this->input->post('software_income_percent_1'),
+                        'software_income_2' => strstr($this->input->post('software_income_2'),',') ? str_replace(',', '.', $this->input->post('software_income_2')) : $this->input->post('software_income_2'),
+                        'software_income_percent_2' => strstr($this->input->post('software_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('software_income_percent_2')) : $this->input->post('software_income_percent_2'),
+                        'software_income_6_months' => strstr($this->input->post('software_income_6_months'),',') ? str_replace(',', '.', $this->input->post('software_income_6_months')) : $this->input->post('software_income_6_months'),
                         // End New
 
                         // Tổng doanh thu dịch vụ CNTT
-                        'it_income_1' => $this->input->post('it_income_1'),
-                        'it_income_2' => $this->input->post('it_income_2'),
-                        // New
-                        'it_income_percent_1' => $this->input->post('it_income_percent_1'),
-                        'it_income_percent_2' => $this->input->post('it_income_percent_2'),
-                        'it_income_6_months' => $this->input->post('it_income_6_months'),
+                        'it_income_1' => strstr($this->input->post('it_income_1'),',') ? str_replace(',', '.', $this->input->post('it_income_1')) : $this->input->post('it_income_1'),
+                        'it_income_percent_1' => strstr($this->input->post('it_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('it_income_percent_1')) : $this->input->post('it_income_percent_1'),
+                        'it_income_2' => strstr($this->input->post('it_income_2'),',') ? str_replace(',', '.', $this->input->post('it_income_2')) : $this->input->post('it_income_2'),
+                        'it_income_percent_2' => strstr($this->input->post('it_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('it_income_percent_2')) : $this->input->post('it_income_percent_2'),
+                        'it_income_6_months' => strstr($this->input->post('it_income_6_months'),',') ? str_replace(',', '.', $this->input->post('it_income_6_months')) : $this->input->post('it_income_6_months'),
                         // End New
 
                         // Tổng doanh thu xuất khẩu
-                        'export_income_1' => $this->input->post('export_income_1'),
-                        'export_income_2' => $this->input->post('export_income_2'),
-                        // New
-                        'export_income_percent_1' => $this->input->post('export_income_percent_1'),
-                        'export_income_percent_2' => $this->input->post('export_income_percent_2'),
-                        'export_income_6_months' => $this->input->post('export_income_6_months'),
+                        'export_income_1' => strstr($this->input->post('export_income_1'),',') ? str_replace(',', '.', $this->input->post('export_income_1')) : $this->input->post('export_income_1'),
+                        'export_income_percent_1' => strstr($this->input->post('export_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('export_income_percent_1')) : $this->input->post('export_income_percent_1'),
+                        'export_income_2' => strstr($this->input->post('export_income_2'),',') ? str_replace(',', '.', $this->input->post('export_income_2')) : $this->input->post('export_income_2'),
+                        'export_income_percent_2' => strstr($this->input->post('export_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('export_income_percent_2')) : $this->input->post('export_income_percent_2'),
+                        'export_income_6_months' => strstr($this->input->post('export_income_6_months'),',') ? str_replace(',', '.', $this->input->post('export_income_6_months')) : $this->input->post('export_income_6_months'),
                         // End New
 
                         // Tổng doanh thu của lĩnh vực ứng cử:
                         // Thị trường quốc tế
                         // New
-                        'international_income_1' => $this->input->post('international_income_1'),
-                        'international_income_2' => $this->input->post('international_income_2'),
-                        'international_income_percent_1' => $this->input->post('international_income_percent_1'),
-                        'international_income_percent_2' => $this->input->post('international_income_percent_2'),
-                        'international_income_6_months' => $this->input->post('international_income_6_months'),
+                        'international_income_1' => strstr($this->input->post('international_income_1'),',') ? str_replace(',', '.', $this->input->post('international_income_1')) : $this->input->post('international_income_1'),
+                        'international_income_percent_1' => strstr($this->input->post('international_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('international_income_percent_1')) : $this->input->post('international_income_percent_1'),
+                        'international_income_2' => strstr($this->input->post('international_income_2'),',') ? str_replace(',', '.', $this->input->post('international_income_2')) : $this->input->post('international_income_2'),
+                        'international_income_percent_2' => strstr($this->input->post('international_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('international_income_percent_2')) : $this->input->post('international_income_percent_2'),
+                        'international_income_6_months' => strstr($this->input->post('international_income_6_months'),',') ? str_replace(',', '.', $this->input->post('international_income_6_months')) : $this->input->post('international_income_6_months'),
                         // End New
 
                         // Tổng doanh thu của lĩnh vực ứng cử:
                         // Thị trường nội địa
                         // New
-                        'domestic_income_1' => $this->input->post('domestic_income_1'),
-                        'domestic_income_2' => $this->input->post('domestic_income_2'),
-                        'domestic_income_percent_1' => $this->input->post('domestic_income_percent_1'),
-                        'domestic_income_percent_2' => $this->input->post('domestic_income_percent_2'),
-                        'domestic_income_6_months' => $this->input->post('domestic_income_6_months'),
+                        'domestic_income_1' => strstr($this->input->post('domestic_income_1'),',') ? str_replace(',', '.', $this->input->post('domestic_income_1')) : $this->input->post('domestic_income_1'),
+                        'domestic_income_percent_1' => strstr($this->input->post('domestic_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('domestic_income_percent_1')) : $this->input->post('domestic_income_percent_1'),
+                        'domestic_income_2' => strstr($this->input->post('domestic_income_2'),',') ? str_replace(',', '.', $this->input->post('domestic_income_2')) : $this->input->post('domestic_income_2'),
+                        'domestic_income_percent_2' => strstr($this->input->post('domestic_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('domestic_income_percent_2')) : $this->input->post('domestic_income_percent_2'),
+                        'domestic_income_6_months' => strstr($this->input->post('domestic_income_6_months'),',') ? str_replace(',', '.', $this->input->post('domestic_income_6_months')) : $this->input->post('domestic_income_6_months'),
                         // End New
 
                         // Tổng lợi nhuận trước thuế của DN
                         // New
-                        'before_tax_profit_1' => $this->input->post('before_tax_profit_1'),
-                        'before_tax_profit_2' => $this->input->post('before_tax_profit_2'),
-                        'before_tax_profit_percent_1' => $this->input->post('before_tax_profit_percent_1'),
-                        'before_tax_profit_percent_2' => $this->input->post('before_tax_profit_percent_2'),
-                        'before_tax_profit_6_months' => $this->input->post('before_tax_profit_6_months'),
+                        'before_tax_profit_1' => strstr($this->input->post('before_tax_profit_1'),',') ? str_replace(',', '.', $this->input->post('before_tax_profit_1')) : $this->input->post('before_tax_profit_1'),
+                        'before_tax_profit_percent_1' => strstr($this->input->post('before_tax_profit_percent_1'),',') ? str_replace(',', '.', $this->input->post('before_tax_profit_percent_1')) : $this->input->post('before_tax_profit_percent_1'),
+                        'before_tax_profit_2' => strstr($this->input->post('before_tax_profit_2'),',') ? str_replace(',', '.', $this->input->post('before_tax_profit_2')) : $this->input->post('before_tax_profit_2'),
+                        'before_tax_profit_percent_2' => strstr($this->input->post('before_tax_profit_percent_2'),',') ? str_replace(',', '.', $this->input->post('before_tax_profit_percent_2')) : $this->input->post('before_tax_profit_percent_2'),
+                        'before_tax_profit_6_months' => strstr($this->input->post('before_tax_profit_6_months'),',') ? str_replace(',', '.', $this->input->post('before_tax_profit_6_months')) : $this->input->post('before_tax_profit_6_months'),
                         // End New
 
                         // New
                         // Tổng số nhân viên toàn thời gian
-                        'full_time_employee' => $this->input->post('full_time_employee'),
+                        'full_time_employee' => strstr($this->input->post('full_time_employee'),',') ? str_replace(',', '.', $this->input->post('full_time_employee')) : $this->input->post('full_time_employee'),
                         // Độ tuổi trung bình
-                        'average_age' => $this->input->post('average_age'),
+                        'average_age' => strstr($this->input->post('average_age'),',') ? str_replace(',', '.', $this->input->post('average_age')) : $this->input->post('average_age'),
                         // Tỷ lệ tăng/giảm nhân sự hàng năm trong 02 năm gần nhất:
-                        'employee_change_percent_1' => $this->input->post('employee_change_percent_1'),
-                        'employee_change_percent_2' => $this->input->post('employee_change_percent_2'),
+                        'employee_change_percent_1' => strstr($this->input->post('employee_change_percent_1'),',') ? str_replace(',', '.', $this->input->post('employee_change_percent_1')) : $this->input->post('employee_change_percent_1'),
+                        'employee_change_percent_2' => strstr($this->input->post('employee_change_percent_2'),',') ? str_replace(',', '.', $this->input->post('employee_change_percent_2')) : $this->input->post('employee_change_percent_2'),
 
                         // Số nhân viên có thể sử dụng ngoại ngữ trong công việc
-                        'english_employee' => $this->input->post('english_employee'),
-                        'english_employee_percent' => $this->input->post('english_employee_percent'),
-                        'japanese_employee' => $this->input->post('japanese_employee'),
-                        'japanese_employee_percent' => $this->input->post('japanese_employee_percent'),
+                        'english_employee' => strstr($this->input->post('english_employee'),',') ? str_replace(',', '.', $this->input->post('english_employee')) : $this->input->post('english_employee'),
+                        'english_employee_percent' => strstr($this->input->post('english_employee_percent'),',') ? str_replace(',', '.', $this->input->post('english_employee_percent')) : $this->input->post('english_employee_percent'),
+                        'japanese_employee' => strstr($this->input->post('japanese_employee'),',') ? str_replace(',', '.', $this->input->post('japanese_employee')) : $this->input->post('japanese_employee'),
+                        'japanese_employee_percent' => strstr($this->input->post('japanese_employee_percent'),',') ? str_replace(',', '.', $this->input->post('japanese_employee_percent')) : $this->input->post('japanese_employee_percent'),
                         'other_language_employee' => $this->input->post('other_language_employee'),
                         'other_language_employee_percent' => $this->input->post('other_language_employee_percent'),
+                        // Trình độ chuyên môn
                         'qualification' => $this->input->post('qualification'),
-                        'average_salary' => $this->input->post('average_salary'),
-                        'customer_supporter' => $this->input->post('customer_supporter'),
+                        // Mức lương trung bình/năm
+                        'average_salary' => strstr($this->input->post('average_salary'),',') ? str_replace(',', '.', $this->input->post('average_salary')) : $this->input->post('average_salary'),
+                        // Số nhân viên thuộc bộ phận chăm sóc khách hàng
+                        'customer_supporter' => strstr($this->input->post('customer_supporter'),',') ? str_replace(',', '.', $this->input->post('customer_supporter')) : $this->input->post('customer_supporter'),
+                        // Công tác đào tạo, bồi dưỡng nhân lực
                         'training_process' => $this->input->post('training_process'),
-                        'recruitment_staff' => $this->input->post('recruitment_staff'),
-                        'recruitment_budget' => $this->input->post('recruitment_budget'),
-
-                        'investment_fund_r_and_d' => $this->input->post('investment_fund_r_and_d'),
-                        'investment_fund_r_and_d_percent' => $this->input->post('investment_fund_r_and_d_percent'),
-                        'staff_r_and_d' => $this->input->post('staff_r_and_d'),
+                        // Hoạt động tuyển dụng nhân sự
+                        'recruitment_staff' => strstr($this->input->post('recruitment_staff'),',') ? str_replace(',', '.', $this->input->post('recruitment_staff')) : $this->input->post('recruitment_staff'),
+                        'recruitment_budget' => strstr($this->input->post('recruitment_budget'),',') ? str_replace(',', '.', $this->input->post('recruitment_budget')) : $this->input->post('recruitment_budget'),
+                        // Chi phí đầu tư cho hoạt động R&D
+                        'investment_fund_r_and_d' => strstr($this->input->post('investment_fund_r_and_d'),',') ? str_replace(',', '.', $this->input->post('investment_fund_r_and_d')) : $this->input->post('investment_fund_r_and_d'),
+                        'investment_fund_r_and_d_percent' => strstr($this->input->post('investment_fund_r_and_d_percent'),',') ? str_replace(',', '.', $this->input->post('investment_fund_r_and_d_percent')) : $this->input->post('investment_fund_r_and_d_percent'),
+                        'staff_r_and_d' => strstr($this->input->post('staff_r_and_d'),',') ? str_replace(',', '.', $this->input->post('staff_r_and_d')) : $this->input->post('staff_r_and_d'),
                         'result_r_and_d' => $this->input->post('result_r_and_d'),
-
+                        // Chế độ bảo mật của công ty và bảo mật cho khách hàng
                         'security_certificate' => $this->input->post('security_certificate'),
                         'security_process' => $this->input->post('security_process'),
-
+                        // Quản lý công nghệ, chất lượng
                         'technique_certificate' => $this->input->post('technique_certificate'),
-
+                        // HOẠT ĐỘNG CỘNG ĐỒNG, CÁC GIẢI THƯỞNG, DANH HIỆU VÀ CÁC THÀNH TÍCH ĐẶC BIỆT DOANH NGHIỆP ĐÃ ĐẠT ĐƯỢC
                         'reward' => $this->input->post('reward'),
                         // End New
                         'main_service' => $main_service,
@@ -2101,131 +2117,133 @@ class Information extends Client_Controller {
 
 
                         // Vốn điều lệ
-                        'equity_1' => $this->input->post('equity_1'),
-                        'equity_2' => $this->input->post('equity_2'),
-                        'equity_percent_1' => $this->input->post('equity_percent_1'),
-                        'equity_percent_2' => $this->input->post('equity_percent_2'),
+                        'equity_1' => strstr($this->input->post('equity_1'),',') ? str_replace(',', '.', $this->input->post('equity_1')) : $this->input->post('equity_1'),
+                        'equity_percent_1' => strstr($this->input->post('equity_percent_1'),',') ? str_replace(',', '.', $this->input->post('equity_percent_1')) : $this->input->post('equity_percent_1'),
+                        'equity_2' => strstr($this->input->post('equity_2'),',') ? str_replace(',', '.', $this->input->post('equity_2')) : $this->input->post('equity_2'),
+                        'equity_percent_2' => strstr($this->input->post('equity_percent_2'),',') ? str_replace(',', '.', $this->input->post('equity_percent_2')) : $this->input->post('equity_percent_2'),
 
                         // Vốn chủ sở hữu
-                        'owner_equity_1' => $this->input->post('owner_equity_1'),
-                        'owner_equity_2' => $this->input->post('owner_equity_2'),
-                        'owner_equity_percent_1' => $this->input->post('owner_equity_percent_1'),
-                        'owner_equity_percent_2' => $this->input->post('owner_equity_percent_2'),
+                        'owner_equity_1' => strstr($this->input->post('owner_equity_1'),',') ? str_replace(',', '.', $this->input->post('owner_equity_1')) : $this->input->post('owner_equity_1'),
+                        'owner_equity_percent_1' => strstr($this->input->post('owner_equity_percent_1'),',') ? str_replace(',', '.', $this->input->post('owner_equity_percent_1')) : $this->input->post('owner_equity_percent_1'),
+                        'owner_equity_2' => strstr($this->input->post('owner_equity_2'),',') ? str_replace(',', '.', $this->input->post('owner_equity_2')) : $this->input->post('owner_equity_2'),
+                        'owner_equity_percent_2' => strstr($this->input->post('owner_equity_percent_2'),',') ? str_replace(',', '.', $this->input->post('owner_equity_percent_2')) : $this->input->post('owner_equity_percent_2'),
 
                         // Tổng tài sản
                         // New
-                        'total_assets_1' => $this->input->post('total_assets_1'),
-                        'total_assets_2' => $this->input->post('total_assets_2'),
-                        'total_assets_percent_1' => $this->input->post('total_assets_percent_1'),
-                        'total_assets_percent_2' => $this->input->post('total_assets_percent_2'),
+                        'total_assets_1' => strstr($this->input->post('total_assets_1'),',') ? str_replace(',', '.', $this->input->post('total_assets_1')) : $this->input->post('total_assets_1'),
+                        'total_assets_percent_1' => strstr($this->input->post('total_assets_percent_1'),',') ? str_replace(',', '.', $this->input->post('total_assets_percent_1')) : $this->input->post('total_assets_percent_1'),
+                        'total_assets_2' => strstr($this->input->post('total_assets_2'),',') ? str_replace(',', '.', $this->input->post('total_assets_2')) : $this->input->post('total_assets_2'),
+                        'total_assets_percent_2' => strstr($this->input->post('total_assets_percent_2'),',') ? str_replace(',', '.', $this->input->post('total_assets_percent_2')) : $this->input->post('total_assets_percent_2'),
                         // End New
 
                         // Tổng doanh thu doanh nghiệp
-                        'total_income_1' => $this->input->post('total_income_1'),
-                        'total_income_2' => $this->input->post('total_income_2'),
-                        'total_income_percent_1' => $this->input->post('total_income_percent_1'),
-                        'total_income_percent_2' => $this->input->post('total_income_percent_2'),
-                        'total_income_6_months' => $this->input->post('total_income_6_months'),
+                        'total_income_1' => strstr($this->input->post('total_income_1'),',') ? str_replace(',', '.', $this->input->post('total_income_1')) : $this->input->post('total_income_1'),
+                        'total_income_percent_1' => strstr($this->input->post('total_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('total_income_percent_1')) : $this->input->post('total_income_percent_1'),
+                        'total_income_2' => strstr($this->input->post('total_income_2'),',') ? str_replace(',', '.', $this->input->post('total_income_2')) : $this->input->post('total_income_2'),
+                        'total_income_percent_2' => strstr($this->input->post('total_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('total_income_percent_2')) : $this->input->post('total_income_percent_2'),
+                        'total_income_6_months' => strstr($this->input->post('total_income_6_months'),',') ? str_replace(',', '.', $this->input->post('total_income_6_months')) : $this->input->post('total_income_6_months'),
                         // End New
 
                         // Bình quân doanh thu/đầu người
                         // New
-                        'per_capita_income_1' => $this->input->post('per_capita_income_1'),
-                        'per_capita_income_2' => $this->input->post('per_capita_income_2'),
-                        'per_capita_income_percent_1' => $this->input->post('per_capita_income_percent_1'),
-                        'per_capita_income_percent_2' => $this->input->post('per_capita_income_percent_2'),
-                        'per_capita_income_6_months' => $this->input->post('per_capita_income_6_months'),
+                        'per_capita_income_1' => strstr($this->input->post('per_capita_income_1'),',') ? str_replace(',', '.', $this->input->post('per_capita_income_1')) : $this->input->post('per_capita_income_1'),
+                        'per_capita_income_percent_1' => strstr($this->input->post('per_capita_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('per_capita_income_percent_1')) : $this->input->post('per_capita_income_percent_1'),
+                        'per_capita_income_2' => strstr($this->input->post('per_capita_income_2'),',') ? str_replace(',', '.', $this->input->post('per_capita_income_2')) : $this->input->post('per_capita_income_2'),
+                        'per_capita_income_percent_2' => strstr($this->input->post('per_capita_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('per_capita_income_percent_2')) : $this->input->post('per_capita_income_percent_2'),
+                        'per_capita_income_6_months' => strstr($this->input->post('per_capita_income_6_months'),',') ? str_replace(',', '.', $this->input->post('per_capita_income_6_months')) : $this->input->post('per_capita_income_6_months'),
                         // End New
 
                         // Tổng doanh thu lĩnh vực sản xuất phần mềm
-                        'software_income_1' => $this->input->post('software_income_1'),
-                        'software_income_2' => $this->input->post('software_income_2'),
-                        // New
-                        'software_income_percent_1' => $this->input->post('software_income_percent_1'),
-                        'software_income_percent_2' => $this->input->post('software_income_percent_2'),
-                        'software_income_6_months' => $this->input->post('software_income_6_months'),
+                        'software_income_1' => strstr($this->input->post('software_income_1'),',') ? str_replace(',', '.', $this->input->post('software_income_1')) : $this->input->post('software_income_1'),
+                        'software_income_percent_1' => strstr($this->input->post('software_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('software_income_percent_1')) : $this->input->post('software_income_percent_1'),
+                        'software_income_2' => strstr($this->input->post('software_income_2'),',') ? str_replace(',', '.', $this->input->post('software_income_2')) : $this->input->post('software_income_2'),
+                        'software_income_percent_2' => strstr($this->input->post('software_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('software_income_percent_2')) : $this->input->post('software_income_percent_2'),
+                        'software_income_6_months' => strstr($this->input->post('software_income_6_months'),',') ? str_replace(',', '.', $this->input->post('software_income_6_months')) : $this->input->post('software_income_6_months'),
                         // End New
 
                         // Tổng doanh thu dịch vụ CNTT
-                        'it_income_1' => $this->input->post('it_income_1'),
-                        'it_income_2' => $this->input->post('it_income_2'),
-                        // New
-                        'it_income_percent_1' => $this->input->post('it_income_percent_1'),
-                        'it_income_percent_2' => $this->input->post('it_income_percent_2'),
-                        'it_income_6_months' => $this->input->post('it_income_6_months'),
+                        'it_income_1' => strstr($this->input->post('it_income_1'),',') ? str_replace(',', '.', $this->input->post('it_income_1')) : $this->input->post('it_income_1'),
+                        'it_income_percent_1' => strstr($this->input->post('it_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('it_income_percent_1')) : $this->input->post('it_income_percent_1'),
+                        'it_income_2' => strstr($this->input->post('it_income_2'),',') ? str_replace(',', '.', $this->input->post('it_income_2')) : $this->input->post('it_income_2'),
+                        'it_income_percent_2' => strstr($this->input->post('it_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('it_income_percent_2')) : $this->input->post('it_income_percent_2'),
+                        'it_income_6_months' => strstr($this->input->post('it_income_6_months'),',') ? str_replace(',', '.', $this->input->post('it_income_6_months')) : $this->input->post('it_income_6_months'),
                         // End New
 
                         // Tổng doanh thu xuất khẩu
-                        'export_income_1' => $this->input->post('export_income_1'),
-                        'export_income_2' => $this->input->post('export_income_2'),
-                        // New
-                        'export_income_percent_1' => $this->input->post('export_income_percent_1'),
-                        'export_income_percent_2' => $this->input->post('export_income_percent_2'),
-                        'export_income_6_months' => $this->input->post('export_income_6_months'),
+                        'export_income_1' => strstr($this->input->post('export_income_1'),',') ? str_replace(',', '.', $this->input->post('export_income_1')) : $this->input->post('export_income_1'),
+                        'export_income_percent_1' => strstr($this->input->post('export_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('export_income_percent_1')) : $this->input->post('export_income_percent_1'),
+                        'export_income_2' => strstr($this->input->post('export_income_2'),',') ? str_replace(',', '.', $this->input->post('export_income_2')) : $this->input->post('export_income_2'),
+                        'export_income_percent_2' => strstr($this->input->post('export_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('export_income_percent_2')) : $this->input->post('export_income_percent_2'),
+                        'export_income_6_months' => strstr($this->input->post('export_income_6_months'),',') ? str_replace(',', '.', $this->input->post('export_income_6_months')) : $this->input->post('export_income_6_months'),
                         // End New
 
                         // Tổng doanh thu của lĩnh vực ứng cử:
                         // Thị trường quốc tế
                         // New
-                        'international_income_1' => $this->input->post('international_income_1'),
-                        'international_income_2' => $this->input->post('international_income_2'),
-                        'international_income_percent_1' => $this->input->post('international_income_percent_1'),
-                        'international_income_percent_2' => $this->input->post('international_income_percent_2'),
-                        'international_income_6_months' => $this->input->post('international_income_6_months'),
+                        'international_income_1' => strstr($this->input->post('international_income_1'),',') ? str_replace(',', '.', $this->input->post('international_income_1')) : $this->input->post('international_income_1'),
+                        'international_income_percent_1' => strstr($this->input->post('international_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('international_income_percent_1')) : $this->input->post('international_income_percent_1'),
+                        'international_income_2' => strstr($this->input->post('international_income_2'),',') ? str_replace(',', '.', $this->input->post('international_income_2')) : $this->input->post('international_income_2'),
+                        'international_income_percent_2' => strstr($this->input->post('international_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('international_income_percent_2')) : $this->input->post('international_income_percent_2'),
+                        'international_income_6_months' => strstr($this->input->post('international_income_6_months'),',') ? str_replace(',', '.', $this->input->post('international_income_6_months')) : $this->input->post('international_income_6_months'),
                         // End New
 
                         // Tổng doanh thu của lĩnh vực ứng cử:
                         // Thị trường nội địa
                         // New
-                        'domestic_income_1' => $this->input->post('domestic_income_1'),
-                        'domestic_income_2' => $this->input->post('domestic_income_2'),
-                        'domestic_income_percent_1' => $this->input->post('domestic_income_percent_1'),
-                        'domestic_income_percent_2' => $this->input->post('domestic_income_percent_2'),
-                        'domestic_income_6_months' => $this->input->post('domestic_income_6_months'),
+                        'domestic_income_1' => strstr($this->input->post('domestic_income_1'),',') ? str_replace(',', '.', $this->input->post('domestic_income_1')) : $this->input->post('domestic_income_1'),
+                        'domestic_income_percent_1' => strstr($this->input->post('domestic_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('domestic_income_percent_1')) : $this->input->post('domestic_income_percent_1'),
+                        'domestic_income_2' => strstr($this->input->post('domestic_income_2'),',') ? str_replace(',', '.', $this->input->post('domestic_income_2')) : $this->input->post('domestic_income_2'),
+                        'domestic_income_percent_2' => strstr($this->input->post('domestic_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('domestic_income_percent_2')) : $this->input->post('domestic_income_percent_2'),
+                        'domestic_income_6_months' => strstr($this->input->post('domestic_income_6_months'),',') ? str_replace(',', '.', $this->input->post('domestic_income_6_months')) : $this->input->post('domestic_income_6_months'),
                         // End New
 
                         // Tổng lợi nhuận trước thuế của DN
                         // New
-                        'before_tax_profit_1' => $this->input->post('before_tax_profit_1'),
-                        'before_tax_profit_2' => $this->input->post('before_tax_profit_2'),
-                        'before_tax_profit_percent_1' => $this->input->post('before_tax_profit_percent_1'),
-                        'before_tax_profit_percent_2' => $this->input->post('before_tax_profit_percent_2'),
-                        'before_tax_profit_6_months' => $this->input->post('before_tax_profit_6_months'),
+                        'before_tax_profit_1' => strstr($this->input->post('before_tax_profit_1'),',') ? str_replace(',', '.', $this->input->post('before_tax_profit_1')) : $this->input->post('before_tax_profit_1'),
+                        'before_tax_profit_percent_1' => strstr($this->input->post('before_tax_profit_percent_1'),',') ? str_replace(',', '.', $this->input->post('before_tax_profit_percent_1')) : $this->input->post('before_tax_profit_percent_1'),
+                        'before_tax_profit_2' => strstr($this->input->post('before_tax_profit_2'),',') ? str_replace(',', '.', $this->input->post('before_tax_profit_2')) : $this->input->post('before_tax_profit_2'),
+                        'before_tax_profit_percent_2' => strstr($this->input->post('before_tax_profit_percent_2'),',') ? str_replace(',', '.', $this->input->post('before_tax_profit_percent_2')) : $this->input->post('before_tax_profit_percent_2'),
+                        'before_tax_profit_6_months' => strstr($this->input->post('before_tax_profit_6_months'),',') ? str_replace(',', '.', $this->input->post('before_tax_profit_6_months')) : $this->input->post('before_tax_profit_6_months'),
                         // End New
 
                         // New
                         // Tổng số nhân viên toàn thời gian
-                        'full_time_employee' => $this->input->post('full_time_employee'),
+                        'full_time_employee' => strstr($this->input->post('full_time_employee'),',') ? str_replace(',', '.', $this->input->post('full_time_employee')) : $this->input->post('full_time_employee'),
                         // Độ tuổi trung bình
-                        'average_age' => $this->input->post('average_age'),
+                        'average_age' => strstr($this->input->post('average_age'),',') ? str_replace(',', '.', $this->input->post('average_age')) : $this->input->post('average_age'),
                         // Tỷ lệ tăng/giảm nhân sự hàng năm trong 02 năm gần nhất:
-                        'employee_change_percent_1' => $this->input->post('employee_change_percent_1'),
-                        'employee_change_percent_2' => $this->input->post('employee_change_percent_2'),
+                        'employee_change_percent_1' => strstr($this->input->post('employee_change_percent_1'),',') ? str_replace(',', '.', $this->input->post('employee_change_percent_1')) : $this->input->post('employee_change_percent_1'),
+                        'employee_change_percent_2' => strstr($this->input->post('employee_change_percent_2'),',') ? str_replace(',', '.', $this->input->post('employee_change_percent_2')) : $this->input->post('employee_change_percent_2'),
 
                         // Số nhân viên có thể sử dụng ngoại ngữ trong công việc
-                        'english_employee' => $this->input->post('english_employee'),
-                        'english_employee_percent' => $this->input->post('english_employee_percent'),
-                        'japanese_employee' => $this->input->post('japanese_employee'),
-                        'japanese_employee_percent' => $this->input->post('japanese_employee_percent'),
+                        'english_employee' => strstr($this->input->post('english_employee'),',') ? str_replace(',', '.', $this->input->post('english_employee')) : $this->input->post('english_employee'),
+                        'english_employee_percent' => strstr($this->input->post('english_employee_percent'),',') ? str_replace(',', '.', $this->input->post('english_employee_percent')) : $this->input->post('english_employee_percent'),
+                        'japanese_employee' => strstr($this->input->post('japanese_employee'),',') ? str_replace(',', '.', $this->input->post('japanese_employee')) : $this->input->post('japanese_employee'),
+                        'japanese_employee_percent' => strstr($this->input->post('japanese_employee_percent'),',') ? str_replace(',', '.', $this->input->post('japanese_employee_percent')) : $this->input->post('japanese_employee_percent'),
                         'other_language_employee' => $this->input->post('other_language_employee'),
                         'other_language_employee_percent' => $this->input->post('other_language_employee_percent'),
+                        // Trình độ chuyên môn
                         'qualification' => $this->input->post('qualification'),
-                        'average_salary' => $this->input->post('average_salary'),
-                        'customer_supporter' => $this->input->post('customer_supporter'),
+                        // Mức lương trung bình/năm
+                        'average_salary' => strstr($this->input->post('average_salary'),',') ? str_replace(',', '.', $this->input->post('average_salary')) : $this->input->post('average_salary'),
+                        // Số nhân viên thuộc bộ phận chăm sóc khách hàng
+                        'customer_supporter' => strstr($this->input->post('customer_supporter'),',') ? str_replace(',', '.', $this->input->post('customer_supporter')) : $this->input->post('customer_supporter'),
+                        // Công tác đào tạo, bồi dưỡng nhân lực
                         'training_process' => $this->input->post('training_process'),
-                        'recruitment_staff' => $this->input->post('recruitment_staff'),
-                        'recruitment_budget' => $this->input->post('recruitment_budget'),
-
-                        'investment_fund_r_and_d' => $this->input->post('investment_fund_r_and_d'),
-                        'investment_fund_r_and_d_percent' => $this->input->post('investment_fund_r_and_d_percent'),
-                        'staff_r_and_d' => $this->input->post('staff_r_and_d'),
+                        // Hoạt động tuyển dụng nhân sự
+                        'recruitment_staff' => strstr($this->input->post('recruitment_staff'),',') ? str_replace(',', '.', $this->input->post('recruitment_staff')) : $this->input->post('recruitment_staff'),
+                        'recruitment_budget' => strstr($this->input->post('recruitment_budget'),',') ? str_replace(',', '.', $this->input->post('recruitment_budget')) : $this->input->post('recruitment_budget'),
+                        // Chi phí đầu tư cho hoạt động R&D
+                        'investment_fund_r_and_d' => strstr($this->input->post('investment_fund_r_and_d'),',') ? str_replace(',', '.', $this->input->post('investment_fund_r_and_d')) : $this->input->post('investment_fund_r_and_d'),
+                        'investment_fund_r_and_d_percent' => strstr($this->input->post('investment_fund_r_and_d_percent'),',') ? str_replace(',', '.', $this->input->post('investment_fund_r_and_d_percent')) : $this->input->post('investment_fund_r_and_d_percent'),
+                        'staff_r_and_d' => strstr($this->input->post('staff_r_and_d'),',') ? str_replace(',', '.', $this->input->post('staff_r_and_d')) : $this->input->post('staff_r_and_d'),
                         'result_r_and_d' => $this->input->post('result_r_and_d'),
-
+                        // Chế độ bảo mật của công ty và bảo mật cho khách hàng
                         'security_certificate' => $this->input->post('security_certificate'),
                         'security_process' => $this->input->post('security_process'),
-
+                        // Quản lý công nghệ, chất lượng
                         'technique_certificate' => $this->input->post('technique_certificate'),
-
+                        // HOẠT ĐỘNG CỘNG ĐỒNG, CÁC GIẢI THƯỞNG, DANH HIỆU VÀ CÁC THÀNH TÍCH ĐẶC BIỆT DOANH NGHIỆP ĐÃ ĐẠT ĐƯỢC
                         'reward' => $this->input->post('reward'),
                         // End New
                         'main_service' => $main_service,

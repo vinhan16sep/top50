@@ -52,6 +52,11 @@
         padding-left: 20px;
     }
 
+    .form-group.h5 div,.form-group.h5 b{
+        font-size: 14px!important;
+        font-family: webFont_N!important;
+    }
+
     div.h5 .table th{
         line-height: 30px!important;
     }
@@ -1120,7 +1125,6 @@
                     <h5 class="text_input">
                         <div>- Số lượng nhân viên bộ phận R&D năm 2018: </div>
                         <?php 
-                            echo form_error('staff_r_and_d', '<div class="error">', '</div>');
                             echo form_input('staff_r_and_d', set_value('staff_r_and_d',$company['staff_r_and_d']), 'class="form-control"'); 
                         ?>
                         người.

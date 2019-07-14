@@ -1,3 +1,5 @@
+
+
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <style>
     .error{
@@ -43,6 +45,10 @@
     .form-group h5, div.h5{
         padding-left: 20px;
     }
+    .form-group.h5 div,.form-group.h5 b{
+        font-size: 14px!important;
+        font-family: webFont_N!important;
+    }
 
     div.h5 .table th{
         line-height: 30px!important;
@@ -72,6 +78,12 @@
     .tab-content input:focus{
         border: 1px solid #fff;
         /*background: #fff!important;*/
+    }
+    .main_service p:before{
+        content:"- ";
+    }
+    .main_market p:before{
+        content:"- ";
     }
 </style>
 <div class="content-wrapper" style="min-height: 916px;">
@@ -147,31 +159,40 @@
                             echo form_label('Sản phẩm dịch vụ chính của doanh nghiệp', 'main_service');
                             ?>
                         </div>
-                        <div class="col-xs-12">
+                        <div class="col-xs-12 main_service">
                             <?php if(!empty($company['main_service'])): ?>
                                 <?php $main_service = json_decode($company['main_service']) ?>
                                 <?php if($main_service): ?>
                                     <?php foreach ($main_service as $key => $value): ?>
                                         <p class="" style="padding-left:20px;"><?php echo $value ?></p>
                                     <?php endforeach ?>
+                                <?php else: ?>
+                                    <div style="text-align:center">--------------------------------------------------------------------------------------------------------</div>
                                 <?php endif; ?>
+                            <?php else: ?>
+                                <div style="text-align:center">--------------------------------------------------------------------------------------------------------</div>
                             <?php endif; ?>
                         </div>
                     </div>
+                    <hr style="border-bottom: 1px solid white;">
                     <div class="row">
                         <div class="col-xs-12">
                             <?php
                             echo form_label('Thị trường chính', 'main_service');
                             ?>
                         </div>
-                        <div class="col-xs-12">
+                        <div class="col-xs-12 main_market">
                             <?php if(!empty($company['main_market'])): ?>
                                 <?php $main_market = json_decode($company['main_market']) ?>
                                 <?php if($main_market): ?>
                                     <?php foreach ($main_market as $key => $value): ?>
                                         <p class="" style="padding-left:20px;"><?php echo $value ?></p>
                                     <?php endforeach ?>
+                                <?php else: ?>
+                                    <div style="text-align:center">--------------------------------------------------------------------------------------------------------</div>
                                 <?php endif; ?>
+                            <?php else: ?>
+                                <div style="text-align:center">--------------------------------------------------------------------------------------------------------</div>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -938,7 +959,9 @@
     for (var i = 0; i < textarea_h.length; i++) {
         console.log($(textarea_h[i]).html().trim().length);
         if ($(textarea_h[i]).find('>div').html().trim().length > 0) {
-            $(textarea_h[i]).find('>div').css({'background':'#ccc','color':'#555!important','padding':'10px'});
+            $(textarea_h[i]).find('>div').css({'background':'#eee','color':'#555!important','padding':'10px'});
+        }else{
+            $(textarea_h[i]).find('>div').html('<div style="text-align:center">--------------------------------------------------------------------------------------------------------</div>');
         }
     }
 </script>
