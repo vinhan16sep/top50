@@ -80,7 +80,7 @@
                         <div class="col-sm-9 col-md-9 col-xs-12">
                             <?php
                             echo form_error('founding_date', '<div class="error">', '</div>');
-                            echo form_input('founding_date', set_value('founding_date', date('d/m/Y', strtotime($extra['founding_date']))), 'class="form-control datetimepicker7" ');
+                            echo form_input('founding_date', set_value('founding_date', date('d/m/Y', strtotime($extra['founding_date']))), 'class="form-control datetimepicker_founding_date" ');
                             ?>
                         </div>
                     </div>
@@ -107,7 +107,7 @@
                         <div class="col-sm-3 col-md-3 col-xs-12">
                             <?php
                             echo form_error('certificate_date', '<div class="error">', '</div>');
-                            echo form_input('certificate_date', set_value('certificate_date', date('d/m/Y', strtotime($extra['certificate_date']))), 'class="form-control datetimepicker7" ');
+                            echo form_input('certificate_date', set_value('certificate_date', date('d/m/Y', strtotime($extra['certificate_date']))), 'class="form-control datetimepicker_certificate_date" ');
                             ?>
                         </div>
                     </div>
@@ -405,7 +405,12 @@
 </script>
 <script type="text/javascript">
     $(function () {
-        $('.datetimepicker7').datetimepicker({
+        $('.datetimepicker_founding_date').datetimepicker({
+            format: 'DD/MM/Y',
+            maxDate: new Date(2017, 6, 31),
+            useCurrent: false,
+        });
+        $('.datetimepicker_certificate_date').datetimepicker({
             format: 'DD/MM/Y',
             maxDate: new Date(),
             useCurrent: false,

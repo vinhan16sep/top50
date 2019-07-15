@@ -80,7 +80,7 @@
                         <div class="col-sm-9 col-md-9 col-xs-12">
                             <?php
                                 echo form_error('founding_date', '<div class="error">', '</div>');
-                                echo form_input('founding_date', set_value('founding_date'), 'class="form-control datetimepicker7" ');
+                                echo form_input('founding_date', set_value('founding_date'), 'class="form-control datetimepicker_founding_date" ');
                             ?>
                         </div>
                     </div>
@@ -107,7 +107,7 @@
                         <div class="col-sm-3 col-md-3 col-xs-12">
                             <?php
                                 echo form_error('certificate_date', '<div class="error">', '</div>');
-                                echo form_input('certificate_date', set_value('certificate_date'), 'class="form-control datetimepicker7" ');
+                                echo form_input('certificate_date', set_value('certificate_date'), 'class="form-control datetimepicker_certificate_date" ');
                             ?>
                         </div>
                     </div>
@@ -366,7 +366,21 @@
             },
             link: {
                 required: true
-            }
+            },
+            h_email: {
+                required: true,
+                email: true
+            },
+            h_phone: {
+                required: true,
+                digits: true
+            },
+            h_fax: {
+                digits: true
+            },
+            certificate: {
+                required: true
+            },
         },
         messages :{
             legal_representative: {
@@ -399,13 +413,32 @@
             },
             link: {
                 required: 'Link download PĐK của DN'
-            }
+            },
+            h_email: {
+                required: 'Cần nhập Email',
+                email: 'Email không hợp lệ'
+            },
+            h_phone: {
+                required: 'Cần nhập số điện thoại',
+                digits: 'Số điện thoại chỉ chứa ký tự số'
+            },
+            h_fax: {
+                digits: 'Số fax chỉ chứa ký tự số'
+            },
+            certificate: {
+                required: 'Cần nhập số giấy phép đăng ký kinh doanh'
+            },
         }
     });
 </script>
  <script type="text/javascript">
     $(function () {
-        $('.datetimepicker7').datetimepicker({
+        $('.datetimepicker_founding_date').datetimepicker({
+            format: 'DD/MM/Y',
+            maxDate: new Date(2017, 6, 31),
+            useCurrent: false,
+        });
+        $('.datetimepicker_certificate_date').datetimepicker({
             format: 'DD/MM/Y',
             maxDate: new Date(),
             useCurrent: false,
