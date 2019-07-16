@@ -95,7 +95,7 @@
             <div class="col-lg-10 col-lg-offset-0">
                 <div class="form-group">
                     <h2 style="text-align:center;">THÔNG TIN CHI TIẾT DOANH NGHIỆP</h2>
-                    <h3 style="text-align:center;">TOP50 NĂM <span style="color:#3c8dbc;"><?php echo $year; ?></span></h3>
+                    <h3 style="text-align:center;">TOP50 + 10 NĂM <span style="color:#3c8dbc;"><?php echo $year; ?></span></h3>
                 </div>
                 <hr>
                 <?php
