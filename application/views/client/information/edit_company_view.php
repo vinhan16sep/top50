@@ -1213,11 +1213,8 @@
                     </div>
                 </div>
                 <br>
-                <div class="form-group col-sm-12 text-right submit-extra-form">
-                    <div class="col-sm-3 col-md-3 col-sx-12">
-
-                    </div>
-                    <div class="col-sm-9 col-md-9 col-sx-12">
+                <div class="form-group col-sm-12 text-right submit-extra-form" style="width:108%;">
+                    <div class="col-sm-12 col-md-12 col-sx-12">
                         <div>
                             <a style="display: inline;" href="<?php echo base_url('client/information/company'); ?>" class="btn btn-default pull-left"><b>Quay lại</b></a>
                             <?php
