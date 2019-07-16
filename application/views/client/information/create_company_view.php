@@ -190,6 +190,7 @@
                         echo form_error('security_certificate', '<div class="error" data-name="security_certificate">', '</div>');
                         echo form_error('security_process', '<div class="error" data-name="security_process">', '</div>');
                         echo form_error('technique_certificate', '<div class="error" data-name="technique_certificate">', '</div>');
+                        echo form_error('top5_customers', '<div class="error" data-name="top5_customers">', '</div>');
 
 
                     ?>
@@ -376,6 +377,23 @@
                                     ?>
                                     <input type="text" name="anonymous" class="input-anonymous form-control" style="display: none;">
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr style="border-bottom: 1px solid white;">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3 col-sx-12">
+                            <?php
+                            echo form_label('Kể tên 5 khách hàng tiêu biểu của doanh nghiệp: ', 'top5_customers');
+                            ?>
+                        </div>
+                        <div class="col-sm-9 col-md-9 col-sx-12">
+                            <div class="row">
+                                <?php
+                                echo form_textarea('top5_customers', set_value('top5_customers'), 'class="form-control tinymce-area"');
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -1102,7 +1120,9 @@
                         </div>
                     </div>
                 </div>
+                <br>
                 <div class="form-check confirm">
+                    <h4 class="">CHÚNG TÔI ĐÃ NGHIÊN CỨU KỸ</h4>
                     <?php echo form_checkbox('checkone', '1', FALSE,'data-href="http://leadingitcompanies.com/page/the-le-chuong-trinh-p18.html" id="checkone"'); ?>
                     <?php echo form_label('Thể lệ của chương trình', 'checkone','class="form-check-label"'); ?>
                 </div>

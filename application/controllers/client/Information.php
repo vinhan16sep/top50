@@ -668,6 +668,7 @@ class Information extends Client_Controller {
                         'overview' => $this->input->post('overview'),
                         'active_area' => $this->input->post('active_area'),
                         'product' => $this->input->post('product'),
+                        'top5_customers' => $this->input->post('top5_customers'),
 
                         // Vốn điều lệ
                         'equity_1' => strstr($this->input->post('equity_1'),',') ? str_replace(',', '.', $this->input->post('equity_1')) : $this->input->post('equity_1'),
@@ -1125,7 +1126,7 @@ class Information extends Client_Controller {
                         'overview' => $this->input->post('overview'),
                         'active_area' => $this->input->post('active_area'),
                         'product' => $this->input->post('product'),
-
+                        'top5_customers' => $this->input->post('top5_customers'),
 
                         // Vốn điều lệ
                         'equity_1' => strstr($this->input->post('equity_1'),',') ? str_replace(',', '.', $this->input->post('equity_1')) : $this->input->post('equity_1'),
@@ -1661,6 +1662,7 @@ class Information extends Client_Controller {
                         'overview' => $this->input->post('overview'),
                         'active_area' => $this->input->post('active_area'),
                         'product' => $this->input->post('product'),
+                        'top5_customers' => $this->input->post('top5_customers'),
 
 
                         /// Vốn điều lệ
@@ -2114,6 +2116,7 @@ class Information extends Client_Controller {
                         'overview' => $this->input->post('overview'),
                         'active_area' => $this->input->post('active_area'),
                         'product' => $this->input->post('product'),
+                        'top5_customers' => $this->input->post('top5_customers'),
 
 
                         // Vốn điều lệ
