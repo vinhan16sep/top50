@@ -197,7 +197,23 @@
                         </div>
                     </div>
                 </div>
-
+                <hr style="border-bottom: 1px solid white;">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <?php
+                            echo form_label('Kể tên 5 khách hàng tiêu biểu của doanh nghiệp:', 'product');
+                            ?>
+                        </div>
+                        <hr>
+                        <div class="col-xs-12 textarea-h">
+                            <div>
+                                <?php
+                                echo htmlspecialchars_decode($company['top5_customers']);
+                                ?></div>
+                        </div>
+                    </div>
+                </div>
                 <hr style="border-bottom: 1px solid white;">
                 <div class="form-group">
                     <h3>II. NĂNG LỰC TÀI CHÍNH, KẾT QUẢ KINH DOANH, THỊ TRƯỜNG VÀ KHÁCH HÀNG</h3>
@@ -926,7 +942,21 @@
                         </div>
                     </div>
                 </div>
-                
+                <h3 class="text-center">HOẠT ĐỘNG CỘNG ĐỒNG, CÁC GIẢI THƯỞNG, DANH HIỆU VÀ CÁC THÀNH TÍCH ĐẶC BIỆT DOANH NGHIỆP ĐÃ ĐẠT ĐƯỢC</h3>
+
+                <div class="form-group h5 m-l-30">
+                    <div class="row">
+                        <div class="col-xs-12 text-center" style="padding-bottom: 15px;">
+                            (Ghi rõ tên, thời gian nhận Giải thưởng, Danh hiệu và thành tích được công nhận trong hoạt động sản xuất kinh doanh, các hoạt động thể hiện trách nhiệm với xã hội của doanh nghiệp (CSR)
+                        </div>
+                        <div class="col-xs-12 textarea-h">
+                            <div>
+                                <?php
+                                echo htmlspecialchars_decode($company['reward']);
+                                ?></div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <?php if($reg_status['is_final'] == 0): ?>
                             <div class="col-xs-12 col-md-2 pull-left">

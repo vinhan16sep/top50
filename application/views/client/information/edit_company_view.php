@@ -184,6 +184,7 @@
                         echo form_error('security_certificate', '<div class="error" data-name="security_certificate">', '</div>');
                         echo form_error('security_process', '<div class="error" data-name="security_process">', '</div>');
                         echo form_error('technique_certificate', '<div class="error" data-name="technique_certificate">', '</div>');
+                        echo form_error('top5_customers', '<div class="error" data-name="top5_customers">', '</div>');
 
 
                     ?>
@@ -481,7 +482,23 @@
                         </div>
                     </div>
                 </div>
-
+                <hr style="border-bottom: 1px solid white;">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3 col-sx-12">
+                            <?php
+                            echo form_label('Kể tên 5 khách hàng tiêu biểu của doanh nghiệp: ', 'top5_customers');
+                            ?>
+                        </div>
+                        <div class="col-sm-9 col-md-9 col-sx-12">
+                            <div class="row">
+                                <?php
+                                echo form_textarea('top5_customers', htmlspecialchars_decode(set_value('top5_customers', $company['top5_customers'])), 'class="form-control tinymce-area"');
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <hr style="border-bottom: 1px solid white;">
                 <div class="form-group">
                     <h3>II. NĂNG LỰC TÀI CHÍNH, KẾT QUẢ KINH DOANH, THỊ TRƯỜNG VÀ KHÁCH HÀNG</h3>
@@ -581,10 +598,6 @@
                 <div class="form-group">
                     <h4>2. KẾT QUẢ KINH DOANH</h4>
                 </div>
-
-
-
-                
                 <div class="form-group m-l-30" id="kd">
                     <div class="row">
                         <div class="col-xs-12">
@@ -1179,17 +1192,29 @@
                     <div class="row">
                         <div class="col-xs-12">
                              <?php
-                                echo form_textarea('technique_certificate', htmlspecialchars_decode(set_value('technique_certificate',$company['technique_certificate'])), 'class="form-control tinymce-area"');
+                                echo form_textarea('technique_certificate', htmlspecialchars_decode(set_value('technique_certificate', $company['technique_certificate'])), 'class="form-control tinymce-area"');
                             ?>
                         </div>
                     </div>
                 </div>
                 <br>
-                <div class="form-group col-sm-12 text-right submit-extra-form">
-                    <div class="col-sm-3 col-md-3 col-sx-12">
+                <h3 class="text-center">HOẠT ĐỘNG CỘNG ĐỒNG, CÁC GIẢI THƯỞNG, DANH HIỆU VÀ CÁC THÀNH TÍCH ĐẶC BIỆT DOANH NGHIỆP ĐÃ ĐẠT ĐƯỢC</h3>
 
+                <div class="form-group h5 m-l-30">
+                    <div class="row">
+                        <div class="col-xs-12 text-center" style="padding-bottom: 15px;">
+                            (Ghi rõ tên, thời gian nhận Giải thưởng, Danh hiệu và thành tích được công nhận trong hoạt động sản xuất kinh doanh, các hoạt động thể hiện trách nhiệm với xã hội của doanh nghiệp (CSR)
+                        </div>
+                        <div class="col-xs-12">
+                            <?php
+                            echo form_textarea('reward', htmlspecialchars_decode(set_value('reward', $company['reward'])), 'class="form-control tinymce-area"');
+                            ?>
+                        </div>
                     </div>
-                    <div class="col-sm-9 col-md-9 col-sx-12">
+                </div>
+                <br>
+                <div class="form-group col-sm-12 text-right submit-extra-form" style="width:108%;">
+                    <div class="col-sm-12 col-md-12 col-sx-12">
                         <div>
                             <a style="display: inline;" href="<?php echo base_url('client/information/company'); ?>" class="btn btn-default pull-left"><b>Quay lại</b></a>
                             <?php
