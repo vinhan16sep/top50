@@ -145,7 +145,7 @@
                         <br>
                         <br>
                         <div style="text-align: center;">
-                            <a onclick="return confirmation();" href="#" class="btn btn-warning btn-block" style="width: 50% !important; margin: 0 auto;"><b>Gửi Ban tổ chức</b></a>
+                            <a onclick="return confirmation();" href="#" class="btn btn-warning btn-block" style="width: 50% !important; margin: 0 auto;"><b>Nộp hồ sơ</b></a>
                             <h4 style="color:red">Chú ý xác nhận lại thông tin, sau khi gửi đăng ký sẽ không thể chỉnh sửa</h4>
                         </div>
                         <?php else: ?>

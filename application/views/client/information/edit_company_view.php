@@ -48,9 +48,6 @@
     .text_input div{
         float: left;
     }
-    .form-group h5, div.h5{
-        padding-left: 20px;
-    }
 
     .form-group.h5 div,.form-group.h5 b{
         font-size: 14px!important;
@@ -87,8 +84,7 @@
         <div class="row modified-mode">
             <div class="col-lg-10 col-lg-offset-0">
                 <div class="form-group">
-                    <h1 style="text-align:center;">THÔNG TIN DOANH NGHIỆP</h1>
-                    <h3 style="color:red; text-align:center;">NĂM <?php echo $company['year']; ?></h3>
+                    <h1 style="text-align:center;">THÔNG TIN LĨNH VỰC ỨNG CỬ</h1>
                 </div>
                 <?php
                 echo form_open_multipart(base_url('client/information/edit_company?year=' . $eventYear), array('class' => 'form-horizontal', 'id' => 'company-form'));

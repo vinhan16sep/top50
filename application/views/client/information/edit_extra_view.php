@@ -29,13 +29,22 @@
                     <h2 style="text-align:center;">THÔNG TIN CƠ BẢN CỦA DOANH NGHIỆP</h2>
                 </div>
                 <div class="form-group">
-                    <h3 style="text-align:center;">Tên công ty: <span style="color:#3c8dbc;"><?php echo $user->company; ?></span></h3>
+                    <!-- <h3 style="text-align:center;">Tên công ty: <span style="color:#3c8dbc;"><?php // echo $user->company; ?></span></h3> -->
                     <h3 style="text-align:center;">Mã số thuế: <span style="color:#3c8dbc;"><?php echo $user->username; ?></span></h3>
+                    <div style="margin: auto; width: 100%; text-align: center;">
+                        <?php if ( $extra['avatar'] && file_exists('assets/upload/avatar/' . $extra['avatar']) ): ?>
+                            <img src="<?php echo base_url('assets/upload/avatar/') . $extra['avatar']; ?>" class="" alt="user image" width=30%>
+                        <?php else: ?>
+                            <img src="<?php echo site_url('assets/public/img/client.jpg'); ?>" class="" alt="user image" width=30%>
+                        <?php endif ?>
+                        <br>
+                    </div>
                 </div>
                 <hr>
                 <?php
                 echo form_open_multipart('', array('class' => 'form-horizontal', 'id' => 'extra-form'));
                 ?>
+                
                 <div class="form-group">
                     <div class="row">
                         <div class="col-sm-3 col-md-3 col-xs-12">
@@ -123,7 +132,7 @@
                         <div class="col-sm-9 col-md-9 col-xs-12">
                             <?php
                             echo form_error('headquarters', '<div class="error">', '</div>');
-                            echo form_textarea('headquarters', set_value('headquarters', $extra['headquarters']), 'class="form-control" ');
+                            echo form_input('headquarters', set_value('headquarters', $extra['headquarters']), 'class="form-control" ');
                             ?>
                         </div>
                     </div>

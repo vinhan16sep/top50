@@ -2701,6 +2701,7 @@ class Information extends Client_Controller {
             $this->session->set_flashdata('message_error', 'Định dạng file không đúng hoặc dung lượng ảnh vượt quá 1200Kb');
             redirect('client/information/extra');
         }
+        return true;
     }
     protected function check_file($filename){
         $map = strripos($filename, '.')+1;
