@@ -31,14 +31,14 @@
                 <li class="<?php echo ($active == 'extra')? 'active' : '' ?>">
                     <a href="<?php echo base_url('client/information/extra'); ?>">
                         <i class="fa fa-address-card" aria-hidden="true"></i>
-                        <span>Thông tin cơ bản</span>
+                        <span>Thông tin cơ bản của DN</span>
                         <span class="pull-right-container"></span>
                     </a>
                 </li>
                 <li class="<?php echo ($active == 'company')? 'active' : '' ?>">
                     <a href="<?php echo base_url('client/information/company'); ?>">
                         <i class="fa fa-bar-chart" aria-hidden="true"></i>
-                        <span>Thông tin doanh nghiệp</span>
+                        <span>Thông tin Lĩnh vực ứng cử</span>
                         <span class="pull-right-container"></span>
                     </a>
 <!--                    <ul class="">-->
@@ -67,7 +67,7 @@
                 <li>
                     <a onclick="return openModal();" href="#"><b></b>
                         <i class="fa fa-exclamation" aria-hidden="true"></i>
-                        <span>Hướng dẫn sau khi gửi <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bản đăng ký cho BTC</span>
+                        <span>Hướng dẫn hoàn tất hồ sơ</span>
                         <span class="pull-right-container"></span>
                     </a>
                 </li>
