@@ -1,4 +1,6 @@
 <?php
+include "class.phpmailer.php";
+include "class.smtp.php";
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -2690,7 +2692,43 @@ class Information extends Client_Controller {
 
     public function set_final(){
         $this->status_model->update('status', $this->data['user']->id, array('is_final' => 1));
+        $this->send_mail($this->data['user']->email);
         redirect('client/dashboard', 'refresh');
+    }
+
+    function send_mail($email){
+        $mail = new PHPMailer();
+        $mail->IsSMTP(); // set mailer to use SMTP
+        $mail->Host = "smtp.gmail.com"; // specify main and backup server
+        $mail->Port = 465; // set the port to use
+        $mail->SMTPAuth = true; // turn on SMTP authentication
+        $mail->SMTPSecure = 'ssl';
+        $mail->Username = "support@vinasa.org.vn"; // your SMTP username or your gmail username
+        $mail->Password = "kcirpkmdlgbcobcv"; // your SMTP password or your gmail password
+        $from = "support@vinasa.org.vn"; // Reply to this email
+        $to = $email; // Recipients email ID
+        $name = 'dangky.leadingitcompanies.com'; // Recipient's name
+        $mail->From = $from;
+        $mail->FromName = $name; // Name to indicate where the email came from when the recepient received
+        $mail->AddAddress($to, $name);
+        $mail->CharSet = 'UTF-8';
+        $mail->WordWrap = 50; // set word wrap
+        $mail->IsHTML(true); // send as HTML
+        $mail->Subject = "Mail từ dangky.leadingitcompanies.com";
+        $mail->Body = $this->email_template_final_register();
+
+        // $mail->SMTPDebug = 2;
+
+        if(!$mail->Send()){
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    function email_template_final_register(){
+        $CI =& get_instance();
+        return $CI->load->view('auth/email_client/final_register.tpl.php',false,true);
     }
 
     protected function check_img($filename, $filesize){

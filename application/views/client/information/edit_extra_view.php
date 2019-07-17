@@ -31,6 +31,14 @@
                 <div class="form-group">
                     <h3 style="text-align:center;">Tên công ty: <span style="color:#3c8dbc;"><?php echo $user->company; ?></span></h3>
                     <h3 style="text-align:center;">Mã số thuế: <span style="color:#3c8dbc;"><?php echo $user->username; ?></span></h3>
+                    <div style="margin: auto; width: 100%; text-align: center;">
+                        <?php if ( $extra['avatar'] && file_exists('assets/upload/avatar/' . $extra['avatar']) ): ?>
+                            <img src="<?php echo base_url('assets/upload/avatar/') . $extra['avatar']; ?>" class="" alt="user image" width=30%>
+                        <?php else: ?>
+                            <img src="<?php echo site_url('assets/public/img/client.jpg'); ?>" class="" alt="user image" width=30%>
+                        <?php endif ?>
+                        <br>
+                    </div>
                 </div>
                 <hr>
                 <?php
@@ -366,7 +374,23 @@
             },
             link: {
                 required: true
-            }
+            },
+            h_phone: {
+                required: true,
+                digits: true
+            },
+            h_fax: {
+                required: true,
+                digits: true
+            },
+            h_email: {
+                required: true,
+                email: true
+            },
+            website: {
+                required: true,
+                url: true
+            },
         },
         messages :{
             legal_representative: {
@@ -399,7 +423,23 @@
             },
             link: {
                 required: 'Link download PĐK của DN'
-            }
+            },
+            h_phone: {
+                required: 'Cần nhập số điện thoại',
+                digits: 'Số điện thoại chỉ chứa ký tự số'
+            },
+            h_fax: {
+                required: 'Cần nhập số điện thoại',
+                digits: 'Số điện thoại chỉ chứa ký tự số'
+            },
+            h_email: {
+                required: 'Cần nhập Email',
+                email: 'Email không hợp lệ'
+            },
+            website: {
+                required: 'Cần nhập website',
+                url: 'Website không hợp lệ, ví dụ định dạng đúng "http://example.com"'
+            },
         }
     });
 </script>
