@@ -30,7 +30,6 @@
                                     <?php
                                     echo form_open_multipart('', array('class' => 'form-horizontal', 'id' => 'extra-form'));
                                     ?>
-
                                     <hr style="padding: 1px 0px; background-color: #fff;">
 
                                     <div class="form-group">
@@ -102,7 +101,7 @@
                                             <div class="col-sm-9 col-md-9 col-xs-12">
                                                 <?php
                                                 echo form_error('headquarters', '<div class="error">', '</div>');
-                                                echo form_textarea('headquarters', set_value('headquarters', $extra['headquarters']), 'class="form-control" readonly');
+                                                echo form_input('headquarters', set_value('headquarters', $extra['headquarters']), 'class="form-control" readonly');
                                                 ?>
                                             </div>
                                         </div>

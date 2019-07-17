@@ -49,9 +49,6 @@
     .text_input div{
         float: left;
     }
-    .form-group h5, div.h5{
-        padding-left: 20px;
-    }
     
     .form-group.h5 div,.form-group.h5 b{
         font-size: 14px!important;
@@ -94,8 +91,7 @@
         <div class="row modified-mode">
             <div class="col-lg-10 col-lg-offset-0">
                 <div class="form-group">
-                    <h2 style="text-align:center;">THÔNG TIN CHI TIẾT DOANH NGHIỆP</h2>
-                    <h3 style="text-align:center;">TOP50 + 10 NĂM <span style="color:#3c8dbc;"><?php echo $year; ?></span></h3>
+                    <h2 style="text-align:center;">THÔNG TIN LĨNH VỰC ỨNG CỬ</h2>
                 </div>
                 <hr>
                 <?php
@@ -1182,7 +1178,7 @@
     $('.submit-extra-form').css({'display':'none'});
     $('.confirm input[type="checkbox"]').change(function(){
         if($(this).is(':checked')){
-            // window.open($(this).attr('data-href'),'_blank');
+            window.open($(this).attr('data-href'),'_blank');
         }
         if ($('#checkone').is(':checked') && $('#checktwo').is(':checked')) {
             $('.submit-extra-form').css({'display':'block'});

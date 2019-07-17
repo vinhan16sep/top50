@@ -42,9 +42,6 @@
     .text_input div{
         float: left;
     }
-    .form-group h5, div.h5{
-        padding-left: 20px;
-    }
     .form-group.h5 div,.form-group.h5 b{
         font-size: 14px!important;
         font-family: webFont_N!important;
@@ -93,8 +90,7 @@
                 <div class="nav-tabs-custom box-body box-profile" style="box-shadow: 2px 2px 1px grey;">
                     <div class="tab-content" style="padding-right: 40px;">
                         <div class="post">
-                            <h2 style="text-align:center;">Thông tin doanh nghiệp</h2>
-                            <h3 style="color:red; text-align:center;">NĂM <?php echo $company['year']; ?></h3>
+                            <h2 style="text-align:center;">THÔNG TIN LĨNH VỰC ỨNG CỬ</h2>
 
 
 
@@ -963,8 +959,11 @@
                                 <a href="<?php echo base_url('client/information/company'); ?>" class="btn btn-default btn-block"><b>Quay lại</b></a>
                             </div>
                             <?php if($eventYear == $company['year']){ ?>
-                            <div class="col-xs-12 col-md-4 pull-left">
-                                <a href="<?php echo base_url('client/information/edit_company?year=' . $eventYear); ?>" class="btn btn-primary btn-block"><b>Sửa thông tin</b></a>
+                            <div class="col-xs-12 col-md-6 pull-left">
+                                <a class="btn btn-primary" onclick="return openModals();" href="#">
+                        
+                                    <b>HOÀN THÀNH/ LƯU THÔNG TIN</b>
+                                </a>
                             </div>
                             <?php } ?>
                     <?php else: ?>
@@ -982,6 +981,32 @@
         </div>
     </section>
 </div>
+
+    <div id="myModalSidebars" class="modal fade" role="dialog">
+        <div class="modal-dialog" style="width: 630px !important;">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #3c8dbc">
+                    <!--                <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                    <h4 style="color:white;">Cảm ơn Quý Công ty đã đăng ký tham gia Chương trình 50+10 Doanh nghiệp CNTT hàng đầu Việt Nam <?php echo !empty($eventYear) ? $eventYear : ''; ?>.</h4>
+                </div>
+                <div class="modal-body">
+                    <h4 style="font-weight:bold !important;">Mời quay lại trang Tổng quan để xem lại hồ sơ/ nộp cho Ban tổ chức</h4>
+                </div>
+                <div class="modal-footer">
+                    <a data-dismiss="modal" class="btn btn-warning pull-left"><b>Đóng</b></a>
+                    <a href="<?php echo base_url() ?>client/dashboard" class="btn btn-primary pull-right"><b>Đến trang tổng quan</b></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        function openModals(){
+            $('#myModalSidebars').modal('show');
+        }
+    </script>
 <script type="text/javascript">
     $('.tab-content input').attr('readonly','readonly');
     $('.tab-content textarea').attr('readonly','readonly');

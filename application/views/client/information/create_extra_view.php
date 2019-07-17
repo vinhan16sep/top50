@@ -123,7 +123,7 @@
                         <div class="col-sm-9 col-md-9 col-xs-12">
                             <?php
                                 echo form_error('headquarters', '<div class="error">', '</div>');
-                                echo form_textarea('headquarters', set_value('headquarters'), 'class="form-control" ');
+                                echo form_input('headquarters', set_value('headquarters'), 'class="form-control" ');
                             ?>
                         </div>
                     </div>
