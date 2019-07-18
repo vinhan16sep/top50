@@ -165,6 +165,7 @@
                         echo form_error('japanese_employee_percent', '<div class="error" data-name="japanese_employee_percent">', '</div>');
                         echo form_error('other_language_employee', '<div class="error" data-name="other_language_employee">', '</div>');
                         echo form_error('other_language_employee_percent', '<div class="error" data-name="other_language_employee_percent">', '</div>');
+                        echo form_error('ngoaingukhac', '<div class="error" data-name="ngoaingukhac">', '</div>');
 
 
                         echo form_error('qualification', '<div class="error" data-name="qualification">', '</div>');
@@ -983,12 +984,12 @@
                         <div class="col-xs-12">
                             <table class="table table-bordered" >
                               <tr>
-                                <th style="width: 200px;">Ngoại ngữ</th>
+                                <th colspan="2">Ngoại ngữ</th>
                                 <th>Số người</th>
                                 <th>% trên tổng số nhân viên</th>
                               </tr>
                               <tr>
-                                <td>Tiếng Anh</td>
+                                <td colspan="2" style="text-align: center!important;">Tiếng Anh</td>
                                 <td>
                                     <?php 
                                         echo form_input('english_employee', set_value('english_employee',$company['english_employee']), 'class="form-control"'); 
@@ -1001,7 +1002,7 @@
                                 </td>
                               </tr>
                               <tr>
-                                <td>Tiếng Nhật</td>
+                                <td colspan="2" style="text-align: center!important;">Tiếng Nhật</td>
                                 <td>
                                     <?php 
                                         echo form_input('japanese_employee', set_value('japanese_employee',$company['japanese_employee']), 'class="form-control"'); 
@@ -1014,7 +1015,12 @@
                                 </td>
                               </tr>
                               <tr>
-                                <td>Ngoại ngữ khác (Ghi rõ)</td>
+                                <td colspan="1" style="width: 200px;">Ngoại ngữ khác (Ghi rõ)</td>
+                                <td colspan="1" style="width: 100px;">
+                                    <?php 
+                                        echo form_input('ngoaingukhac', set_value('ngoaingukhac',$company['ngoaingukhac']), 'class="form-control"'); 
+                                    ?>
+                                </td>
                                 <td>
                                     <?php 
                                         echo form_input('other_language_employee', set_value('other_language_employee',$company['other_language_employee']), 'class="form-control"'); 
