@@ -25,7 +25,7 @@ class Dashboard extends Client_Controller {
         $checkCompany = $this->information_model->checkExist('company', $this->data['user']->username);
         $checkProduct = $this->information_model->checkExist('product', $this->data['user']->username);
         $this->data['complete'] = 0;
-        if($checkInformation > 0 && $checkCompany > 0 && $checkProduct > 0){
+        if($checkInformation > 0 && $checkCompany > 0){
             $this->data['complete'] = 1;
         }
 
@@ -33,7 +33,9 @@ class Dashboard extends Client_Controller {
         if($this->data['reg_status']['is_information'] == 1 && $this->data['reg_status']['is_company'] == 1){
             $this->data['noMoreTemporaryData'] = 1;
         }
-
+        if($this->input->get('complete') == 1){
+            $this->status_model->update_company_complete_by_client_and_year($this->data['user']->id, $this->data['eventYear']);
+        }
         $this->render('client/dashboard_view');
     }
 }

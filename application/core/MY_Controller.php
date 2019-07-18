@@ -19,6 +19,7 @@ class MY_Controller extends CI_Controller {
         $this->data['active'] = $this->uri->segment(2);
         $this->data['sub_active'] = $this->uri->segment(3);
         $this->data['icon_active'] = $this->uri->segment(4);
+        $this->data['eventYear'] = date('Y');
     }
 
     protected function render($the_view = NULL, $template = 'master') {

@@ -28,6 +28,32 @@ class Status_model extends CI_Model {
 
         return false;
     }
+
+    public function update_status_final($type, $id, $year, $information){
+        $this->db->set($information)
+            ->where('client_id', $id)
+            ->where('year', $year)
+            ->update($type);
+
+        if($this->db->affected_rows() == 1){
+            return true;
+        }
+
+        return false;
+    }
+
+    public function update_company_complete_by_client_and_year($id, $year){
+        $this->db->set(array('is_company' => 1))
+            ->where('client_id', $id)
+            ->where('year', $year)
+            ->update('status');
+
+        if($this->db->affected_rows() == 1){
+            return true;
+        }
+
+        return false;
+    }
     
     public function fetch_by_client_id($id = null){
         $this->db->select('*');

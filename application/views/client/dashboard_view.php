@@ -77,7 +77,7 @@
                 <div class="nav-tabs-custom box-body box-profile" style="box-shadow: 2px 2px 1px grey;">
                     <div class="tab-content">
                         <div class="post">
-                            <h4 style="font-weight: bold">Thông tin cơ bản</h4>
+                            <h4 style="font-weight: bold">Thông tin cơ bản của doanh nghiệp</h4>
                             <br>
                             <?php if($reg_status['is_final'] == 0): ?>
                                 <?php if(!$information_submitted): ?>
@@ -98,7 +98,7 @@
                             <?php endif; ?>
                         </div>
                         <div class="post">
-                            <h4 style="font-weight: bold">Thông tin doanh nghiệp</h4>
+                            <h4 style="font-weight: bold">Thông tin lĩnh vực ứng cử</h4>
                             <?php if($identity != ''){ ?>
                                 <?php if($reg_status['is_final'] == 0): ?>
                                     <?php if(!$company_submitted): ?>
@@ -145,7 +145,7 @@
                         <br>
                         <br>
                         <div style="text-align: center;">
-                            <a onclick="return confirmation();" href="#" class="btn btn-warning btn-block" style="width: 50% !important; margin: 0 auto;"><b>Nộp hồ sơ</b></a>
+                            <a onclick="return confirmation();" href="#" class="btn btn-warning btn-block btnIsFinal" style="width: 50% !important; margin: 0 auto;"><b>Nộp hồ sơ</b></a>
                             <h4 style="color:red">Chú ý xác nhận lại thông tin, sau khi gửi đăng ký sẽ không thể chỉnh sửa</h4>
                         </div>
                         <?php else: ?>
@@ -227,6 +227,8 @@
 <script>
     function confirmation() {
         if(confirm('Bạn vẫn muốn gửi?')){
+            $('.btnIsFinal').attr('disabled', 'disabled');
+            $('.btnIsFinal').text('Đang gửi yêu cầu');
             $.ajax({
                 url: "<?php echo base_url('client/information/set_final'); ?>",
                 success: function(result){
