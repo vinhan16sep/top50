@@ -14,6 +14,10 @@ class Dashboard extends Client_Controller {
     }
 
     public function index(){
+        if($this->input->get('complete') == 1){
+            $this->status_model->update_company_complete_by_client_and_year($this->data['user']->id, $this->data['eventYear']);
+            redirect('client/dashboard', 'refresh');
+        }
         $this->data['user'] = $this->ion_auth->user()->row();
 
         $this->load->model('information_model');
@@ -32,9 +36,6 @@ class Dashboard extends Client_Controller {
         $this->data['noMoreTemporaryData'] = 0;
         if($this->data['reg_status']['is_information'] == 1 && $this->data['reg_status']['is_company'] == 1){
             $this->data['noMoreTemporaryData'] = 1;
-        }
-        if($this->input->get('complete') == 1){
-            $this->status_model->update_company_complete_by_client_and_year($this->data['user']->id, $this->data['eventYear']);
         }
         $this->render('client/dashboard_view');
     }
