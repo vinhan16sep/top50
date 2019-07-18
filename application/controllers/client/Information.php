@@ -274,6 +274,7 @@ class Information extends Client_Controller {
         
         $this->load->helper('form');
         if($this->input->get('year')){
+            $this->data['year'] = $this->input->get('year');
             $this->data['company'] = $this->information_model->fetch_company_by_identity_and_year('company', $this->data['user']->username, $this->input->get('year'));
             $this->render('client/information/detail_company_view');
         }else{
@@ -782,7 +783,7 @@ class Information extends Client_Controller {
                         'japanese_employee_percent' => strstr($this->input->post('japanese_employee_percent'),',') ? str_replace(',', '.', $this->input->post('japanese_employee_percent')) : $this->input->post('japanese_employee_percent'),
                         'other_language_employee' => strstr($this->input->post('other_language_employee'),',') ? str_replace(',', '.', $this->input->post('other_language_employee')) : $this->input->post('other_language_employee'),
                         'other_language_employee_percent' => strstr($this->input->post('other_language_employee_percent'),',') ? str_replace(',', '.', $this->input->post('other_language_employee_percent')) : $this->input->post('other_language_employee_percent'),
-                        'ngoaingukhac' => $this->input->post('ngoaingukhac'),
+                        'other_language' => $this->input->post('other_language'),
                         // Trình độ chuyên môn
                         'qualification' => $this->input->post('qualification'),
                         // Mức lương trung bình/năm
@@ -1248,7 +1249,7 @@ class Information extends Client_Controller {
                         'japanese_employee_percent' => strstr($this->input->post('japanese_employee_percent'),',') ? str_replace(',', '.', $this->input->post('japanese_employee_percent')) : $this->input->post('japanese_employee_percent'),
                         'other_language_employee' => strstr($this->input->post('other_language_employee'),',') ? str_replace(',', '.', $this->input->post('other_language_employee')) : $this->input->post('other_language_employee'),
                         'other_language_employee_percent' => strstr($this->input->post('other_language_employee_percent'),',') ? str_replace(',', '.', $this->input->post('other_language_employee_percent')) : $this->input->post('other_language_employee_percent'),
-                        'ngoaingukhac' => $this->input->post('ngoaingukhac'),
+                        'other_language' => $this->input->post('other_language'),
                         // Trình độ chuyên môn
                         'qualification' => $this->input->post('qualification'),
                         // Mức lương trung bình/năm
@@ -1789,7 +1790,7 @@ class Information extends Client_Controller {
                         'japanese_employee_percent' => strstr($this->input->post('japanese_employee_percent'),',') ? str_replace(',', '.', $this->input->post('japanese_employee_percent')) : $this->input->post('japanese_employee_percent'),
                         'other_language_employee' => strstr($this->input->post('other_language_employee'),',') ? str_replace(',', '.', $this->input->post('other_language_employee')) : $this->input->post('other_language_employee'),
                         'other_language_employee_percent' => strstr($this->input->post('other_language_employee_percent'),',') ? str_replace(',', '.', $this->input->post('other_language_employee_percent')) : $this->input->post('other_language_employee_percent'),
-                        'ngoaingukhac' => $this->input->post('ngoaingukhac'),
+                        'other_language' => $this->input->post('other_language'),
                         // Trình độ chuyên môn
                         'qualification' => $this->input->post('qualification'),
                         // Mức lương trung bình/năm
@@ -2249,7 +2250,7 @@ class Information extends Client_Controller {
                         'japanese_employee_percent' => strstr($this->input->post('japanese_employee_percent'),',') ? str_replace(',', '.', $this->input->post('japanese_employee_percent')) : $this->input->post('japanese_employee_percent'),
                         'other_language_employee' => strstr($this->input->post('other_language_employee'),',') ? str_replace(',', '.', $this->input->post('other_language_employee')) : $this->input->post('other_language_employee'),
                         'other_language_employee_percent' => strstr($this->input->post('other_language_employee_percent'),',') ? str_replace(',', '.', $this->input->post('other_language_employee_percent')) : $this->input->post('other_language_employee_percent'),
-                        'ngoaingukhac' => $this->input->post('ngoaingukhac'),
+                        'other_language' => $this->input->post('other_language'),
                         // Trình độ chuyên môn
                         'qualification' => $this->input->post('qualification'),
                         // Mức lương trung bình/năm
@@ -2714,7 +2715,7 @@ class Information extends Client_Controller {
     }
 
     public function set_final(){
-        $this->status_model->update('status', $this->data['user']->id, array('is_final' => 1));
+        $this->status_model->update_status_final('status', $this->data['user']->id, $this->data['eventYear'], array('is_final' => 1));
         $this->send_mail($this->data['user']->email);
         redirect('client/dashboard', 'refresh');
     }

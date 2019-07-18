@@ -165,7 +165,7 @@
                         echo form_error('japanese_employee_percent', '<div class="error" data-name="japanese_employee_percent">', '</div>');
                         echo form_error('other_language_employee', '<div class="error" data-name="other_language_employee">', '</div>');
                         echo form_error('other_language_employee_percent', '<div class="error" data-name="other_language_employee_percent">', '</div>');
-                        echo form_error('ngoaingukhac', '<div class="error" data-name="ngoaingukhac">', '</div>');
+                        echo form_error('other_language', '<div class="error" data-name="other_language">', '</div>');
 
 
                         echo form_error('qualification', '<div class="error" data-name="qualification">', '</div>');
@@ -985,8 +985,8 @@
                             <table class="table table-bordered" >
                               <tr>
                                 <th colspan="2">Ngoại ngữ</th>
-                                <th>Số người</th>
-                                <th>% trên tổng số nhân viên</th>
+                                <th class="col-xs-3">Số người</th>
+                                <th class="col-xs-3">% trên tổng số nhân viên</th>
                               </tr>
                               <tr>
                                 <td colspan="2" style="text-align: center!important;">Tiếng Anh</td>
@@ -1015,10 +1015,10 @@
                                 </td>
                               </tr>
                               <tr>
-                                <td colspan="1" style="width: 200px;">Ngoại ngữ khác (Ghi rõ)</td>
-                                <td colspan="1" style="width: 100px;">
+                                <td colspan="1" style="width: 100px;">Ngoại ngữ khác (Ghi rõ)</td>
+                                <td colspan="1" style="width: 250px;">
                                     <?php 
-                                        echo form_input('ngoaingukhac', set_value('ngoaingukhac',$company['ngoaingukhac']), 'class="form-control"'); 
+                                        echo form_input('other_language', set_value('other_language',$company['other_language']), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td>
@@ -1215,18 +1215,25 @@
                     </div>
                 </div>
                 <br>
-                <div class="form-group col-sm-12 text-right submit-extra-form" style="width:108%;">
-                    <div class="col-sm-12 col-md-12 col-sx-12">
-                        <div>
-                            <a style="display: inline;" href="<?php echo base_url('client/information/company'); ?>" class="btn btn-default pull-left"><b>Quay lại</b></a>
-                            <?php
-                                if($status['is_company'] == 0){
-                                    echo form_submit('submit', 'Lưu tạm', 'id="tmpSubmit" class="btn btn-normal pull-right" style="width:30%;display:inline;margin-right:10px !important;"');
-                                }
-                            ?>
-                            <?php echo form_submit('submit', 'Hoàn thành', 'id="submit" class="btn btn-primary pull-right" style="width:30%;display: inline;"'); ?>
-                        </div>
+                <div class="form-check confirm">
+                    <h4 class="">CHÚNG TÔI ĐÃ NGHIÊN CỨU KỸ</h4>
+                    <?php echo form_checkbox('checkone', '1', FALSE,'data-href="http://leadingitcompanies.com/page/the-le-chuong-trinh-p18.html" id="checkone"'); ?>
+                    <?php echo form_label('Thể lệ của chương trình', 'checkone','class="form-check-label"'); ?>
+                </div>
+                <div class="form-check confirm">
+                    <?php echo form_checkbox('checktwo', '1', FALSE,'data-href="http://leadingitcompanies.com/page/kinh-phi-p21.html" id="checktwo"'); ?>
+                    <?php echo form_label('Quyết định kinh phí biên tập, in ấn và phát hành Ấn phẩm', 'checktwo','class="form-check-label"'); ?>
+                </div>
+                <div class="message__">
+                    <em>Chúng tôi hiểu rõ các quyền lợi, trách nhiệm của mình khi tham gia Chương trình và cam kết tuân thủ Quy chế Chương trình cũng như các qui định của Ban Tổ chức, chịu trách nhiệm về tính trung thực của các thông tin đã khai trong hồ sơ đăng ký tham gia chương trình.</em>
+                </div>
+                <div class="form-group col-sm-12 text-right submit-extra-form">
+                    <div class="col-sm-3 col-md-3 col-sx-12">
+                    </div>
+                    <div class="col-sm-9 col-md-9 col-sx-12">
                         <?php
+                        echo form_submit('submit', 'Hoàn thành', 'id="submit" class="btn btn-primary pull-right" style="width:30%;display: inline;"');
+                        echo form_submit('submit', 'Lưu tạm', 'id="tmpSubmit" class="btn btn-normal pull-right" style="width:30%;display: inline;margin-right:10px !important;"');
                         echo form_close();
                         ?>
                     </div>
@@ -1273,7 +1280,20 @@
     $('.input-anonymous-service').change(function(){
         var anonymous_service = $(this).val();
         $('#anonymous-service').attr('value', anonymous_service);
-    })
+    });
+
+    // 12/07/2019
+    $('.submit-extra-form').css({'display':'none'});
+    $('.confirm input[type="checkbox"]').change(function(){
+        if($(this).is(':checked')){
+            window.open($(this).attr('data-href'),'_blank');
+        }
+        if ($('#checkone').is(':checked') && $('#checktwo').is(':checked')) {
+            $('.submit-extra-form').css({'display':'block'});
+        }else{
+            $('.submit-extra-form').css({'display':'none'});
+        }
+    });
 
     // quyen
     $('div.error').append('<i class="fa fa-times" aria-hidden="true" title="Xóa thông báo lỗi"></i>');

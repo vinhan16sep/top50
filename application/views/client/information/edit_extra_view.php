@@ -83,7 +83,7 @@
                     <div class="row">
                         <div class="col-sm-3 col-md-3 col-xs-12">
                             <?php
-                            echo form_label('Ngày thành lập <span style="color: red">(*)</span>', 'ngaythanhlap');
+                            echo form_label('Ngày thành lập (phải trước 31/07/2017) <span style="color: red">(*)</span>', 'ngaythanhlap');
                             ?>
                         </div>
                         <div class="col-sm-9 col-md-9 col-xs-12">
@@ -116,7 +116,7 @@
                         <div class="col-sm-3 col-md-3 col-xs-12">
                             <?php
                             echo form_error('certificate_date', '<div class="error">', '</div>');
-                            echo form_input('certificate_date', set_value('certificate_date', date('d/m/Y', strtotime($extra['certificate_date']))), 'class="form-control datetimepicker7" ');
+                            echo form_input('certificate_date', set_value('certificate_date', date('d/m/Y', strtotime($extra['certificate_date']))), 'class="form-control datetimepicker" ');
                             ?>
                         </div>
                     </div>
@@ -447,6 +447,12 @@
 <script type="text/javascript">
     $(function () {
         $('.datetimepicker7').datetimepicker({
+            format: 'DD/MM/Y',
+            maxDate: new Date('07/31/2017'),
+            useCurrent: false,
+        });
+
+        $('.datetimepicker').datetimepicker({
             format: 'DD/MM/Y',
             maxDate: new Date(),
             useCurrent: false,

@@ -94,7 +94,8 @@ class User extends MY_Controller {
                     'is_information' => 0,
                     'is_company' => 0,
                     'is_product' => 0,
-                    'is_final' => 0
+                    'is_final' => 0,
+                    'year' => $this->data['eventYear']
                 );
                 $this->status_model->insert('status', $status);
             }

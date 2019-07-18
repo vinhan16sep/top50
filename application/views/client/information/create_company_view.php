@@ -171,7 +171,7 @@
                         echo form_error('japanese_employee_percent', '<div class="error" data-name="japanese_employee_percent">', '</div>');
                         echo form_error('other_language_employee', '<div class="error" data-name="other_language_employee">', '</div>');
                         echo form_error('other_language_employee_percent', '<div class="error" data-name="other_language_employee_percent">', '</div>');
-                        echo form_error('ngoaingukhac', '<div class="error" data-name="ngoaingukhac">', '</div>');
+                        echo form_error('other_language', '<div class="error" data-name="other_language">', '</div>');
 
 
                         echo form_error('qualification', '<div class="error" data-name="qualification">', '</div>');
@@ -891,8 +891,8 @@
                             <table class="table table-bordered" >
                               <tr>
                                 <th colspan="2">Ngoại ngữ</th>
-                                <th>Số người</th>
-                                <th>% trên tổng số nhân viên</th>
+                                <th class="col-xs-3">Số người</th>
+                                <th class="col-xs-3">% trên tổng số nhân viên</th>
                               </tr>
                               <tr>
                                 <td colspan="2">Tiếng Anh</td>
@@ -921,10 +921,10 @@
                                 </td>
                               </tr>
                               <tr>
-                                <td colspan="1" style="width: 200px;">Ngoại ngữ khác (Ghi rõ)</td>
-                                <td colspan="1" style="width: 100px;">
+                                <td colspan="1" style="width: 100px;">Ngoại ngữ khác (Ghi rõ)</td>
+                                <td colspan="1" style="width: 250px;">
                                     <?php 
-                                        echo form_input('ngoaingukhac', set_value('ngoaingukhac'), 'class="form-control"'); 
+                                        echo form_input('other_language', set_value('other_language'), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td>

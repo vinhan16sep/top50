@@ -707,8 +707,8 @@
                             <table class="table table-bordered" >
                               <tr>
                                 <th colspan="2" style="width: 200px;">Ngoại ngữ</th>
-                                <th>Số người</th>
-                                <th>% trên tổng số nhân viên</th>
+                                <th class="col-xs-3">Số người</th>
+                                <th class="col-xs-3">% trên tổng số nhân viên</th>
                               </tr>
                               <tr>
                                 
@@ -743,10 +743,10 @@
                                 </td>
                               </tr>
                               <tr>
-                                <td colspan="1" style="width: 200px;">Ngoại ngữ khác (Ghi rõ)</td>
-                                <td colspan="1" style="width: 200px;">
+                                <td colspan="1" style="width: 100px;">Ngoại ngữ khác (Ghi rõ)</td>
+                                <td colspan="1" style="width: 250px;">
                                     <?php 
-                                        echo form_input('ngoaingukhac', set_value('ngoaingukhac',$company['ngoaingukhac']), 'class="form-control"'); 
+                                        echo form_input('other_language', set_value('other_language',$company['other_language']), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td>
@@ -965,6 +965,9 @@
                             <div class="col-xs-12 col-md-2 pull-left">
                                 <a href="<?php echo base_url('client/information/company'); ?>" class="btn btn-default btn-block"><b>Quay lại</b></a>
                             </div>
+                            <div class="col-xs-12 col-md-2 pull-left">
+                                <a style="width:132px;" href="<?php echo base_url('client/information/edit_company?year=' . $year); ?>" class="btn btn-primary btn-block">Sửa thông tin</a>
+                            </div>
                             <?php if($eventYear == $company['year']){ ?>
                             <div class="col-xs-12 col-md-6 pull-left">
                                 <a class="btn btn-primary" onclick="return openModals();" href="#">
@@ -1003,7 +1006,7 @@
                 </div>
                 <div class="modal-footer">
                     <a data-dismiss="modal" class="btn btn-warning pull-left"><b>Đóng</b></a>
-                    <a href="<?php echo base_url() ?>client/dashboard" class="btn btn-primary pull-right"><b>Đến trang tổng quan</b></a>
+                    <a href="<?php echo base_url() ?>client/dashboard?complete=1" class="btn btn-primary pull-right"><b>Đến trang tổng quan</b></a>
                 </div>
             </div>
 
