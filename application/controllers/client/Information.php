@@ -134,7 +134,7 @@ class Information extends Client_Controller {
                     'modified_at' => $this->author_info['modified_at'],
                     'modified_by' => $this->author_info['modified_by']
                 );
-                if ($avatar) {
+                if (!empty($avatar)) {
                     $data['avatar'] = $avatar;
                 }
                 $exist = $this->information_model->check_exist_information($this->data['user']->username);
@@ -154,7 +154,6 @@ class Information extends Client_Controller {
                     $this->users_model->update('users', $this->data['user']->id, array('information_id' => $insert, 'company' => $this->input->post('company')));
                     $this->session->set_flashdata('message', 'Item added successfully');
                 }
-
                 redirect('client/information/extra', 'refresh');
             }
         }
@@ -588,12 +587,17 @@ class Information extends Client_Controller {
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             ));  
-            $this->form_validation->set_rules('other_language_employee', 'Số nhân viên có thể sử dụng ngôn ngữ khác(Số người) ', 'trim|required', array(
-                'required' => '%s không được trống.'
+            $this->form_validation->set_rules('other_language_employee', 'Số nhân viên có thể sử dụng ngôn ngữ khác(Số người) ', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));  
-            $this->form_validation->set_rules('other_language_employee_percent', 'Số nhân viên có thể sử dụng ngôn ngữ khác(% trên tổng số nhân viên) ', 'trim|required', array(
-                'required' => '%s không được trống.'
+            $this->form_validation->set_rules('other_language_employee_percent', 'Số nhân viên có thể sử dụng ngôn ngữ khác(% trên tổng số nhân viên) ', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));  
+            // da update
             /** =================================================== */
             $this->form_validation->set_rules('average_salary', 'Mức lương trung bình/năm 2018 ', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
@@ -774,8 +778,9 @@ class Information extends Client_Controller {
                         'english_employee_percent' => strstr($this->input->post('english_employee_percent'),',') ? str_replace(',', '.', $this->input->post('english_employee_percent')) : $this->input->post('english_employee_percent'),
                         'japanese_employee' => strstr($this->input->post('japanese_employee'),',') ? str_replace(',', '.', $this->input->post('japanese_employee')) : $this->input->post('japanese_employee'),
                         'japanese_employee_percent' => strstr($this->input->post('japanese_employee_percent'),',') ? str_replace(',', '.', $this->input->post('japanese_employee_percent')) : $this->input->post('japanese_employee_percent'),
-                        'other_language_employee' => $this->input->post('other_language_employee'),
-                        'other_language_employee_percent' => $this->input->post('other_language_employee_percent'),
+                        'other_language_employee' => strstr($this->input->post('other_language_employee'),',') ? str_replace(',', '.', $this->input->post('other_language_employee')) : $this->input->post('other_language_employee'),
+                        'other_language_employee_percent' => strstr($this->input->post('other_language_employee_percent'),',') ? str_replace(',', '.', $this->input->post('other_language_employee_percent')) : $this->input->post('other_language_employee_percent'),
+                        'ngoaingukhac' => $this->input->post('ngoaingukhac'),
                         // Trình độ chuyên môn
                         'qualification' => $this->input->post('qualification'),
                         // Mức lương trung bình/năm
@@ -1059,10 +1064,15 @@ class Information extends Client_Controller {
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             ));  
-            $this->form_validation->set_rules('other_language_employee', 'Số nhân viên có thể sử dụng ngôn ngữ khác(Số người) ', 'trim', array(
+            $this->form_validation->set_rules('other_language_employee', 'Số nhân viên có thể sử dụng ngôn ngữ khác(Số người) ', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));  
-            $this->form_validation->set_rules('other_language_employee_percent', 'Số nhân viên có thể sử dụng ngôn ngữ khác(% trên tổng số nhân viên) ', 'trim', array(
+            $this->form_validation->set_rules('other_language_employee_percent', 'Số nhân viên có thể sử dụng ngôn ngữ khác(% trên tổng số nhân viên) ', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));  
+            // da update
             /** =================================================== */
             $this->form_validation->set_rules('average_salary', 'Mức lương trung bình/năm 2018 ', 'trim|numeric_dots_and_comma|max_length[10]', array(
                 'numeric_dots_and_comma' => '%s phải là số.',
@@ -1234,8 +1244,9 @@ class Information extends Client_Controller {
                         'english_employee_percent' => strstr($this->input->post('english_employee_percent'),',') ? str_replace(',', '.', $this->input->post('english_employee_percent')) : $this->input->post('english_employee_percent'),
                         'japanese_employee' => strstr($this->input->post('japanese_employee'),',') ? str_replace(',', '.', $this->input->post('japanese_employee')) : $this->input->post('japanese_employee'),
                         'japanese_employee_percent' => strstr($this->input->post('japanese_employee_percent'),',') ? str_replace(',', '.', $this->input->post('japanese_employee_percent')) : $this->input->post('japanese_employee_percent'),
-                        'other_language_employee' => $this->input->post('other_language_employee'),
-                        'other_language_employee_percent' => $this->input->post('other_language_employee_percent'),
+                        'other_language_employee' => strstr($this->input->post('other_language_employee'),',') ? str_replace(',', '.', $this->input->post('other_language_employee')) : $this->input->post('other_language_employee'),
+                        'other_language_employee_percent' => strstr($this->input->post('other_language_employee_percent'),',') ? str_replace(',', '.', $this->input->post('other_language_employee_percent')) : $this->input->post('other_language_employee_percent'),
+                        'ngoaingukhac' => $this->input->post('ngoaingukhac'),
                         // Trình độ chuyên môn
                         'qualification' => $this->input->post('qualification'),
                         // Mức lương trung bình/năm
@@ -1576,13 +1587,18 @@ class Information extends Client_Controller {
                 'required' => '%s không được trống.',
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
+            ));
+            $this->form_validation->set_rules('other_language_employee', 'Số nhân viên có thể sử dụng ngôn ngữ khác(Số người) ', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));
+            $this->form_validation->set_rules('other_language_employee_percent', 'Số nhân viên có thể sử dụng ngôn ngữ khác(% trên tổng số nhân viên) ', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));  
-            $this->form_validation->set_rules('other_language_employee', 'Số nhân viên có thể sử dụng ngôn ngữ khác(Số người) ', 'trim|required', array(
-                'required' => '%s không được trống.'
-            ));  
-            $this->form_validation->set_rules('other_language_employee_percent', 'Số nhân viên có thể sử dụng ngôn ngữ khác(% trên tổng số nhân viên) ', 'trim|required', array(
-                'required' => '%s không được trống.'
-            ));  
+            // da update 1
             /** =================================================== */
             $this->form_validation->set_rules('average_salary', 'Mức lương trung bình/năm 2018 ', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
@@ -1769,8 +1785,9 @@ class Information extends Client_Controller {
                         'english_employee_percent' => strstr($this->input->post('english_employee_percent'),',') ? str_replace(',', '.', $this->input->post('english_employee_percent')) : $this->input->post('english_employee_percent'),
                         'japanese_employee' => strstr($this->input->post('japanese_employee'),',') ? str_replace(',', '.', $this->input->post('japanese_employee')) : $this->input->post('japanese_employee'),
                         'japanese_employee_percent' => strstr($this->input->post('japanese_employee_percent'),',') ? str_replace(',', '.', $this->input->post('japanese_employee_percent')) : $this->input->post('japanese_employee_percent'),
-                        'other_language_employee' => $this->input->post('other_language_employee'),
-                        'other_language_employee_percent' => $this->input->post('other_language_employee_percent'),
+                        'other_language_employee' => strstr($this->input->post('other_language_employee'),',') ? str_replace(',', '.', $this->input->post('other_language_employee')) : $this->input->post('other_language_employee'),
+                        'other_language_employee_percent' => strstr($this->input->post('other_language_employee_percent'),',') ? str_replace(',', '.', $this->input->post('other_language_employee_percent')) : $this->input->post('other_language_employee_percent'),
+                        'ngoaingukhac' => $this->input->post('ngoaingukhac'),
                         // Trình độ chuyên môn
                         'qualification' => $this->input->post('qualification'),
                         // Mức lương trung bình/năm
@@ -2047,11 +2064,16 @@ class Information extends Client_Controller {
             $this->form_validation->set_rules('japanese_employee_percent', 'Số nhân viên có thể sử dụng tiếng Nhật(% trên tổng số nhân viên) ', 'trim|numeric_dots_and_comma|max_length[10]', array(
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
+            ));
+            $this->form_validation->set_rules('other_language_employee', 'Số nhân viên có thể sử dụng ngôn ngữ khác(Số người) ', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));
+            $this->form_validation->set_rules('other_language_employee_percent', 'Số nhân viên có thể sử dụng ngôn ngữ khác(% trên tổng số nhân viên) ', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));  
-            $this->form_validation->set_rules('other_language_employee', 'Số nhân viên có thể sử dụng ngôn ngữ khác(Số người) ', 'trim', array(
-            ));  
-            $this->form_validation->set_rules('other_language_employee_percent', 'Số nhân viên có thể sử dụng ngôn ngữ khác(% trên tổng số nhân viên) ', 'trim', array(
-            ));  
+            // dat update 
             /** =================================================== */
             $this->form_validation->set_rules('average_salary', 'Mức lương trung bình/năm 2018 ', 'trim|numeric_dots_and_comma|max_length[10]', array(
                 'numeric_dots_and_comma' => '%s phải là số.',
@@ -2223,8 +2245,9 @@ class Information extends Client_Controller {
                         'english_employee_percent' => strstr($this->input->post('english_employee_percent'),',') ? str_replace(',', '.', $this->input->post('english_employee_percent')) : $this->input->post('english_employee_percent'),
                         'japanese_employee' => strstr($this->input->post('japanese_employee'),',') ? str_replace(',', '.', $this->input->post('japanese_employee')) : $this->input->post('japanese_employee'),
                         'japanese_employee_percent' => strstr($this->input->post('japanese_employee_percent'),',') ? str_replace(',', '.', $this->input->post('japanese_employee_percent')) : $this->input->post('japanese_employee_percent'),
-                        'other_language_employee' => $this->input->post('other_language_employee'),
-                        'other_language_employee_percent' => $this->input->post('other_language_employee_percent'),
+                        'other_language_employee' => strstr($this->input->post('other_language_employee'),',') ? str_replace(',', '.', $this->input->post('other_language_employee')) : $this->input->post('other_language_employee'),
+                        'other_language_employee_percent' => strstr($this->input->post('other_language_employee_percent'),',') ? str_replace(',', '.', $this->input->post('other_language_employee_percent')) : $this->input->post('other_language_employee_percent'),
+                        'ngoaingukhac' => $this->input->post('ngoaingukhac'),
                         // Trình độ chuyên môn
                         'qualification' => $this->input->post('qualification'),
                         // Mức lương trung bình/năm

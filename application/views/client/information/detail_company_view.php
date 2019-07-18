@@ -706,12 +706,13 @@
                         <div class="col-xs-12">
                             <table class="table table-bordered" >
                               <tr>
-                                <th style="width: 200px;">Ngoại ngữ</th>
+                                <th colspan="2" style="width: 200px;">Ngoại ngữ</th>
                                 <th>Số người</th>
                                 <th>% trên tổng số nhân viên</th>
                               </tr>
                               <tr>
-                                <td>Tiếng Anh</td>
+                                
+                                <td colspan="2" style="text-align: center!important;">Tiếng Anh</td>
                                 <td>
                                     <?php 
                                         echo form_error('english_employee', '<div class="error">', '</div>');
@@ -726,7 +727,8 @@
                                 </td>
                               </tr>
                               <tr>
-                                <td>Tiếng Nhật</td>
+                                
+                                <td colspan="2" style="text-align: center!important;">Tiếng Nhật</td>
                                 <td>
                                     <?php 
                                         echo form_error('japanese_employee', '<div class="error">', '</div>');
@@ -741,7 +743,12 @@
                                 </td>
                               </tr>
                               <tr>
-                                <td>Ngoại ngữ khác (Ghi rõ)</td>
+                                <td colspan="1" style="width: 200px;">Ngoại ngữ khác (Ghi rõ)</td>
+                                <td colspan="1" style="width: 200px;">
+                                    <?php 
+                                        echo form_input('ngoaingukhac', set_value('ngoaingukhac',$company['ngoaingukhac']), 'class="form-control"'); 
+                                    ?>
+                                </td>
                                 <td>
                                     <?php 
                                         echo form_error('other_language_employee', '<div class="error">', '</div>');
