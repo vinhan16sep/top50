@@ -83,10 +83,10 @@ class Information extends Client_Controller {
             'max_length' => '%s tối đa %s ký tự.',
         ));
         $this->form_validation->set_rules('founding_date', 'Ngày thành lập', 'trim|date_formats', array(
-            'date_formats' => '%s không đúng định dạng dd/mm/yyyy.',
+            'date_formats' => '%s không đúng định dạng.',
         ));
         $this->form_validation->set_rules('certificate_date', 'Ngày cấp', 'trim|date_formats', array(
-            'date_formats' => '%s không đúng định dạng dd/mm/yyyy.',
+            'date_formats' => '%s không đúng định dạng.',
         ));
 //        $this->form_validation->set_rules('link', 'Link download PĐK của DN', 'trim|required');
 
@@ -199,10 +199,10 @@ class Information extends Client_Controller {
             'max_length' => '%s tối đa %s ký tự.',
         ));
         $this->form_validation->set_rules('founding_date', 'Ngày thành lập', 'trim|date_formats', array(
-            'date_formats' => '%s không đúng định dạng dd/mm/yyyy.',
+            'date_formats' => '%s không đúng định dạng.',
         ));
         $this->form_validation->set_rules('certificate_date', 'Ngày cấp', 'trim|date_formats', array(
-            'date_formats' => '%s không đúng định dạng dd/mm/yyyy.',
+            'date_formats' => '%s không đúng định dạng.',
         ));
 //        $this->form_validation->set_rules('link', 'Link download PĐK của DN', 'trim|required');
 

@@ -448,13 +448,11 @@
     $(function () {
         $('.datetimepicker7').datetimepicker({
             format: 'DD/MM/Y',
-            maxDate: new Date('07/31/2017'),
             useCurrent: false,
         });
 
         $('.datetimepicker').datetimepicker({
             format: 'DD/MM/Y',
-            maxDate: new Date(),
             useCurrent: false,
         });
     });
