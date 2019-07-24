@@ -1160,9 +1160,41 @@ class CI_Form_validation {
 
 		return ($val >= mb_strlen($str));
 	}
+	/**
+	 * Max Length
+	 *
+	 * @param	string
+	 * @param	string
+	 * @return	bool
+	 */
+	public function max_word($str, $val)
+	{
+		if ( ! is_numeric($val))
+		{
+			return FALSE;
+		}
+
+		return ($val >= str_word_count($str));
+	}
 
 	// --------------------------------------------------------------------
 
+	/**
+	 * Exact Length
+	 *
+	 * @param	string
+	 * @param	string
+	 * @return	bool
+	 */
+	public function exact_word($str, $val)
+	{
+		if ( ! is_numeric($val))
+		{
+			return FALSE;
+		}
+
+		return (str_word_count($str) === (int) $val);
+	}
 	/**
 	 * Exact Length
 	 *
