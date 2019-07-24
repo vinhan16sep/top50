@@ -234,7 +234,7 @@
                         <div class="col-sm-9 col-md-9 col-sx-12">
                             <div class="row">
                                 <?php
-                                echo form_textarea('overview', set_value('overview'), 'class="form-control tinymce-area"');
+                                echo form_textarea('overview', set_value('overview'), 'class="form-control"');
                                 ?>
                             </div>
                         </div>
@@ -251,7 +251,7 @@
                         <div class="col-sm-9 col-md-9 col-sx-12">
                             <div class="row">
                                 <?php
-                                echo form_textarea('active_area', set_value('active_area'), 'class="form-control tinymce-area"');
+                                echo form_textarea('active_area', set_value('active_area'), 'class="form-control"');
                                 ?>
                             </div>
                         </div>
@@ -1079,7 +1079,7 @@
                         </div>
                         <div class="col-xs-12">
                              <?php
-                                echo form_textarea('security_certificate', set_value('security_certificate'), 'class="form-control tinymce-area"');
+                                echo form_textarea('security_certificate', set_value('security_certificate'), 'class="form-control"');
                             ?>
                         </div>
                     </div>
@@ -1091,7 +1091,7 @@
                         </div>
                         <div class="col-xs-12">
                              <?php
-                                echo form_textarea('security_process', set_value('security_process'), 'class="form-control tinymce-area"');
+                                echo form_textarea('security_process', set_value('security_process'), 'class="form-control"');
                             ?>
                         </div>
                     </div>
