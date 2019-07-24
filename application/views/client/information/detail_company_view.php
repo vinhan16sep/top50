@@ -105,9 +105,12 @@
                         <hr>
                         <div class="col-xs-12 textarea-h">
                             <div>
-                                <?php
-                                echo htmlspecialchars_decode($company['overview']);
-                                ?>
+                                <textarea name="" id="" rows="10" style="width: 100%;border:none" class="form-control">
+                                    <?php
+                                        echo trim($company['overview']);
+                                    ?>
+                                </textarea>
+                                    
                             </div>
                                 
                         </div>

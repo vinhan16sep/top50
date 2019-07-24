@@ -641,12 +641,20 @@ class Information extends Client_Controller {
                 'max_length' => '%s Tối đa 10 chữ số'
             ));  
             /** =================================================== */
-            $this->form_validation->set_rules('security_certificate', 'Các chứng chỉ bảo mật ', 'trim|max_length[100]', array(
-                'max_length' => '%s Tối đa 100 từ'
+            $this->form_validation->set_rules('security_certificate', 'Các chứng chỉ bảo mật ', 'trim|max_word[100]', array(
+                'max_word' => '%s Tối đa 100 từ'
             ));  
             /** =================================================== */
-            $this->form_validation->set_rules('security_certificate', 'Các quy trình/các biện pháp an ninh ', 'trim|max_length[100]', array(
-                'max_length' => '%s Tối đa 100 từ'
+            $this->form_validation->set_rules('security_process', 'Các quy trình/các biện pháp an ninh ', 'trim|max_word[100]', array(
+                'max_word' => '%s Tối đa 100 từ'
+            ));   
+            /** =================================================== */
+            $this->form_validation->set_rules('overview', 'Giới thiệu doanh nghiệp ', 'trim|max_word[100]', array(
+                'max_word' => '%s Tối đa 100 từ'
+            )); 
+            /** =================================================== */
+            $this->form_validation->set_rules('active_area', 'Lĩnh vực hoạt động ', 'trim|max_word[100]', array(
+                'max_word' => '%s Tối đa 100 từ'
             ));   
             $this->form_validation->set_rules('main_service[]', 'Sản phẩm dịch vụ chính của doanh nghiệp', 'trim|required', array(
                 'required' => '%s không được trống.'
@@ -1110,12 +1118,20 @@ class Information extends Client_Controller {
                 'max_length' => '%s Tối đa 10 chữ số'
             ));  
             /** =================================================== */
-            $this->form_validation->set_rules('security_certificate', 'Các chứng chỉ bảo mật ', 'trim|max_length[100]', array(
-                'max_length' => '%s Tối đa 100 từ'
+            $this->form_validation->set_rules('security_certificate', 'Các chứng chỉ bảo mật ', 'trim|max_word[100]', array(
+                'max_word' => '%s Tối đa 100 từ'
             ));  
             /** =================================================== */
-            $this->form_validation->set_rules('security_certificate', 'Các quy trình/các biện pháp an ninh ', 'trim|max_length[100]', array(
-                'max_length' => '%s Tối đa 100 từ'
+            $this->form_validation->set_rules('security_process', 'Các quy trình/các biện pháp an ninh ', 'trim|max_word[100]', array(
+                'max_word' => '%s Tối đa 100 từ'
+            )); 
+            /** =================================================== */
+            $this->form_validation->set_rules('overview', 'Giới thiệu doanh nghiệp ', 'trim|max_word[100]', array(
+                'max_word' => '%s Tối đa 100 từ'
+            )); 
+            /** =================================================== */
+            $this->form_validation->set_rules('active_area', 'Lĩnh vực hoạt động ', 'trim|max_word[100]', array(
+                'max_word' => '%s Tối đa 100 từ'
             ));   
 
             if ($this->form_validation->run() === FALSE) {
@@ -1642,13 +1658,22 @@ class Information extends Client_Controller {
                 'max_length' => '%s Tối đa 10 chữ số'
             ));  
             /** =================================================== */
-            $this->form_validation->set_rules('security_certificate', 'Các chứng chỉ bảo mật ', 'trim|max_length[100]', array(
-                'max_length' => '%s Tối đa 100 từ'
+            $this->form_validation->set_rules('security_certificate', 'Các chứng chỉ bảo mật ', 'trim|max_word[100]', array(
+                'max_word' => '%s Tối đa 100 từ'
             ));  
             /** =================================================== */
-            $this->form_validation->set_rules('security_certificate', 'Các quy trình/các biện pháp an ninh ', 'trim|max_length[100]', array(
-                'max_length' => '%s Tối đa 100 từ'
+            $this->form_validation->set_rules('security_process', 'Các quy trình/các biện pháp an ninh ', 'trim|max_word[100]', array(
+                'max_word' => '%s Tối đa 100 từ'
             ));   
+            
+            /** =================================================== */
+            $this->form_validation->set_rules('overview', 'Giới thiệu doanh nghiệp ', 'trim|max_word[100]', array(
+                'max_word' => '%s Tối đa 100 từ'
+            )); 
+            /** =================================================== */
+            $this->form_validation->set_rules('active_area', 'Lĩnh vực hoạt động ', 'trim|max_word[100]', array(
+                'max_word' => '%s Tối đa 100 từ'
+            ));  
             $this->form_validation->set_rules('main_service[]', 'Sản phẩm dịch vụ chính của doanh nghiệp', 'trim|required', array(
                 'required' => '%s không được trống.'
             ));
@@ -2111,13 +2136,21 @@ class Information extends Client_Controller {
                 'max_length' => '%s Tối đa 10 chữ số'
             ));  
             /** =================================================== */
-            $this->form_validation->set_rules('security_certificate', 'Các chứng chỉ bảo mật ', 'trim|max_length[100]', array(
-                'max_length' => '%s Tối đa 100 từ'
+            $this->form_validation->set_rules('security_certificate', 'Các chứng chỉ bảo mật ', 'trim|max_word[100]', array(
+                'max_word' => '%s Tối đa 100 từ'
             ));  
             /** =================================================== */
-            $this->form_validation->set_rules('security_certificate', 'Các quy trình/các biện pháp an ninh ', 'trim|max_length[100]', array(
-                'max_length' => '%s Tối đa 100 từ'
-            ));   
+            $this->form_validation->set_rules('security_process', 'Các quy trình/các biện pháp an ninh ', 'trim|max_word[100]', array(
+                'max_word' => '%s Tối đa 100 từ'
+            ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('overview', 'Giới thiệu doanh nghiệp ', 'trim|max_word[100]', array(
+                'max_word' => '%s Tối đa 100 từ'
+            )); 
+            /** =================================================== */
+            $this->form_validation->set_rules('active_area', 'Lĩnh vực hoạt động ', 'trim|max_word[100]', array(
+                'max_word' => '%s Tối đa 100 từ'
+            ));    
             if ($this->form_validation->run() == FALSE) {
                 $this->data['company'] = $this->information_model->fetch_company_by_identity_and_year('company', $this->data['user']->username, $this->input->get('year'));
                 if (!$this->data['company']) {
