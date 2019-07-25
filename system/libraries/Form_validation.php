@@ -1174,7 +1174,7 @@ class CI_Form_validation {
 			return FALSE;
 		}
 
-		return ($val >= str_word_count($str));
+		return ($val >= count(preg_split('~[^\p{L}\p{N}\'.+-,@/_()#$%"*`;:|\[\]{}\^]+~u',$str)));
 	}
 
 	// --------------------------------------------------------------------
