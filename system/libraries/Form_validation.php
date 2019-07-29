@@ -1173,7 +1173,7 @@ class CI_Form_validation {
 		{
 			return FALSE;
 		}
-
+		$str = trim(strip_tags($str));
 		return ($val >= count(preg_split('~[^\p{L}\p{N}\'.+-,@/_()#$%"*`;:|\[\]{}\^]+~u',$str)));
 	}
 

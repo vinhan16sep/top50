@@ -106,9 +106,8 @@
                         <div class="col-xs-12 textarea-h">
                             <div>
                                 <textarea name="" id="" rows="10" style="width: 100%;border:none" class="form-control">
-                                    <?php
-                                        echo trim($company['overview']);
-                                    ?>
+                                    <?php echo strip_tags(htmlspecialchars_decode($company['overview'])); ?>
+                                    
                                 </textarea>
                                     
                             </div>
@@ -128,7 +127,7 @@
                         <div class="col-xs-12 textarea-h">
                             <div>
                                 <?php
-                                echo htmlspecialchars_decode($company['active_area']);
+                                echo strip_tags(htmlspecialchars_decode($company['active_area']));
                                 ?></div>
                         </div>
                     </div>
@@ -917,7 +916,7 @@
                         <div class="col-xs-12 textarea-h">
                             <div>
                              <?php
-                                echo htmlspecialchars_decode($company['security_certificate']);
+                                echo strip_tags(htmlspecialchars_decode($company['security_certificate']));
                             ?></div>
                         </div>
                     </div>
@@ -930,7 +929,7 @@
                         <div class="col-xs-12 textarea-h">
                             <div>
                              <?php
-                                echo htmlspecialchars_decode($company['security_process']);
+                                echo strip_tags(htmlspecialchars_decode($company['security_process']));
                             ?></div>
                         </div>
                     </div>
@@ -1031,6 +1030,13 @@
         }else{
             $(textarea_h[i]).find('>div').html('<div style="text-align:center">--------------------------------------------------------------------------------------------------------</div>');
         }
+    }
+</script>
+
+<script>
+    input = $('input');
+    for (var i = 0; i < input.length; i++) {
+        $(input[i]).val($(input[i]).val().replace(/&amp;/g,'&'));
     }
 </script>
         

@@ -234,7 +234,7 @@
                         <div class="col-sm-9 col-md-9 col-sx-12">
                             <div class="row">
                                 <?php
-                                echo form_textarea('overview', set_value('overview'), 'class="form-control"');
+                                echo form_textarea('overview', strip_tags(htmlspecialchars_decode(set_value('overview'))), 'class="form-control"');
                                 ?>
                             </div>
                         </div>
@@ -251,7 +251,7 @@
                         <div class="col-sm-9 col-md-9 col-sx-12">
                             <div class="row">
                                 <?php
-                                echo form_textarea('active_area', set_value('active_area'), 'class="form-control"');
+                                echo form_textarea('active_area', strip_tags(htmlspecialchars_decode(set_value('active_area'))), 'class="form-control"');
                                 ?>
                             </div>
                         </div>
@@ -268,7 +268,7 @@
                         <div class="col-sm-9 col-md-9 col-sx-12">
                             <div class="row">
                                 <?php
-                                echo form_textarea('product', set_value('product'), 'class="form-control tinymce-area"');
+                                echo form_textarea('product', htmlspecialchars_decode(set_value('product')), 'class="form-control tinymce-area"');
                                 ?>
                             </div>
                         </div>
@@ -389,7 +389,7 @@
                         <div class="col-sm-9 col-md-9 col-sx-12">
                             <div class="row">
                                 <?php
-                                echo form_textarea('top5_customers', set_value('top5_customers'), 'class="form-control tinymce-area"');
+                                echo form_textarea('top5_customers', htmlspecialchars_decode(set_value('top5_customers')), 'class="form-control tinymce-area"');
                                 ?>
                             </div>
                         </div>
@@ -953,7 +953,7 @@
                         </div>
                         <div class="col-xs-12">
                              <?php
-                                echo form_textarea('qualification', set_value('qualification'), 'class="form-control tinymce-area"');
+                                echo form_textarea('qualification', htmlspecialchars_decode(set_value('qualification')), 'class="form-control tinymce-area"');
                             ?>
                         </div>
                     </div>
@@ -986,7 +986,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                              <?php
-                                echo form_textarea('training_process', set_value('training_process'), 'class="form-control tinymce-area"');
+                                echo form_textarea('training_process', htmlspecialchars_decode(set_value('training_process')), 'class="form-control tinymce-area"');
                             ?>
                         </div>
                     </div>
@@ -1062,7 +1062,7 @@
                         </div>
                         <div class="col-xs-12">
                              <?php
-                                echo form_textarea('result_r_and_d', set_value('result_r_and_d'), 'class="form-control tinymce-area"');
+                                echo form_textarea('result_r_and_d', htmlspecialchars_decode(set_value('result_r_and_d')), 'class="form-control tinymce-area"');
                             ?>
                         </div>
                     </div>
@@ -1079,7 +1079,7 @@
                         </div>
                         <div class="col-xs-12">
                              <?php
-                                echo form_textarea('security_certificate', set_value('security_certificate'), 'class="form-control"');
+                                echo form_textarea('security_certificate', strip_tags(htmlspecialchars_decode(set_value('security_certificate'))), 'class="form-control"');
                             ?>
                         </div>
                     </div>
@@ -1091,7 +1091,7 @@
                         </div>
                         <div class="col-xs-12">
                              <?php
-                                echo form_textarea('security_process', set_value('security_process'), 'class="form-control"');
+                                echo form_textarea('security_process', strip_tags(htmlspecialchars_decode(set_value('security_process'))), 'class="form-control"');
                             ?>
                         </div>
                     </div>
@@ -1103,7 +1103,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                              <?php
-                                echo form_textarea('technique_certificate', set_value('technique_certificate'), 'class="form-control tinymce-area"');
+                                echo form_textarea('technique_certificate', htmlspecialchars_decode(set_value('technique_certificate')), 'class="form-control tinymce-area"');
                             ?>
                         </div>
                     </div>
@@ -1117,7 +1117,7 @@
                         </div>
                         <div class="col-xs-12">
                              <?php
-                                echo form_textarea('reward', set_value('reward'), 'class="form-control tinymce-area"');
+                                echo form_textarea('reward', htmlspecialchars_decode(set_value('reward')), 'class="form-control tinymce-area"');
                             ?>
                         </div>
                     </div>
@@ -1213,4 +1213,10 @@
         }
         
     })
+</script>
+<script>
+    input = $('input');
+    for (var i = 0; i < input.length; i++) {
+        $(input[i]).val($(input[i]).val().replace(/&amp;/g,'&'));
+    }
 </script>
