@@ -226,7 +226,7 @@
                         <div class="col-sm-9 col-md-9 col-sx-12">
                             <div class="row">
                                 <?php
-                                echo form_textarea('overview', htmlspecialchars_decode(set_value('overview', $company['overview'])), 'class="form-control"');
+                                echo form_textarea('overview', strip_tags(htmlspecialchars_decode(set_value('overview', $company['overview']))), 'class="form-control"');
                                 ?>
                             </div>
                         </div>
@@ -243,7 +243,7 @@
                         <div class="col-sm-9 col-md-9 col-sx-12">
                             <div class="row">
                                 <?php
-                                echo form_textarea('active_area', htmlspecialchars_decode(set_value('active_area', $company['active_area'])), 'class="form-control"');
+                                echo form_textarea('active_area', strip_tags(htmlspecialchars_decode(set_value('active_area', $company['active_area']))), 'class="form-control"');
                                 ?>
                             </div>
                         </div>
@@ -1170,7 +1170,7 @@
                         </div>
                         <div class="col-xs-12">
                              <?php
-                                echo form_textarea('security_certificate', htmlspecialchars_decode(set_value('security_certificate',$company['security_certificate'])), 'class="form-control"');
+                                echo form_textarea('security_certificate', strip_tags(htmlspecialchars_decode(set_value('security_certificate',$company['security_certificate']))), 'class="form-control"');
                             ?>
                         </div>
                     </div>
@@ -1182,7 +1182,7 @@
                         </div>
                         <div class="col-xs-12">
                              <?php
-                                echo form_textarea('security_process', htmlspecialchars_decode(set_value('security_process',$company['security_process'])), 'class="form-control"');
+                                echo form_textarea('security_process', strip_tags(htmlspecialchars_decode(set_value('security_process',$company['security_process']))), 'class="form-control"');
                             ?>
                         </div>
                     </div>
@@ -1315,4 +1315,10 @@
         }
         
     })
+</script>
+<script>
+    input = $('input');
+    for (var i = 0; i < input.length; i++) {
+        $(input[i]).val($(input[i]).val().replace(/&amp;/g,'&'));
+    }
 </script>
