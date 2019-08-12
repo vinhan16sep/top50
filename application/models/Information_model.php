@@ -188,6 +188,20 @@ class Information_model extends CI_Model {
         return false;
     }
 
+    public function fetch_extra_by_client_id($type, $id){
+        $query = $this->db->select('*')
+            ->from($type)
+            ->where('client_id', $id)
+            ->limit(1)
+            ->get();
+
+        if($query->num_rows() == 1){
+            return $query->row_array();
+        }
+
+        return false;
+    }
+
     public function fetch_by_user_identity($type, $identity){
         $query = $this->db->select('*')
             ->from($type)
@@ -221,6 +235,21 @@ class Information_model extends CI_Model {
         $query = $this->db->select('*')
             ->from($type)
             ->where('identity', $identity)
+            ->where('year', $year)
+            ->limit(1)
+            ->get();
+
+        if($query->num_rows() == 1){
+            return $query->row_array();
+        }
+
+        return false;
+    }
+
+    public function fetch_company_by_client_id_and_year($type, $id, $year){
+        $query = $this->db->select('*')
+            ->from($type)
+            ->where('client_id', $id)
             ->where('year', $year)
             ->limit(1)
             ->get();
@@ -274,7 +303,7 @@ class Information_model extends CI_Model {
     public function fetch_product_by_ids($type, $ids){
         $query = $this->db->select('*')
             ->from($type)
-            ->where_in('id', $id)
+            ->where_in('id', $ids)
             ->limit()
             ->get()->result_array();
 

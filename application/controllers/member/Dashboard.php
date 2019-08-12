@@ -79,7 +79,6 @@ class Dashboard extends Member_Controller {
                     }
                 }
             }
-
             $this->data['team'] = $team;
             
             $this->data['user_id'] = $user->id;
