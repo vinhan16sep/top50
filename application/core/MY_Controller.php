@@ -289,9 +289,8 @@ class Member_Controller extends MY_Controller {
             'modified_by' => $this->ion_auth->user()->row()->email
         );
 
-        $this->data['eventYear'] = (date('m') == 12) ? (date('Y') + 1) : date('Y');
-        $this->data['rule3Year'] = array(
-            $this->data['eventYear'] - 3,
+        $this->data['eventYear'] = date('Y');
+        $this->data['rule2Year'] = array(
             $this->data['eventYear'] - 2,
             $this->data['eventYear'] - 1
         );

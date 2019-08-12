@@ -61,10 +61,10 @@
                                                                         <td class="col-sm-2" style="font-weight:bold;color: #31708f;">Dành cho trưởng nhóm</td>
                                                                     <?php } ?>
                                                                     <td style="text-align: center;">
-                                                                        <a href="<?php echo base_url('member/product/detail/' . $value['id']) ?>" data-toggle="tooltip" data-placement="top" title="Thông tin sản phẩm">
+                                                                        <a href="<?php echo base_url('member/basic/detail/' . $value['id'] . '?client_id=' . $value['client_id']) ?>" data-toggle="tooltip" data-placement="top" title="Thông tin cơ bản">
                                                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                                                         </a>
-                                                                        <a href="<?php echo base_url('member/company/detail/' . $value['company_id']) ?>" data-toggle="tooltip" data-placement="top" title="Thông tin doanh nghiệp">
+                                                                        <a href="<?php echo base_url('member/company/detail?client_id=' . $value['client_id'] . '&year=' . $eventYear) ?>" data-toggle="tooltip" data-placement="top" title="Thông tin lĩnh vực ứng cử">
                                                                             <i class="fa fa-building" aria-hidden="true"></i>
                                                                         </a>
                                                                         <a href="<?php echo base_url('member/new_rating/index/?id=' . $value['id'] . '&main_service=' . $value['main_service']); ?>" data-toggle="tooltip" data-placement="top" title="Chấm điểm">

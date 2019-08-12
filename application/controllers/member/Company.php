@@ -92,14 +92,23 @@ class Company extends Member_Controller{
          $this->render('member/company/list_company_view');
     }
 
-	public function detail($id){
+	public function detail(){
+        $this->load->helper('form');
         $this->load->model('users_model');
-        $company = $this->information_model->fetch_company_by_id($id);
-        $member_id = json_decode($company['member_id']);
-        $members = $this->users_model->fetch_all_member_with_where($member_id);
-        $this->data['members'] = $members;
-        $this->data['company'] = $company;
-		$this->render('member/company/detail_company_view');
+
+        if($this->input->get('year') && $this->input->get('client_id')){
+            $this->data['year'] = $this->input->get('year');
+            $this->data['company'] = $company = $this->information_model->fetch_company_by_client_id_and_year('company', $this->input->get('client_id'), $this->input->get('year'));
+
+            $member_id = json_decode($company['member_id']);
+            $members = $this->users_model->fetch_all_member_with_where($member_id);
+            $this->data['members'] = $members;
+            $this->render('member/company/detail_company_view');
+        }else{
+            redirect('member/dashboard', 'refresh');
+        }
+
+
 	}
 
     public function detail_by_client($client_id){
