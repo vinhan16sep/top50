@@ -67,44 +67,27 @@
                                     <td>
                                         <table class="table table-bordered">
                                             <?php
-                                                $array_product_id = explode(',', $team['product_id']);
+                                                $array_company_id = explode(',', $team['company_id']);
                                                 $stt = 1;
-                                                $newProducts = [];
+                                                $tmpCompanyArray = array();
                                             ?>
-                                            <?php if ($products): ?>
-                                                <?php foreach ($products as $key => $product){
-                                                    $newProducts[$product['id']] = $product;
+                                            <?php if ($all_companies): ?>
+                                                <?php foreach ($all_companies as $key => $company){
+                                                    $tmpCompanyArray[$company['id']] = $company;
                                                 } ?>
                                             <?php endif ?>
-                                            <?php if ($array_product_id): ?>
-                                                <?php foreach ($array_product_id as $key => $value): ?>
+                                            <?php if ($array_company_id): ?>
+                                                <?php foreach ($array_company_id as $key => $value): ?>
                                                     <?php if (!empty($value)): ?>
                                                         <?php $stt++ ?>
                                                         <tr style="<?php echo ($stt % 2 == 0) ? 'background-color: #b7d7f3' : '' ; ?> ">
-                                                            <td style="width: 27%"><strong>Sản phẩm</strong></td>
-                                                            <td><?php echo $newProducts[$value]['name'] ?></td>
-                                                            <td rowspan="3" style="vertical-align : middle;text-align:center;">
-                                                                <?php echo '<a href="javascript:void(0);" onclick="removeProduct(' . $team['id'] . ',' . $newProducts[$value]['id'] . ');"><i style="color:red;" class="fa fa-remove" aria-hidden="true"></i></a>' ?>
-                                                            </td>
-                                                        </tr>
-                                                        <tr style="<?php echo ($stt % 2 == 0) ? 'background-color: #b7d7f3' : '' ; ?> ">
                                                             <td><strong>Doanh nghiệp</strong></td>
-                                                            <td><?php echo $newProducts[$value]['company'] ?></td>
-                                                        </tr>
-                                                        <tr style="<?php echo ($stt % 2 == 0) ? 'background-color: #b7d7f3' : '' ; ?> ">
-                                                            <td><strong>Nhóm lĩnh vực chính</strong></td>
-                                                            <td>
-                                                                <?php
-                                                                    if (array_key_exists($newProducts[$value]['main_service'], $main_services)) {
-                                                                        echo $main_services[$newProducts[$value]['main_service']];
-                                                                    }
-                                                                ?>
-                                                            </td>
+                                                            <td><?php echo $tmpCompanyArray[$value]['company'] ?></td>
                                                         </tr>
                                                     <?php endif ?>
                                                 <?php endforeach ?>
                                             <?php endif ?>
-                                            
+
                                         </table>
                                     </td>
                                     <td>
@@ -250,20 +233,17 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Chọn Sản Phẩm</h4>
+                <h4 class="modal-title">Chọn doanh nghiệp</h4>
             </div>
             <div class="modal-body" id="modal-form">
                 <input type="hidden" value="" id="hiddenTeamId"/>
-                <select id="selectCompanys" class="form-control" style="margin-bottom: 20px;" >
-                    <option value="">-- Chọn công ty --</option>
+                <select id="selectClient" class="form-control" style="margin-bottom: 20px;" >
+                    <option value="">-- Chọn doanh nghiệp --</option>
                     <?php if($companys){ ?>
                         <?php foreach($companys as $key => $company){ ?>
                             <option value="<?php echo $company['client_id'] ?>"><?php echo $company['company']; ?></option>
                         <?php } ?>
                     <?php } ?>
-                </select>
-                <select id="selectProducts" class="form-control" disabled>
-                    <option value="">-- Chọn sản phẩm --</option>
                 </select>
             </div>
             <div class="modal-footer">
@@ -422,7 +402,7 @@
     });
 
 
-    $('#selectCompanys').change(function(){
+    $('#selectCompanies').change(function(){
         $.ajax({
             method: "GET",
             url: "<?php echo base_url('admin/team/get_products'); ?>",
@@ -448,20 +428,20 @@
     });
 
     $('#confirmAddProducts').click(function(){
-        if($('#selectProducts').val() == ''){
-            alert('Cần chọn sản phẩm');
+        if($('#selectClient').val() == ''){
+            alert('Cần chọn doanh nghiệp');
         }else{
             $.ajax({
                 method: "GET",
                 url: "<?php echo base_url('admin/team/add_product'); ?>",
                 data: {
                     team_id: $('#hiddenTeamId').val(),
-                    product_id: $('#selectProducts').val()
+                    client_id: $('#selectClient').val()
                 },
                 success: function(result){
                     let data = JSON.parse(result);
                     if(data.name != undefined){
-                        alert('Chọn chọn sản phẩm cho ' + data.name + ' thành công')
+                        alert('Chọn doanh nghiệp cho ' + data.name + ' thành công')
                         window.location.reload();
                     }else{
                         alert(data.message)

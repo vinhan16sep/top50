@@ -15,28 +15,32 @@ class Company extends Admin_Controller{
         $this->excel = new PHPExcel();
 	}
 
-	public function index(){
+	public function index($year){
+	    if(!isset($year) || empty($year)){
+            redirect('admin/dashboard', 'refresh');
+        }
         $this->load->helper('form');
         $this->load->library('form_validation');
+
+//        $selected_year = $this->input->get('year');
 
 		$this->load->model('users_model');
 		$members = $this->users_model->fetch_all_member();
 		$this->data['members'] = $members;
-		$keywords = '';
-        if($this->input->get('search')){
-            $keywords = $this->input->get('search');
-        }
-        $this->data['keywords'] = $keywords;
-        $total_rows  = $this->information_model->count_companys();
-        if($keywords != ''){
-            $total_rows  = $this->information_model->count_company_search($keywords);
-        }
+		$criteria = array(
+            'year' => $year,
+            'company_name' => $this->input->get('company_name'),
+            'sort_name' => $this->input->get('sort_name'),
+            'sort_order' => $this->input->get('sort_order'),
+        );
+        $this->data['criteria'] = $criteria;
+        $total_rows  = $this->information_model->count_companys($criteria);
+
 		$this->load->library('pagination');
 		$config = array();
-		$base_url = base_url('admin/company/index');
+		$base_url = base_url('admin/company/index/' . $year);
 		$per_page = 50;
-		$uri_segment = 4;
-        // echo $total_rows;die;
+		$uri_segment = 5;
 
 		foreach ($this->pagination_con($base_url, $total_rows, $per_page, $uri_segment) as $key => $value) {
             $config[$key] = $value;
@@ -44,11 +48,9 @@ class Company extends Admin_Controller{
         $this->pagination->initialize($config);
 
         $this->data['page_links'] = $this->pagination->create_links();
-        $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) - 1 : 0;
-        $result = $this->information_model->fetch_all_company_pagination($per_page, $per_page*$this->data['page']);
-        if($keywords != ''){
-            $result = $this->information_model->fetch_all_company_pagination_search($per_page, $per_page*$this->data['page'], $keywords);
-        }
+        $this->data['page'] = ($this->uri->segment(5)) ? $this->uri->segment(5) - 1 : 0;
+        $result = $this->information_model->fetch_all_company_pagination($per_page, $per_page*$this->data['page'], $criteria);
+
         foreach ($result as $key => $value) {
             $member_id = json_decode($value['member_id']);
             if($member_id){
@@ -66,7 +68,9 @@ class Company extends Admin_Controller{
              $number = $total_rows - ($this->data['page'] * $per_page);
          };
 
-         $this->data['number'] = $number;
+
+        $this->data['year'] = $year;
+        $this->data['number'] = $number;
         $this->data['companies'] = $result;
 		$this->render('admin/company/list_company_view');
 	}

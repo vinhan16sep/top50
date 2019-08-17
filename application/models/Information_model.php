@@ -60,6 +60,15 @@ class Information_model extends CI_Model {
         return $result = $this->db->get()->result_array();
     }
 
+    public function get_all_company_by_year($year) {
+        $this->db->select('*');
+        $this->db->from('company');
+        $this->db->where('year', $year);
+        $this->db->order_by("id", "desc");
+
+        return $result = $this->db->get()->result_array();
+    }
+
     public function fetch_all_by_type($type){
         $query = $this->db->select('*')
             ->from('information')

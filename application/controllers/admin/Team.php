@@ -23,8 +23,20 @@ class Team extends Admin_Controller{
 	    $this->data['leaders'] = $this->users_model->fetch_all_leaders();
         $this->data['members'] = $this->users_model->fetch_all_members();
         $this->data['companys'] = $this->information_model->fetch_all_company_pagination();
+
+        $companies = $this->information_model->get_all_company_by_year($this->data['eventYear']);
+        if ($companies) {
+            foreach ($companies as $key => $value) {
+                $user = $this->users_model->fetch_by_id($value['client_id']);
+                $companies[$key]['company'] = $user['company'];
+            }
+        }
+        $this->data['all_companies'] = $companies;
+
+
+
+
 	    $products = $this->information_model->get_product();
-        
         if ($products) {
             foreach ($products as $key => $value) {
                 $user = $this->users_model->fetch_by_id($value['client_id']);
@@ -32,8 +44,6 @@ class Team extends Admin_Controller{
             }
         }
         $this->data['products'] = $products;
-        // echo '<pre>';
-        // print_r($products);die;
         $this->data['teams'] = $teams;
         $this->render('admin/team/list_team_view');
 	}
@@ -144,20 +154,22 @@ class Team extends Admin_Controller{
 
     public function add_product(){
         $team_id = $this->input->get('team_id');
-        $product_id = $this->input->get('product_id');
+        $client_id = $this->input->get('client_id');
+
+        $companyInfo = $this->information_model->fetch_company_by_client_id_and_year('company', $client_id, $this->data['eventYear']);
 
         $team = $this->team_model->fetch_by_id('team', $team_id);
-        $string_team_products = $team['product_id'];
-        $team_products = explode(',', $team['product_id']);
+        $string_team_company = $team['company_id'];
+        $team_company = explode(',', $team['company_id']);
 
-        if($team['product_id'] == ''){
-            $update = $this->team_model->update('team', $team_id, array('product_id' => ',' . $product_id . ','));
+        if($team['company_id'] == ''){
+            $update = $this->team_model->update('team', $team_id, array('company_id' => ',' . $companyInfo['id'] . ','));
         }else{
-            if(in_array($product_id, $team_products)){
+            if(in_array($companyInfo['id'], $team_company)){
                 $update = false;
             }else{
-                $string_team_products .= $product_id . ',';
-                $update = $this->team_model->update('team', $team_id, array('product_id' => $string_team_products));
+                $string_team_company .= $companyInfo['id'] . ',';
+                $update = $this->team_model->update('team', $team_id, array('company_id' => $string_team_company));
             }
         }
         if($update){
