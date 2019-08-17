@@ -8,8 +8,13 @@
     <section class="content">
 
         <div class="row">
-            <form action="<?php echo base_url('admin/company/index/') ?>" class="form-horizontal col-md-12 col-sm-12 col-xs-12" method="get" style="margin-bottom: 30px;">
-                <input type="text" name="search" value="<?php echo ($keywords != '')? $keywords : '' ?>" placeholder="Tìm Kiếm Doanh Nghiệp..." class="form-control" style=" width: 40%; float: left;margin-right: 5px;">
+            <form action="<?php echo base_url('admin/company/index/' . $year) ?>" class="form-horizontal col-md-12 col-sm-12 col-xs-12" method="get" style="margin-bottom: 30px;">
+                <input type="text" name="company_name" value="<?php echo ($criteria['company_name'] != '')? $criteria['company_name'] : '' ?>" placeholder="Tìm Kiếm Doanh Nghiệp..." class="form-control" style=" width: 40%; float: left;margin-right: 5px;">
+                <select name="order_name" class="form-control">
+                    <?php foreach($order_names as $key => $value){ ?>
+
+                    <?php } ?>
+                </select>
                 <input type="submit" name="btn-search" value="Tìm Kiếm" class="btn btn-primary" style="float: left">
             </form>
             <!-- /.col -->

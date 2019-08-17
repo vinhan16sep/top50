@@ -73,6 +73,23 @@
                         </li>
                     </ul>
                 </li>
+                <li class="active">
+                    <a href=""> T/t doanh nghiệp theo năm
+                        <span class="pull-right-container">
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="active">
+                            <?php foreach($all_years as $key => $value){ ?>
+
+                                <a href="<?php echo base_url('admin/company/index/' . $value); ?>">
+                                    <i class="fa fa-minus" aria-hidden="true"></i>
+                                    Năm <?php echo $value; ?>
+                                </a>
+                            <?php } ?>
+                        </li>
+                    </ul>
+                </li>
 <!--                <li class="--><?php //echo ($active == 'menu')? 'active' : '' ?><!--">-->
 <!--                    <a href="--><?php //echo base_url('client/information/company'); ?><!--">-->
 <!--                        <i class="fa fa-bars" aria-hidden="true"></i>-->

@@ -20,6 +20,9 @@ class MY_Controller extends CI_Controller {
         $this->data['sub_active'] = $this->uri->segment(3);
         $this->data['icon_active'] = $this->uri->segment(4);
         $this->data['eventYear'] = date('Y');
+
+        $this->load->model('company_model');
+        $this->data['all_years'] = $this->company_model->get_all_year();
     }
 
     protected function render($the_view = NULL, $template = 'master') {
