@@ -117,9 +117,9 @@ class Information_model extends CI_Model {
 
     public function count_companys() {
         $where = array();
-        if ($this->input->get('group_id') >=0 && $this->input->get('group_id') < 3) {
+        if ($this->input->get('group_id') >= 0 && $this->input->get('group_id') < 3 && is_numeric($this->input->get('group_id'))) {
             $where['group'] = $this->input->get('group_id');
-        }elseif($this->input->get('group_id') == 99){
+        }elseif($this->input->get('group_id') == 99 && is_numeric($this->input->get('group_id'))){
             $where['group10'] = $this->input->get('group_id');
         }
         $query = $this->db->select('*')
@@ -410,9 +410,9 @@ class Information_model extends CI_Model {
 
     public function fetch_all_company_pagination($limit = NULL, $start = NULL) {
         $where = array();
-        if ($this->input->get('group_id') >=0 && $this->input->get('group_id') < 3) {
+        if ($this->input->get('group_id') >= 0 && $this->input->get('group_id') < 3 && is_numeric($this->input->get('group_id'))) {
             $where['group'] = $this->input->get('group_id');
-        }elseif($this->input->get('group_id') == 99){
+        }elseif($this->input->get('group_id') == 99 && is_numeric($this->input->get('group_id'))){
             $where['group10'] = $this->input->get('group_id');
         }
         $this->db->select('company.*, users.company as company, status.is_final as final');
