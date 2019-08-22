@@ -85,7 +85,16 @@
                                 <a href="<?php echo base_url('admin/company/index/' . $value); ?>">
                                     <i class="fa fa-minus" aria-hidden="true"></i>
                                     Năm <?php echo $value; ?>
+                                    <i class="fa fa-<?php echo ($this->uri->segment(4) == $value && ($this->input->get('group_id') == 0 || $this->input->get('group_id') == 1 || $this->input->get('group_id') == 2 || $this->input->get('group_id') == 99) ) ? 'minus'  : 'plus'; ?>" aria-hidden="true" style="float: right;padding: 3px 5px;" onclick="showgroup(event)"></i>
                                 </a>
+                                <div class="popup <?php echo ($this->uri->segment(4) == $value && ($this->input->get('group_id') == 0 || $this->input->get('group_id') == 1 || $this->input->get('group_id') == 2 || $this->input->get('group_id') == 99) ) ? 'show'  : ''; ?>" style="<?php echo ($this->uri->segment(4) == $value && ($this->input->get('group_id') == 0 || $this->input->get('group_id') == 1 || $this->input->get('group_id') == 2 || $this->input->get('group_id') == 99) ) ? 'display: block;'  : 'display: none;'; ?>">
+                                    <ul>
+                                        <li><a href="<?php echo base_url('admin/company/index/' . $value . '?group_id=0'); ?>">Lĩnh vực 1</a></li>
+                                        <li><a href="<?php echo base_url('admin/company/index/' . $value . '?group_id=1'); ?>">Lĩnh vực 2</a></li>
+                                        <li><a href="<?php echo base_url('admin/company/index/' . $value . '?group_id=2'); ?>">Lĩnh vực 3</a></li>
+                                        <li><a href="<?php echo base_url('admin/company/index/' . $value . '?group_id=99'); ?>">Top 10</a></li>
+                                    </ul>
+                                </div>
                             <?php } ?>
                         </li>
                     </ul>

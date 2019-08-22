@@ -35,7 +35,7 @@ class Company extends Admin_Controller{
         );
         $this->data['criteria'] = $criteria;
         $total_rows  = $this->information_model->count_companys($criteria);
-
+        
 		$this->load->library('pagination');
 		$config = array();
 		$base_url = base_url('admin/company/index/' . $year);
