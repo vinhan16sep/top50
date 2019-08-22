@@ -35,8 +35,8 @@
                                 <?php if ($this->uri->segment(4) == 3): ?>
                                 <td><b><a href="#">T/t cơ bản</a></b></td>
                                 <td><b><a href="#">T/t lĩnh vực ứng cử</a></b></td>
-                                <td><b><a href="#">D/K top 10</a></b></td>
                                 <td><b><a href="#">Lĩnh vực</a></b></td>
+                                <td><b><a href="#">D/K top 10</a></b></td>
                                 <td><b><a href="#">Đã gửi</a></b></td>
                                 <?php endif; ?>
                                 <?php if ($this->uri->segment(4) == 2): ?>
@@ -58,8 +58,8 @@
                                     <?php if ($this->uri->segment(4) == 3): ?>
                                     <td style="text-align:center"><?php echo ($user['status']['is_information'] == 0) ? '<i style="color:red;" class="fa fa-times-circle" aria-hidden="true"></i>' : '<i style="color:green;" class="fa fa-check-circle" aria-hidden="true"></i>'; ?></td>
                                     <td style="text-align:center"><?php echo ($user['status']['is_company'] == 0) ? '<i style="color:red;" class="fa fa-times-circle" aria-hidden="true"></i>' : '<i style="color:green;" class="fa fa-check-circle" aria-hidden="true"></i>'; ?></td>
-                                    <td style="text-align:center"><?php echo ($user['group_join']['group10'] == null) ? '<i style="color:red;" class="fa fa-times-circle" aria-hidden="true"></i>' : '<i style="color:green;" class="fa fa-check-circle" aria-hidden="true"></i>'; ?></td>
                                     <td ><?php echo $group_selected[$group_join]; ?></td>
+                                    <td style="text-align:center"><?php echo ($user['group_join']['group10'] == null) ? '<i style="color:red;" class="fa fa-times-circle" aria-hidden="true"></i>' : '<i style="color:green;" class="fa fa-check-circle" aria-hidden="true"></i>'; ?></td>
                                     <td style="text-align:center"><?php echo ($user['status']['is_final'] == 0) ? '<i style="color:red;" class="fa fa-times-circle" aria-hidden="true"></i>' : '<a id="openStatus" onclick="openStatus(' . $user['user_id'] . ');" href="javascript:void(0);"><i style="color:green;" class="fa fa-check-circle" aria-hidden="true"></i></a>'; ?></td>
                                     <?php endif; ?>
                                     <!--<td>-->

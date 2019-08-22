@@ -5727,3 +5727,14 @@ table.text-center th {
 .error {
   color: red;
 }
+.popup li{
+  list-style-type: none;
+  line-height: 25px;
+}
+.popup li:before{
+  content:'\f178';
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  color:#fff;
+  padding-right: 5px;
+}

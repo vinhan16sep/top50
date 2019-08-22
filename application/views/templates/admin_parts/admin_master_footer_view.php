@@ -23,6 +23,21 @@
 	});
 </script>
 
+<script>
+    function showgroup(event){
+        event.preventDefault();
+        if($(event.target.parentElement.nextElementSibling).hasClass('show')){
+        	$(event.target).attr('class','fa fa-plus');
+	        $(event.target.parentElement.nextElementSibling).hide(500);
+	        $(event.target.parentElement.nextElementSibling).removeClass('show');
+        }else{
+        	$(event.target).attr('class','fa fa-minus');
+        	$(event.target.parentElement.nextElementSibling).show(500);
+	        $(event.target.parentElement.nextElementSibling).addClass('show');
+        }
+	        
+    }
+</script>
 </body>
 </html>
 
