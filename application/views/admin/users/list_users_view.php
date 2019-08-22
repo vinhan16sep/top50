@@ -48,7 +48,7 @@
                             </tr>
 
                             <?php foreach ($users as $key => $user): ?>
-
+                                <?php $group_join = ($user['group_join']['group'] == null) ? 3 : $user['group_join']['group']; ?>
                                 <tr class="row_<?php echo $user['id']; ?>">
                                     <td><?php echo $number--; ?></td>
                                     <td><?php echo $user['username']; ?></td>
@@ -59,7 +59,7 @@
                                     <td style="text-align:center"><?php echo ($user['status']['is_information'] == 0) ? '<i style="color:red;" class="fa fa-times-circle" aria-hidden="true"></i>' : '<i style="color:green;" class="fa fa-check-circle" aria-hidden="true"></i>'; ?></td>
                                     <td style="text-align:center"><?php echo ($user['status']['is_company'] == 0) ? '<i style="color:red;" class="fa fa-times-circle" aria-hidden="true"></i>' : '<i style="color:green;" class="fa fa-check-circle" aria-hidden="true"></i>'; ?></td>
                                     <td style="text-align:center"><?php echo ($user['group_join']['group10'] == null) ? '<i style="color:red;" class="fa fa-times-circle" aria-hidden="true"></i>' : '<i style="color:green;" class="fa fa-check-circle" aria-hidden="true"></i>'; ?></td>
-                                    <td ><?php echo $group_selected[$user['group_join']['group']]; ?></td>
+                                    <td ><?php echo $group_selected[$group_join]; ?></td>
                                     <td style="text-align:center"><?php echo ($user['status']['is_final'] == 0) ? '<i style="color:red;" class="fa fa-times-circle" aria-hidden="true"></i>' : '<a id="openStatus" onclick="openStatus(' . $user['user_id'] . ');" href="javascript:void(0);"><i style="color:green;" class="fa fa-check-circle" aria-hidden="true"></i></a>'; ?></td>
                                     <?php endif; ?>
                                     <!--<td>-->
