@@ -63,7 +63,8 @@ class Users extends Admin_Controller
         $this->data['group_selected'] = array(
             'BPO, ITO và KPO',
             'Phần mềm, giải pháp và dịch vụ CNTT',
-            'Nội dung số, ứng dụng và giải pháp cho mobile'
+            'Nội dung số, ứng dụng và giải pháp cho mobile',
+            'Chưa chọn'
         );
         $this->render('admin/users/list_users_view');
     }
