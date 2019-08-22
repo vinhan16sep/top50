@@ -45,6 +45,7 @@ class Users extends Admin_Controller
                 $company = $this->information_model->fetch_client_id($value['id']);
                 $users[$key]['member_id'] = $company['member_id'];
                 $users[$key]['status'] = $this->status_model->fetch_by_client_id($value['user_id']);
+                $users[$key]['group_join'] = $this->status_model->fetch_by_company($value['user_id']);
             }
         }
         if($this->data['page'] == 0){
@@ -59,6 +60,11 @@ class Users extends Admin_Controller
         $this->data['group_id'] = $group_id;
         $this->data['group'] = $group_id;
         $this->data['users'] = $users;
+        $this->data['group_selected'] = array(
+            'BPO, ITO và KPO',
+            'Phần mềm, giải pháp và dịch vụ CNTT',
+            'Nội dung số, ứng dụng và giải pháp cho mobile'
+        );
         $this->render('admin/users/list_users_view');
     }
 

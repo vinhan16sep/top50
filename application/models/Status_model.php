@@ -61,6 +61,13 @@ class Status_model extends CI_Model {
         $this->db->where('client_id', $id);
         return $result = $this->db->get()->row_array();
     }
+    
+    public function fetch_by_company($id = null){
+        $this->db->select('group,group10,id');
+        $this->db->from('company');
+        $this->db->where('client_id', $id);
+        return $result = $this->db->get()->row_array();
+    }
 
     public function fetch_by_is_final($is_final = 0){
         $this->db->select('*');
