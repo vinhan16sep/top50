@@ -1,3 +1,8 @@
+<style>
+    .main-sidebar{
+        left: -2px;
+    }
+</style>
 <?php if ($this->ion_auth->logged_in() && $this->ion_auth->in_group('admin')): ?>
     <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->

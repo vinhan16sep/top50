@@ -35,11 +35,10 @@ class Company extends Admin_Controller{
         );
         $this->data['criteria'] = $criteria;
         $total_rows  = $this->information_model->count_companys($criteria);
-        
 		$this->load->library('pagination');
 		$config = array();
 		$base_url = base_url('admin/company/index/' . $year);
-		$per_page = 50;
+		$per_page = $total_rows;
 		$uri_segment = 5;
 
 		foreach ($this->pagination_con($base_url, $total_rows, $per_page, $uri_segment) as $key => $value) {
@@ -50,7 +49,6 @@ class Company extends Admin_Controller{
         $this->data['page_links'] = $this->pagination->create_links();
         $this->data['page'] = ($this->uri->segment(5)) ? $this->uri->segment(5) - 1 : 0;
         $result = $this->information_model->fetch_all_company_pagination($per_page, $per_page*$this->data['page'], $criteria);
-
         foreach ($result as $key => $value) {
             $member_id = json_decode($value['member_id']);
             if($member_id){
