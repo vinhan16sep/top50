@@ -300,7 +300,16 @@ class Information extends Client_Controller {
     public function create_company() {
         $this->load->helper('form');
         $this->load->library('form_validation');
-
+        $client_id = $this->data['user_info']->id;
+        $data_where = array(
+            'client_id' => $client_id,
+            'year' => $this->data['eventYear']
+        );
+        $check_db_company_for_user = $this->information_model->check_db_company_for_user('company', $data_where);
+        if($check_db_company_for_user > 0){
+            $this->session->set_flashdata('message_error', 'Bạn đã tạo thông tin doanh nghiệp của bạn ở năm hiện tại vui lòng cập nhật nếu bạn muốn sửa lại!');
+            redirect('client/dashboard', 'refresh');
+        }
         if($this->input->post('submit') == 'Hoàn thành') {
             $this->form_validation->set_rules('equity_1', 'Vốn điều lệ ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
