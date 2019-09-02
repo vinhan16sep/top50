@@ -57,7 +57,7 @@
                             <table id="dtBasicExample" class="table table-striped table-bordered table-condensed">
                                 <thead>  
                                     <tr>
-                                        <td>STT</td>
+                                        <td style="width: 5%">STT</td>
                                         <td>Tên Doanh Nghiệp</td>
                                         <td>Tổng số nhân viên toàn thời gian</td>
                                         <td>Số lượng nhân viên bộ phận R&D</td>
@@ -70,7 +70,7 @@
                                 </thead>
                                 <?php foreach ($companies as $key => $value): ?>
                                     <tr>
-                                        <td><?php echo $number-- ?></td>
+                                        <td style="width: 5%"><?php echo $number-- ?></td>
                                         <td><?php echo $value['company'] ?></td>
                                         <td><?php echo $value['full_time_employee'] ?></td>
                                         <td><?php echo $value['staff_r_and_d'] ?></td>
@@ -82,16 +82,15 @@
                                                     <?php foreach ($value['member_name'] as $k => $val): ?>
                                                         <li style="list-style: none;">
                                                                 <span class="change-member" data-memberid="<?php echo $k ?>">
-                                                                    <i style="color:red;" class="fa fa-close" aria-hidden="true"></i> 
+                                                                    <i style="color:red;" class="fa fa-close" aria-hidden="true"></i>
                                                                 </span>
                                                                 <?php echo $val ?>
                                                         </li>
                                                     <?php endforeach ?>
                                                 <?php endif ?>
                                                 <?php if (empty($value['member_name'])): ?>
-                                                    <li style="list-style: none;">Chưa có quản lý</li>
+                                                    <i style="color: red;" class="fa fa-question-circle" aria-hidden="true" title="Chưa có quản lý"></i>
                                                 <?php endif ?>
-                                                
                                             </ul>
                                         </td>
                                         <?php if($this->ion_auth->user()->row()->email == 'admin@admin.com'){ ?>
@@ -100,8 +99,8 @@
                                             <td><?php echo ($value['final'] == 0) ? '<i style="color:red;" class="fa fa-times-circle" aria-hidden="true"></i>' : '<i style="color:green;" class="fa fa-check-circle" aria-hidden="true"></i>'; ?></td>
                                         <?php } ?>
                                         <td style="text-align: center;">
-                                            <a href="<?php echo base_url('admin/company/detail/' . $value['id']) ?>" class="btn btn-info">Thông tin cơ bản</a>
-                                            <a href="<?php echo base_url('admin/product/index/' . $value['client_id']) ?>" class="btn btn-info">Thông tin lĩnh vực ứng cử</a>
+                                            <a href="<?php echo base_url('admin/company/basic/' . $value['identity']) ?>" title="Thông tin cơ bản"> <i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                                            <a href="<?php echo base_url('admin/company/info/' . $value['identity'] . '/' . $year) ?>" title="Thông tin lĩnh vực ứng cử"> <i class="fa fa-file" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>

@@ -83,6 +83,24 @@ class Company extends Admin_Controller{
 		$this->render('admin/company/detail_company_view');
 	}
 
+	public function basic($identity){
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $extra = $this->information_model->fetch_extra_by_identity('information', $identity);
+        $extra['basic_company'] = $this->users_model->fetchByIdentity($identity);
+        $this->data['extra'] = $extra;
+        $this->data['identity'] = $identity;
+        $this->render('admin/company/basic_view');
+    }
+
+    public function info($identity, $year){
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $this->data['year'] = $year;
+        $this->data['company'] = $this->information_model->fetch_company_by_identity_and_year('company', $identity, $year);
+        $this->render('admin/company/info_view');
+    }
+
     public function detail_by_client($client_id){
         $company = $this->information_model->fetch_company_by_client_id($client_id);
         $this->data['company'] = $company;
