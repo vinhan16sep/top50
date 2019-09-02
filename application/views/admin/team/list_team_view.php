@@ -32,7 +32,7 @@
                                 <td style="width: 10%; text-align: center;"><b><a href="#">Tên nhóm</a></b></td>
                                 <td style="width: 10%; text-align: center;"><b><a href="#">Trưởng nhóm</a></b></td>
                                 <td style="width: 15%; text-align: center;"><b><a href="#">Thành viên</a></b></td>
-                                <td style="text-align: center;"><b><a href="#">Sản phẩm / Doanh nghiệp / Nhóm lĩnh vực chính</a></b></td>
+                                <td style="text-align: center;"><b><a href="#">Doanh nghiệp</a></b></td>
                                 <td style="width: 10%; text-align: center;"><b>Thao tác</b></td>
                             </tr>
 
@@ -81,7 +81,6 @@
                                                     <?php if (!empty($value)): ?>
                                                         <?php $stt++ ?>
                                                         <tr style="<?php echo ($stt % 2 == 0) ? 'background-color: #b7d7f3' : '' ; ?> ">
-                                                            <td><strong>Doanh nghiệp</strong></td>
                                                             <td><?php echo $tmpCompanyArray[$value]['company'] ?></td>
                                                         </tr>
                                                     <?php endif ?>
