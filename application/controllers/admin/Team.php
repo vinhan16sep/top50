@@ -177,7 +177,7 @@ class Team extends Admin_Controller{
                 ->set_output(json_encode(array('name' => $team['name'])));
         }
         return $this->output->set_status_header(200)
-            ->set_output(json_encode(array('message' => 'Có lỗi khi chọn sản phẩm hoặc sản phẩm đã tồn tại trong nhóm')));
+            ->set_output(json_encode(array('message' => 'Có lỗi khi chọn doanh nghiệp hoặc doanh nghiệp đã tồn tại trong nhóm')));
     }
 
     public function remove_team_product(){
