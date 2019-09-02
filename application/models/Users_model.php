@@ -170,4 +170,17 @@ class Users_model extends CI_Model{
 
         return $this->db->get()->result_array();
     }
+
+    public function fetchByIdentity($identity){
+        $query = $this->db->select('*')
+            ->from('users')
+            ->where('username', $identity)
+            ->get();
+
+        if($query->num_rows() > 0){
+            return $query->row_array();
+        }
+
+        return false;
+    }
 }
