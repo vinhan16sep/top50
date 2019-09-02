@@ -1,5 +1,14 @@
 <!--main content start-->
 <div class="content-wrapper" style="min-height: 916px;">
+   
+        <?php if (!empty($this->session->userdata('message_error'))): ?>
+            <div style="padding: 10px;text-align: center;">
+                <div id="message" style="padding: 10px;background: red;color: #fff;font-size: 15px;border-radius: 5px;display: inline-block;">
+                    <?php echo $this->session->userdata('message_error'); ?>
+                </div>
+            </div>
+        <?php endif ?>
+    
     <div class="box-body pad table-responsive" style="box-shadow: 2px 2px 1px grey;">
         <strong style="color: #2d76b8; font-size: 18px">Quý doanh nghiệp vui lòng khai đầy đủ thông tin theo các bước sau:</strong>
         <a target="_blank" href="http://danhhieusaokhue.vn/"><img style="width: 100% !important;" src="<?php echo site_url('assets/public/img/flow3.png'); ?>" /></a>

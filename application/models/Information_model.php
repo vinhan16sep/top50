@@ -711,4 +711,13 @@ class Information_model extends CI_Model {
 
         return $this->db->get()->num_rows();
     }
+    public function check_db_company_for_user($type, $data){
+        $this->db->select('id, client_id, year');
+        $this->db->from($type);
+        if (!empty($data) && is_array($data)) {
+            $this->db->where($data);
+        }
+        
+        return $this->db->get()->num_rows();
+    }
 }
