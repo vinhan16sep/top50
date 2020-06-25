@@ -83,7 +83,7 @@ $config['salt_prefix']    = version_compare(PHP_VERSION, '5.3.7', '<') ? '$2a$' 
  | appropriately. If this variable set to 0, there is no maximum.
  */
 $config['site_title']                 = "dangky.leadingitcompanies.com";       // Site Title, example.com
-$config['admin_email']                = "nghemalao@gmail.com"; // Admin Email, admin@example.com
+$config['admin_email']                = "toyotapv83@gmail.com"; // Admin Email, admin@example.com
 $config['default_group']              = 'members';           // Default group, use name
 $config['admin_group']                = 'admin';             // Default administrators group, use name
 $config['identity']                   = 'email';             // You can use any unique column in your table as identity column. The values in this column, alongside password, will be used for login purposes
@@ -120,7 +120,7 @@ $config['identity_cookie_name'] = 'identity';
  */
 $config['use_ci_email'] = TRUE; // Send Email using the builtin CI email class, if false it will return the code and the identity
 $config['email_config'] = array(
-    'useragent'=>'CodeIgniter','protocol'=> 'smtp', 'mailtype' => 'html', 'charset' =>'utf-8'
+    'useragent'=>'CodeIgniter','protocol'=> 'smtp', 'mailtype' => 'html', 'charset' =>'utf-8','smtp_user' => 'toyotapv83@gmail.com','smtp_pass' => 'acygphlxugtzconn',
 );
 
 /*

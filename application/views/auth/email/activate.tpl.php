@@ -1,7 +1,7 @@
 <html>
 <body>
 	<strong>Kính gửi Quý công ty!</strong>
-	<p>Cảm ơn Quý Công ty đã đăng ký tham gia Chương trình 50+10 Doanh nghiệp CNTT hàng đầu Việt Nam 2019. Quý Công ty đã sử dụng email: <?php echo $identity ?> để đăng ký tài khoản tham gia chương trình.</p>
+	<p>Cảm ơn Quý Công ty đã đăng ký tham gia Chương trình 50+10 Doanh nghiệp CNTT hàng đầu Việt Nam <?php echo date('Y'); ?>. Quý Công ty đã sử dụng email: <?php echo $identity ?> để đăng ký tài khoản tham gia chương trình.</p>
 	<p><?php echo sprintf(lang('email_activate_subheading'), anchor('client/user/activate/'. $id .'/'. $activation, 'đây'));?> để kích hoạt tài khoản và khai hồ sơ.</p>
     <p>Nếu cần hỗ trợ, vui lòng liên hệ: Anh Nguyễn Thế Anh</p>
     <p>Hiệp hội Phần mềm và Dịch vụ CNTT Việt Nam</p>

@@ -87,6 +87,7 @@ class User extends MY_Controller {
                 'phone' => $this->input->post('phone'),
             );
             $result = $this->ion_auth->register($username, $password, $email, $additional_data, $group_ids);
+            
             if($result){
                 $this->load->model('status_model');
                 $status = array(
@@ -101,7 +102,7 @@ class User extends MY_Controller {
             }
             $detail = $this->users_model->fetch_by_id($result);
             if($result){
-                $this->session->set_flashdata('register_success', 'Cảm ơn Qúy Công ty đã đăng ký tham gia Chương trình 50+10 doanh nghiệp CNTT hàng đầu Việt Nam 2019. Vui lòng truy cập email để kích hoạt tài khoản và khai hồ sơ.');
+                $this->session->set_flashdata('register_success', 'Cảm ơn Qúy Công ty đã đăng ký tham gia Chương trình 50+10 doanh nghiệp CNTT hàng đầu Việt Nam '.date('Y').'. Vui lòng truy cập email để kích hoạt tài khoản và khai hồ sơ.');
                 redirect('client/user/login', 'refresh');
                 $this->ion_auth->login($username, $password, false);
                 redirect('client', 'refresh');

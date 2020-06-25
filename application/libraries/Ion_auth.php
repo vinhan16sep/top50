@@ -384,17 +384,19 @@ class Ion_auth
 				}
 				
 				if ( !in_array(2, $group_ids) ) {
+				    
 					$this->email->clear();
 					$this->email->from($this->config->item('admin_email', 'ion_auth'), $this->config->item('site_title', 'ion_auth'));
 					$this->email->to($email);
 					$this->email->subject($this->config->item('site_title', 'ion_auth') . ' - ' . $this->lang->line('email_activation_subject'));
 					$this->email->message($message);
-
 					if ($this->email->send() === TRUE)
 					{
 						$this->ion_auth_model->trigger_events(array('post_account_creation', 'post_account_creation_successful', 'activation_email_successful'));
 						$this->set_message('activation_email_successful');
 						return $id;
+					}else{
+					    echo 'Error Email';die;
 					}
 				}
 			}

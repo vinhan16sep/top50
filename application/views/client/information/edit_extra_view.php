@@ -83,7 +83,7 @@
                     <div class="row">
                         <div class="col-sm-3 col-md-3 col-xs-12">
                             <?php
-                            echo form_label('Ngày thành lập (phải trước 31/07/2017) <span style="color: red">(*)</span>', 'ngaythanhlap');
+                            echo form_label('Ngày thành lập (phải trước 01/01/2018) <span style="color: red">(*)</span>', 'ngaythanhlap');
                             ?>
                         </div>
                         <div class="col-sm-9 col-md-9 col-xs-12">
