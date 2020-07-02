@@ -366,6 +366,7 @@ class Ion_auth
 			$data = array(
 				'identity'   => $user->{$identity},
 				'id'         => $user->id,
+				'company'    => $user->company,
 				'email'      => $email,
 				'activation' => $activation_code,
 			);

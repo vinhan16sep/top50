@@ -29,7 +29,7 @@
                     <h2 style="text-align:center;">THÔNG TIN CƠ BẢN CỦA DOANH NGHIỆP</h2>
                 </div>
                 <div class="form-group">
-                    <!-- <h3 style="text-align:center;">Tên công ty: <span style="color:#3c8dbc;"><?php // echo $user->company; ?></span></h3> -->
+                    <!-- <h3 style="text-align:center;">Tên công ty đầy đủ bằng tiếng Việt: <span style="color:#3c8dbc;"><?php // echo $user->company; ?></span></h3> -->
                     <h3 style="text-align:center;">Mã số thuế: <span style="color:#3c8dbc;"><?php echo $user->username; ?></span></h3>
                     <div style="margin: auto; width: 100%; text-align: center;">
                         <?php if ( $extra['avatar'] && file_exists('assets/upload/avatar/' . $extra['avatar']) ): ?>
@@ -43,6 +43,7 @@
                 <hr>
                 <?php
                 echo form_open_multipart('', array('class' => 'form-horizontal', 'id' => 'extra-form'));
+               
                 ?>
                 
                 <div class="form-group">
@@ -58,6 +59,7 @@
                             echo form_upload('avatar', set_value('avatar'), 'class="form-control"');
                             ?>
                         </div>
+                        
                     </div>
                 </div>
 
@@ -67,7 +69,7 @@
                     <div class="row">
                         <div class="col-sm-3 col-md-3 col-xs-12">
                             <?php
-                            echo form_label('Tên công ty <span style="color: red">(*)</span>', 'company');
+                            echo form_label('Tên công ty đầy đủ bằng tiếng Việt <span style="color: red">(*)</span>', 'company');
                             ?>
                         </div>
                         <div class="col-sm-9 col-md-9 col-xs-12">
@@ -87,10 +89,14 @@
                             ?>
                         </div>
                         <div class="col-sm-9 col-md-9 col-xs-12">
-                            <?php
-                            echo form_error('founding_date', '<div class="error">', '</div>');
-                            echo form_input('founding_date', set_value('founding_date', date('d/m/Y', strtotime($extra['founding_date']))), 'class="form-control datetimepicker7" ');
-                            ?>
+                            <div class="input-group date"  id="datetimepicker7" >
+                                <?php
+                                echo form_error('founding_date', '<div class="error">', '</div>');
+                                echo form_input('founding_date', set_value('founding_date', date('d/m/Y', strtotime($extra['founding_date']))), 'class="form-control"  ');
+                                
+                                ?>
+                                <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -126,7 +132,7 @@
                     <div class="row">
                         <div class="col-sm-3 col-md-3 col-xs-12">
                             <?php
-                            echo form_label('Trụ sở/ Địa chỉ giao dịch thư tín: <span style="color: red">(*)</span>', 'truso');
+                            echo form_label('Địa chỉ giao dịch (dùng để gửi và nhận thư): <span style="color: red">(*)</span>', 'truso');
                             ?>
                         </div>
                         <div class="col-sm-9 col-md-9 col-xs-12">
@@ -195,7 +201,7 @@
                     <div class="row">
                         <div class="col-sm-3 col-md-3 col-xs-12">
                             <?php
-                            echo form_label('Lãnh đạo <span style="color: red">(*)</span>', 'lanhdao');
+                            echo form_label('Lãnh đạo(Ghi đầy đủ họ và tên) <span style="color: red">(*)</span>', 'lanhdao');
                             ?>
                         </div>
                         <div class="col-sm-3 col-md-3 col-xs-12">
@@ -320,7 +326,7 @@
                             ?>
                         </div>
                         <div class="col-sm-9 col-md-9 col-xs-12">
-                            <p>Doanh nghiệp tải mẫu phiếu đăng ký ở đây, khai đầy đủ thông tin, ký, đóng dấu và gửi lại bản cứng cho ban tổ chức.</p>
+                            <p>Doanh nghiệp tải mẫu phiếu đăng ký ở đây, khai đầy đủ thông tin, ký, đóng dấu và upload tại đây.</p>
                             <a class="btn btn-warning" href="<?php echo site_url('Phieu-dang-ky.docx') ?>" target="_blank">Tải mẫu Phiếu đăng ký</a>
                             <br>
                         </div>
@@ -446,9 +452,10 @@
 </script>
 <script type="text/javascript">
     $(function () {
-        $('.datetimepicker7').datetimepicker({
+        $('#datetimepicker7').datetimepicker({
             format: 'DD/MM/Y',
             useCurrent: false,
+            maxDate: '01/01/2018',
         });
 
         $('.datetimepicker').datetimepicker({

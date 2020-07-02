@@ -57,12 +57,16 @@ class User extends MY_Controller {
         $this->form_validation->set_rules('username','Mã số thuế','trim|required|is_unique[users.username]', array(
                 'required' => '%s không được trống.',
             ));
+        $this->form_validation->set_rules('founding_date', 'Ngày thành lập doanh nghiệp', 'trim|date_formats', array(
+            'date_formats' => '%s không đúng định dạng.',
+        ));
         $this->form_validation->set_rules('email','Email','trim|required|valid_email|is_unique[users.email]', array(
                 'required' => '%s không được trống.',
             ));
-        $this->form_validation->set_rules('phone','Số điện thoại','trim|required|numeric', array(
+        $this->form_validation->set_rules('phone','Số điện thoại','trim|required|numeric|max_length[12]', array(
                 'required' => '%s không được trống.',
                 'numeric' => '%s phải là số.',
+                'max_length' => '%s phải nhỏ hơn 12 ký tự.',
             ));
         $this->form_validation->set_rules('register_password','Mật khẩu','required', array(
                 'required' => '%s không được trống.',
@@ -85,6 +89,7 @@ class User extends MY_Controller {
             $additional_data = array(
                 'company' => $this->input->post('companyname'),
                 'phone' => $this->input->post('phone'),
+                'founding_date' => date('Y-m-d H:i:s', strtotime(str_replace('/', '-', $this->input->post('founding_date')))),
             );
             $result = $this->ion_auth->register($username, $password, $email, $additional_data, $group_ids);
             

@@ -155,7 +155,7 @@
                         <br>
                         <div style="text-align: center;">
                             <a onclick="return confirmation();" href="#" class="btn btn-warning btn-block btnIsFinal" style="width: 50% !important; margin: 0 auto;"><b>Nộp hồ sơ</b></a>
-                            <h4 style="color:red">Chú ý xác nhận lại thông tin, sau khi gửi đăng ký sẽ không thể chỉnh sửa</h4>
+                            <h4 style="color:red">Lưu ý: Hồ sơ gửi đi sẽ không thể chỉnh sửa. Đề nghị quý DN xem lại trước khi GỬI NỘP</h4>
                         </div>
                         <?php else: ?>
                         <h4 style="color:red">Thông tin đã được gửi</h4>
@@ -235,7 +235,7 @@
 <!--</div>-->
 <script>
     function confirmation() {
-        if(confirm('Bạn vẫn muốn gửi?')){
+        if(confirm('Lưu ý: Hồ sơ gửi đi sẽ không thể chỉnh sửa. Bạn có chắc chắn muốn gửi?')){
             $('.btnIsFinal').attr('disabled', 'disabled');
             $('.btnIsFinal').text('Đang gửi yêu cầu');
             $.ajax({
