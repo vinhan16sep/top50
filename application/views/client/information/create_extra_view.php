@@ -58,7 +58,7 @@
                     <div class="row">
                         <div class="col-sm-3 col-md-3 col-xs-12">
                             <?php
-                                echo form_label('Tên công ty <span style="color: red">(*)</span>', 'company');
+                                echo form_label('Tên công ty đầy đủ bằng tiếng Việt <span style="color: red">(*)</span>', 'company');
                             ?>
                         </div>
                         <div class="col-sm-9 col-md-9 col-xs-12">
@@ -80,7 +80,7 @@
                         <div class="col-sm-9 col-md-9 col-xs-12">
                             <?php
                                 echo form_error('founding_date', '<div class="error">', '</div>');
-                                echo form_input('founding_date', set_value('founding_date'), 'class="form-control datetimepicker7" ');
+                                echo form_input('founding_date', set_value('founding_date'), 'class="form-control datetimepicker7" readonly ');
                             ?>
                         </div>
                     </div>
@@ -117,7 +117,7 @@
                     <div class="row">
                         <div class="col-sm-3 col-md-3 col-xs-12">
                             <?php
-                                echo form_label('Trụ sở/ Địa chỉ giao dịch thư tín: <span style="color: red">(*)</span>', 'truso');
+                                echo form_label('Địa chỉ giao dịch (dùng để gửi và nhận thư): <span style="color: red">(*)</span>', 'truso');
                             ?>
                         </div>
                         <div class="col-sm-9 col-md-9 col-xs-12">
@@ -186,7 +186,7 @@
                     <div class="row">
                         <div class="col-sm-3 col-md-3 col-xs-12">
                             <?php
-                                echo form_label('Lãnh đạo <span style="color: red">(*)</span>', 'lanhdao');
+                                echo form_label('Lãnh đạo(Ghi đầy đủ họ và tên) <span style="color: red">(*)</span>', 'lanhdao');
                             ?>
                         </div>
                         <div class="col-sm-3 col-md-3 col-xs-12">
@@ -311,7 +311,7 @@
                             ?>
                         </div>
                         <div class="col-sm-9 col-md-9 col-xs-12">
-                            <p>Doanh nghiệp tải mẫu phiếu đăng ký ở đây, khai đầy đủ thông tin, ký, đóng dấu và gửi lại bản cứng cho ban tổ chức.</p>
+                            <p>Doanh nghiệp tải mẫu phiếu đăng ký ở đây, khai đầy đủ thông tin, ký, đóng dấu và upload tại đây.</p>
                             <a class="btn btn-warning" href="<?php echo site_url('Phieu-dang-ky.docx') ?>" target="_blank">Tải mẫu Phiếu đăng ký</a>
                             <br>
                         </div>
@@ -440,6 +440,7 @@
         $('.datetimepicker7').datetimepicker({
             format: 'DD/MM/Y',
             useCurrent: false,
+            maxDate: '01/01/2018',
         });
 
         $('.datetimepicker').datetimepicker({

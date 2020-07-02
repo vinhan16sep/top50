@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="<?php echo site_url('assets/admin/bower_components/bootstrap/dist/css/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="<?php echo site_url('assets/public/css/homepage.css'); ?>">
     <link rel="stylesheet" href="<?php echo site_url('assets/admin/css/user.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/admin/datetimepicker/bootstrap-datetimepicker.css'); ?>">
     <title>Đăng nhập / Đăng ký</title>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -68,12 +69,17 @@
                 </div>
 
                 <div class="col-sm-6 col-md-6 col-xs-12">
-                    <div class="col-lg-8 col-lg-offset-2">
+                    <div class="col-lg-8 col-lg-offset-2 class-register">
                         <?php echo $this->session->flashdata('message'); ?>
                         <?php echo form_open('client/user/register', array('class' => 'form-horizontal', 'id' => 'login-form')); ?>
                         <div class="form-group">
                             <h4>Doanh nghiệp chưa có tài khoản?</h4>
                             <h1>Đăng ký mới</h1>
+                            <p>
+                                <i>Điều kiện tham gia chương trình: Doanh nghiệp phải thành lập theo pháp luật Việt Nam, Thời gian thành lập từ 03 năm trở lên.
+                                Link đến <a href="http://leadingitcompanies.com/page/the-le-chuong-trinh-p18.html" target="_blank" style="font-weight: bold;">THỂ LỆ</a> chương trình </i>
+
+                            </p>
                         </div>
                         <div class="form-group">
                             <?php echo form_label('Công ty: ', 'companyname'); ?>
@@ -86,9 +92,24 @@
                             <?php echo form_input('username', set_value('username'), 'class="form-control" style="border: orange 1px solid;"'); ?>
                         </div>
                         <div class="form-group">
-                            <?php echo form_label('Email công ty: ', 'email'); ?>
+                            <?php  
+                                echo form_label('Ngày thành lập doanh nghiệp: ', 'founding_date');
+                                echo form_error('founding_date', '<div class="error">', '</div>');
+                            ?>
+                            <div class="input-group date"  id="datetimepicker7" >
+                                <?php
+                                echo form_input('founding_date', set_value('founding_date'), 'class="form-control"  ');
+                                ?>
+                                <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <?php echo form_label('Email: ', 'email'); ?>
+                            <span class="label label-primary email-note">Hệ thống sẽ gửi email kích hoạt tài khoản về địa chỉ email này</span>
                             <?php echo form_error('email', '<div class="error">', '</div>'); ?>
                             <?php echo form_input('email', set_value('email'), 'class="form-control" style="border: orange 1px solid;"'); ?>
+
                         </div>
                         <div class="form-group">
                             <?php echo form_label('Số điện thoại: ', 'phone'); ?>
@@ -115,12 +136,28 @@
         </div>
     </section>
 </section>
+
+<div class="call-btn">
+    <div class="zoomIn"></div>
+    <div class="pulse"></div>
+    <div class="tada">
+        <a href="tel:0936136696 ">
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="phone-alt" class="svg-inline--fa fa-phone-alt fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z"></path></svg>
+            0936136696
+        </a>
+    </div>
+    <div class="tel"><a href="tel:0936136696">0936136696</a></div>
+</div>
+
+
 <script src="<?= base_url('assets/admin/bower_components/jquery/dist/jquery.min.js') ?>"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="<?php echo site_url('assets/admin/'); ?>bower_components/jquery-ui/jquery-ui.min.js"></script>
 <!-- Jquery validate -->
 <script src="<?php echo site_url('assets/admin/'); ?>bower_components/jquery/src/jquery.validate.js"></script>
 <script src="<?= base_url('assets/admin/bower_components/bootstrap/dist/js/bootstrap.min.js') ?>"></script>
+<script src="<?= base_url('assets/admin/datetimepicker/moment.js') ?>"></script>
+<script src="<?= base_url('assets/admin/datetimepicker/bootstrap-datetimepicker.js') ?>"></script>
 <script>
     $('#login-form').validate({
         rules: {
@@ -141,6 +178,7 @@
                 required: true,
                 number: true,
                 minlength: 9,
+                maxlength: 12
             },
             register_password: {
                 required: true,
@@ -168,6 +206,7 @@
                 required : 'Không được để trống',
                 number: 'Phải là số',
                 minlength: 'Phải lớn hơn 9 ký tự',
+                maxlength: 'Phải nhỏ hơn 12 ký tự'
             },
             register_password: {
                 required: 'Không được để trống',
@@ -183,6 +222,22 @@
     $.validator.addMethod("identityFormat", function(value, element) {
         return this.optional(element) || /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/i.test(value);
     }, "Chỉ chứa số và dấu -");
+    $('.email-note').attr('style','display:none;');
+    $('.class-register [name="email"]').focus(function(){
+        $('.email-note').attr('style','display:inline-block;font-size: 14px;');
+    });
+    $('.class-register [name="email"]').focusout(function(){
+        $('.email-note').attr('style','display:none;');
+    });
+    $(document).ready(function(){
+        $('#datetimepicker7').datetimepicker({
+            format: 'DD/MM/Y',
+            useCurrent: false,
+            maxDate: '01/01/2018',
+            defaultDate: '01/01/2018',
+        });
+    });
 </script>
+
 </body>
 </html>
