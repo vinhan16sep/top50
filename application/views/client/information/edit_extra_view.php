@@ -14,6 +14,14 @@
         margin-bottom:10px ;
         margin-top:-5px ;
     }
+    .input-group.link{
+        position: relative;
+    }
+    .input-group.link label{
+        position: absolute;
+        left: 0px;
+        top: 100%;
+    }
 </style>
 <div class="content-wrapper" style="min-height: 916px;">
     <section class="content">
@@ -321,8 +329,14 @@
                             ?>
                         </div>
                         <div class="col-sm-9 col-md-9 col-xs-12">
-                            <p>Doanh nghiệp tải mẫu phiếu đăng ký ở đây, khai đầy đủ thông tin, ký, đóng dấu và upload tại đây.</p>
-                            <a class="btn btn-warning" href="<?php echo site_url('PDK_2020.doc') ?>" target="_blank">Tải mẫu Phiếu đăng ký</a>
+                            <p>Doanh nghiệp tải mẫu phiếu đăng ký ở đây, khai đầy đủ thông tin, ký, đóng dấu và nhập Link phiếu đăng ký tại đây.</p>
+                            <?php  echo form_error('link', '<div class="error">', '</div>'); ?>
+                            <div class="input-group link">
+                                <?php echo form_input('link', set_value('link', $extra['link']), 'class="form-control" aria-describedby="basic-addon2" placeholder="Nhập Link phiếu đăng ký tại đây" '); ?>
+                              <span class="input-group-addon" id="basic-addon2" style="background: #f39c12 !important"><a style="color:#fff;font-weight: bold;" class="color-warning" href="<?php echo site_url('PDK_2020.doc') ?>" target="_blank">Tải mẫu Phiếu đăng ký</a></span>
+                            </div>
+
+                            
                             <br>
                         </div>
                     </div>
@@ -468,11 +482,11 @@
 </script>
 <script type="text/javascript">
     $(function () {
-        $('#datetimepicker7').datetimepicker({
+        /*$('#datetimepicker7').datetimepicker({
             format: 'DD/MM/Y',
             useCurrent: false,
             maxDate: '01/01/2018',
-        });
+        });*/
 
         $('.datetimepicker').datetimepicker({
             format: 'DD/MM/Y',
