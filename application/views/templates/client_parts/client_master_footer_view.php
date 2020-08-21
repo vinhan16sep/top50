@@ -3,12 +3,12 @@
 
 <div class="mobile-hotline-fixed one">
     <a href="tel:0936136696" title="Hỗ trợ kỹ thuật">
-        <span class="value">Hỗ trợ kỹ thuật: 0936 136 696</span>
+        <span class="value">Hỗ trợ kỹ thuật: 0936136696</span>
     </a>
 </div>
 <div class="mobile-hotline-fixed">
-    <a href="tel:0936136696" title="Tư vấn hồ sơ">
-        <span class="value">Tư vấn hồ sơ: 0936 136 696</span>
+    <a href="tel:0913196699" title="Tư vấn hồ sơ">
+        <span class="value">Tư vấn hồ sơ: 0913196699</span>
     </a>
 </div>
 

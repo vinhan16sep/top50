@@ -59,7 +59,7 @@ $lang['group_name_required'] 		= 'Vui lòng nhập tên nhóm';
 $lang['group_name_admin_not_alter'] = 'Admin group name can not be changed';
 
 // Activation Email
-$lang['email_activation_subject']            = 'Kích hoạt tài khoản';
+$lang['email_activation_subject']            = 'Kích hoạt tài khoản [NOREPLY]';
 $lang['email_activate_heading']    = 'Kích hoạt tài khoản của %s';
 $lang['email_activate_subheading'] = 'Vui lòng bấm vào đường link %s';
 $lang['email_activate_link']       = 'Kích hoạt tài khoản';

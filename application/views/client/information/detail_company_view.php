@@ -1,5 +1,3 @@
-
-
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <style>
     .error{
@@ -99,7 +97,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <?php
-                            echo form_label('Giới thiệu doanh nghiệp (viết ngắn gọn đồng thời nêu rõ định hướng và mục tiêu phát triển doanh nghiệp – tối đa 100 từ)', 'overview');
+                            echo form_label('Giới thiệu doanh nghiệp', 'overview');
                             ?>
                         </div>
                         <hr>
@@ -1001,7 +999,7 @@
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #3c8dbc">
                     <!--                <button type="button" class="close" data-dismiss="modal">&times;</button>-->
-                    <h4 style="color:white;">Cảm ơn Quý Công ty đã đăng ký tham gia Chương trình 50+10 Doanh nghiệp CNTT hàng đầu Việt Nam <?php echo !empty($eventYear) ? $eventYear : ''; ?>.</h4>
+                    <h4 style="color:white;">Cảm ơn Quý Công ty đã đăng ký tham gia Chương trình Top 10 Doanh nghiệp CNTT Việt Nam <?php echo !empty($eventYear) ? $eventYear : ''; ?>.</h4>
                 </div>
                 <div class="modal-body">
                     <h4 style="font-weight:bold !important;">Mời quay lại trang Tổng quan để xem lại hồ sơ/ nộp cho Ban tổ chức</h4>

@@ -78,10 +78,7 @@
                             ?>
                         </div>
                         <div class="col-sm-9 col-md-9 col-xs-12">
-                            <?php
-                                echo form_error('founding_date', '<div class="error">', '</div>');
-                                echo form_input('founding_date', set_value('founding_date'), 'class="form-control datetimepicker7" readonly ');
-                            ?>
+                            <span class="input-group-addon"><?= date('d/m/Y', strtotime($founding_date)) ?></span>
                         </div>
                     </div>
                 </div>
@@ -143,7 +140,7 @@
                         </div>
                         <div class="col-sm-3 col-md-3 col-xs-12 float-right">
                             <?php
-                                echo form_label('Fax <span style="color: red">(*)</span>', 'fax');
+                                echo form_label('Fax', 'fax');
                             ?>
                         </div>
                         <div class="col-sm-3 col-md-3 col-xs-12">
@@ -312,7 +309,7 @@
                         </div>
                         <div class="col-sm-9 col-md-9 col-xs-12">
                             <p>Doanh nghiệp tải mẫu phiếu đăng ký ở đây, khai đầy đủ thông tin, ký, đóng dấu và upload tại đây.</p>
-                            <a class="btn btn-warning" href="<?php echo site_url('Phieu-dang-ky.docx') ?>" target="_blank">Tải mẫu Phiếu đăng ký</a>
+                            <a class="btn btn-warning" href="<?php echo site_url('PDK_2020.doc') ?>" target="_blank">Tải mẫu Phiếu đăng ký</a>
                             <br>
                         </div>
                     </div>
@@ -333,14 +330,19 @@
     </section>
 </div>
 <script>
+    jQuery.validator.addMethod("lettersonly", function(value, element) {
+        return this.optional(element) || /^[a-z aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆ fFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTu UùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ]+$/i.test(value);
+    }, "Only alphabetical characters"); 
 
     $('#extra-form').validate({
         rules: {
             legal_representative: {
-                required: true
+                required: true,
+                lettersonly: true 
             },
             lp_position: {
-                required: true
+                required: true,
+                lettersonly: true 
             },
             lp_email: {
                 required: true,
@@ -348,13 +350,17 @@
             },
             lp_phone: {
                 required: true,
-                digits: true
+                number: true,
+                minlength: 10,
+                maxlength: 11
             },
             connector: {
-                required: true
+                required: true,
+                lettersonly: true 
             },
             c_position: {
-                required: true
+                required: true,
+                lettersonly: true 
             },
             c_email: {
                 required: true,
@@ -362,17 +368,20 @@
             },
             c_phone: {
                 required: true,
-                digits: true
+                number: true,
+                minlength: 10,
+                maxlength: 11
             },
             link: {
                 required: true
             },
             h_phone: {
                 required: true,
-                digits: true
+                number: true,
+                minlength: 10,
+                maxlength: 11
             },
             h_fax: {
-                required: true,
                 digits: true
             },
             h_email: {
@@ -386,43 +395,52 @@
         },
         messages :{
             legal_representative: {
-                required: 'Cần nhập Tên người đại diện pháp luật'
+                required: 'Cần nhập Tên người đại diện pháp luật',
+                lettersonly: 'Chỉ chấp nhận chữ cái'
             },
             lp_position: {
-                required: 'Cần nhập Chức danh'
+                required: 'Cần nhập Chức danh',
+                lettersonly: 'Chỉ chấp nhận chữ cái'
             },
             lp_email: {
                 required: 'Cần nhập Email',
                 email: 'Email không hợp lệ'
             },
             lp_phone: {
-                required: 'Cần nhập số điện thoại di động',
-                digits: 'Số điện thoại di động chỉ chứa ký tự số'
+                required : 'Không được để trống',
+                number: 'Phải là số',
+                minlength: 'Phải lớn hơn 9 ký tự',
+                maxlength: 'Phải nhỏ hơn 12 ký tự'
             },
             connector: {
-                required: 'Cần nhập Tên người liên hệ với BTC'
+                required: 'Cần nhập Tên người liên hệ với BTC',
+                lettersonly: 'Chỉ chấp nhận chữ cái'
             },
             c_position: {
-                required: 'Cần nhập Chức danh'
+                required: 'Cần nhập Chức danh',
+                lettersonly: 'Chỉ chấp nhận chữ cái'
             },
             c_email: {
                 required: 'Cần nhập Email',
                 email: 'Email không hợp lệ'
             },
             c_phone: {
-                required: 'Cần nhập số điện thoại di động',
-                digits: 'Số điện thoại di động chỉ chứa ký tự số'
+                required : 'Không được để trống',
+                number: 'Phải là số',
+                minlength: 'Phải lớn hơn 9 ký tự',
+                maxlength: 'Phải nhỏ hơn 12 ký tự'
             },
             link: {
                 required: 'Link download PĐK của DN'
             },
             h_phone: {
-                required: 'Cần nhập số điện thoại',
-                digits: 'Số điện thoại chỉ chứa ký tự số'
+                required : 'Không được để trống',
+                number: 'Phải là số',
+                minlength: 'Phải lớn hơn 9 ký tự',
+                maxlength: 'Phải nhỏ hơn 12 ký tự'
             },
             h_fax: {
-                required: 'Cần nhập số điện thoại',
-                digits: 'Số điện thoại chỉ chứa ký tự số'
+                digits: 'Fax chỉ chứa ký tự số'
             },
             h_email: {
                 required: 'Cần nhập Email',

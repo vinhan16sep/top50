@@ -5,97 +5,156 @@ CSS for homepage
 Author: hung.luong@matocreative.vn
 
 */
-
-.main_content{
-	width: 100%;
-	height: 100%;
-
-	/*background-image: url("../img/bg10.jpg");*/
+.home-page {
+	background: url(../img/background-top-10-ict.jpg);
+	width: 100vw;
+	height: 100vh;
 	background-position: center center;
-	background-repeat: no-repeat;
 	background-size: cover;
+	background-repeat: no-repeat;
 }
 
-.megatron{
-	text-align: center;
+.header-area {
+    width:100%;
+    text-align:center;
+}
+
+.img-header {
+    width: 7%;
+    position: fixed;
+    top: 10;
+    left: 10;
+}
+
+.tilte-header {
+    position: fixed;
+    width: 100%;
+    top: 50;
+    font-size: 25px;
+    color: #ffffff;
+}
+
+.register-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.btn-register {
+    width: 30%;
+}
+
+.register-for-council-of-examiners {
+    content: url(../img/btn-council-of-examiners.png);
+}
+
+.register-for-bussiness {
+    content: url(../img/btn-register-for-bussiness.png);
+}
+
+.register-for-council-of-examiners:hover {
+    content: url(../img/btn-council-of-examiners-active.png);
+}
+
+.register-for-bussiness:hover {
+    content: url(../img/btn-register-for-bussiness-active.png);
+}
+
+.img-footer {
+    width: 25%;
+    position: fixed;
+    bottom: 10;
+    right: 10;
+}
+/*width: 100vh;*/
+/*	height: 90vh;*/
+/*	background-image: url("../img/background-top-10-ict.jpg");*/
+/*	background-position: center center;*/
+/*	background-repeat: no-repeat;*/
+/*	background-size: cover;*/
+/*.megatron{*/
+/*	text-align: center;*/
 	/*padding-top: 150px;*/
-}
+/*}*/
 
-.megatron p{
-	padding-left: 50px;
-	padding-right: 50px;
-}
+/*.megatron p{*/
+/*	padding-left: 50px;*/
+/*	padding-right: 50px;*/
+/*}*/
 
-.megatron ul.nav{
-	padding-top: 30px;
-	padding-left: 50px;
-	padding-right: 50px;
-}
+/*.megatron ul.nav{*/
+/*	padding-top: 30px;*/
+/*	padding-left: 50px;*/
+/*	padding-right: 50px;*/
+/*}*/
 
-.megatron ul.nav > li > a{
-	border-radius: 15px;
+/*.megatron ul.nav > li > a{*/
+/*	border-radius: 15px;*/
 
-	box-shadow: none;
+/*	box-shadow: none;*/
 
-	transition: all ease 0.5s;
-	-webkit-transition: all ease 0.5s;
-	-moz-transition: all ease 0.5s;
-	-o-transition: all ease 0.5s;
-}
+/*	transition: all ease 0.5s;*/
+/*	-webkit-transition: all ease 0.5s;*/
+/*	-moz-transition: all ease 0.5s;*/
+/*	-o-transition: all ease 0.5s;*/
+/*}*/
 
-.megatron ul.nav > li > a:hover{
-	background-color: #0077df;
-	color: #fff;
+/*.megatron ul.nav > li > a:hover{*/
+/*	background-color: #0077df;*/
+/*	color: #fff;*/
 
-	box-shadow: 0px 5px 10px rgba(0,0,0,.5);
+/*	box-shadow: 0px 5px 10px rgba(0,0,0,.5);*/
 
-	transition: all ease 0.5s;
-	-webkit-transition: all ease 0.5s;
-	-moz-transition: all ease 0.5s;
-	-o-transition: all ease 0.5s;
-}
+/*	transition: all ease 0.5s;*/
+/*	-webkit-transition: all ease 0.5s;*/
+/*	-moz-transition: all ease 0.5s;*/
+/*	-o-transition: all ease 0.5s;*/
+/*}*/
 
-@media (max-width: 768px){
-	.megatron .container img{
-		width: 100%;
-	}
+/*@media (max-width: 768px){*/
+/*	.megatron .container img{*/
+/*		width: 100%;*/
+/*	}*/
 
-	.megatron .container h1{
-		font-size: 22px;
-	}
+/*	.megatron .container h1{*/
+/*		font-size: 22px;*/
+/*	}*/
 
-	.company-border{
-		border-left: none !important;
-	}
-}
-div.logo {
-	width: 120px;
-	float: left;
-}
-div.logo  img {
-	width: 100%;
-}
-div.banner {
-	width: calc(100% - 120px);
-	float: left;
-}
+/*	.company-border{*/
+/*		border-left: none !important;*/
+/*	}*/
+/*}*/
+/*div.logo {*/
+/*	width: 120px;*/
+/*	float: left;*/
+/*}*/
+/*div.logo  img {*/
+/*	width: 100%;*/
+/*}*/
+/*div.banner {*/
+/*	width: calc(100% - 120px);*/
+/*	float: left;*/
+/*}*/
 
-@media (max-width: 991px){
-	div.logo {
-		width: 80px;
-		float: left;
-	}
-	div.logo  img {
-		width: 100%;
-	}
-	div.banner {
-		width: calc(100% - 80px);
-		float: left;
-	}
-}
-.company-border a{
-	display: inline-block!important;
-}
+/*@media (max-width: 991px){*/
+/*	div.logo {*/
+/*		width: 80px;*/
+/*		float: left;*/
+/*	}*/
+/*	div.logo  img {*/
+/*		width: 100%;*/
+/*	}*/
+/*	div.banner {*/
+/*		width: calc(100% - 80px);*/
+/*		float: left;*/
+/*	}*/
+/*}*/
+/*.company-border a{*/
+/*	display: inline-block!important;*/
+/*}*/
+
 
 
 

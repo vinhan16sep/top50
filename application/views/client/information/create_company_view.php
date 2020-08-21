@@ -228,7 +228,7 @@
                     <div class="row">
                         <div class="col-sm-3 col-md-3 col-sx-12">
                             <?php
-                            echo form_label('Giới thiệu doanh nghiệp (viết ngắn gọn đồng thời nêu rõ định hướng và mục tiêu phát triển doanh nghiệp – tối đa 100 từ)', 'overview');
+                            echo form_label('Giới thiệu doanh nghiệp (viết ngắn gọn, giới thiệu doanh nghiệp, ngành nghề kinh doanh chính, thế mạnh của DN, sự khác biệt so với đối thủ cạnh tranh, đồng thời nêu rõ định hướng và mục tiêu phát triển doanh nghiệp, tối đa 250 từ)', 'overview');
                             ?>
                         </div>
                         <div class="col-sm-9 col-md-9 col-sx-12">
@@ -1123,16 +1123,16 @@
                     </div>
                 </div>
                 <br>
-                <div class="form-check confirm">
+                <div class="form-check confirm" style="padding-left:100px;">
                     <h4 class="">CHÚNG TÔI ĐÃ NGHIÊN CỨU KỸ</h4>
-                    <?php echo form_checkbox('checkone', '1', FALSE,'data-href="http://leadingitcompanies.com/page/the-le-chuong-trinh-p18.html" id="checkone"'); ?>
+                    <?php echo form_checkbox('checkone', '1', FALSE,'data-href="http://top10ict.com/the-le-chuong-trinh/" id="checkone"'); ?>
                     <?php echo form_label('Thể lệ của chương trình', 'checkone','class="form-check-label"'); ?>
                 </div>
-                <div class="form-check confirm">
-                    <?php echo form_checkbox('checktwo', '1', FALSE,'data-href="http://leadingitcompanies.com/page/kinh-phi-p21.html" id="checktwo"'); ?>
+                <div class="form-check confirm" style="padding-left:100px;">
+                    <?php echo form_checkbox('checktwo', '1', FALSE,'data-href="http://top10ict.com/kinh-phi/" id="checktwo"'); ?>
                     <?php echo form_label('Quyết định kinh phí biên tập, in ấn và phát hành Ấn phẩm', 'checktwo','class="form-check-label"'); ?>
                 </div>
-                <div class="message__">
+                <div class="message__" style="padding-left:100px;">
                     <em>Chúng tôi hiểu rõ các quyền lợi, trách nhiệm của mình khi tham gia Chương trình và cam kết tuân thủ Quy chế Chương trình cũng như các qui định của Ban Tổ chức, chịu trách nhiệm về tính trung thực của các thông tin đã khai trong hồ sơ đăng ký tham gia chương trình.</em>
                 </div>
                 <div class="form-group col-sm-12 text-right submit-extra-form">

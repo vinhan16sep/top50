@@ -86,13 +86,13 @@
   <?php if ($this->ion_auth->logged_in() && $this->ion_auth->in_group('clients')): ?>
   <header class="main-header">
     <!-- logo -->
-    <a href="<?php echo base_url('admin/dashboard') ?>" class="logo">
+    <a href="<?php echo base_url('admin/dashboard') ?>" class="logo" style="background-color: #fba966 !important;">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>TRANG DOANH NGHIỆP</b></span>
     </a>
     <!-- header navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
+    <nav class="navbar navbar-static-top" style="background-color: #fba966 !important;">
 <!--        <img src="--><?php //echo site_url('assets/public/img/2A.gif'); ?><!--" />-->
       <!-- sidebar toggle button-->
 <!--      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">-->

@@ -100,7 +100,7 @@
         <tr class="tr-body">
             <td colspan="2">
                 <h4>Kính gửi Quý công ty!</h4>
-                <p>Quý công ty đã hoàn thành đăng ký cho chương trình TOP50 + 10 của VINASA.</p>
+                <p>Quý công ty đã hoàn thành đăng ký cho chương trình Top 10 Doanh nghiệp CNTT Việt Nam.</p>
             </td>
         </tr>
         <tr class="tr-footer">

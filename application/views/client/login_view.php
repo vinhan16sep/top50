@@ -77,7 +77,7 @@
                             <h1>Đăng ký mới</h1>
                             <p>
                                 <i>Điều kiện tham gia chương trình: Doanh nghiệp phải thành lập theo pháp luật Việt Nam, Thời gian thành lập từ 03 năm trở lên.
-                                Link đến <a href="http://leadingitcompanies.com/page/the-le-chuong-trinh-p18.html" target="_blank" style="font-weight: bold;">THỂ LỆ</a> chương trình </i>
+                                Chi tiết xem tại <a href="http://leadingitcompanies.com/page/the-le-chuong-trinh-p18.html" target="_blank" style="font-weight: bold;">THỂ LỆ</a> chương trình </i>
 
                             </p>
                         </div>
@@ -177,8 +177,8 @@
             phone: {
                 required: true,
                 number: true,
-                minlength: 9,
-                maxlength: 12
+                minlength: 10,
+                maxlength: 11
             },
             register_password: {
                 required: true,

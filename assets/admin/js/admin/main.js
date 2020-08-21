@@ -355,11 +355,11 @@ function deleteItem(id, url){
 
 
 switch(window.location.origin){
-    case 'http://dangky.danhhieusaokhue.vn/':
-        var HOSTNAME = 'http://dangky.danhhieusaokhue.vn/';
+    case 'http://dangky.top10ict.com/':
+        var HOSTNAME = 'http://dangky.top10ict.com/';
         break;
     default:
-        var HOSTNAME = 'http://localhost/dangky/';
+        var HOSTNAME = 'http://dangky.top10ict.com/';
 }
 
 $(document).ready(function(){

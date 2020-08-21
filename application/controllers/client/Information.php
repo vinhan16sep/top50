@@ -42,6 +42,7 @@ class Information extends Client_Controller {
         $this->load->library('form_validation');
         $this->data['extra'] = $this->information_model->fetch_extra_by_identity('information', $this->data['user']->username);
         $this->data['hasCurrentYearCompanyData'] = $this->information_model->getCurrentYearCompany($this->data['user']->username, $this->data['eventYear']);
+        $this->data['founding_date'] = $this->data['user']->founding_date;
         $this->render('client/information/detail_extra_view');
     }
 
@@ -99,6 +100,7 @@ class Information extends Client_Controller {
             if(!empty($exist)){
                 $this->data['exist'] = $exist;
             }
+            $this->data['founding_date'] = $this->data['user']->founding_date;
             $this->render('client/information/create_extra_view');
         } else {
             if ($this->input->post()) {
@@ -208,6 +210,7 @@ class Information extends Client_Controller {
 
         $id = isset($request_id) ? (int) $request_id : (int) $this->input->post('id');
         $this->data['extra'] = $this->information_model->fetch_by_user_identity('information', $this->data['user']->username);
+        $this->data['founding_date'] = $this->data['user']->founding_date;
         if ($this->form_validation->run() == FALSE) {
             if (!$this->data['extra']) {
                 redirect('client/information', 'refresh');
@@ -2773,14 +2776,14 @@ class Information extends Client_Controller {
         $mail->Password = "kcirpkmdlgbcobcv"; // your SMTP password or your gmail password
         $from = "support@vinasa.org.vn"; // Reply to this email
         $to = $email; // Recipients email ID
-        $name = 'dangky.leadingitcompanies.com'; // Recipient's name
+        $name = 'dangky.top10ict.com'; // Recipient's name
         $mail->From = $from;
         $mail->FromName = $name; // Name to indicate where the email came from when the recepient received
         $mail->AddAddress($to, $name);
         $mail->CharSet = 'UTF-8';
         $mail->WordWrap = 50; // set word wrap
         $mail->IsHTML(true); // send as HTML
-        $mail->Subject = "Mail từ dangky.leadingitcompanies.com";
+        $mail->Subject = "Mail từ dangky.top10ict.com";
         $mail->Body = $this->email_template_final_register();
 
         // $mail->SMTPDebug = 2;

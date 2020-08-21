@@ -10,7 +10,7 @@
         <?php endif ?>
     
     <div class="box-body pad table-responsive" style="box-shadow: 2px 2px 1px grey;">
-        <strong style="color: #2d76b8; font-size: 18px">Quý doanh nghiệp vui lòng khai đầy đủ thông tin theo các bước sau:</strong>
+        <strong style="color: #2a2b41; font-size: 18px">Quý doanh nghiệp vui lòng khai đầy đủ thông tin theo các bước sau:</strong>
         <a target="_blank" href="http://danhhieusaokhue.vn/"><img style="width: 100% !important;" src="<?php echo site_url('assets/public/img/flow3.png'); ?>" /></a>
     </div>
     <section class="content">
@@ -19,7 +19,7 @@
             <div class="col-md-3">
 
                 <!-- Profile Image -->
-                <div class="box box-primary" style="box-shadow: 2px 2px 1px grey;">
+                <div class="box box-primary" style="box-shadow: 2px 2px 1px grey;border-top-color:#2a2b41 !important;">
                     <div class="box-body box-profile">
                         <?php if ( $information_submitted['avatar'] && file_exists('assets/upload/avatar/' . $information_submitted['avatar']) ): ?>
                             <img class="profile-user-img img-responsive" src="<?php echo base_url('assets/upload/avatar/') . $information_submitted['avatar']; ?>" alt="User profile picture">
@@ -186,7 +186,7 @@
 
         <!-- Modal content-->
         <div class="modal-content">
-            <div class="modal-header" style="background-color: #3c8dbc">
+            <div class="modal-header" style="background-color: #2a2b41">
 <!--                <button type="button" class="close" data-dismiss="modal">&times;</button>-->
                 <h4 style="color:white;">Cảm ơn Quý Công ty đã đăng ký tham gia Chương trình 50+10 Doanh nghiệp CNTT hàng đầu Việt Nam <?php echo !empty($eventYear) ? $eventYear : ''; ?>.</h4>
             </div>

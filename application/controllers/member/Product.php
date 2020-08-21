@@ -167,9 +167,10 @@ class Product extends Member_Controller{
 
             $new_rating = $this->new_rating_model->fetch_all();
             $list_products_rating = [];
-            foreach ($new_rating as $key => $value) {
-                $list_products_rating[] = $value['product_id'];
-            }
+            // TODO
+            // foreach ($new_rating as $key => $value) {
+            //     $list_products_rating[] = $value['product_id'];
+            // }
 
             $team = $this->team_model->fetch_all_team();
 
