@@ -83,6 +83,9 @@ class Information extends Client_Controller {
             'min_length' => '%s tối thiểu %s ký tự.',
             'max_length' => '%s tối đa %s ký tự.',
         ));
+        $this->form_validation->set_rules('link', 'Link phiếu đăng ký', 'trim|required', array(
+            'required' => '%s không được trống.',
+        ));
         $this->form_validation->set_rules('founding_date', 'Ngày thành lập', 'trim|date_formats', array(
             'date_formats' => '%s không đúng định dạng.',
         ));
@@ -113,6 +116,7 @@ class Information extends Client_Controller {
                     // New
                     'founding_date' => date('Y-m-d H:i:s', strtotime(str_replace('/', '-', $this->input->post('founding_date')))),
                     'certificate' => $this->input->post('certificate'),
+                    'link' => $this->input->post('link'),
                     'certificate_date' => date('Y-m-d H:i:s', strtotime(str_replace('/', '-', $this->input->post('certificate_date')))),
                     'headquarters' => $this->input->post('headquarters'),
                     'h_phone' => $this->input->post('h_phone'),
@@ -203,6 +207,9 @@ class Information extends Client_Controller {
         $this->form_validation->set_rules('founding_date', 'Ngày thành lập', 'trim|date_formats', array(
             'date_formats' => '%s không đúng định dạng.',
         ));
+        $this->form_validation->set_rules('link', 'Link phiếu đăng ký', 'trim|required', array(
+            'required' => '%s không được trống.',
+        ));
         $this->form_validation->set_rules('certificate_date', 'Ngày cấp', 'trim|date_formats', array(
             'date_formats' => '%s không đúng định dạng.',
         ));
@@ -232,6 +239,7 @@ class Information extends Client_Controller {
                 $data = array(
                     'founding_date' => date('Y-m-d H:i:s', strtotime(str_replace('/', '-', $this->input->post('founding_date')))),
                     'certificate' => $this->input->post('certificate'),
+                    'link' => $this->input->post('link'),
                     'certificate_date' => date('Y-m-d H:i:s', strtotime(str_replace('/', '-', $this->input->post('certificate_date')))),
                     'headquarters' => $this->input->post('headquarters'),
                     'h_phone' => $this->input->post('h_phone'),

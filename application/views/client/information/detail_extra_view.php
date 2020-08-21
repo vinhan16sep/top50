@@ -272,6 +272,16 @@
                                         </div>
                                     </div>
                                     <hr style="padding: 1px 0px; background-color: #fff;">
+                                    <?php if (!empty($extra['link'])): ?>
+                                        <p>
+                                            <a href="<?php echo $extra['link']; ?>" class="btn btn-primary" target="_blank">Link phiếu đăng ký</a>
+                                        </p>
+                                    <?php else: ?>
+                                        <p>
+                                            <a class="btn btn-danger" target="_blank">Chưa có link phiếu đăng ký</a>
+                                        </p>
+                                    <?php endif ?>
+                                        
                                     <br>
                                     <div class="form-group col-sm-12 text-right submit-extra-form">
                                         <div class="col-sm-3 col-md-3 col-xs-12">
