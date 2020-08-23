@@ -154,7 +154,7 @@
                         <br>
                         <br>
                         <div style="text-align: center;">
-                            <a onclick="return confirmation();" href="#" class="btn btn-warning btn-block btnIsFinal" style="width: 50% !important; margin: 0 auto;"><b>Nộp hồ sơ</b></a>
+                            <a onclick="return confirmation();" href="#" class="btn btn-danger btn-block btnIsFinal" style="width: 50% !important; margin: 0 auto;"><b>Nộp hồ sơ</b></a>
                             <h4 style="color:red">Lưu ý: Hồ sơ gửi đi sẽ không thể chỉnh sửa. Đề nghị quý DN xem lại trước khi GỬI NỘP</h4>
                         </div>
                         <?php else: ?>

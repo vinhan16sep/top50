@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="<?php echo site_url('assets/admin/bower_components/bootstrap/dist/css/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="<?php echo site_url('assets/public/css/homepage.css'); ?>">
     <link rel="stylesheet" href="<?php echo site_url('assets/admin/css/user.css'); ?>">
+    <link rel="stylesheet" href="<?php echo site_url('assets/admin/css/css.css'); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/admin/datetimepicker/bootstrap-datetimepicker.css'); ?>">
     <title>Đăng nhập / Đăng ký</title>
 </head>
@@ -56,11 +57,11 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-xs-12 col-md-8">
-                                    <?php echo form_submit('login', 'Đăng nhập', 'class="btn btn-primary btn-lg" style="width:100%;"'); ?>
+                                <div class="col-xs-12 col-md-12">
+                                    <?php echo form_submit('login', 'Đăng nhập', 'class="btn btn-warning btn-lg" style="width:100%;"'); ?>
                                 </div>
                                 <div class="col-xs-12 col-md-4">
-                                    <a href="<?= base_url('client/user/forgot_password') ?>" class="btn btn-warning btn-lg pull-right" >Quên mật khẩu</a>
+                                    <a href="<?= base_url('client/user/forgot_password') ?>" style="font-size:17px;" >Quên mật khẩu</a>
                                 </div>
                             </div>
                         </div>
@@ -137,16 +138,15 @@
     </section>
 </section>
 
-<div class="call-btn">
-    <div class="zoomIn"></div>
-    <div class="pulse"></div>
-    <div class="tada">
-        <a href="tel:0936136696 ">
-            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="phone-alt" class="svg-inline--fa fa-phone-alt fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z"></path></svg>
-            0936136696
-        </a>
-    </div>
-    <div class="tel"><a href="tel:0936136696">0936136696</a></div>
+<div class="mobile-hotline-fixed one">
+    <a href="tel:0936136696" title="Hỗ trợ kỹ thuật">
+        <span class="value">Hỗ trợ kỹ thuật: 0936136696</span>
+    </a>
+</div>
+<div class="mobile-hotline-fixed">
+    <a href="tel:0913196699" title="Tư vấn hồ sơ">
+        <span class="value">Tư vấn hồ sơ: 0913196699</span>
+    </a>
 </div>
 
 

@@ -970,7 +970,7 @@
                             </div>
                             <?php if($eventYear == $company['year']){ ?>
                             <div class="col-xs-12 col-md-6 pull-left">
-                                <a class="btn btn-primary" onclick="return openModals();" href="#">
+                                <a class="btn btn-warning" onclick="return openModals();" href="#">
                         
                                     <b>HOÀN THÀNH/ LƯU THÔNG TIN</b>
                                 </a>
