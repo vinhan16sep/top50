@@ -80,6 +80,9 @@
     .main_market p:before{
         content:"- ";
     }
+    textarea{
+        white-space: initial;
+    }
 </style>
 <div class="content-wrapper" style="min-height: 916px;">
     <section class="content">
@@ -97,6 +100,31 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <?php
+                            echo form_label('Lĩnh vực doanh nghiệp đã chọn', 'overview');
+                            ?>
+                        </div>
+                        <hr>
+                        <div class="col-xs-12 textarea-h">
+                            <div>
+                                
+                                <?php 
+                                    $company['group'] = (array)json_decode($company['group'], true);
+                                ?>
+                                <?php foreach ($groups as $key => $value): ?>
+                                    <?php if (in_array($key, $company['group'])): ?>
+                                        <p>- <?php echo $value; ?></p>
+                                    <?php endif ?>
+                                <?php endforeach ?>
+                            </div>
+                                
+                        </div>
+                    </div>
+                </div>
+                 <hr style="border-bottom: 1px solid white;">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <?php
                             echo form_label('Giới thiệu doanh nghiệp', 'overview');
                             ?>
                         </div>
@@ -105,7 +133,6 @@
                             <div>
                                 <textarea name="" id="" rows="10" style="width: 100%;border:none" class="form-control">
                                     <?php echo strip_tags(htmlspecialchars_decode($company['overview'])); ?>
-                                    
                                 </textarea>
                                     
                             </div>

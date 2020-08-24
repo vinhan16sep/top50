@@ -151,6 +151,7 @@ class Admin_Controller extends MY_Controller {
             //redirect them to the login page
             redirect('admin/user/login', 'refresh');
         }
+
         $this->data['user_email'] = $this->ion_auth->user()->row()->email;
         $this->data['user_company'] = $this->ion_auth->user()->row()->company;
         $this->data['page_title'] = 'Administrator area';
@@ -271,6 +272,7 @@ class Member_Controller extends MY_Controller {
             $this->session->set_flashdata('login_message_error', $this->ion_auth->errors());
             redirect('member/user/login', 'refresh');
         }
+
         if (!$this->ion_auth->in_group('members')) {
             $this->ion_auth->logout();
             $this->session->set_flashdata('login_message_error', 'Tài khoản không có quyền truy cập');
@@ -400,6 +402,10 @@ class Client_Controller extends MY_Controller {
             $this->session->set_flashdata('login_message_error', 'Tài khoản không có quyền truy cập');
             redirect('client/user/login');
         }
+        
+        // get config
+        $this->config->load('development/config_information', TRUE);
+
         $this->data['user_info'] = $this->ion_auth->user()->row();
         $this->data['user_email'] = $this->ion_auth->user()->row()->email;
         $this->data['identity'] = $this->ion_auth->user()->row()->username;
