@@ -22,11 +22,7 @@ class Information extends Client_Controller {
 
         $this->data['user'] = $this->ion_auth->user()->row();
         $this->data['reg_status'] = $this->status_model->fetch_by_client_id($this->data['user']->id);
-        $this->data['groups'] = array(
-            0 => 'Lĩnh vực 1: BPO, ITO và KPO',
-            1 => 'Lĩnh vực 2: Phần mềm, giải pháp và dịch vụ CNTT',
-            2 => 'Lĩnh vực 3: Nội dung số, ứng dụng và giải pháp cho mobile',
-        );
+        $this->data['groups'] = $this->config->item('development/config_information')['groups'];
 
     }
 
@@ -696,9 +692,14 @@ class Information extends Client_Controller {
                 if ($this->input->post()) {
                     $main_service = json_encode($this->input->post('main_service'));
                     $main_market = json_encode($this->input->post('main_market'));
+                    $group_data = (array)$this->input->post('group');
+                    if (count($group_data) > 3) {
+                        array_splice($group_data, 3);
+                    }
+
                     $data = array(
                         'client_id' => $this->data['user']->id,
-                        'group' => $this->input->post('group'),
+                        'group' => json_encode($group_data),
                         'group10' => $this->input->post('group10'),
                         'overview' => $this->input->post('overview'),
                         'active_area' => $this->input->post('active_area'),
@@ -1168,9 +1169,13 @@ class Information extends Client_Controller {
                 if ($this->input->post()) {
                     $main_service = json_encode($this->input->post('main_service'));
                     $main_market = json_encode($this->input->post('main_market'));
+                    $group_data = (array)$this->input->post('group');
+                    if (count($group_data) > 3) {
+                        array_splice($group_data, 3);
+                    }
                     $data = array(
                         'client_id' => $this->data['user']->id,
-                        'group' => $this->input->post('group'),
+                        'group' => json_encode($group_data),
                         'group10' => $this->input->post('group10'),
                         'overview' => $this->input->post('overview'),
                         'active_area' => $this->input->post('active_area'),
@@ -1719,9 +1724,13 @@ class Information extends Client_Controller {
                 if ($this->input->post()) {
                     $main_service = json_encode($this->input->post('main_service'));
                     $main_market = json_encode($this->input->post('main_market'));
+                    $group_data = (array)$this->input->post('group');
+                    if (count($group_data) > 3) {
+                        array_splice($group_data, 3);
+                    }
 
                     $data = array(
-                        'group' => $this->input->post('group'),
+                        'group' => json_encode($group_data),
                         'group10' => $this->input->post('group10'),
                         'overview' => $this->input->post('overview'),
                         'active_area' => $this->input->post('active_area'),
@@ -2187,9 +2196,14 @@ class Information extends Client_Controller {
                 if ($this->input->post()) {
                     $main_service = json_encode($this->input->post('main_service'));
                     $main_market = json_encode($this->input->post('main_market'));
+                    
+                    $group_data = (array)$this->input->post('group');
+                    if (count($group_data) > 3) {
+                        array_splice($group_data, 3);
+                    }
 
                     $data = array(
-                        'group' => $this->input->post('group'),
+                        'group' => json_encode($group_data),
                         'group10' => $this->input->post('group10'),
                         'overview' => $this->input->post('overview'),
                         'active_area' => $this->input->post('active_area'),

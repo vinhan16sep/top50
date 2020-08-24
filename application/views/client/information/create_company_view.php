@@ -197,25 +197,21 @@
                     <div class="row">
                         <div class="col-sm-3 col-md-3 col-sx-12">
                             <?php
-                            echo form_label('Lĩnh vực đăng ký', 'group');
+                            echo form_label('Lĩnh vực bình chọn: Doanh nghiệp lựa chọn các lĩnh vực là thế mạnh của công ty trong 15 lĩnh vực sau đây để làm hồ sơ đăng ký tham gia. Mỗi doanh nghiệp được đăng ký tối đa 03 lĩnh vực.', 'group');
                             ?>
                         </div>
-                        <div class="col-sm-9 col-md-9 col-sx-12">
-                            <div class="radio">
-                                <label><input type="radio" name="group" value="0">Lĩnh vực 1: BPO, ITO và KPO</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" name="group" value="1">Lĩnh vực 2: Phần mềm, giải pháp và dịch vụ CNTT</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" name="group" value="2">Lĩnh vực 3: Nội dung số, ứng dụng và giải pháp cho mobile</label>
-                            </div>
-                            <hr style="border-bottom: 1px solid grey">
-                            <div class="checkbox">
-                                <label>
-                                    <?php echo form_checkbox('group10', '1', false); ?> 10 Doanh nghiệp có năng lực công nghệ 4.0 tiêu biểu
-                                </label>
-                            </div>
+                        <div class="col-sm-9 col-md-9 col-sx-12" id="max-3-chechbox">
+                            <div class="show-message"></div>
+                            <?php  
+                                $group = $this->input->post('group');
+                            ?>
+                            <?php foreach ($groups as $key => $value): ?>
+                                <div class="checkbox">
+                                    <label>
+                                        <?php echo form_checkbox('group[]', $key, $group ? (in_array($key, $group) ? true: false) : false); ?> <?php echo $value ?>
+                                    </label>
+                                </div>
+                            <?php endforeach ?>  
                         </div>
                     </div>
                     <br>
@@ -1219,4 +1215,25 @@
     for (var i = 0; i < input.length; i++) {
         $(input[i]).val($(input[i]).val().replace(/&amp;/g,'&'));
     }
-</script>
+
+
+    function check_checkbox($this_click = null){
+        let checkbox = $('#max-3-chechbox input[type="checkbox"]:checked');
+        if ($this_click) {
+            if (checkbox.length > 3) {
+                alert('Mỗi doanh nghiệp được đăng ký tối đa 03 lĩnh vực.');
+                $($this_click).prop('checked', false);
+            }
+        }else{
+            if (checkbox.length > 3) {
+                for(i = 3; i < checkbox.length; i++){
+                    $(checkbox[i]).prop('checked', false);
+                }
+            }
+        }
+    }
+    check_checkbox();
+    $('#max-3-chechbox input[type="checkbox"]').change(function(){
+        check_checkbox($(this))
+    })
+</script> 
