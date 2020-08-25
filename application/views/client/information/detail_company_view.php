@@ -621,14 +621,14 @@
                             if($check_main_service){
                                 if($new_check_main_service[0] != ''){
                                     echo form_checkbox('main_service[]', $new_check_main_service[0], true, 'class="btn-checkbox" id="anonymous-service" disabled');
-                                    echo '<label for="">Sản phẩm - Khác (nêu rõ)</label><br>';
+                                    echo '<label for="">Khác (nêu rõ)</label><br>';
                                 }else{
                                     echo form_checkbox('main_service[]', '', false, 'class="btn-checkbox" id="anonymous-service" disabled');
-                                    echo '<label for="">Sản phẩm - Khác (nêu rõ)</label><br>';
+                                    echo '<label for="">Khác (nêu rõ)</label><br>';
                                 }
                             }else{
                                 echo form_checkbox('main_service[]', '', false, 'class="btn-checkbox" id="anonymous-service" disabled');
-                                echo '<label for="">Sản phẩm - Khác (nêu rõ)</label><br>';
+                                echo '<label for="">Khác (nêu rõ)</label><br>';
                             }
 
                             ?>
@@ -762,7 +762,7 @@
                                     }
                                 }
                                 echo form_checkbox('main_market[khac]', (!empty($main_market['khac']) ? $main_market['khac'] : ''), (!empty($main_market['khac'])? true : false), 'class="btn-checkbox" disabled id="checkbox_anonymous_domestic"');
-                                    echo '<label for="">Thị trường - Khác (nêu rõ)</label><br>';
+                                    echo '<label for="">Khác (nêu rõ)</label><br>';
                                 ?>
 
                                 <input type="text" id="anonymous_domestic" name="anonymous_domestic" value="<?php echo !empty($main_market['khac']) ? $main_market['khac'] : ''; ?>" class="input-anonymous_domestic form-control" style="display: none;">
@@ -781,11 +781,11 @@
                                 ?>
                                 <?php
                                 if(!is_null($main_market) && $main_market != null){
-                                    echo form_checkbox('main_market[]', 'Xuất khẩu SP/Giải pháp', (in_array('Xuất khẩu SP/Giải pháp', $main_market, '')? true : false), 'class="btn-checkbox" disabled');
-                                    echo '<label for="">Xuất khẩu SP/Giải pháp</label><br>';
+                                    echo form_checkbox('main_market[]', 'Xuất khẩu SP/Giải pháp/Dịch vụ', (in_array('Xuất khẩu SP/Giải pháp/Dịch vụ', $main_market, '')? true : false), 'class="btn-checkbox" disabled');
+                                    echo '<label for="">Xuất khẩu SP/Giải pháp/Dịch vụ</label><br>';
                                 }else{
-                                    echo form_checkbox('main_market[]', 'Xuất khẩu SP/Giải pháp', false, 'class="btn-checkbox" disabled');
-                                    echo '<label for="">Xuất khẩu SP/Giải pháp</label><br>';
+                                    echo form_checkbox('main_market[]', 'Xuất khẩu SP/Giải pháp/Dịch vụ', false, 'class="btn-checkbox" disabled');
+                                    echo '<label for="">Xuất khẩu SP/Giải pháp/Dịch vụ</label><br>';
                                 }
                                 ?>
                                 <?php
@@ -814,14 +814,14 @@
                                     if($check){
                                         if($new_check[0] != ''){
                                             echo form_checkbox('main_market[]', $new_check[0], true, 'class="btn-checkbox" disabled id="anonymous"');
-                                            echo '<label for="">Xuất khẩu mục tiêu - Khác (nêu rõ)</label><br>';
+                                            echo '<label for="">Khác (nêu rõ)</label><br>';
                                         }else{
                                             echo form_checkbox('main_market[]', '', false, 'class="btn-checkbox" id="anonymous" disabled');
-                                            echo '<label for="">Xuất khẩu mục tiêu - Khác (nêu rõ)</label><br>';
+                                            echo '<label for="">Khác (nêu rõ)</label><br>';
                                         }
                                     }else{
                                         echo form_checkbox('main_market[]', '', false, 'class="btn-checkbox" id="anonymous" disabled');
-                                        echo '<label for="">Xuất khẩu mục tiêu - Khác (nêu rõ)</label><br>';
+                                        echo '<label for="">Khác (nêu rõ)</label><br>';
                                     }
                                     ?>
                                     <?php if($check): ?>
