@@ -91,6 +91,10 @@
         font-weight: initial!important;
         text-align: left!important;
     }
+    input[type="checkbox"]:checked[disabled] + label{
+        color:blue;
+        display: contents;
+    }
 </style>
 <div class="content-wrapper" style="min-height: 916px;">
     <section class="content">
@@ -113,18 +117,20 @@
                         </div>
                         <hr>
                         <div class="col-xs-12 textarea-h">
+                            <?php 
+                                $company['group'] = (array)json_decode($company['group'], true);
+                            ?>
                             <div>
-                                
-                                <?php 
-                                    $company['group'] = (array)json_decode($company['group'], true);
-                                ?>
-                                <?php foreach ($groups as $key => $value): ?>
-                                    <?php if (in_array($key, $company['group'])): ?>
-                                        <p>- <?php echo $value; ?></p>
-                                    <?php endif ?>
-                                <?php endforeach ?>
+                                <div class="row">
+                                    <?php foreach ($groups as $key => $value): ?>
+                                        <div class="col-md-6">
+                                            <label>
+                                                <?php echo form_checkbox('group[]', $key, in_array($key, $company['group']) ? true: false, 'disabled'); ?> <label for=""><?php echo $value ?></label>
+                                            </label>
+                                        </div>
+                                    <?php endforeach ?>  
+                                </div>
                             </div>
-                                
                         </div>
                     </div>
                 </div>
@@ -602,10 +608,10 @@
                                     echo '<div class="col-md-6">';
                                         if(!is_null($main_service) && $main_service != null){
                                             echo form_checkbox('main_service[]', $value, (in_array($value, $main_service, '')? true : false), 'class="btn-checkbox" disabled');
-                                            echo $key.'<br>';
+                                            echo '<label for="">'.$key.'</label><br>';
                                         }else{
                                             echo form_checkbox('main_service[]', $value, false, 'class="btn-checkbox" disabled');
-                                            echo $key.'<br>';
+                                            echo '<label for="">'.$key.'</label><br>';
                                         }
                                     echo '</div>';
                                 }
@@ -615,14 +621,14 @@
                             if($check_main_service){
                                 if($new_check_main_service[0] != ''){
                                     echo form_checkbox('main_service[]', $new_check_main_service[0], true, 'class="btn-checkbox" id="anonymous-service" disabled');
-                                    echo 'Sản phẩm - Khác (nêu rõ)<br>';
+                                    echo '<label for="">Sản phẩm - Khác (nêu rõ)</label><br>';
                                 }else{
                                     echo form_checkbox('main_service[]', '', false, 'class="btn-checkbox" id="anonymous-service" disabled');
-                                    echo 'Sản phẩm - Khác (nêu rõ)<br>';
+                                    echo '<label for="">Sản phẩm - Khác (nêu rõ)</label><br>';
                                 }
                             }else{
                                 echo form_checkbox('main_service[]', '', false, 'class="btn-checkbox" id="anonymous-service" disabled');
-                                echo 'Sản phẩm - Khác (nêu rõ)<br>';
+                                echo '<label for="">Sản phẩm - Khác (nêu rõ)</label><br>';
                             }
 
                             ?>
@@ -693,22 +699,144 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-12">
+                        <div class="col-sm-12 col-md-12 col-sx-12">
                             <strong>4.</strong> Thị trường chính
+                            <?php
+                            $new_check = array();
+                            $main_market = json_decode($company['main_market'], true);
+                            $domestic = array(
+                                'Thị trường Chính phủ' => 'Thị trường Chính phủ',
+                                'Thị trường doanh nghiệp' => 'Thị trường doanh nghiệp',
+                                'Thị trường người tiêu dùng' => 'Thị trường người tiêu dùng',
+                            );
+                            $target = array(
+                                'Mỹ và các nước Bắc Mỹ' => 'Mỹ và các nước Bắc Mỹ',
+                                'Châu Âu' => 'Châu Âu',
+                                'Nhật Bản' => 'Nhật Bản',
+                                'Các nước trong khu vực' => 'Các nước trong khu vực'
+                            );
+                            $root = array(
+                                'Thị trường Chính phủ' => 'Thị trường Chính phủ',
+                                'Thị trường doanh nghiệp' => 'Thị trường doanh nghiệp',
+                                'Thị trường người tiêu dùng' => 'Thị trường người tiêu dùng',
+                                'Thị trường người tiêu dùng' => 'Thị trường người tiêu dùng',
+                                'Mỹ và các nước Bắc Mỹ' => 'Mỹ và các nước Bắc Mỹ',
+                                'Châu Âu' => 'Châu Âu',
+                                'Nhật Bản' => 'Nhật Bản',
+                                'Các nước trong khu vực' => 'Các nước trong khu vực',
+                                'Gia công xuất khẩu' => 'Gia công xuất khẩu',
+                                'Xuất khẩu SP/Giải pháp' => 'Xuất khẩu SP/Giải pháp',
+                                'Xuất khẩu nhân lực CNTT' => 'Xuất khẩu nhân lực CNTT'
+                            );
+                            $check = false;
+                            if(!is_null($main_market) && $main_market != null){
+
+                                if (!empty($main_market['khac'])) {
+                                    $root['khac'] = $main_market['khac'];
+                                }
+
+                                $check = array_diff($main_market, $root);
+                                if($check){
+                                    foreach ($check as $key => $value) {
+                                        $new_check[] = $value;
+                                    }
+                                }
+                            }
+
+                            ?>
                         </div>
-                        <div class="col-xs-12 main_market">
-                            <?php if(!empty($company['main_market'])): ?>
-                                <?php $main_market = json_decode($company['main_market']) ?>
-                                <?php if($main_market): ?>
-                                    <?php foreach ($main_market as $key => $value): ?>
-                                        <p class="" style="padding-left:20px;"><?php echo $value ?></p>
-                                    <?php endforeach ?>
-                                <?php else: ?>
-                                    <div style="text-align:center">--------------------------------------------------------------------------------------------------------</div>
-                                <?php endif; ?>
-                            <?php else: ?>
-                                <div style="text-align:center">--------------------------------------------------------------------------------------------------------</div>
-                            <?php endif; ?>
+
+                        <div class="col-sm-12 col-md-12 col-sx-12" style="padding-left: 30px;">
+                            <label style="margin-left: -15px" id="main_market[]-error" class="error" for="main_market[]"></label><br />
+                            <?php // echo form_error('main_market[]', '<div class="error"  style="margin-left: -15px">', '</div>'); ?>
+                            <strong style="margin-left: -15px">Trong nước</strong>
+                            <div class="row domestic-checkbox" style="margin-left: 20px">
+                                <?php
+                                foreach ($domestic as $key => $value) {
+                                    if(!is_null($main_market) && $main_market != null){
+                                        echo form_checkbox('main_market[]', $value, (in_array($value, $main_market, '')? true : false), 'class="btn-checkbox" disabled');
+                                        echo '<label for="">'.$key.'</label><br>';
+                                    }else{
+                                        echo form_checkbox('main_market[]', $value, false, 'class="btn-checkbox" disabled');
+                                        echo '<label for="">'.$key.'</label><br>';
+                                    }
+                                }
+                                echo form_checkbox('main_market[khac]', (!empty($main_market['khac']) ? $main_market['khac'] : ''), (!empty($main_market['khac'])? true : false), 'class="btn-checkbox" disabled id="checkbox_anonymous_domestic"');
+                                    echo '<label for="">Thị trường - Khác (nêu rõ)</label><br>';
+                                ?>
+
+                                <input type="text" id="anonymous_domestic" name="anonymous_domestic" value="<?php echo !empty($main_market['khac']) ? $main_market['khac'] : ''; ?>" class="input-anonymous_domestic form-control" style="display: none;">
+                            </div>
+                            <br>
+                            <strong style="margin-left: -15px">Quốc tế</strong>
+                            <div class="row" style="margin-left: 20px">
+                                <?php
+                                if(!is_null($main_market) && $main_market != null){
+                                    echo form_checkbox('main_market[]', 'Gia công xuất khẩu', (in_array('Gia công xuất khẩu', $main_market, '')? true : false), 'class="btn-checkbox" disabled');
+                                    echo '<label for="">Gia công xuất khẩu</label><br>';
+                                }else{
+                                    echo form_checkbox('main_market[]', 'Gia công xuất khẩu', false, 'class="btn-checkbox" disabled');
+                                    echo '<label for="">Gia công xuất khẩu</label><br>';
+                                }
+                                ?>
+                                <?php
+                                if(!is_null($main_market) && $main_market != null){
+                                    echo form_checkbox('main_market[]', 'Xuất khẩu SP/Giải pháp', (in_array('Xuất khẩu SP/Giải pháp', $main_market, '')? true : false), 'class="btn-checkbox" disabled');
+                                    echo '<label for="">Xuất khẩu SP/Giải pháp</label><br>';
+                                }else{
+                                    echo form_checkbox('main_market[]', 'Xuất khẩu SP/Giải pháp', false, 'class="btn-checkbox" disabled');
+                                    echo '<label for="">Xuất khẩu SP/Giải pháp</label><br>';
+                                }
+                                ?>
+                                <?php
+                                if(!is_null($main_market) && $main_market != null){
+                                    echo form_checkbox('main_market[]', 'Xuất khẩu nhân lực CNTT', (in_array('Xuất khẩu nhân lực CNTT', $main_market, '')? true : false), 'class="btn-checkbox" disabled');
+                                    echo '<label for="">Xuất khẩu nhân lực CNTT</label><br>';
+                                }else{
+                                    echo form_checkbox('main_market[]', 'Xuất khẩu nhân lực CNTT', false, 'class="btn-checkbox" disabled');
+                                    echo '<label for="">Xuất khẩu nhân lực CNTT</label><br>';
+                                }
+                                ?>
+                            </div>
+                            <div style="margin-left: 20px;margin-top: 5px;margin-bottom: 5px;">
+                                <strong>Thị trường xuất khẩu mục tiêu</strong><br>
+                                <div style="padding-left: 35px;">
+                                    <?php
+                                    foreach ($target as $key => $value) {
+                                        if(!is_null($main_market) && $main_market != null){
+                                            echo form_checkbox('main_market[]', $value, (in_array($value, $main_market, '')? true : false), 'class="btn-checkbox" disabled');
+                                            echo '<label for="">'.$key.'</label><br>';
+                                        }else{
+                                            echo form_checkbox('main_market[]', $value, false, 'class="btn-checkbox" disabled');
+                                            echo '<label for="">'.$key.'</label><br>';
+                                        }
+                                    }
+                                    if($check){
+                                        if($new_check[0] != ''){
+                                            echo form_checkbox('main_market[]', $new_check[0], true, 'class="btn-checkbox" disabled id="anonymous"');
+                                            echo '<label for="">Xuất khẩu mục tiêu - Khác (nêu rõ)</label><br>';
+                                        }else{
+                                            echo form_checkbox('main_market[]', '', false, 'class="btn-checkbox" id="anonymous" disabled');
+                                            echo '<label for="">Xuất khẩu mục tiêu - Khác (nêu rõ)</label><br>';
+                                        }
+                                    }else{
+                                        echo form_checkbox('main_market[]', '', false, 'class="btn-checkbox" id="anonymous" disabled');
+                                        echo '<label for="">Xuất khẩu mục tiêu - Khác (nêu rõ)</label><br>';
+                                    }
+                                    ?>
+                                    <?php if($check): ?>
+                                        <?php if ($new_check[0] != ''): ?>
+                                            <input type="text" name="anonymous" class="input-anonymous form-control" style="display: block;" value="<?php echo $new_check[0] ?>">
+                                        <?php else: ?>
+                                            <input type="text" name="anonymous" class="input-anonymous form-control" style="display: none;">
+                                        <?php endif ?>
+                                    <?php else: ?>
+                                        <input type="text" name="anonymous" class="input-anonymous form-control" style="display: none;">
+                                    <?php endif ?>
+                                </div>
+                                    
+
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -789,7 +917,7 @@
                 
                 <div class="form-group h5 m-l-30 m-l-30">
                     <div class="row">
-                        <div class="col-xs-12" style="padding-bottom: 15px;">
+                        <div class="col-xs-12" style="padding-bottom: 15px;padding-top:10px;">
                             <strong>4.</strong> Thành quả nổi bật của hoạt động R&D năm 2019:
                         </div>
                         <div class="col-xs-12 textarea-h">
@@ -808,7 +936,7 @@
                 <div style="padding-left: 25px;">
                     <div class="form-group h5 m-l-30">
                         <div class="row">
-                            <div class="col-xs-12" style="padding-bottom: 15px;">
+                            <div class="col-xs-12" style="padding-bottom: 15px;padding-top:10px;">
                                 <strong>a.</strong> Các chứng chỉ bảo mật – nếu có (nêu loại chứng chỉ đạt được, tổ chức cấp chứng chỉ, thời gian được cấp chứng chỉ,…. tối đa 100 từ)
                             </div>
                             <div class="col-xs-12 textarea-h">
@@ -822,7 +950,7 @@
                     </div>
                     <div class="form-group h5 m-l-30">
                         <div class="row">
-                            <div class="col-xs-12" style="padding-bottom: 15px;">
+                            <div class="col-xs-12" style="padding-bottom: 15px;padding-top:10px;">
                                 <strong>b.</strong> Các quy trình/các biện pháp an ninh, bảo mật cơ sở dữ liệu và thông tin của công ty (tối đa 100 từ):
                             </div>
 
@@ -872,7 +1000,7 @@
 
                 <div class="form-group h5 m-l-30">
                     <div class="row">
-                        <div class="col-xs-12" style="padding-bottom: 15px;">
+                        <div class="col-xs-12" style="padding-bottom: 15px;padding-top:10px;">
                             (Ghi rõ tên, thời gian nhận Giải thưởng, Danh hiệu và thành tích được công nhận trong các hoạt động thể hiện trách nhiệm với xã hội của doanh nghiệp (CSR))
                         </div>
                         <div class="col-xs-12 textarea-h">
@@ -909,7 +1037,7 @@
                 </div>
                 <div class="form-group h5 m-l-30">
                     <div class="row">
-                        <div class="col-xs-12" style="padding-bottom: 15px;">
+                        <div class="col-xs-12" style="padding-bottom: 15px;padding-top:10px;">
                             <strong>3.</strong>  Kế hoạch gọi vốn trong tương lai:
                         </div>
                         <div class="col-xs-12 textarea-h">
@@ -923,7 +1051,7 @@
                 </div>
                 <div class="form-group h5 m-l-30">
                     <div class="row">
-                        <div class="col-xs-12" style="padding-bottom: 15px;">
+                        <div class="col-xs-12" style="padding-bottom: 15px;padding-top:10px;">
                             <strong>4.</strong>  Kế hoạch IPO:
                         </div>
 
@@ -997,6 +1125,23 @@
         }
     </script>
 <script type="text/javascript">
+    $('.domestic-checkbox #checkbox_anonymous_domestic').click(function(){
+        if ($(this).prop("checked") == true) {
+            $('.domestic-checkbox #anonymous_domestic').slideDown();
+        }else{
+            $('.domestic-checkbox #anonymous_domestic').slideUp();
+        }
+    });
+    if ($('.domestic-checkbox #checkbox_anonymous_domestic').prop("checked") == true) {
+        $('.domestic-checkbox #anonymous_domestic').slideDown();
+    }else{
+        $('.domestic-checkbox #anonymous_domestic').slideUp();
+    }
+    $('.domestic-checkbox #anonymous_domestic').change(function(){
+        let anonymous_domestic = $(this).val();
+        $('#checkbox_anonymous_domestic').val(anonymous_domestic);
+    });
+
     $('.tab-content input').attr('readonly','readonly');
     $('.tab-content textarea').attr('readonly','readonly');
     textarea_h = $('.textarea-h');
