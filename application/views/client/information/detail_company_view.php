@@ -587,7 +587,7 @@
                                 'Nội dung số và giải trí điện tử' => 'Nội dung số và giải trí điện tử',
                                 'Viễn thông, hạ tầng dữ liệu' => 'Viễn thông, hạ tầng dữ liệu',
                                 'Bảo mật an toàn thông tin' => 'Bảo mật an toàn thông tin',
-                                'Bảo mật an toàn thông tin ' => 'Bảo mật an toàn thông tin ',
+                                'Phát triển ứng dụng cho mobile ' => 'Phát triển ứng dụng cho mobile ',
                                 'Digital Marketing' => 'Digital Marketing',
                                 'Đào tạo' => 'Đào tạo',
                             );
@@ -725,7 +725,7 @@
                                 'Nhật Bản' => 'Nhật Bản',
                                 'Các nước trong khu vực' => 'Các nước trong khu vực',
                                 'Gia công xuất khẩu' => 'Gia công xuất khẩu',
-                                'Xuất khẩu SP/Giải pháp' => 'Xuất khẩu SP/Giải pháp',
+                                'Xuất khẩu SP/Giải pháp/Dịch vụ' => 'Xuất khẩu SP/Giải pháp/Dịch vụ',
                                 'Xuất khẩu nhân lực CNTT' => 'Xuất khẩu nhân lực CNTT'
                             );
                             $check = false;
