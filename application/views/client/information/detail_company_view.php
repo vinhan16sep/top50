@@ -110,10 +110,15 @@
                  <hr style="border-bottom: 1px solid white;">
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-xs-12">
-                            <?php
-                            echo form_label('Lĩnh vực doanh nghiệp đã chọn', 'overview');
-                            ?>
+                        <div class="col-sm-12 col-md-12 col-sx-12">
+                            <strong style="font-size: 15px;">-   Doanh nghiệp cần tìm hiểu <a target="_blank" href="http://top10ict.com/the-le-chuong-trinh/">Thể lệ của chương trình</a> , lựa chọn lĩnh vực đăng ký tham gia Chương trình </strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-sx-12">
+                            <strong style="font-size: 15px;">- Lĩnh vực bình chọn: Doanh nghiệp lựa chọn các lĩnh vực là thế mạnh của công ty trong 15 lĩnh vực sau đây để làm hồ sơ đăng ký tham gia. Mỗi doanh nghiệp được đăng ký tối đa 03 lĩnh vực.</strong>
                         </div>
                         <hr>
                         <div class="col-xs-12 textarea-h">
