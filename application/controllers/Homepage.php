@@ -12,8 +12,6 @@ class Homepage extends Public_Controller {
     }
 
     public function index(){
-        $this->load->view('homepage_view');
-
         $this->render('homepage_view');
     }
 

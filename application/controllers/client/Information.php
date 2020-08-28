@@ -481,16 +481,44 @@ class Information extends Client_Controller {
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             )); 
-            $this->form_validation->set_rules('domestic_income_1', 'Tổng số lao động của doanh nghiệp ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+            $this->form_validation->set_rules('domestic_income_2', 'Tổng số lao động của doanh nghiệp ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('domestic_income_percent_1', 'Tổng số lao động của doanh nghiệp ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+            $this->form_validation->set_rules('domestic_income_percent_2', 'Tổng số lao động của doanh nghiệp ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('owner_equity_1', 'Tổng doanh thu lĩnh vực đề cử 1 ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('owner_equity_percent_1', 'Tổng doanh thu lĩnh vực đề cử 1 ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('owner_equity_2', 'Tổng doanh thu lĩnh vực đề cử 1 ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));
+            $this->form_validation->set_rules('owner_equity_percent_2', 'Tổng doanh thu lĩnh vực đề cử 1 ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|numeric_dots_and_comma|required|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+
+            /** =================================================== */
+            $this->form_validation->set_rules('number_personnel_nominated_1', 'Số lượng nhân sự trong lĩnh vực đề cử 1', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
             /** =================================================== */
             $this->form_validation->set_rules('before_tax_profit_1', 'Tổng số lập trình viên ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
@@ -513,7 +541,7 @@ class Information extends Client_Controller {
                 'max_length' => '%s Tối đa 10 chữ số'
             ));  
             /** =================================================== */
-            $this->form_validation->set_rules('full_time_employee', 'Tổng số nhân viên toàn thời gian', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+            $this->form_validation->set_rules('number_personnel_nominated_1', 'Tổng số nhân viên toàn thời gian', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
@@ -632,6 +660,19 @@ class Information extends Client_Controller {
                         'startup_plan_capital_future' => $this->input->post('startup_plan_capital_future'),
                         'startup_plan_ipo' => $this->input->post('startup_plan_ipo'),
                         'employee_change_percent_3' => $this->input->post('employee_change_percent_3'),
+                        
+                        // add field 28/08/2020
+                        'nomination_income_1' => strstr($this->input->post('nomination_income_1'),',') ? str_replace(',', '.', $this->input->post('nomination_income_1')) : $this->input->post('nomination_income_1'),
+                        'nomination_income_percent_1' => strstr($this->input->post('nomination_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('nomination_income_percent_1')) : $this->input->post('nomination_income_percent_1'),
+                        'nomination_income_2' => strstr($this->input->post('nomination_income_2'),',') ? str_replace(',', '.', $this->input->post('nomination_income_2')) : $this->input->post('nomination_income_2'),
+                        'nomination_income_percent_2' => strstr($this->input->post('nomination_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('nomination_income_percent_2')) : $this->input->post('nomination_income_percent_2'),
+                        'number_personnel_nominated_1' => strstr($this->input->post('number_personnel_nominated_1'),',') ? str_replace(',', '.', $this->input->post('number_personnel_nominated_1')) : $this->input->post('number_personnel_nominated_1'),
+                        'number_personnel_nominated_2' => strstr($this->input->post('number_personnel_nominated_2'),',') ? str_replace(',', '.', $this->input->post('number_personnel_nominated_2')) : $this->input->post('number_personnel_nominated_2'),
+                        'number_personnel_nominated_3' => strstr($this->input->post('number_personnel_nominated_3'),',') ? str_replace(',', '.', $this->input->post('number_personnel_nominated_3')) : $this->input->post('number_personnel_nominated_3'),
+                        'products_solutions_nominated_1' => $this->input->post('products_solutions_nominated_1'),
+                        'products_solutions_nominated_2' => $this->input->post('products_solutions_nominated_2'),
+                        'products_solutions_nominated_3' => $this->input->post('products_solutions_nominated_3'),
+                        // end
 
 
                         // Vốn điều lệ
@@ -924,14 +965,37 @@ class Information extends Client_Controller {
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             )); 
-            $this->form_validation->set_rules('domestic_income_1', 'Tổng số lao động của doanh nghiệp ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+            $this->form_validation->set_rules('domestic_income_2', 'Tổng số lao động của doanh nghiệp ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('domestic_income_percent_1', 'Tổng số lao động của doanh nghiệp ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+            $this->form_validation->set_rules('domestic_income_percent_2', 'Tổng số lao động của doanh nghiệp ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('owner_equity_1', 'Tổng doanh thu lĩnh vực đề cử 1 ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('owner_equity_percent_1', 'Tổng doanh thu lĩnh vực đề cử 1 ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('owner_equity_2', 'Tổng doanh thu lĩnh vực đề cử 1 ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));
+            $this->form_validation->set_rules('owner_equity_percent_2', 'Tổng doanh thu lĩnh vực đề cử 1 ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+
+            /** =================================================== */
+            $this->form_validation->set_rules('number_personnel_nominated_1', 'Số lượng nhân sự trong lĩnh vực đề cử 1', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));
             /** =================================================== */
             $this->form_validation->set_rules('before_tax_profit_1', 'Tổng số lập trình viên ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
                 'numeric_dots_and_comma' => '%s phải là số.',
@@ -1053,6 +1117,19 @@ class Information extends Client_Controller {
                         'startup_plan_capital_future' => $this->input->post('startup_plan_capital_future'),
                         'startup_plan_ipo' => $this->input->post('startup_plan_ipo'),
                         'employee_change_percent_3' => $this->input->post('employee_change_percent_3'),
+                        
+                        // add field 28/08/2020
+                        'nomination_income_1' => strstr($this->input->post('nomination_income_1'),',') ? str_replace(',', '.', $this->input->post('nomination_income_1')) : $this->input->post('nomination_income_1'),
+                        'nomination_income_percent_1' => strstr($this->input->post('nomination_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('nomination_income_percent_1')) : $this->input->post('nomination_income_percent_1'),
+                        'nomination_income_2' => strstr($this->input->post('nomination_income_2'),',') ? str_replace(',', '.', $this->input->post('nomination_income_2')) : $this->input->post('nomination_income_2'),
+                        'nomination_income_percent_2' => strstr($this->input->post('nomination_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('nomination_income_percent_2')) : $this->input->post('nomination_income_percent_2'),
+                        'number_personnel_nominated_1' => strstr($this->input->post('number_personnel_nominated_1'),',') ? str_replace(',', '.', $this->input->post('number_personnel_nominated_1')) : $this->input->post('number_personnel_nominated_1'),
+                        'number_personnel_nominated_2' => strstr($this->input->post('number_personnel_nominated_2'),',') ? str_replace(',', '.', $this->input->post('number_personnel_nominated_2')) : $this->input->post('number_personnel_nominated_2'),
+                        'number_personnel_nominated_3' => strstr($this->input->post('number_personnel_nominated_3'),',') ? str_replace(',', '.', $this->input->post('number_personnel_nominated_3')) : $this->input->post('number_personnel_nominated_3'),
+                        'products_solutions_nominated_1' => $this->input->post('products_solutions_nominated_1'),
+                        'products_solutions_nominated_2' => $this->input->post('products_solutions_nominated_2'),
+                        'products_solutions_nominated_3' => $this->input->post('products_solutions_nominated_3'),
+                        // end
 
 
                         // Vốn điều lệ
@@ -1376,16 +1453,44 @@ class Information extends Client_Controller {
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             )); 
-            $this->form_validation->set_rules('domestic_income_1', 'Tổng số lao động của doanh nghiệp ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+            $this->form_validation->set_rules('domestic_income_2', 'Tổng số lao động của doanh nghiệp ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('domestic_income_percent_1', 'Tổng số lao động của doanh nghiệp ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+            $this->form_validation->set_rules('domestic_income_percent_2', 'Tổng số lao động của doanh nghiệp ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('owner_equity_1', 'Tổng doanh thu lĩnh vực đề cử 1 ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('owner_equity_percent_1', 'Tổng doanh thu lĩnh vực đề cử 1 ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('owner_equity_2', 'Tổng doanh thu lĩnh vực đề cử 1 ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));
+            $this->form_validation->set_rules('owner_equity_percent_2', 'Tổng doanh thu lĩnh vực đề cử 1 ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|numeric_dots_and_comma|required|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+
+            /** =================================================== */
+            $this->form_validation->set_rules('number_personnel_nominated_1', 'Số lượng nhân sự trong lĩnh vực đề cử 1', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));
             /** =================================================== */
             $this->form_validation->set_rules('before_tax_profit_1', 'Tổng số lập trình viên ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
@@ -1532,6 +1637,19 @@ class Information extends Client_Controller {
                         'startup_plan_capital_future' => $this->input->post('startup_plan_capital_future'),
                         'startup_plan_ipo' => $this->input->post('startup_plan_ipo'),
                         'employee_change_percent_3' => $this->input->post('employee_change_percent_3'),
+                        
+                        // add field 28/08/2020
+                        'nomination_income_1' => strstr($this->input->post('nomination_income_1'),',') ? str_replace(',', '.', $this->input->post('nomination_income_1')) : $this->input->post('nomination_income_1'),
+                        'nomination_income_percent_1' => strstr($this->input->post('nomination_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('nomination_income_percent_1')) : $this->input->post('nomination_income_percent_1'),
+                        'nomination_income_2' => strstr($this->input->post('nomination_income_2'),',') ? str_replace(',', '.', $this->input->post('nomination_income_2')) : $this->input->post('nomination_income_2'),
+                        'nomination_income_percent_2' => strstr($this->input->post('nomination_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('nomination_income_percent_2')) : $this->input->post('nomination_income_percent_2'),
+                        'number_personnel_nominated_1' => strstr($this->input->post('number_personnel_nominated_1'),',') ? str_replace(',', '.', $this->input->post('number_personnel_nominated_1')) : $this->input->post('number_personnel_nominated_1'),
+                        'number_personnel_nominated_2' => strstr($this->input->post('number_personnel_nominated_2'),',') ? str_replace(',', '.', $this->input->post('number_personnel_nominated_2')) : $this->input->post('number_personnel_nominated_2'),
+                        'number_personnel_nominated_3' => strstr($this->input->post('number_personnel_nominated_3'),',') ? str_replace(',', '.', $this->input->post('number_personnel_nominated_3')) : $this->input->post('number_personnel_nominated_3'),
+                        'products_solutions_nominated_1' => $this->input->post('products_solutions_nominated_1'),
+                        'products_solutions_nominated_2' => $this->input->post('products_solutions_nominated_2'),
+                        'products_solutions_nominated_3' => $this->input->post('products_solutions_nominated_3'),
+                        // end
 
 
                         /// Vốn điều lệ
@@ -1818,14 +1936,37 @@ class Information extends Client_Controller {
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             )); 
-            $this->form_validation->set_rules('domestic_income_1', 'Tổng số lao động của doanh nghiệp ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+            $this->form_validation->set_rules('domestic_income_2', 'Tổng số lao động của doanh nghiệp ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('domestic_income_percent_1', 'Tổng số lao động của doanh nghiệp ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+            $this->form_validation->set_rules('domestic_income_percent_2', 'Tổng số lao động của doanh nghiệp ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             ));  
+            /** =================================================== */
+            $this->form_validation->set_rules('owner_equity_1', 'Tổng doanh thu lĩnh vực đề cử 1 ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('owner_equity_percent_1', 'Tổng doanh thu lĩnh vực đề cử 1 ' . $this->data['rule2Year'][0] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            )); 
+            $this->form_validation->set_rules('owner_equity_2', 'Tổng doanh thu lĩnh vực đề cử 1 ' . $this->data['rule2Year'][1] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));
+            $this->form_validation->set_rules('owner_equity_percent_2', 'Tổng doanh thu lĩnh vực đề cử 1 ' . $this->data['rule2Year'][1] . ' so với năm trước', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));  
+
+            /** =================================================== */
+            $this->form_validation->set_rules('number_personnel_nominated_1', 'Số lượng nhân sự trong lĩnh vực đề cử 1', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
+            ));
             /** =================================================== */
             $this->form_validation->set_rules('before_tax_profit_1', 'Tổng số lập trình viên ' . $this->data['rule2Year'][0] . ' số tuyệt đối', 'trim|numeric_dots_and_comma|max_length[10]', array(
                 'numeric_dots_and_comma' => '%s phải là số.',
@@ -1949,6 +2090,19 @@ class Information extends Client_Controller {
                         'startup_plan_capital_future' => $this->input->post('startup_plan_capital_future'),
                         'startup_plan_ipo' => $this->input->post('startup_plan_ipo'),
                         'employee_change_percent_3' => $this->input->post('employee_change_percent_3'),
+                        
+                        // add field 28/08/2020
+                        'nomination_income_1' => strstr($this->input->post('nomination_income_1'),',') ? str_replace(',', '.', $this->input->post('nomination_income_1')) : $this->input->post('nomination_income_1'),
+                        'nomination_income_percent_1' => strstr($this->input->post('nomination_income_percent_1'),',') ? str_replace(',', '.', $this->input->post('nomination_income_percent_1')) : $this->input->post('nomination_income_percent_1'),
+                        'nomination_income_2' => strstr($this->input->post('nomination_income_2'),',') ? str_replace(',', '.', $this->input->post('nomination_income_2')) : $this->input->post('nomination_income_2'),
+                        'nomination_income_percent_2' => strstr($this->input->post('nomination_income_percent_2'),',') ? str_replace(',', '.', $this->input->post('nomination_income_percent_2')) : $this->input->post('nomination_income_percent_2'),
+                        'number_personnel_nominated_1' => strstr($this->input->post('number_personnel_nominated_1'),',') ? str_replace(',', '.', $this->input->post('number_personnel_nominated_1')) : $this->input->post('number_personnel_nominated_1'),
+                        'number_personnel_nominated_2' => strstr($this->input->post('number_personnel_nominated_2'),',') ? str_replace(',', '.', $this->input->post('number_personnel_nominated_2')) : $this->input->post('number_personnel_nominated_2'),
+                        'number_personnel_nominated_3' => strstr($this->input->post('number_personnel_nominated_3'),',') ? str_replace(',', '.', $this->input->post('number_personnel_nominated_3')) : $this->input->post('number_personnel_nominated_3'),
+                        'products_solutions_nominated_1' => $this->input->post('products_solutions_nominated_1'),
+                        'products_solutions_nominated_2' => $this->input->post('products_solutions_nominated_2'),
+                        'products_solutions_nominated_3' => $this->input->post('products_solutions_nominated_3'),
+                        // end
 
 
                         // Vốn điều lệ

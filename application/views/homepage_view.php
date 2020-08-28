@@ -55,7 +55,7 @@
 <!--                </li>-->
                 <!-- <li>
                     <a href="<?php // echo base_url('member/user/login') ?>"><h4>Hội đồng đánh giá</h4></a>
-<!--                </li> -->-->
+<!--                </li> -->
 <!--                <li class="company-border">-->
 <!--                    <a class="btn-register-for-bussiness" href="<?php echo base_url('client/user/login') ?>">Dành cho doanh nghiệp</a>-->
 <!--                </li>-->
