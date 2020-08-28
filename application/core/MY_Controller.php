@@ -12,7 +12,7 @@ class MY_Controller extends CI_Controller {
 
         $this->load->library('ion_auth');
 
-        $this->data['page_title'] = 'Top 50';
+        $this->data['page_title'] = 'TOP 10 VN ICT COMPANIES';
         $this->data['before_head'] = '';
         $this->data['before_body'] = '';
 
@@ -154,7 +154,7 @@ class Admin_Controller extends MY_Controller {
 
         $this->data['user_email'] = $this->ion_auth->user()->row()->email;
         $this->data['user_company'] = $this->ion_auth->user()->row()->company;
-        $this->data['page_title'] = 'Administrator area';
+        $this->data['page_title'] = 'Admin';
 
         // Get current class
         //$class = $this->router->fetch_class();
@@ -279,7 +279,7 @@ class Member_Controller extends MY_Controller {
             redirect('member/user/login');
         }
         $this->data['user_email'] = $this->ion_auth->user()->row()->email;
-        $this->data['page_title'] = 'Member area';
+        $this->data['page_title'] = 'TRANG HỘI ĐỒNG GIÁM KHẢO';
 
         // Get current class
         //$class = $this->router->fetch_class();
@@ -409,7 +409,7 @@ class Client_Controller extends MY_Controller {
         $this->data['user_info'] = $this->ion_auth->user()->row();
         $this->data['user_email'] = $this->ion_auth->user()->row()->email;
         $this->data['identity'] = $this->ion_auth->user()->row()->username;
-        $this->data['page_title'] = 'Administrator area';
+        $this->data['page_title'] = 'TRANG DOANH NGHIỆP';
 
         $this->load->model('status_model');
         $this->data['status'] = $this->status_model->fetch_by_client_id($this->ion_auth->user()->row()->id);
