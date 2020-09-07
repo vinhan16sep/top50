@@ -6,11 +6,12 @@ require_once APPPATH."/third_party/PHPExcel.php";
 class Company extends Admin_Controller{
 
     private $excel = null;
-	
+
 	function __construct(){
 		parent::__construct();
 		$this->load->model('information_model');
         $this->load->model('users_model');
+        $this->load->model('status_model');
 
         $this->excel = new PHPExcel();
 	}
@@ -98,6 +99,15 @@ class Company extends Admin_Controller{
         $this->load->library('form_validation');
         $this->data['year'] = $year;
         $this->data['company'] = $this->information_model->fetch_company_by_identity_and_year('company', $identity, $year);
+        $this->data['groups'] = $this->config->item('development/config_information')['groups'];
+
+        $extra = $this->information_model->fetch_extra_by_identity('information', $identity);
+        $extra['basic_company'] = $this->users_model->fetchByIdentity($identity);
+        $this->data['extra'] = $extra;
+
+        $user = $this->users_model->fetchByIdentity($identity);
+        $this->data['reg_status'] = $this->status_model->fetch_by_client_id($user['id']);
+
         $this->render('admin/company/info_view');
     }
 
@@ -166,7 +176,7 @@ class Company extends Admin_Controller{
         }else{
             $upload[] = $member_id;
         }
-        
+
         $upload = json_encode($upload);
         $where = array('member_id' => $upload);
         $success = false;
@@ -175,7 +185,7 @@ class Company extends Admin_Controller{
         }
         $this->output->set_status_header(200)->set_output(json_encode(array('isExitsts' => $success)));
     }
-  
+
     public function export(){
         //activate worksheet number 1
         $this->excel->setActiveSheetIndex(0);
@@ -297,7 +307,7 @@ class Company extends Admin_Controller{
         //force user to download the Excel file without writing it to server's HD
         $objWriter->save('php://output');
     }
-    
+
     public function export_product(){
         //activate worksheet number 1
         $this->excel->setActiveSheetIndex(0);
@@ -374,7 +384,7 @@ class Company extends Admin_Controller{
     }
     public function export_company_detail($id){
         //activate worksheet number 1
-        
+
 
         // $sheet_basic = $this->excel->createSheet(0);
         // $sheet_basic->setTitle('Thong Tin Co Ban');
@@ -391,12 +401,12 @@ class Company extends Admin_Controller{
         // get all users in array formate
         $select_basic = 'website, legal_representative, lp_position, lp_email, lp_phone, connector, c_position, c_email, c_phone';
         $data_basic = $this->information_model->get_detail_information_with_select_by_id($id);
-        
+
         $data = $this->information_model->fetch_company_by_id($id);
 
         // Get user info
         $target_user = $this->users_model->fetch_by_id($data['client_id']);
-        
+
         $data_basic_export = array(
             '0' => array(
                 'website' => 'Website',
@@ -470,7 +480,7 @@ class Company extends Admin_Controller{
             }
         }
 
-        
+
         $data_export[] = array(
             'equity_1' => $data['equity_1'],
             'equity_2' => $data['equity_2'],

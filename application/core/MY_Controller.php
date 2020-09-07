@@ -23,6 +23,8 @@ class MY_Controller extends CI_Controller {
 
         $this->load->model('company_model');
         $this->data['all_years'] = $this->company_model->get_all_year();
+        // get config
+        $this->config->load('development/config_information', TRUE);
     }
 
     protected function render($the_view = NULL, $template = 'master') {
@@ -402,7 +404,7 @@ class Client_Controller extends MY_Controller {
             $this->session->set_flashdata('login_message_error', 'Tài khoản không có quyền truy cập');
             redirect('client/user/login');
         }
-        
+
         // get config
         $this->config->load('development/config_information', TRUE);
 
