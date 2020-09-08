@@ -563,7 +563,7 @@ class Information extends Client_Controller {
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('employee_change_percent_3', 'Tỷ lệ tăng/giảm nhân sự đến tháng 10.2020', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+            $this->form_validation->set_rules('employee_change_percent_3', 'Tỷ lệ tăng/giảm nhân sự đến tháng 6.2020', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
@@ -576,39 +576,94 @@ class Information extends Client_Controller {
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
             /** =================================================== */
-            $this->form_validation->set_rules('recruitment_budget', 'Chi phí cho hoạt động tuyển dụng nhân sự năm 2018 ', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+            $this->form_validation->set_rules('recruitment_budget', 'Chi phí cho hoạt động tuyển dụng nhân sự năm 2019 ', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
             /** =================================================== */
-            $this->form_validation->set_rules('investment_fund_r_and_d', ' Chi phí đầu tư cho hoạt động R&D năm 2018 (Tổng chi phí) ', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+            $this->form_validation->set_rules('investment_fund_r_and_d', ' Chi phí đầu tư cho hoạt động R&D năm 2019 (Tổng chi phí) ', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('investment_fund_r_and_d_percent', 'Chi phí đầu tư cho hoạt động R&D năm 2018 (% trên tổng doanh thu)', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
-                'required' => '%s không được trống.',
-                'numeric_dots_and_comma' => '%s phải là số.',
-                'max_length' => '%s Tối đa 10 chữ số'
-            ));
-            /** =================================================== */
-            $this->form_validation->set_rules('staff_r_and_d', 'Số lượng nhân viên bộ phận R&D năm 2018', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+            $this->form_validation->set_rules('investment_fund_r_and_d_percent', 'Chi phí đầu tư cho hoạt động R&D năm 2019 (% trên tổng doanh thu)', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
             /** =================================================== */
-            $this->form_validation->set_rules('security_certificate', 'Các chứng chỉ bảo mật ', 'trim|max_word[100]', array(
-                'max_word' => '%s Tối đa 100 từ'
+            $this->form_validation->set_rules('staff_r_and_d', 'Số lượng nhân viên bộ phận R&D năm 2019', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
             /** =================================================== */
-            $this->form_validation->set_rules('security_process', 'Các quy trình/các biện pháp an ninh ', 'trim|max_word[100]', array(
-                'max_word' => '%s Tối đa 100 từ'
+            $this->form_validation->set_rules('training_process', 'Công tác đào tạo, bồi dưỡng nhân lực ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+
+            /** =================================================== */
+            $this->form_validation->set_rules('top5_customers', 'Giới thiệu tóm tắt 05 khách hàng/dự án tiêu biểu doanh nghiệp đã thực hiện ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
             ));
             /** =================================================== */
-            $this->form_validation->set_rules('overview', 'Giới thiệu doanh nghiệp ', 'trim|max_word[500]', array(
-                'max_word' => '%s Tối đa 500 từ'
+            $this->form_validation->set_rules('technology_certificate', 'Các chứng chỉ về công nghệ/ các công nghệ doanh nghiệp đang sử dụng/các công nghệ là thế mạnh của doanh nghiệp (đặc biệt là các công nghệ mới của CMCN 4.0) ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('result_r_and_d', 'Thành quả nổi bật của hoạt động R&D năm 2019 ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('technique_certificate', 'Năng lực quản lý, chất lượng: (Các chứng chỉ về quản lý, quy trình, chất lượng) ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('specific_certificate', 'Các chứng chỉ năng lực đặc thù của lĩnh vực hoạt động (nếu có) ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('reward', '(Ghi rõ tên, thời gian nhận Giải thưởng, Danh hiệu và thành tích được công nhận trong các hoạt động thể hiện trách nhiệm với xã hội của doanh nghiệp (CSR)) ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('startup_plan_capital_future', 'Kế hoạch gọi vốn trong tương lai ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('startup_plan_ipo', 'Kế hoạch IPO ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+
+
+            /** =================================================== */
+            $this->form_validation->set_rules('products_solutions_nominated_1', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 1 ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('products_solutions_nominated_2', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 2 ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('products_solutions_nominated_3', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 3 ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('product', 'Tên các sản phẩm, dịch vụ chính của doanh nghiệp ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('security_certificate', 'Các chứng chỉ bảo mật ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('security_process', 'Các quy trình/các biện pháp an ninh ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('overview', 'Giới thiệu doanh nghiệp ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
             ));
             /** =================================================== */
 
@@ -1032,7 +1087,7 @@ class Information extends Client_Controller {
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('employee_change_percent_3', 'Tỷ lệ tăng/giảm nhân sự đến tháng 10.2020', 'trim|numeric_dots_and_comma|max_length[10]', array(
+            $this->form_validation->set_rules('employee_change_percent_3', 'Tỷ lệ tăng/giảm nhân sự đến tháng 6.2020', 'trim|numeric_dots_and_comma|max_length[10]', array(
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
@@ -1043,35 +1098,87 @@ class Information extends Client_Controller {
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
             /** =================================================== */
-            $this->form_validation->set_rules('recruitment_budget', 'Chi phí cho hoạt động tuyển dụng nhân sự năm 2018 ', 'trim|numeric_dots_and_comma|max_length[10]', array(
+            $this->form_validation->set_rules('recruitment_budget', 'Chi phí cho hoạt động tuyển dụng nhân sự năm 2019 ', 'trim|numeric_dots_and_comma|max_length[10]', array(
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
             /** =================================================== */
-            $this->form_validation->set_rules('investment_fund_r_and_d', ' Chi phí đầu tư cho hoạt động R&D năm 2018 (Tổng chi phí) ', 'trim|numeric_dots_and_comma|max_length[10]', array(
+            $this->form_validation->set_rules('investment_fund_r_and_d', ' Chi phí đầu tư cho hoạt động R&D năm 2019 (Tổng chi phí) ', 'trim|numeric_dots_and_comma|max_length[10]', array(
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('investment_fund_r_and_d_percent', 'Chi phí đầu tư cho hoạt động R&D năm 2018 (% trên tổng doanh thu)', 'trim|numeric_dots_and_comma|max_length[10]', array(
-                'numeric_dots_and_comma' => '%s phải là số.',
-                'max_length' => '%s Tối đa 10 chữ số'
-            ));
-            /** =================================================== */
-            $this->form_validation->set_rules('staff_r_and_d', 'Số lượng nhân viên bộ phận R&D năm 2018', 'trim|numeric_dots_and_comma|max_length[10]', array(
+            $this->form_validation->set_rules('investment_fund_r_and_d_percent', 'Chi phí đầu tư cho hoạt động R&D năm 2019 (% trên tổng doanh thu)', 'trim|numeric_dots_and_comma|max_length[10]', array(
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
             /** =================================================== */
-            $this->form_validation->set_rules('security_certificate', 'Các chứng chỉ bảo mật ', 'trim|max_word[100]', array(
-                'max_word' => '%s Tối đa 100 từ'
+            $this->form_validation->set_rules('staff_r_and_d', 'Số lượng nhân viên bộ phận R&D năm 2019', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
             /** =================================================== */
-            $this->form_validation->set_rules('security_process', 'Các quy trình/các biện pháp an ninh ', 'trim|max_word[100]', array(
-                'max_word' => '%s Tối đa 100 từ'
+            $this->form_validation->set_rules('training_process', 'Công tác đào tạo, bồi dưỡng nhân lực ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
             ));
             /** =================================================== */
-            $this->form_validation->set_rules('overview', 'Giới thiệu doanh nghiệp ', 'trim|max_word[500]', array(
-                'max_word' => '%s Tối đa 500 từ'
+            $this->form_validation->set_rules('top5_customers', 'Giới thiệu tóm tắt 05 khách hàng/dự án tiêu biểu doanh nghiệp đã thực hiện ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('technology_certificate', 'Các chứng chỉ về công nghệ/ các công nghệ doanh nghiệp đang sử dụng/các công nghệ là thế mạnh của doanh nghiệp (đặc biệt là các công nghệ mới của CMCN 4.0) ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('result_r_and_d', 'Thành quả nổi bật của hoạt động R&D năm 2019 ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('technique_certificate', 'Năng lực quản lý, chất lượng: (Các chứng chỉ về quản lý, quy trình, chất lượng) ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('specific_certificate', 'Các chứng chỉ năng lực đặc thù của lĩnh vực hoạt động (nếu có) ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('reward', '(Ghi rõ tên, thời gian nhận Giải thưởng, Danh hiệu và thành tích được công nhận trong các hoạt động thể hiện trách nhiệm với xã hội của doanh nghiệp (CSR)) ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('startup_plan_capital_future', 'Kế hoạch gọi vốn trong tương lai ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('startup_plan_ipo', 'Kế hoạch IPO ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('products_solutions_nominated_1', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 1 ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('products_solutions_nominated_2', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 2 ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('products_solutions_nominated_3', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 3 ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('product', 'Tên các sản phẩm, dịch vụ chính của doanh nghiệp ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('security_certificate', 'Các chứng chỉ bảo mật ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('security_process', 'Các quy trình/các biện pháp an ninh ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('overview', 'Giới thiệu doanh nghiệp ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
             ));
             /** =================================================== */
 
@@ -1535,7 +1642,7 @@ class Information extends Client_Controller {
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('employee_change_percent_3', 'Tỷ lệ tăng/giảm nhân sự đến tháng 10.2020', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+            $this->form_validation->set_rules('employee_change_percent_3', 'Tỷ lệ tăng/giảm nhân sự đến tháng 6.2020', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
@@ -1548,40 +1655,92 @@ class Information extends Client_Controller {
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
             /** =================================================== */
-            $this->form_validation->set_rules('recruitment_budget', 'Chi phí cho hoạt động tuyển dụng nhân sự năm 2018 ', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+            $this->form_validation->set_rules('recruitment_budget', 'Chi phí cho hoạt động tuyển dụng nhân sự năm 2019 ', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
             /** =================================================== */
-            $this->form_validation->set_rules('investment_fund_r_and_d', ' Chi phí đầu tư cho hoạt động R&D năm 2018 (Tổng chi phí) ', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+            $this->form_validation->set_rules('investment_fund_r_and_d', ' Chi phí đầu tư cho hoạt động R&D năm 2019 (Tổng chi phí) ', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('investment_fund_r_and_d_percent', 'Chi phí đầu tư cho hoạt động R&D năm 2018 (% trên tổng doanh thu)', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
-                'required' => '%s không được trống.',
-                'numeric_dots_and_comma' => '%s phải là số.',
-                'max_length' => '%s Tối đa 10 chữ số'
-            ));
-            /** =================================================== */
-            $this->form_validation->set_rules('staff_r_and_d', 'Số lượng nhân viên bộ phận R&D năm 2018', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+            $this->form_validation->set_rules('investment_fund_r_and_d_percent', 'Chi phí đầu tư cho hoạt động R&D năm 2019 (% trên tổng doanh thu)', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
                 'required' => '%s không được trống.',
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
             /** =================================================== */
-            $this->form_validation->set_rules('security_certificate', 'Các chứng chỉ bảo mật ', 'trim|max_word[100]', array(
-                'max_word' => '%s Tối đa 100 từ'
+            $this->form_validation->set_rules('staff_r_and_d', 'Số lượng nhân viên bộ phận R&D năm 2019', 'trim|required|numeric_dots_and_comma|max_length[10]', array(
+                'required' => '%s không được trống.',
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
             /** =================================================== */
-            $this->form_validation->set_rules('security_process', 'Các quy trình/các biện pháp an ninh ', 'trim|max_word[100]', array(
-                'max_word' => '%s Tối đa 100 từ'
+            $this->form_validation->set_rules('training_process', 'Công tác đào tạo, bồi dưỡng nhân lực ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('top5_customers', 'Giới thiệu tóm tắt 05 khách hàng/dự án tiêu biểu doanh nghiệp đã thực hiện ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('technology_certificate', 'Các chứng chỉ về công nghệ/ các công nghệ doanh nghiệp đang sử dụng/các công nghệ là thế mạnh của doanh nghiệp (đặc biệt là các công nghệ mới của CMCN 4.0) ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('result_r_and_d', 'Thành quả nổi bật của hoạt động R&D năm 2019 ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('technique_certificate', 'Năng lực quản lý, chất lượng: (Các chứng chỉ về quản lý, quy trình, chất lượng) ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('specific_certificate', 'Các chứng chỉ năng lực đặc thù của lĩnh vực hoạt động (nếu có) ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('reward', '(Ghi rõ tên, thời gian nhận Giải thưởng, Danh hiệu và thành tích được công nhận trong các hoạt động thể hiện trách nhiệm với xã hội của doanh nghiệp (CSR)) ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('startup_plan_capital_future', 'Kế hoạch gọi vốn trong tương lai ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('startup_plan_ipo', 'Kế hoạch IPO ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('products_solutions_nominated_1', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 1 ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('products_solutions_nominated_2', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 2 ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('products_solutions_nominated_3', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 3 ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('product', 'Tên các sản phẩm, dịch vụ chính của doanh nghiệp ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('security_certificate', 'Các chứng chỉ bảo mật ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('security_process', 'Các quy trình/các biện pháp an ninh ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
             ));
 
             /** =================================================== */
-            $this->form_validation->set_rules('overview', 'Giới thiệu doanh nghiệp ', 'trim|max_word[500]', array(
-                'max_word' => '%s Tối đa 500 từ'
+            $this->form_validation->set_rules('overview', 'Giới thiệu doanh nghiệp ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
             ));
             /** =================================================== */
 
@@ -2003,7 +2162,7 @@ class Information extends Client_Controller {
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('employee_change_percent_3', 'Tỷ lệ tăng/giảm nhân sự đến tháng 10.2020', 'trim|numeric_dots_and_comma|max_length[10]', array(
+            $this->form_validation->set_rules('employee_change_percent_3', 'Tỷ lệ tăng/giảm nhân sự đến tháng 6.2020', 'trim|numeric_dots_and_comma|max_length[10]', array(
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
@@ -2014,35 +2173,87 @@ class Information extends Client_Controller {
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
             /** =================================================== */
-            $this->form_validation->set_rules('recruitment_budget', 'Chi phí cho hoạt động tuyển dụng nhân sự năm 2018 ', 'trim|numeric_dots_and_comma|max_length[10]', array(
+            $this->form_validation->set_rules('recruitment_budget', 'Chi phí cho hoạt động tuyển dụng nhân sự năm 2019 ', 'trim|numeric_dots_and_comma|max_length[10]', array(
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
             /** =================================================== */
-            $this->form_validation->set_rules('investment_fund_r_and_d', ' Chi phí đầu tư cho hoạt động R&D năm 2018 (Tổng chi phí) ', 'trim|numeric_dots_and_comma|max_length[10]', array(
+            $this->form_validation->set_rules('investment_fund_r_and_d', ' Chi phí đầu tư cho hoạt động R&D năm 2019 (Tổng chi phí) ', 'trim|numeric_dots_and_comma|max_length[10]', array(
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
-            $this->form_validation->set_rules('investment_fund_r_and_d_percent', 'Chi phí đầu tư cho hoạt động R&D năm 2018 (% trên tổng doanh thu)', 'trim|numeric_dots_and_comma|max_length[10]', array(
-                'numeric_dots_and_comma' => '%s phải là số.',
-                'max_length' => '%s Tối đa 10 chữ số'
-            ));
-            /** =================================================== */
-            $this->form_validation->set_rules('staff_r_and_d', 'Số lượng nhân viên bộ phận R&D năm 2018', 'trim|numeric_dots_and_comma|max_length[10]', array(
+            $this->form_validation->set_rules('investment_fund_r_and_d_percent', 'Chi phí đầu tư cho hoạt động R&D năm 2019 (% trên tổng doanh thu)', 'trim|numeric_dots_and_comma|max_length[10]', array(
                 'numeric_dots_and_comma' => '%s phải là số.',
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
             /** =================================================== */
-            $this->form_validation->set_rules('security_certificate', 'Các chứng chỉ bảo mật ', 'trim|max_word[100]', array(
-                'max_word' => '%s Tối đa 100 từ'
+            $this->form_validation->set_rules('staff_r_and_d', 'Số lượng nhân viên bộ phận R&D năm 2019', 'trim|numeric_dots_and_comma|max_length[10]', array(
+                'numeric_dots_and_comma' => '%s phải là số.',
+                'max_length' => '%s Tối đa 10 chữ số'
             ));
             /** =================================================== */
-            $this->form_validation->set_rules('security_process', 'Các quy trình/các biện pháp an ninh ', 'trim|max_word[100]', array(
-                'max_word' => '%s Tối đa 100 từ'
+            $this->form_validation->set_rules('training_process', 'Công tác đào tạo, bồi dưỡng nhân lực ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
             ));
             /** =================================================== */
-            $this->form_validation->set_rules('overview', 'Giới thiệu doanh nghiệp ', 'trim|max_word[500]', array(
-                'max_word' => '%s Tối đa 500 từ'
+            $this->form_validation->set_rules('top5_customers', 'Giới thiệu tóm tắt 05 khách hàng/dự án tiêu biểu doanh nghiệp đã thực hiện ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('technology_certificate', 'Các chứng chỉ về công nghệ/ các công nghệ doanh nghiệp đang sử dụng/các công nghệ là thế mạnh của doanh nghiệp (đặc biệt là các công nghệ mới của CMCN 4.0) ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('result_r_and_d', 'Thành quả nổi bật của hoạt động R&D năm 2019 ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('technique_certificate', 'Năng lực quản lý, chất lượng: (Các chứng chỉ về quản lý, quy trình, chất lượng) ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('specific_certificate', 'Các chứng chỉ năng lực đặc thù của lĩnh vực hoạt động (nếu có) ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('reward', '(Ghi rõ tên, thời gian nhận Giải thưởng, Danh hiệu và thành tích được công nhận trong các hoạt động thể hiện trách nhiệm với xã hội của doanh nghiệp (CSR)) ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('startup_plan_capital_future', 'Kế hoạch gọi vốn trong tương lai ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('startup_plan_ipo', 'Kế hoạch IPO ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('products_solutions_nominated_1', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 1 ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('products_solutions_nominated_2', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 2 ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('products_solutions_nominated_3', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 3 ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('product', 'Tên các sản phẩm, dịch vụ chính của doanh nghiệp ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('security_certificate', 'Các chứng chỉ bảo mật ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('security_process', 'Các quy trình/các biện pháp an ninh ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
+            ));
+            /** =================================================== */
+            $this->form_validation->set_rules('overview', 'Giới thiệu doanh nghiệp ', 'trim|max_word[1000]', array(
+                'max_word' => '%s Tối đa 1000 từ'
             ));
             /** =================================================== */
 

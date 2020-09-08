@@ -1107,7 +1107,7 @@
                     <div class="form-group h5 m-l-30">
                         <div class="row">
                             <div class="col-xs-12" style="padding-bottom: 15px;padding-top:10px;">
-                                <strong>a.</strong> Các chứng chỉ bảo mật – nếu có (nêu loại chứng chỉ đạt được, tổ chức cấp chứng chỉ, thời gian được cấp chứng chỉ,…. tối đa 100 từ)
+                                <strong>a.</strong> Các chứng chỉ bảo mật – nếu có (nêu loại chứng chỉ đạt được, tổ chức cấp chứng chỉ, thời gian được cấp chứng chỉ,…)
                             </div>
                             <div class="col-xs-12 textarea-h">
                                 <div>
@@ -1121,7 +1121,7 @@
                     <div class="form-group h5 m-l-30">
                         <div class="row">
                             <div class="col-xs-12" style="padding-bottom: 15px;padding-top:10px;">
-                                <strong>b.</strong> Các quy trình/các biện pháp an ninh, bảo mật cơ sở dữ liệu và thông tin của công ty (tối đa 100 từ):
+                                <strong>b.</strong> Các quy trình/các biện pháp an ninh, bảo mật cơ sở dữ liệu và thông tin của công ty:
                             </div>
 
                             <div class="col-xs-12 textarea-h">
