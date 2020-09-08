@@ -16,6 +16,8 @@
                             <div class="form-group">
                                 <h2 style="text-align:center;">THÔNG TIN CƠ BẢN CỦA DOANH NGHIỆP</h2>
                                 <h3 style="text-align:center;">Mã số thuế: <span style="color:#3c8dbc"><?php echo $identity; ?></span></h3>
+                                <h3 style="text-align:center;">Điện thoại đăng ký: <span style="color:#3c8dbc"><?php echo $extra['basic_company']['phone']; ?></span></h3>
+                                <h3 style="text-align:center;">Thời gian đăng ký: <span style="color:#3c8dbc"><?php echo date('d-m-Y H:i', $extra['basic_company']['created_on']); ?></span></h3>
                                 <div style="margin: auto; width: 100%; text-align: center;">
                                     <?php if ( $extra['avatar'] && file_exists('assets/upload/avatar/' . $extra['avatar']) ): ?>
                                         <img src="<?php echo base_url('assets/upload/avatar/') . $extra['avatar']; ?>" class="" alt="user image" width=30%>
@@ -296,4 +298,3 @@
         </div>
     </section>
 </div>
-
