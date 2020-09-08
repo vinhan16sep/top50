@@ -123,6 +123,8 @@
                         echo form_error('nomination_income_percent_2', '<div class="error" data-name="nomination_income_percent_2">', '</div>');
                         echo form_error('number_personnel_nominated_1', '<div class="error" data-name="number_personnel_nominated_1">', '</div>');
                         echo form_error('products_solutions_nominated_1', '<div class="error" data-name="products_solutions_nominated_1">', '</div>');
+                        echo form_error('products_solutions_nominated_2', '<div class="error" data-name="products_solutions_nominated_2">', '</div>');
+                        echo form_error('products_solutions_nominated_3', '<div class="error" data-name="products_solutions_nominated_3">', '</div>');
                         // end
 
                         echo form_error('overview', '<div class="error" data-name="overview">', '</div>');
@@ -214,6 +216,11 @@
                         echo form_error('security_process', '<div class="error" data-name="security_process">', '</div>');
                         echo form_error('technique_certificate', '<div class="error" data-name="technique_certificate">', '</div>');
                         echo form_error('top5_customers', '<div class="error" data-name="top5_customers">', '</div>');
+                        echo form_error('technology_certificate', '<div class="error" data-name="technology_certificate">', '</div>');
+                        echo form_error('specific_certificate', '<div class="error" data-name="specific_certificate">', '</div>');
+                        echo form_error('reward', '<div class="error" data-name="reward">', '</div>');
+                        echo form_error('startup_plan_capital_future', '<div class="error" data-name="startup_plan_capital_future">', '</div>');
+                        echo form_error('startup_plan_ipo', '<div class="error" data-name="startup_plan_ipo">', '</div>');
 
 
                     ?>
@@ -255,7 +262,7 @@
                     <div class="row">
                         <div class="col-sm-3 col-md-3 col-sx-12">
                             <?php
-                            echo form_label('Giới thiệu doanh nghiệp (viết ngắn gọn, giới thiệu doanh nghiệp, ngành nghề kinh doanh chính, thế mạnh của DN, sự khác biệt so với đối thủ cạnh tranh, đồng thời nêu rõ định hướng và mục tiêu phát triển doanh nghiệp, đặc biệt mô tả chi tiết về lĩnh vực đề cử, tối đa 500 từ)', 'overview');
+                            echo form_label('Giới thiệu doanh nghiệp (viết ngắn gọn, giới thiệu doanh nghiệp, ngành nghề kinh doanh chính, thế mạnh của DN, sự khác biệt so với đối thủ cạnh tranh, đồng thời nêu rõ định hướng và mục tiêu phát triển doanh nghiệp, đặc biệt mô tả chi tiết về lĩnh vực đề cử)', 'overview');
                             ?>
                         </div>
                         <div class="col-sm-9 col-md-9 col-sx-12">
@@ -1209,7 +1216,7 @@
                     <div class="form-group h5 m-l-30">
                         <div class="row">
                             <div class="col-xs-12" style="padding-bottom: 15px;">
-                                <strong>a.</strong> Các chứng chỉ bảo mật – nếu có (nêu loại chứng chỉ đạt được, tổ chức cấp chứng chỉ, thời gian được cấp chứng chỉ,…. tối đa 100 từ)
+                                <strong>a.</strong> Các chứng chỉ bảo mật – nếu có (nêu loại chứng chỉ đạt được, tổ chức cấp chứng chỉ, thời gian được cấp chứng chỉ,…)
                             </div>
                             <div class="col-xs-12">
                                  <?php
@@ -1221,7 +1228,7 @@
                     <div class="form-group h5 m-l-30">
                         <div class="row">
                             <div class="col-xs-12" style="padding-bottom: 15px;">
-                                <strong>b.</strong> Các quy trình/các biện pháp an ninh, bảo mật cơ sở dữ liệu và thông tin của công ty (tối đa 100 từ):
+                                <strong>b.</strong> Các quy trình/các biện pháp an ninh, bảo mật cơ sở dữ liệu và thông tin của công ty:
                             </div>
                             <div class="col-xs-12">
                                  <?php
