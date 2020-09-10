@@ -17,19 +17,20 @@ Author: hung.luong@matocreative.vn
 .header-area {
     width:100%;
     text-align:center;
+    display: inline;
 }
 
 .img-header {
     width: 7%;
     position: fixed;
-    top: 10;
-    left: 10;
+    top: 10px;
+    left: 10px;
 }
 
 .tilte-header {
     position: fixed;
     width: 100%;
-    top: 50;
+    top: 50px;
     font-size: 25px;
     color: #ffffff;
 }
