@@ -36,10 +36,6 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                         <div class="post">
                             <table class="table table-bordered" style="width: 100%">
                                 <tr>
-                                    <td  style="width: 20%"><h3>Sản phẩm: </h3></td>
-                                    <td><h3><?php echo $detail['name']; ?></h3></td>
-                                </tr>
-                                <tr>
                                     <td><h4>Doanh nghiệp: </h4></td>
                                     <td><h4><?php echo $company['company']; ?></h4></td>
                                 </tr>
