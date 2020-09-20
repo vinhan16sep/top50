@@ -81,7 +81,7 @@ class User extends MY_Controller {
             $this->load->view('client/login_view');
             // $this->render('client/login_view', 'client_master');
         } else {
-            $username = $this->input->post('username');
+            $username = str_replace(' ', '', $this->input->post('username'));
             $email = $this->input->post('email');
             $password = $this->input->post('register_password');
             $group_ids = array(3);

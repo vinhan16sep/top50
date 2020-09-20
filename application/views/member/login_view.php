@@ -5,7 +5,8 @@
     <link rel="stylesheet" href="<?php echo site_url('assets/admin/bower_components/bootstrap/dist/css/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="<?php echo site_url('assets/public/css/homepage.css'); ?>">
     <link rel="stylesheet" href="<?php echo site_url('assets/admin/css/user.css'); ?>">
-    <title>Document</title>
+    <link rel="shortcut icon" type="image/png" href="<?php echo site_url('assets/public/img/favicon.png'); ?>"/>
+    <title>Đăng nhập</title>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">

@@ -14,6 +14,6 @@ $config['groups'] = array(
     'TOP 10 DN Cung cấp dịch vụ, giải pháp CĐS',
     'TOP 10 Doanh nghiệp Digital marketing',
     'TOP 10 Doanh nghiệp cung cấp giải pháp CNTT cho Thành phố thông minh',
-    'TOP 10 Doanh nghiệp Dịch vụ CNTT',
+    'TOP 10 Doanh nghiệp Dịch vụ, giải pháp CNTT',
     'TOP 10 Tổ chức Đào tạo CNTT',
 );
