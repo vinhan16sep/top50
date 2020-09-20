@@ -156,7 +156,7 @@ class Admin_Controller extends MY_Controller {
 
         $this->data['user_email'] = $this->ion_auth->user()->row()->email;
         $this->data['user_company'] = $this->ion_auth->user()->row()->company;
-        $this->data['page_title'] = 'Admin';
+        $this->data['page_title'] = 'Administrator area';
 
         // Get current class
         //$class = $this->router->fetch_class();
@@ -404,7 +404,7 @@ class Client_Controller extends MY_Controller {
             $this->session->set_flashdata('login_message_error', 'Tài khoản không có quyền truy cập');
             redirect('client/user/login');
         }
-
+        
         // get config
         $this->config->load('development/config_information', TRUE);
 

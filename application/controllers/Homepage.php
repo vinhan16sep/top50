@@ -12,6 +12,7 @@ class Homepage extends Public_Controller {
     }
 
     public function index(){
+
         $this->render('homepage_view');
     }
 

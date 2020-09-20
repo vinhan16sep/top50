@@ -19,7 +19,7 @@
                                 <h3 style="text-align:center;">Điện thoại đăng ký: <span style="color:#3c8dbc"><?php echo $extra['basic_company']['phone']; ?></span></h3>
                                 <h3 style="text-align:center;">Thời gian đăng ký: <span style="color:#3c8dbc"><?php echo date('d-m-Y H:i', $extra['basic_company']['created_on']); ?></span></h3>
                                 <div style="margin: auto; width: 100%; text-align: center;">
-                                    <?php if ( $extra['avatar'] && file_exists('assets/upload/avatar/' . $extra['avatar']) ): ?>
+                                    <?php if ( isset($extra['avatar']) && file_exists('assets/upload/avatar/' . $extra['avatar']) ): ?>
                                         <img src="<?php echo base_url('assets/upload/avatar/') . $extra['avatar']; ?>" class="" alt="user image" width=30%>
                                     <?php else: ?>
                                         <img src="<?php echo site_url('assets/public/img/client.jpg'); ?>" class="" alt="user image" width=30%>
@@ -60,7 +60,7 @@
                                             <div class="col-sm-9 col-md-9 col-xs-12">
                                                 <?php
                                                 echo form_error('founding_date', '<div class="error">', '</div>');
-                                                echo form_input('founding_date', set_value('founding_date', ($extra['founding_date']) ? date('d/m/Y', strtotime($extra['founding_date'])) : ''), 'class="form-control datetimepicker7" readonly');
+                                                echo form_input('founding_date', set_value('founding_date', ($extra['basic_company']['founding_date']) ? date('d/m/Y', strtotime($extra['basic_company']['founding_date'])) : ''), 'class="form-control datetimepicker7" readonly');
                                                 ?>
                                             </div>
                                         </div>
@@ -276,6 +276,25 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-3 col-xs-12">
+                                                <?php
+                                                echo form_label('Link Phiếu đăng ký: ', 'link');
+                                                ?>
+                                            </div>
+                                            <div class="col-sm-9 col-md-9 col-xs-12">
+                                                <?php  echo form_error('link', '<div class="error">', '</div>'); ?>
+                                                <div class="input-group link">
+                                                    <a target="_blank" href="<?php echo $extra['link'] ?>">Link phiếu đăng ký tại đây</a>
+                                                </div>
+                    
+                                                
+                                                <br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
                                     <hr style="padding: 1px 0px; background-color: #fff;">
                                     <br>
                                     <div class="form-group col-sm-12 text-right submit-extra-form">
