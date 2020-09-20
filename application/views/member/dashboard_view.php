@@ -15,17 +15,19 @@
             <div class="col-md-12">
                 <div class="nav-tabs-custom">
                     <div class="tab-content">
-                        <?php foreach ($team as $key => $value): ?>
-                            <?php $team_id = $value['id'] ?>
+                        <?php foreach ($team as $key => $val): ?>
+                            <?php 
+                                $team_id = $val['id'];
+                            ?>
                             <div class="panel panel-info">
-                                <div class="panel-heading"><h4>Nhóm: <span style="color: red"><?php echo $value['name']; ?></span></h4></div>
+                                <div class="panel-heading"><h4>Nhóm: <span style="color: red"><?php echo $val['name']; ?></span></h4></div>
                                 <div class="panel-body">
                                     <!--main content start-->
                                     <div class="row">
                                         <!-- /.col -->
                                         <div class="col-md-12">
                                                 <div class="tab-content">
-                                                    <?php if ( isset($value['list_companies'])): ?>
+                                                    <?php if ( isset($val['list_companies'])): ?>
                                                     <div class="post box-body">
                                                         <table class="table table-striped table-bordered table-condensed">
                                                             <tr>
@@ -34,7 +36,14 @@
                                                                 <td style="font-weight:bold;color: #31708f;">Mã số thuế</td>
                                                                 <td style="text-align: center;font-weight:bold;color: #31708f; width: 8%">Thao Tác</td>
                                                             </tr>
-                                                            <?php foreach ($value['list_companies'] as $key => $value): ?>
+                                                            <?php foreach ($val['list_companies'] as $key => $value): ?>
+                                                                <?php  
+                                                                    $group = json_decode($value['group'], true);
+                                                                    $value['main_service'] = 1;
+                                                                    if (in_array(4, $group)) {
+                                                                        $value['main_service'] = 2;
+                                                                    }
+                                                                ?>
                                                                 <tr>
                                                                     <td><?php echo $key + 1 ?></td>
                                                                     <td><?php echo $value['companyName']; ?></td>

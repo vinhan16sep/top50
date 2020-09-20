@@ -92,10 +92,10 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                             <!------------------------------------------ 1 ------------------------------------------>
                             <tbody>
                                 <tr>
-                                    <td rowspan="2">1</td>
-                                    <td rowspan="2">Tính độc đáo</td>
-                                    <td rowspan="2">15</td>
-                                    <td rowspan="2">
+                                    <td rowspan="3">1</td>
+                                    <td rowspan="3">Tài chính</td>
+                                    <td rowspan="3">20</td>
+                                    <td rowspan="3">
                                         <?php
                                         echo form_error('1', '<div class="error">', '</div>');
                                         if($rating){
@@ -105,8 +105,8 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                                         }
                                         ?>
                                     </td>
-                                    <td>Công nghệ sáng tạo</td>
-                                    <td>60</td>
+                                    <td>Doanh thu doanh nghiệp (có tăng trưởng)</td>
+                                    <td>30</td>
                                     <td>
                                         <?php
                                         echo form_error('1_1', '<div class="error">', '</div>');
@@ -119,7 +119,7 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Định hình/phù hợp xu hướng</td>
+                                    <td>Doanh thu trực tiếp từ lĩnh vực ứng cử</td>
                                     <td>40</td>
                                     <td>
                                         <?php
@@ -132,13 +132,27 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                                         ?>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>Lợi nhuận sau thuế (có tăng trưởng)</td>
+                                    <td>30</td>
+                                    <td>
+                                        <?php
+                                        echo form_error('1_3', '<div class="error">', '</div>');
+                                        if($rating){
+                                            echo form_input('1_3', set_value('1_3', ($arrRate['1_3'] != 0) ? ltrim($arrRate['1_3'], '0') : 0), 'class="form-control sub" ' . $is_readonly . ' id="1_3"');
+                                        }else{
+                                            echo form_input('1_3', set_value('1_3', 0), 'class="form-control sub" id="1_3"');
+                                        }
+                                        ?>
+                                    </td>
+                                </tr>
 
                                 <!------------------------------------------ 2 ------------------------------------------>
 
                                 <tr>
                                     <td rowspan="3">2</td>
-                                    <td rowspan="3">Tính hiệu quả</td>
-                                    <td rowspan="3">15</td>
+                                    <td rowspan="3">Nhân lực</td>
+                                    <td rowspan="3">10</td>
                                     <td rowspan="3">
                                         <?php
                                         echo form_error('2', '<div class="error">', '</div>');
@@ -149,7 +163,7 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                                         }
                                         ?>
                                     </td>
-                                    <td>Tối ưu quy trình, quản lý</td>
+                                    <td>Quy mô nhân sự</td>
                                     <td>40</td>
                                     <td>
                                         <?php
@@ -163,7 +177,7 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Tăng năng suất</td>
+                                    <td>Trình độ chuyên môn</td>
                                     <td>30</td>
                                     <td>
                                         <?php
@@ -177,7 +191,7 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Tiết kiệm chi phí sản xuất</td>
+                                    <td>Tăng trưởng nhân lực</td>
                                     <td>30</td>
                                     <td>
                                         <?php
@@ -194,10 +208,10 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                                 <!------------------------------------------ 3 ------------------------------------------>
 
                                 <tr>
-                                    <td rowspan="2">3</td>
-                                    <td rowspan="2">Tiềm năng thị trường</td>
-                                    <td rowspan="2">15</td>
-                                    <td rowspan="2">
+                                    <td rowspan="3">3</td>
+                                    <td rowspan="3">Thị trường khách hàng</td>
+                                    <td rowspan="3">15</td>
+                                    <td rowspan="3">
                                         <?php
                                         echo form_error('3', '<div class="error">', '</div>');
                                         if($rating){
@@ -207,8 +221,8 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                                         }
                                         ?>
                                     </td>
-                                    <td>Thị phần và tiềm năng thị trường</td>
-                                    <td>60</td>
+                                    <td>Thị phần, tăng trưởng thị phần, tiềm năng thị trường</td>
+                                    <td>50</td>
                                     <td>
                                         <?php
                                         echo form_error('3_1', '<div class="error">', '</div>');
@@ -221,8 +235,8 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Mô hình, chiến lược kinh doanh</td>
-                                    <td>40</td>
+                                    <td>Khách hàng tiêu biểu</td>
+                                    <td>30</td>
                                     <td>
                                         <?php
                                         echo form_error('3_2', '<div class="error">', '</div>');
@@ -234,13 +248,27 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                                         ?>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>Công tác chăm sóc khách hàng, sự hài lòng của khách hàng</td>
+                                    <td>20</td>
+                                    <td>
+                                        <?php
+                                        echo form_error('3_3', '<div class="error">', '</div>');
+                                        if($rating){
+                                            echo form_input('3_3', set_value('3_3', ($arrRate['3_3'] != 0) ? ltrim($arrRate['3_3'], '0') : 0), 'class="form-control sub" ' . $is_readonly . ' id="3_3"');
+                                        }else{
+                                            echo form_input('3_3', set_value('3_3', 0), 'class="form-control sub" id="3_3"');
+                                        }
+                                        ?>
+                                    </td>
+                                </tr>
 
                                 <!------------------------------------------ 4 ------------------------------------------>
 
                                 <tr>
                                     <td rowspan="3">4</td>
-                                    <td rowspan="3">Tính năng</td>
-                                    <td rowspan="3">10</td>
+                                    <td rowspan="3">Chất lượng sản phẩm/dịch vụ</td>
+                                    <td rowspan="3">15</td>
                                     <td rowspan="3">
                                         <?php
                                         echo form_error('4', '<div class="error">', '</div>');
@@ -251,8 +279,8 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                                         }
                                         ?>
                                     </td>
-                                    <td>Khả năng đáp ứng nhu cầu người dùng</td>
-                                    <td>50</td>
+                                    <td>Các sản phẩm, giải pháp, dịch vụ chính; các dự án tiêu biểu; </td>
+                                    <td>35</td>
                                     <td>
                                         <?php
                                         echo form_error('4_1', '<div class="error">', '</div>');
@@ -265,8 +293,8 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Khả năng tương thích và phát triển tùy biến</td>
-                                    <td>25</td>
+                                    <td>Các tiêu chuẩn/quy trình chất lượng áp dụng (ISO, CMMi…)</td>
+                                    <td>35</td>
                                     <td>
                                         <?php
                                         echo form_error('4_2', '<div class="error">', '</div>');
@@ -279,8 +307,8 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Tính năng bảo mật</td>
-                                    <td>25</td>
+                                    <td>Các tiêu chuẩn/quy trình chất lượng áp dụng (ISO, CMMi…)</td>
+                                    <td>30</td>
                                     <td>
                                         <?php
                                         echo form_error('4_3', '<div class="error">', '</div>');
@@ -296,10 +324,10 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                                 <!------------------------------------------ 5 ------------------------------------------>
 
                                 <tr>
-                                    <td rowspan="3">5</td>
-                                    <td rowspan="3">Công nghệ,  chất lượng sản phẩm</td>
-                                    <td rowspan="3">15</td>
-                                    <td rowspan="3">
+                                    <td rowspan="4">5</td>
+                                    <td rowspan="4">Công nghệ, Tiêu chuẩn, Quy trình, R&D, các chứng chỉ đặc thù riêng theo từng lĩnh vực được đánh giá.</td>
+                                    <td rowspan="4">15</td>
+                                    <td rowspan="4">
                                         <?php
                                         echo form_error('5', '<div class="error">', '</div>');
                                         if($rating){
@@ -309,8 +337,8 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                                         }
                                         ?>
                                     </td>
-                                    <td>Công nghệ tiên tiến</td>
-                                    <td>40</td>
+                                    <td>Các chứng chỉ năng lực về công nghệ </td>
+                                    <td>30</td>
                                     <td>
                                         <?php
                                         echo form_error('5_1', '<div class="error">', '</div>');
@@ -323,7 +351,7 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Các tiêu chuẩn/quy trình áp dụng</td>
+                                    <td>Các chứng chỉ, năng lực đặc thù DN đạt được trong lĩnh vực ứng cử (bảo mật, công nghệ, hạ tầng…)</td>
                                     <td>30</td>
                                     <td>
                                         <?php
@@ -337,8 +365,8 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Sự ổn định và độ tin cậy/sự hài lòng của khách hàng</td>
-                                    <td>30</td>
+                                    <td>Hoạt động R&D</td>
+                                    <td>20</td>
                                     <td>
                                         <?php
                                         echo form_error('5_3', '<div class="error">', '</div>');
@@ -350,14 +378,28 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                                         ?>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>Khả năng/năng lực chuyển đổi số</td>
+                                    <td>20</td>
+                                    <td>
+                                        <?php
+                                        echo form_error('5_4', '<div class="error">', '</div>');
+                                        if($rating){
+                                            echo form_input('5_4', set_value('5_4', ($arrRate['5_4'] != 0) ? ltrim($arrRate['5_4'], '0') : 0), 'class="form-control sub" ' . $is_readonly . ' id="5_4"');
+                                        }else{
+                                            echo form_input('5_4', set_value('5_4', 0), 'class="form-control sub" id="5_4"');
+                                        }
+                                        ?>
+                                    </td>
+                                </tr>
 
                                 <!------------------------------------------ 6 ------------------------------------------>
 
                                 <tr>
-                                    <td rowspan="3">6</td>
-                                    <td rowspan="3">Tài chính/doanh thu/ tác động kinh tế, xã hội/số lượng người sử dụng</td>
-                                    <td rowspan="3">20</td>
-                                    <td rowspan="3">
+                                    <td rowspan="4">6</td>
+                                    <td rowspan="4">Công tác lãnh đạo, quản trị, thành tích đạt được và trách nhiệm xã hội</td>
+                                    <td rowspan="4">15</td>
+                                    <td rowspan="4">
                                         <?php
                                         echo form_error('6', '<div class="error">', '</div>');
                                         if($rating){
@@ -367,8 +409,8 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                                         }
                                         ?>
                                     </td>
-                                    <td>Doanh thu sản phẩm</td>
-                                    <td>40</td>
+                                    <td>Năng lực lãnh đạo, tầm nhìn chiến lược của doanh nghiệp</td>
+                                    <td>30</td>
                                     <td>
                                         <?php
                                         echo form_error('6_1', '<div class="error">', '</div>');
@@ -381,8 +423,8 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Số lượng người/DN/tổ chức sử dụng</td>
-                                    <td>30</td>
+                                    <td>Thành tích đạt được trong hoạt động sản xuất, kinh doanh (bằng khen, chứng chỉ…)</td>
+                                    <td>20</td>
                                     <td>
                                         <?php
                                         echo form_error('6_2', '<div class="error">', '</div>');
@@ -395,8 +437,8 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Tác động kinh tế, xã hội</td>
-                                    <td>30</td>
+                                    <td>Văn hóa doanh nghiệp</td>
+                                    <td>20</td>
                                     <td>
                                         <?php
                                         echo form_error('6_3', '<div class="error">', '</div>');
@@ -404,6 +446,20 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                                             echo form_input('6_3', set_value('6_3', ($arrRate['6_3'] != 0) ? ltrim($arrRate['6_3'], '0') : 0), 'class="form-control sub" ' . $is_readonly . ' id="6_3"');
                                         }else{
                                             echo form_input('6_3', set_value('6_3', 0), 'class="form-control sub" id="6_3"');
+                                        }
+                                        ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Tác động kinh tế, xã hội; các hoạt động thể hiện trách nhiệm xã hội</td>
+                                    <td>30</td>
+                                    <td>
+                                        <?php
+                                        echo form_error('6_4', '<div class="error">', '</div>');
+                                        if($rating){
+                                            echo form_input('6_4', set_value('6_4', ($arrRate['6_4'] != 0) ? ltrim($arrRate['6_4'], '0') : 0), 'class="form-control sub" ' . $is_readonly . ' id="6_4"');
+                                        }else{
+                                            echo form_input('6_4', set_value('6_4', 0), 'class="form-control sub" id="6_4"');
                                         }
                                         ?>
                                     </td>
@@ -440,7 +496,7 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Trình bày rõ ràng, thông tin chính xác</td>
+                                    <td>Trình bày rõ ràng, thông tin chính xác </td>
                                     <td>40</td>
                                     <td>
                                         <?php
@@ -502,22 +558,22 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
 </div>
 <script>
     $('.sub').change(function(){
-        let main1 = (parseInt($('#1_1').val()) * 0.6 + parseInt($('#1_2').val()) * 0.4) * 0.15;
+        let main1 = (parseInt($('#1_1').val()) * 0.3 + parseInt($('#1_2').val()) * 0.4 + parseInt($('#1_3').val()) * 0.3) * 0.2;
         $('#1').val(Number(main1.toFixed(2)));
 
-        let main2 = (parseInt($('#2_1').val()) * 0.4 + parseInt($('#2_2').val()) * 0.3 + parseInt($('#2_3').val()) * 0.3) * 0.15;
+        let main2 = (parseInt($('#2_1').val()) * 0.4 + parseInt($('#2_2').val()) * 0.3 + parseInt($('#2_3').val()) * 0.3) * 0.1;
         $('#2').val(Number(main2.toFixed(2)));
 
-        let main3 = (parseInt($('#3_1').val()) * 0.6 + parseInt($('#3_2').val()) * 0.4) * 0.15;
+        let main3 = (parseInt($('#3_1').val()) * 0.5 + parseInt($('#3_2').val()) * 0.3 + parseInt($('#3_3').val()) * 0.2) * 0.15;
         $('#3').val(Number(main3.toFixed(2)));
 
-        let main4 = (parseInt($('#4_1').val()) * 0.5 + parseInt($('#4_2').val()) * 0.25 + parseInt($('#4_3').val()) * 0.25) * 0.1;
+        let main4 = (parseInt($('#4_1').val()) * 0.35 + parseInt($('#4_2').val()) * 0.35 + parseInt($('#4_3').val()) * 0.3) * 0.15;
         $('#4').val(Number(main4.toFixed(2)));
 
-        let main5 = (parseInt($('#5_1').val()) * 0.4 + parseInt($('#5_2').val()) * 0.3 + parseInt($('#5_3').val()) * 0.3) * 0.15;
+        let main5 = (parseInt($('#5_1').val()) * 0.3 + parseInt($('#5_2').val()) * 0.3 + parseInt($('#5_3').val()) * 0.2 + parseInt($('#5_4').val()) * 0.2) * 0.15;
         $('#5').val(Number(main5.toFixed(2)));
 
-        let main6 = (parseInt($('#6_1').val()) * 0.4 + parseInt($('#6_2').val()) * 0.3 + parseInt($('#6_3').val()) * 0.3) * 0.2;
+        let main6 = (parseInt($('#6_1').val()) * 0.3 + parseInt($('#6_2').val()) * 0.2 + parseInt($('#6_3').val()) * 0.2 + parseInt($('#6_4').val()) * 0.3) * 0.15;
         $('#6').val(Number(main6.toFixed(2)));
 
         let main7 = (parseInt($('#7_1').val()) * 0.3 + parseInt($('#7_2').val()) * 0.4 + parseInt($('#7_3').val()) * 0.3) * 0.1;
