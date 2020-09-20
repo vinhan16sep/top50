@@ -58,7 +58,7 @@ class New_rating extends Member_Controller{
             $this->session->set_flashdata('main_service_message', 'Sản phẩm bạn vừa chọn chưa được đặt lĩnh vực chính');
             redirect('member/');
         }
-        $detail = $this->information_model->fetch_by_id('product', $id);
+        $detail = $this->information_model->fetch_by_id('company', $id);
         $company = $this->information_model->fetch_by_id('users', $detail['client_id']);
         $this->data['detail'] = $detail;
         $this->data['company'] = $company;
