@@ -359,6 +359,16 @@ class Information_model extends CI_Model {
         return false;
     }
 
+    public function insert_batch_product($type, $data){
+        $this->db->insert_batch($type, $data);
+
+        if($this->db->affected_rows() > 0){
+            return $this->db->insert_id();
+        }
+
+        return false;
+    }
+
     public function update($type, $id, $information){
         $this->db->set($information)
             ->where('client_id', $id)

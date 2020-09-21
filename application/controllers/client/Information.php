@@ -2888,6 +2888,27 @@ class Information extends Client_Controller {
     }
 
     public function set_final(){
+
+        // viet code o day.
+        $company = $this->information_model->fetch_by_user_id('company', $this->data['user']->id);
+        $groups = (array)json_decode($company['group'], true);
+        $data_insert = array();
+        if (!empty($groups)) {
+            foreach ($groups as $key => $value) {
+                $data_insert[] = array(
+                    'client_id' => $this->data['user']->id,
+                    'name' => $value,
+                    'information_id' => $this->data['user']->information_id,
+                    'identity' => $this->data['user']->username,
+                    'created_at' => $this->author_info['created_at'],
+                    'created_by' => $this->author_info['created_by'],
+                    'modified_at' => $this->author_info['modified_at'],
+                    'modified_by' => $this->author_info['modified_by']
+                );
+            }
+            $insert = $this->information_model->insert_batch_product('product', $data_insert);
+        }
+                
         $this->status_model->update_status_final('status', $this->data['user']->id, $this->data['eventYear'], array('is_final' => 1));
         $this->send_mail($this->data['user']->email);
         redirect('client/dashboard', 'refresh');
