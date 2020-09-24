@@ -599,72 +599,85 @@ class Information extends Client_Controller {
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
             /** =================================================== */
-            $this->form_validation->set_rules('training_process', 'Công tác đào tạo, bồi dưỡng nhân lực ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
-
+            // $this->form_validation->set_rules('training_process', 'Công tác đào tạo, bồi dưỡng nhân lực ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('training_process', 'Công tác đào tạo, bồi dưỡng nhân lực ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('top5_customers', 'Giới thiệu tóm tắt 05 khách hàng/dự án tiêu biểu doanh nghiệp đã thực hiện ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('top5_customers', 'Giới thiệu tóm tắt 05 khách hàng/dự án tiêu biểu doanh nghiệp đã thực hiện ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('top5_customers', 'Giới thiệu tóm tắt 05 khách hàng/dự án tiêu biểu doanh nghiệp đã thực hiện ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('technology_certificate', 'Các chứng chỉ về công nghệ/ các công nghệ doanh nghiệp đang sử dụng/các công nghệ là thế mạnh của doanh nghiệp (đặc biệt là các công nghệ mới của CMCN 4.0) ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('technology_certificate', 'Các chứng chỉ về công nghệ/ các công nghệ doanh nghiệp đang sử dụng/các công nghệ là thế mạnh của doanh nghiệp (đặc biệt là các công nghệ mới của CMCN 4.0) ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('technology_certificate', 'Các chứng chỉ về công nghệ/ các công nghệ doanh nghiệp đang sử dụng/các công nghệ là thế mạnh của doanh nghiệp (đặc biệt là các công nghệ mới của CMCN 4.0) ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('result_r_and_d', 'Thành quả nổi bật của hoạt động R&D năm 2019 ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('result_r_and_d', 'Thành quả nổi bật của hoạt động R&D năm 2019 ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('result_r_and_d', 'Thành quả nổi bật của hoạt động R&D năm 2019 ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('technique_certificate', 'Năng lực quản lý, chất lượng: (Các chứng chỉ về quản lý, quy trình, chất lượng) ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('technique_certificate', 'Năng lực quản lý, chất lượng: (Các chứng chỉ về quản lý, quy trình, chất lượng) ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('technique_certificate', 'Năng lực quản lý, chất lượng: (Các chứng chỉ về quản lý, quy trình, chất lượng) ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('specific_certificate', 'Các chứng chỉ năng lực đặc thù của lĩnh vực hoạt động (nếu có) ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('specific_certificate', 'Các chứng chỉ năng lực đặc thù của lĩnh vực hoạt động (nếu có) ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('specific_certificate', 'Các chứng chỉ năng lực đặc thù của lĩnh vực hoạt động (nếu có) ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('reward', '(Ghi rõ tên, thời gian nhận Giải thưởng, Danh hiệu và thành tích được công nhận trong các hoạt động thể hiện trách nhiệm với xã hội của doanh nghiệp (CSR)) ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('reward', '(Ghi rõ tên, thời gian nhận Giải thưởng, Danh hiệu và thành tích được công nhận trong các hoạt động thể hiện trách nhiệm với xã hội của doanh nghiệp (CSR)) ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('reward', '(Ghi rõ tên, thời gian nhận Giải thưởng, Danh hiệu và thành tích được công nhận trong các hoạt động thể hiện trách nhiệm với xã hội của doanh nghiệp (CSR)) ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('startup_plan_capital_future', 'Kế hoạch gọi vốn trong tương lai ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('startup_plan_capital_future', 'Kế hoạch gọi vốn trong tương lai ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('startup_plan_capital_future', 'Kế hoạch gọi vốn trong tương lai ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('startup_plan_ipo', 'Kế hoạch IPO ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
-
-
+            // $this->form_validation->set_rules('startup_plan_ipo', 'Kế hoạch IPO ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('startup_plan_ipo', 'Kế hoạch IPO ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('products_solutions_nominated_1', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 1 ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('products_solutions_nominated_1', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 1 ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('products_solutions_nominated_1', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 1 ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('products_solutions_nominated_2', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 2 ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('products_solutions_nominated_2', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 2 ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('products_solutions_nominated_2', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 2 ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('products_solutions_nominated_3', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 3 ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('products_solutions_nominated_3', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 3 ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('products_solutions_nominated_3', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 3 ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('product', 'Tên các sản phẩm, dịch vụ chính của doanh nghiệp ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('product', 'Tên các sản phẩm, dịch vụ chính của doanh nghiệp ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('product', 'Tên các sản phẩm, dịch vụ chính của doanh nghiệp ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('security_certificate', 'Các chứng chỉ bảo mật ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('security_certificate', 'Các chứng chỉ bảo mật ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('security_certificate', 'security_certificate ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('security_process', 'Các quy trình/các biện pháp an ninh ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('security_process', 'Các quy trình/các biện pháp an ninh ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('security_process', 'Các quy trình/các biện pháp an ninh ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('overview', 'Giới thiệu doanh nghiệp ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('overview', 'Giới thiệu doanh nghiệp ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('overview', 'Giới thiệu doanh nghiệp ', 'callback_check_word_length');
             /** =================================================== */
 
             $this->form_validation->set_rules('main_service[]', 'Sản phẩm dịch vụ chính của doanh nghiệp', 'trim|required', array(
@@ -1117,69 +1130,85 @@ class Information extends Client_Controller {
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
             /** =================================================== */
-            $this->form_validation->set_rules('training_process', 'Công tác đào tạo, bồi dưỡng nhân lực ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('training_process', 'Công tác đào tạo, bồi dưỡng nhân lực ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('training_process', 'Công tác đào tạo, bồi dưỡng nhân lực ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('top5_customers', 'Giới thiệu tóm tắt 05 khách hàng/dự án tiêu biểu doanh nghiệp đã thực hiện ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('top5_customers', 'Giới thiệu tóm tắt 05 khách hàng/dự án tiêu biểu doanh nghiệp đã thực hiện ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('top5_customers', 'Giới thiệu tóm tắt 05 khách hàng/dự án tiêu biểu doanh nghiệp đã thực hiện ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('technology_certificate', 'Các chứng chỉ về công nghệ/ các công nghệ doanh nghiệp đang sử dụng/các công nghệ là thế mạnh của doanh nghiệp (đặc biệt là các công nghệ mới của CMCN 4.0) ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('technology_certificate', 'Các chứng chỉ về công nghệ/ các công nghệ doanh nghiệp đang sử dụng/các công nghệ là thế mạnh của doanh nghiệp (đặc biệt là các công nghệ mới của CMCN 4.0) ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('technology_certificate', 'Các chứng chỉ về công nghệ/ các công nghệ doanh nghiệp đang sử dụng/các công nghệ là thế mạnh của doanh nghiệp (đặc biệt là các công nghệ mới của CMCN 4.0) ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('result_r_and_d', 'Thành quả nổi bật của hoạt động R&D năm 2019 ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('result_r_and_d', 'Thành quả nổi bật của hoạt động R&D năm 2019 ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('result_r_and_d', 'Thành quả nổi bật của hoạt động R&D năm 2019 ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('technique_certificate', 'Năng lực quản lý, chất lượng: (Các chứng chỉ về quản lý, quy trình, chất lượng) ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('technique_certificate', 'Năng lực quản lý, chất lượng: (Các chứng chỉ về quản lý, quy trình, chất lượng) ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('technique_certificate', 'Năng lực quản lý, chất lượng: (Các chứng chỉ về quản lý, quy trình, chất lượng) ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('specific_certificate', 'Các chứng chỉ năng lực đặc thù của lĩnh vực hoạt động (nếu có) ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('specific_certificate', 'Các chứng chỉ năng lực đặc thù của lĩnh vực hoạt động (nếu có) ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('specific_certificate', 'Các chứng chỉ năng lực đặc thù của lĩnh vực hoạt động (nếu có) ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('reward', '(Ghi rõ tên, thời gian nhận Giải thưởng, Danh hiệu và thành tích được công nhận trong các hoạt động thể hiện trách nhiệm với xã hội của doanh nghiệp (CSR)) ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('reward', '(Ghi rõ tên, thời gian nhận Giải thưởng, Danh hiệu và thành tích được công nhận trong các hoạt động thể hiện trách nhiệm với xã hội của doanh nghiệp (CSR)) ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('reward', '(Ghi rõ tên, thời gian nhận Giải thưởng, Danh hiệu và thành tích được công nhận trong các hoạt động thể hiện trách nhiệm với xã hội của doanh nghiệp (CSR)) ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('startup_plan_capital_future', 'Kế hoạch gọi vốn trong tương lai ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('startup_plan_capital_future', 'Kế hoạch gọi vốn trong tương lai ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('startup_plan_capital_future', 'Kế hoạch gọi vốn trong tương lai ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('startup_plan_ipo', 'Kế hoạch IPO ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('startup_plan_ipo', 'Kế hoạch IPO ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('startup_plan_ipo', 'Kế hoạch IPO ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('products_solutions_nominated_1', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 1 ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('products_solutions_nominated_1', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 1 ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('products_solutions_nominated_1', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 1 ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('products_solutions_nominated_2', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 2 ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('products_solutions_nominated_2', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 2 ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('products_solutions_nominated_2', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 2 ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('products_solutions_nominated_3', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 3 ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('products_solutions_nominated_3', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 3 ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('products_solutions_nominated_3', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 3 ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('product', 'Tên các sản phẩm, dịch vụ chính của doanh nghiệp ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('product', 'Tên các sản phẩm, dịch vụ chính của doanh nghiệp ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('product', 'Tên các sản phẩm, dịch vụ chính của doanh nghiệp ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('security_certificate', 'Các chứng chỉ bảo mật ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('security_certificate', 'Các chứng chỉ bảo mật ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('security_certificate', 'security_certificate ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('security_process', 'Các quy trình/các biện pháp an ninh ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('security_process', 'Các quy trình/các biện pháp an ninh ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('security_process', 'Các quy trình/các biện pháp an ninh ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('overview', 'Giới thiệu doanh nghiệp ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('overview', 'Giới thiệu doanh nghiệp ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('overview', 'Giới thiệu doanh nghiệp ', 'callback_check_word_length');
             /** =================================================== */
 
 
@@ -1678,70 +1707,85 @@ class Information extends Client_Controller {
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
             /** =================================================== */
-            $this->form_validation->set_rules('training_process', 'Công tác đào tạo, bồi dưỡng nhân lực ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('training_process', 'Công tác đào tạo, bồi dưỡng nhân lực ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('training_process', 'Công tác đào tạo, bồi dưỡng nhân lực ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('top5_customers', 'Giới thiệu tóm tắt 05 khách hàng/dự án tiêu biểu doanh nghiệp đã thực hiện ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('top5_customers', 'Giới thiệu tóm tắt 05 khách hàng/dự án tiêu biểu doanh nghiệp đã thực hiện ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('top5_customers', 'Giới thiệu tóm tắt 05 khách hàng/dự án tiêu biểu doanh nghiệp đã thực hiện ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('technology_certificate', 'Các chứng chỉ về công nghệ/ các công nghệ doanh nghiệp đang sử dụng/các công nghệ là thế mạnh của doanh nghiệp (đặc biệt là các công nghệ mới của CMCN 4.0) ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('technology_certificate', 'Các chứng chỉ về công nghệ/ các công nghệ doanh nghiệp đang sử dụng/các công nghệ là thế mạnh của doanh nghiệp (đặc biệt là các công nghệ mới của CMCN 4.0) ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('technology_certificate', 'Các chứng chỉ về công nghệ/ các công nghệ doanh nghiệp đang sử dụng/các công nghệ là thế mạnh của doanh nghiệp (đặc biệt là các công nghệ mới của CMCN 4.0) ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('result_r_and_d', 'Thành quả nổi bật của hoạt động R&D năm 2019 ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('result_r_and_d', 'Thành quả nổi bật của hoạt động R&D năm 2019 ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('result_r_and_d', 'Thành quả nổi bật của hoạt động R&D năm 2019 ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('technique_certificate', 'Năng lực quản lý, chất lượng: (Các chứng chỉ về quản lý, quy trình, chất lượng) ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('technique_certificate', 'Năng lực quản lý, chất lượng: (Các chứng chỉ về quản lý, quy trình, chất lượng) ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('technique_certificate', 'Năng lực quản lý, chất lượng: (Các chứng chỉ về quản lý, quy trình, chất lượng) ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('specific_certificate', 'Các chứng chỉ năng lực đặc thù của lĩnh vực hoạt động (nếu có) ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('specific_certificate', 'Các chứng chỉ năng lực đặc thù của lĩnh vực hoạt động (nếu có) ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('specific_certificate', 'Các chứng chỉ năng lực đặc thù của lĩnh vực hoạt động (nếu có) ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('reward', '(Ghi rõ tên, thời gian nhận Giải thưởng, Danh hiệu và thành tích được công nhận trong các hoạt động thể hiện trách nhiệm với xã hội của doanh nghiệp (CSR)) ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('reward', '(Ghi rõ tên, thời gian nhận Giải thưởng, Danh hiệu và thành tích được công nhận trong các hoạt động thể hiện trách nhiệm với xã hội của doanh nghiệp (CSR)) ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('reward', '(Ghi rõ tên, thời gian nhận Giải thưởng, Danh hiệu và thành tích được công nhận trong các hoạt động thể hiện trách nhiệm với xã hội của doanh nghiệp (CSR)) ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('startup_plan_capital_future', 'Kế hoạch gọi vốn trong tương lai ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('startup_plan_capital_future', 'Kế hoạch gọi vốn trong tương lai ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('startup_plan_capital_future', 'Kế hoạch gọi vốn trong tương lai ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('startup_plan_ipo', 'Kế hoạch IPO ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('startup_plan_ipo', 'Kế hoạch IPO ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('startup_plan_ipo', 'Kế hoạch IPO ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('products_solutions_nominated_1', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 1 ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('products_solutions_nominated_1', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 1 ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('products_solutions_nominated_1', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 1 ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('products_solutions_nominated_2', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 2 ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('products_solutions_nominated_2', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 2 ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('products_solutions_nominated_2', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 2 ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('products_solutions_nominated_3', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 3 ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('products_solutions_nominated_3', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 3 ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('products_solutions_nominated_3', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 3 ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('product', 'Tên các sản phẩm, dịch vụ chính của doanh nghiệp ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('product', 'Tên các sản phẩm, dịch vụ chính của doanh nghiệp ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('product', 'Tên các sản phẩm, dịch vụ chính của doanh nghiệp ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('security_certificate', 'Các chứng chỉ bảo mật ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('security_certificate', 'Các chứng chỉ bảo mật ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('security_certificate', 'security_certificate ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('security_process', 'Các quy trình/các biện pháp an ninh ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
-
+            // $this->form_validation->set_rules('security_process', 'Các quy trình/các biện pháp an ninh ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('security_process', 'Các quy trình/các biện pháp an ninh ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('overview', 'Giới thiệu doanh nghiệp ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('overview', 'Giới thiệu doanh nghiệp ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('overview', 'Giới thiệu doanh nghiệp ', 'callback_check_word_length');
             /** =================================================== */
 
             $this->form_validation->set_rules('main_service[]', 'Sản phẩm dịch vụ chính của doanh nghiệp', 'trim|required', array(
@@ -2192,69 +2236,85 @@ class Information extends Client_Controller {
                 'max_length' => '%s Tối đa 10 chữ số'
             ));
             /** =================================================== */
-            $this->form_validation->set_rules('training_process', 'Công tác đào tạo, bồi dưỡng nhân lực ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('training_process', 'Công tác đào tạo, bồi dưỡng nhân lực ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('training_process', 'Công tác đào tạo, bồi dưỡng nhân lực ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('top5_customers', 'Giới thiệu tóm tắt 05 khách hàng/dự án tiêu biểu doanh nghiệp đã thực hiện ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('top5_customers', 'Giới thiệu tóm tắt 05 khách hàng/dự án tiêu biểu doanh nghiệp đã thực hiện ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('top5_customers', 'Giới thiệu tóm tắt 05 khách hàng/dự án tiêu biểu doanh nghiệp đã thực hiện ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('technology_certificate', 'Các chứng chỉ về công nghệ/ các công nghệ doanh nghiệp đang sử dụng/các công nghệ là thế mạnh của doanh nghiệp (đặc biệt là các công nghệ mới của CMCN 4.0) ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('technology_certificate', 'Các chứng chỉ về công nghệ/ các công nghệ doanh nghiệp đang sử dụng/các công nghệ là thế mạnh của doanh nghiệp (đặc biệt là các công nghệ mới của CMCN 4.0) ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('technology_certificate', 'Các chứng chỉ về công nghệ/ các công nghệ doanh nghiệp đang sử dụng/các công nghệ là thế mạnh của doanh nghiệp (đặc biệt là các công nghệ mới của CMCN 4.0) ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('result_r_and_d', 'Thành quả nổi bật của hoạt động R&D năm 2019 ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('result_r_and_d', 'Thành quả nổi bật của hoạt động R&D năm 2019 ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('result_r_and_d', 'Thành quả nổi bật của hoạt động R&D năm 2019 ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('technique_certificate', 'Năng lực quản lý, chất lượng: (Các chứng chỉ về quản lý, quy trình, chất lượng) ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('technique_certificate', 'Năng lực quản lý, chất lượng: (Các chứng chỉ về quản lý, quy trình, chất lượng) ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('technique_certificate', 'Năng lực quản lý, chất lượng: (Các chứng chỉ về quản lý, quy trình, chất lượng) ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('specific_certificate', 'Các chứng chỉ năng lực đặc thù của lĩnh vực hoạt động (nếu có) ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('specific_certificate', 'Các chứng chỉ năng lực đặc thù của lĩnh vực hoạt động (nếu có) ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('specific_certificate', 'Các chứng chỉ năng lực đặc thù của lĩnh vực hoạt động (nếu có) ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('reward', '(Ghi rõ tên, thời gian nhận Giải thưởng, Danh hiệu và thành tích được công nhận trong các hoạt động thể hiện trách nhiệm với xã hội của doanh nghiệp (CSR)) ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('reward', '(Ghi rõ tên, thời gian nhận Giải thưởng, Danh hiệu và thành tích được công nhận trong các hoạt động thể hiện trách nhiệm với xã hội của doanh nghiệp (CSR)) ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('reward', '(Ghi rõ tên, thời gian nhận Giải thưởng, Danh hiệu và thành tích được công nhận trong các hoạt động thể hiện trách nhiệm với xã hội của doanh nghiệp (CSR)) ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('startup_plan_capital_future', 'Kế hoạch gọi vốn trong tương lai ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('startup_plan_capital_future', 'Kế hoạch gọi vốn trong tương lai ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('startup_plan_capital_future', 'Kế hoạch gọi vốn trong tương lai ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('startup_plan_ipo', 'Kế hoạch IPO ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('startup_plan_ipo', 'Kế hoạch IPO ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('startup_plan_ipo', 'Kế hoạch IPO ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('products_solutions_nominated_1', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 1 ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('products_solutions_nominated_1', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 1 ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('products_solutions_nominated_1', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 1 ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('products_solutions_nominated_2', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 2 ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('products_solutions_nominated_2', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 2 ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('products_solutions_nominated_2', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 2 ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('products_solutions_nominated_3', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 3 ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('products_solutions_nominated_3', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 3 ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('products_solutions_nominated_3', 'Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 3 ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('product', 'Tên các sản phẩm, dịch vụ chính của doanh nghiệp ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('product', 'Tên các sản phẩm, dịch vụ chính của doanh nghiệp ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('product', 'Tên các sản phẩm, dịch vụ chính của doanh nghiệp ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('security_certificate', 'Các chứng chỉ bảo mật ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('security_certificate', 'Các chứng chỉ bảo mật ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('security_certificate', 'security_certificate ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('security_process', 'Các quy trình/các biện pháp an ninh ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('security_process', 'Các quy trình/các biện pháp an ninh ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('security_process', 'Các quy trình/các biện pháp an ninh ', 'callback_check_word_length');
             /** =================================================== */
-            $this->form_validation->set_rules('overview', 'Giới thiệu doanh nghiệp ', 'trim|max_word[1000]', array(
-                'max_word' => '%s Tối đa 1000 từ'
-            ));
+            // $this->form_validation->set_rules('overview', 'Giới thiệu doanh nghiệp ', 'trim|max_word[1000]', array(
+            //     'max_word' => '%s Tối đa 1000 từ'
+            // ));
+            $this->form_validation->set_rules('overview', 'Giới thiệu doanh nghiệp ', 'callback_check_word_length');
             /** =================================================== */
 
             if ($this->form_validation->run() == FALSE) {
@@ -3012,5 +3072,25 @@ class Information extends Client_Controller {
 
         return $str;
 
+    }
+
+    function check_word_length($unicode_string){
+        // First remove all the punctuation marks & digits
+        $unicode_string = preg_replace('/[[:punct:][:digit:]]/', '', $unicode_string);
+
+        // Now replace all the whitespaces (tabs, new lines, multiple spaces) by single space
+        $unicode_string = preg_replace('/[[:space:]]/', ' ', $unicode_string);
+
+        // The words are now separated by single spaces and can be splitted to an array
+        // I have included \n\r\t here as well, but only space will also suffice
+        $words_array = preg_split( "/[\n\r\t ]+/", $unicode_string, 0, PREG_SPLIT_NO_EMPTY );
+
+        // Now we can get the word count by counting array elments
+        $this->form_validation->set_message('check_word_length', 'Tối đa khoảng 1000 từ.');
+        if (count($words_array) > 1100) {
+            return false;
+        }else{
+            return true;
+        }
     }
 }
