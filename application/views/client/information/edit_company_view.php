@@ -1148,7 +1148,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <?php
-                                echo form_textarea('technology_certificate', htmlspecialchars_decode(set_value('technology_certificate', $company['technology_certificate'])), 'class="form-control"');
+                                echo form_textarea('technology_certificate', htmlspecialchars_decode(set_value('technology_certificate', $company['technology_certificate'])), 'class="form-control tinymce-area"');
                             ?>
                         </div>
                     </div>
@@ -1220,7 +1220,7 @@
                             </div>
                             <div class="col-xs-12">
                                  <?php
-                                    echo form_textarea('security_certificate', strip_tags(htmlspecialchars_decode(set_value('security_certificate',$company['security_certificate']))), 'class="form-control"');
+                                    echo form_textarea('security_certificate', strip_tags(htmlspecialchars_decode(set_value('security_certificate',$company['security_certificate']))), 'class="form-control tinymce-area"');
                                 ?>
                             </div>
                         </div>
@@ -1232,7 +1232,7 @@
                             </div>
                             <div class="col-xs-12">
                                  <?php
-                                    echo form_textarea('security_process', strip_tags(htmlspecialchars_decode(set_value('security_process',$company['security_process']))), 'class="form-control"');
+                                    echo form_textarea('security_process', strip_tags(htmlspecialchars_decode(set_value('security_process',$company['security_process']))), 'class="form-control tinymce-area"');
                                 ?>
                             </div>
                         </div>
@@ -1415,7 +1415,7 @@
     });
 
     // 12/07/2019
-    $('.submit-extra-form').css({'display':'none'});
+    $('.submit-extra-form').css({'display':'block'});
     $('.confirm input[type="checkbox"]').change(function(){
         if($(this).is(':checked')){
             window.open($(this).attr('data-href'),'_blank');
