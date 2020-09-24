@@ -1121,7 +1121,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <?php
-                                echo form_textarea('technology_certificate', htmlspecialchars_decode(set_value('technology_certificate')), 'class="form-control"');
+                                echo form_textarea('technology_certificate', htmlspecialchars_decode(set_value('technology_certificate')), 'class="form-control tinymce-area"');
                             ?>
                         </div>
                     </div>
@@ -1193,7 +1193,7 @@
                             </div>
                             <div class="col-xs-12">
                                  <?php
-                                    echo form_textarea('security_certificate', strip_tags(htmlspecialchars_decode(set_value('security_certificate'))), 'class="form-control"');
+                                    echo form_textarea('security_certificate', strip_tags(htmlspecialchars_decode(set_value('security_certificate'))), 'class="form-control tinymce-area"');
                                 ?>
                             </div>
                         </div>
@@ -1205,7 +1205,7 @@
                             </div>
                             <div class="col-xs-12">
                                  <?php
-                                    echo form_textarea('security_process', strip_tags(htmlspecialchars_decode(set_value('security_process'))), 'class="form-control"');
+                                    echo form_textarea('security_process', strip_tags(htmlspecialchars_decode(set_value('security_process'))), 'class="form-control tinymce-area"');
                                 ?>
                             </div>
                         </div>

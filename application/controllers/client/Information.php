@@ -2948,8 +2948,6 @@ class Information extends Client_Controller {
     }
 
     public function set_final(){
-
-        // viet code o day.
         $company = $this->information_model->fetch_by_user_id('company', $this->data['user']->id);
         $groups = (array)json_decode($company['group'], true);
         $data_insert = array();
