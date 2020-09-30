@@ -58,7 +58,7 @@ class New_rating extends Member_Controller{
             $this->session->set_flashdata('main_service_message', 'Sản phẩm bạn vừa chọn chưa được đặt lĩnh vực chính');
             redirect('member/');
         }
-        $detail = $this->information_model->fetch_by_id('company', $id);
+        $detail = $this->information_model->fetch_by_id('product', $id);
         $company = $this->information_model->fetch_by_id('users', $detail['client_id']);
         $this->data['detail'] = $detail;
         $this->data['company'] = $company;
@@ -72,32 +72,31 @@ class New_rating extends Member_Controller{
             $this->load->model('users_model');
             $user_id = $user->id;
             
-            // //check member
-            // if ($user->member_role == 'member') {
-            //     $team = $this->team_model->get_by_user_id('team', $user_id);
-            // }
+            //check member
+            if ($user->member_role == 'member') {
+                $team = $this->team_model->get_by_user_id('team', $user_id);
+            }
 
-            // //check leader
-            // if ($user->member_role == 'leader') {
-            //     $team = $this->team_model->get_by_leader_id('team', $user_id);
-            // }
-
-            // $list_product = array();
-            // if ($team) {
-            //     foreach ($team as $key => $value) {
-            //         $product_ids = explode(',', $value['product_id']);
-            //         foreach ($product_ids as $k => $val) {
-            //             if ( !empty($val) ) {
-            //                 $list_product[] = $val;
-            //             }
-            //         }
-            //     }
-            // }
-            // $list_product = array_unique($list_product);
-            // if (!in_array($id, $list_product)) {
-            //     $this->session->set_flashdata('main_service_message', 'Sản phẩm không tồn tại hoặc không thuộc nhóm của bạn');
-            //     redirect('member','refresh');
-            // }
+            //check leader
+            if ($user->member_role == 'leader') {
+                $team = $this->team_model->get_by_leader_id('team', $user_id);
+            }
+            $list_product = array();
+            if ($team) {
+                foreach ($team as $key => $value) {
+                    $product_ids = explode(',', $value['product_id']);
+                    foreach ($product_ids as $k => $val) {
+                        if ( !empty($val) ) {
+                            $list_product[] = $val;
+                        }
+                    }
+                }
+            }
+            $list_product = array_unique($list_product);
+            if (!in_array($id, $list_product)) {
+                $this->session->set_flashdata('main_service_message', 'Sản phẩm không tồn tại hoặc không thuộc nhóm của bạn');
+                redirect('member','refresh');
+            }
             
 
             $this->data['rating'] = $this->new_rating_model->check_rating_exist_for_list('new_rating', $detail['id'], $this->ion_auth->user()->row()->id);

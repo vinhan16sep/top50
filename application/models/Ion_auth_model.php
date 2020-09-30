@@ -1054,7 +1054,7 @@ class Ion_auth_model extends CI_Model
 		{
 			// Hash something anyway, just to take up time
 			$this->hash_password($password);
-
+            
 			$this->trigger_events('post_login_unsuccessful');
 			$this->set_error('login_timeout');
 
@@ -1064,9 +1064,9 @@ class Ion_auth_model extends CI_Model
 		if ($query->num_rows() === 1)
 		{
 			$user = $query->row();
-
+			
 			$password = $this->hash_password_db($user->id, $password);
-
+			
 			if ($password === TRUE)
 			{
 				if ($user->active == 0)
