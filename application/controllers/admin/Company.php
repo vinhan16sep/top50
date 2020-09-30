@@ -1,10 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require_once APPPATH."/third_party/PHPExcel.php";
+// require_once APPPATH."/third_party/PHPExcel.php";
+use PhpOffice\PhpSpreadsheet\Helper\Sample;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Company extends Admin_Controller{
-
     private $excel = null;
 
 	function __construct(){
@@ -13,7 +16,8 @@ class Company extends Admin_Controller{
         $this->load->model('users_model');
         $this->load->model('status_model');
 
-        $this->excel = new PHPExcel();
+        $this->excel = new Spreadsheet();
+        $this->data['groups'] = $this->config->item('development/config_information')['groups'];
 	}
 
 	public function index($year){
@@ -187,6 +191,7 @@ class Company extends Admin_Controller{
     }
 
     public function export(){
+        ob_start();
         //activate worksheet number 1
         $this->excel->setActiveSheetIndex(0);
         //name the worksheet
@@ -197,6 +202,7 @@ class Company extends Admin_Controller{
 
         // get all users in array formate
         $data = $this->information_model->get_all_for_export('company');
+        
         $data_export = array(
             '0' => array(
                 'company' => 'Doanh nghiệp',
@@ -211,39 +217,20 @@ class Company extends Admin_Controller{
                 'c_position' => 'Chức danh',
                 'c_email' => 'Email',
                 'c_phone' => 'Di động',
-                'link' => 'Link download PĐK của DN',
-                'equity_2015' => 'Vốn điều lệ năm 2015 (triệu VND)',
-                'equity_2016' => 'Vốn điều lệ năm 2016 (triệu VND)',
-                'equity_2017' => 'Vốn điều lệ năm 2017 (triệu VND)',
-                'owner_equity_2015' => 'Vốn chủ sở hữu (triệu VND) 2015',
-                'owner_equity_2016' => 'Vốn chủ sở hữu (triệu VND) 2016',
-                'owner_equity_2017' => 'Vốn chủ sở hữu (triệu VND) 2017',
-                'total_income_2015' => 'Tổng doanh thu DN 2015',
-                'total_income_2016' => 'Tổng doanh thu DN 2016',
-                'total_income_2017' => 'Tổng doanh thu DN 2017',
-                'software_income_2015' => 'Tổng DT lĩnh vực sx phần mềm (Triệu VND) 2015',
-                'software_income_2016' => 'Tổng DT lĩnh vực sx phần mềm (Triệu VND) 2016',
-                'software_income_2017' => 'Tổng DT lĩnh vực sx phần mềm (Triệu VND) 2017',
-                'it_income_2015' => 'Tổng doanh thu dịch vụ CNTT (triệu VND) 2015',
-                'it_income_2016' => 'Tổng doanh thu dịch vụ CNTT (triệu VND) 2016',
-                'it_income_2017' => 'Tổng doanh thu dịch vụ CNTT (triệu VND) 2017',
-                'export_income_2015' => 'Tổng DT xuất khẩu (USD) 2015',
-                'export_income_2016' => 'Tổng DT xuất khẩu (USD) 2016',
-                'export_income_2017' => 'Tổng DT xuất khẩu (USD) 2017',
-                'total_labor_2015' => 'Tổng số lao động của DN 2015',
-                'total_labor_2016' => 'Tổng số lao động của DN 2016',
-                'total_labor_2017' => 'Tổng số lao động của DN 2017',
-                'total_ltv_2015' => 'Tổng số LTV 2015',
-                'total_ltv_2016' => 'Tổng số LTV 2016',
-                'total_ltv_2017' => 'Tổng số LTV 2017',
-                'description' => 'Giới thiệu chung',
-                'main_service' => 'SP dịch vụ chính của DN',
-                'main_market' => 'Thị trường chính'
+                'link' => 'Link download PĐK của DN'
             )
         );
 
         foreach($data as $key => $company){
             $extra_info = $this->information_model->fetch_company_by_id($company['id']);
+            $group = (array)json_decode($company['group']);
+            $groups = '';
+            if(!empty($group)){
+                foreach($group as $key => $value){
+                    $groups .= (!empty($this->data['groups'][$value]) ? $this->data['groups'][$value] : '').',';
+                }
+            }
+                
             $data_export[$key + 1] = array(
                 'company' => $extra_info['company'],
                 'phone' => $extra_info['phone'],
@@ -257,130 +244,186 @@ class Company extends Admin_Controller{
                 'c_position' => $extra_info['c_position'],
                 'c_email' => $extra_info['c_email'],
                 'c_phone' => $extra_info['c_phone'],
-                'link' => $extra_info['link'],
-                'equity_2015' => $company['equity_1'],
-                'equity_2016' => $company['equity_2'],
-                'equity_2017' => $company['equity_3'],
-                'owner_equity_2015' => $company['owner_equity_1'],
-                'owner_equity_2016' => $company['owner_equity_2'],
-                'owner_equity_2017' => $company['owner_equity_3'],
-                'total_income_2015' => $company['total_income_1'],
-                'total_income_2016' => $company['total_income_2'],
-                'total_income_2017' => $company['total_income_3'],
-                'software_income_2015' => $company['software_income_1'],
-                'software_income_2016' => $company['software_income_2'],
-                'software_income_2017' => $company['software_income_3'],
-                'it_income_2015' => $company['it_income_1'],
-                'it_income_2016' => $company['it_income_2'],
-                'it_income_2017' => $company['it_income_3'],
-                'export_income_2015' => $company['export_income_1'],
-                'export_income_2016' => $company['export_income_2'],
-                'export_income_2017' => $company['export_income_3'],
-                'total_labor_2015' => $company['total_labor_1'],
-                'total_labor_2016' => $company['total_labor_2'],
-                'total_labor_2017' => $company['total_labor_3'],
-                'total_ltv_2015' => $company['total_ltv_1'],
-                'total_ltv_2016' => $company['total_ltv_2'],
-                'total_ltv_2017' => $company['total_ltv_3'],
-                'description' => $company['description'],
-                'main_service' => implode(", ", (array)json_decode($company['main_service'])),
-                'main_market' => implode(", ", (array)json_decode($company['main_market']))
+                'link' => $extra_info['link']
             );
         }
-
+        
         // read data to active sheet
-        $this->excel->getActiveSheet()->fromArray($data_export);
+        $this->excel->getActiveSheet()->fromArray($data_export, NULL, 'A1');
 
-        $filename='Danh_sach_doanh_nghiep_' . date("d-m-Y") . '.xls'; //save our workbook as this file name
-
-        header('Content-Type: application/vnd.ms-excel'); //mime type
-
-        header('Content-Disposition: attachment;filename="'.$filename.'"'); //tell browser what's the file name
-
-        header('Cache-Control: max-age=0'); //no cache
-
-        //save it to Excel5 format (excel 2003 .XLS file), change this to 'Excel2007' (and adjust the filename extension, also the header mime type)
-        //if you want to save it as .XLSX Excel 2007 format
-
-        $objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel5');
-
-        //force user to download the Excel file without writing it to server's HD
-        $objWriter->save('php://output');
+        $filename='Danh_sach_doanh_nghiep_' . date("d-m-Y") . '.xlsx'; //save our workbook as this file name
+        
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="'.$filename.'"');
+        header('Cache-Control: max-age=0');
+        header('Cache-Control: max-age=1');
+        header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+        header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+        header('Cache-Control: cache, must-revalidate');
+        header('Pragma: public');
+        $writer = IOFactory::createWriter($this->excel, 'Xlsx');
+        $writer->save('php://output');
     }
 
-    public function export_product(){
+    public function export_company(){
+        ob_start();
         //activate worksheet number 1
         $this->excel->setActiveSheetIndex(0);
         //name the worksheet
-        $this->excel->getActiveSheet()->setTitle('Danh sach san pham');
+        $this->excel->getActiveSheet()->setTitle('Danh sach doanh nghiep');
 
         // load database
         $this->load->database();
 
         // get all users in array formate
-        $data = $this->information_model->get_all_product_for_export('product');
+        $data = $this->information_model->get_all_for_export('company');
+        
+        $wizard = new \PhpOffice\PhpSpreadsheet\Helper\Html();
         $data_export = array(
             '0' => array(
                 'company' => 'Doanh nghiệp',
-                'name' => 'Tên SP/dịch vụ/giải pháp/ứng dụng',
-                'service' => 'Đăng ký tham gia lĩnh vực',
-                'functional' => 'Mô tả các công năng của sản phẩm',
-                'process' => 'Các công nghệ và quy trình chất lượng sử dụng để phát triển sản phẩm',
-                'security' => 'Bảo mật của sản phẩm',
-                'positive' => 'Các ưu điểm nổi trội của SP/GP/DV',
-                'compare' => 'So sánh với các SP/GP/DV khác',
-                'income_2016' => 'Doanh thu của SP/GP/DV năm 2016',
-                'income_2017' => 'Doanh thu của SP/GP/DV năm 2017',
-                'area' => 'Thị phần của SP/giải pháp/DV',
-                'open_date' => 'Ngày thương mại hoá/ra mắt dịch vụ',
-                'price' => 'Giá SP/GP/DV',
-                'customer' => '1 số khách hàng tiêu biểu',
-                'after_sale' => 'Dịch vụ sau bán hàng',
-                'team' => 'Đội ngũ phát triển sp/gp (bao nhiêu người, trình độ, trong bao lâu...)',
-                'award' => 'Các giải thưởng/DH đã nhận được'
+                'equity_2018_1' => 'Vốn điều lệ ' . ($this->data['eventYear'] - 2) . ' số tuyệt đối (triệu VND)',
+                'equity_2018_2' => 'Vốn điều lệ ' . ($this->data['eventYear'] - 2) . ' so với năm trước (triệu VND)',
+                'equity_2019_1' => 'Vốn điều lệ ' . ($this->data['eventYear'] - 1) . ' số tuyệt đối (triệu VND)',
+                'equity_2019_2' => 'Vốn điều lệ ' . ($this->data['eventYear'] - 1) . ' so với năm trước (triệu VND)',
+                'total_assets_2018_1' => 'Tổng tài sản ' . ($this->data['eventYear'] - 2) . ' số tuyệt đối (triệu VNĐ)',
+                'total_assets_2018_2' => 'Tổng tài sản ' . ($this->data['eventYear'] - 2) . ' so với năm trước (triệu VNĐ)',
+                'total_assets_2019_1' => 'Tổng tài sản ' . ($this->data['eventYear'] - 1) . ' số tuyệt đối (triệu VNĐ)',
+                'total_assets_2019_2' => 'Tổng tài sản ' . ($this->data['eventYear'] - 1) . ' so với năm trước (triệu VNĐ)',
+                'per_capita_income_2018_1' => 'Bình quân doanh thu/đầu người ' . ($this->data['eventYear'] - 2) . ' số tuyệt đối (triệu VNĐ)',
+                'per_capita_income_2018_2' => 'Bình quân doanh thu/đầu người ' . ($this->data['eventYear'] - 2) . ' so với năm trước (triệu VNĐ)',
+                'per_capita_income_2019_1' => 'Bình quân doanh thu/đầu người ' . ($this->data['eventYear'] - 1) . ' số tuyệt đối (triệu VNĐ)',
+                'per_capita_income_2019_2' => 'Bình quân doanh thu/đầu người ' . ($this->data['eventYear'] - 1) . ' so với năm trước (triệu VNĐ)',
+                'total_income_2018_1' => 'Tổng doanh thu doanh nghiệp ' . ($this->data['eventYear'] - 2) . ' số tuyệt đối (triệu VNĐ)',
+                'total_income_2018_2' => 'Tổng doanh thu doanh nghiệp ' . ($this->data['eventYear'] - 2) . ' so với năm trước (triệu VNĐ)',
+                'total_income_2019_1' => 'Tổng doanh thu doanh nghiệp ' . ($this->data['eventYear'] - 1) . ' số tuyệt đối (triệu VNĐ)',
+                'total_income_2019_2' => 'Tổng doanh thu doanh nghiệp ' . ($this->data['eventYear'] - 1) . ' so với năm trước (triệu VNĐ)',
+                'software_income_2018_1' => 'Tổng doanh thu lĩnh vực phần mềm, giải pháp ' . ($this->data['eventYear'] - 2) . ' số tuyệt đối (triệu VNĐ)',
+                'software_income_2018_2' => 'Tổng doanh thu lĩnh vực phần mềm, giải pháp ' . ($this->data['eventYear'] - 2) . ' so với năm trước (triệu VNĐ)',
+                'software_income_2019_1' => 'Tổng doanh thu lĩnh vực phần mềm, giải pháp ' . ($this->data['eventYear'] - 1) . ' số tuyệt đối (triệu VNĐ)',
+                'software_income_2019_2' => 'Tổng doanh thu lĩnh vực phần mềm, giải pháp ' . ($this->data['eventYear'] - 1) . ' so với năm trước (triệu VNĐ)',
+                'it_income_2018_1' => 'Tổng doanh thu dịch vụ CNTT ' . ($this->data['eventYear'] - 2) . ' số tuyệt đối (triệu VNĐ)',
+                'it_income_2018_2' => 'Tổng doanh thu dịch vụ CNTT ' . ($this->data['eventYear'] - 2) . ' so với năm trước (triệu VNĐ)',
+                'it_income_2019_1' => 'Tổng doanh thu dịch vụ CNTT ' . ($this->data['eventYear'] - 1) . ' số tuyệt đối (triệu VNĐ)',
+                'it_income_2019_2' => 'Tổng doanh thu dịch vụ CNTT ' . ($this->data['eventYear'] - 1) . ' so với năm trước (triệu VNĐ)',
+                'export_income_2018_1' => 'Tổng doanh thu xuất khẩu ' . ($this->data['eventYear'] - 2) . ' số tuyệt đối (USD)',
+                'export_income_2018_2' => 'Tổng doanh thu xuất khẩu ' . ($this->data['eventYear'] - 2) . ' so với năm trước (USD)',
+                'export_income_2019_1' => 'Tổng doanh thu xuất khẩu ' . ($this->data['eventYear'] - 1) . ' số tuyệt đối (USD)',
+                'export_income_2019_2' => 'Tổng doanh thu xuất khẩu ' . ($this->data['eventYear'] - 1) . ' so với năm trước (USD)',
+                'owner_equity_2018_1' => 'Tổng doanh thu lĩnh vực đề cử 1 ' . ($this->data['eventYear'] - 2) . ' số tuyệt đối',
+                'owner_equity_2018_2' => 'Tổng doanh thu lĩnh vực đề cử 1 ' . ($this->data['eventYear'] - 2) . ' so với năm trước',
+                'owner_equity_2019_1' => 'Tổng doanh thu lĩnh vực đề cử 1 ' . ($this->data['eventYear'] - 1) . ' số tuyệt đối',
+                'owner_equity_2019_2' => 'Tổng doanh thu lĩnh vực đề cử 1 ' . ($this->data['eventYear'] - 1) . ' so với năm trước',
+                'international_income_2018_1' => 'Tổng doanh thu lĩnh vực đề cử 2 ' . ($this->data['eventYear'] - 2) . ' số tuyệt đối',
+                'international_income_2018_2' => 'Tổng doanh thu lĩnh vực đề cử 2 ' . ($this->data['eventYear'] - 2) . ' so với năm trước',
+                'international_income_2019_1' => 'Tổng doanh thu lĩnh vực đề cử 2 ' . ($this->data['eventYear'] - 1) . ' số tuyệt đối',
+                'international_income_2019_2' => 'Tổng doanh thu lĩnh vực đề cử 2 ' . ($this->data['eventYear'] - 1) . ' so với năm trước',
+                'nomination_income_2018_1' => 'Tổng doanh thu lĩnh vực đề cử 3 ' . ($this->data['eventYear'] - 2) . ' số tuyệt đối',
+                'nomination_income_2018_2' => 'Tổng doanh thu lĩnh vực đề cử 3 ' . ($this->data['eventYear'] - 2) . ' so với năm trước',
+                'nomination_income_2019_1' => 'Tổng doanh thu lĩnh vực đề cử 3 ' . ($this->data['eventYear'] - 1) . ' số tuyệt đối',
+                'nomination_income_2019_2' => 'Tổng doanh thu lĩnh vực đề cử 3 ' . ($this->data['eventYear'] - 1) . ' so với năm trước',
+                'domestic_income_2018_1' => 'Tổng số lao động của doanh nghiệp ' . ($this->data['eventYear'] - 2) . ' số tuyệt đối',
+                'domestic_income_2018_2' => 'Tổng số lao động của doanh nghiệp ' . ($this->data['eventYear'] - 2) . ' so với năm trước',
+                'domestic_income_2019_1' => 'Tổng số lao động của doanh nghiệp ' . ($this->data['eventYear'] - 1) . ' số tuyệt đối',
+                'domestic_income_2019_2' => 'Tổng số lao động của doanh nghiệp ' . ($this->data['eventYear'] - 1) . ' so với năm trước',
+                'before_tax_profit_2018_1' => 'Tổng số lập trình viên ' . ($this->data['eventYear'] - 2) . ' số tuyệt đối',
+                'before_tax_profit_2018_2' => 'Tổng số lập trình viên ' . ($this->data['eventYear'] - 2) . ' so với năm trước',
+                'before_tax_profit_2019_1' => 'Tổng số lập trình viên ' . ($this->data['eventYear'] - 1) . ' số tuyệt đối',
+                'before_tax_profit_2019_2' => 'Tổng số lập trình viên ' . ($this->data['eventYear'] - 1) . ' so với năm trước',
+                'number_personnel_nominated_1' => 'Số lượng nhân sự trong lĩnh vực đề cử 1',
+                'number_personnel_nominated_2' => 'Số lượng nhân sự trong lĩnh vực đề cử 2',
+                'number_personnel_nominated_3' => 'Số lượng nhân sự trong lĩnh vực đề cử 3',
+                'description' => 'Giới thiệu chung',
+                'main_service' => 'Lĩnh vực ứng cử',
+                'main_market' => 'Thị trường chính'
             )
         );
 
-        foreach($data as $key => $extra_info){
+        foreach($data as $key => $company){
+            $extra_info = $this->information_model->fetch_company_by_id($company['id']);
+            $group = (array)json_decode($company['group']);
+            $groups = '';
+            if(!empty($group)){
+                foreach($group as $value){
+                    $groups .= (!empty($this->data['groups'][$value]) ? $this->data['groups'][$value] : '').',';
+                }
+            }
             $data_export[$key + 1] = array(
                 'company' => $extra_info['company'],
-                'name' => $extra_info['name'],
-                'service' => (is_array(json_decode($extra_info['service']))) ? implode(", ", (array)json_decode($extra_info['service'])) : '',
-                'functional' => $extra_info['functional'],
-                'process' => $extra_info['process'],
-                'security' => $extra_info['security'],
-                'positive' => $extra_info['positive'],
-                'compare' => $extra_info['compare'],
-                'income_2016' => $extra_info['income_2016'],
-                'income_2017' => $extra_info['income_2017'],
-                'area' => $extra_info['area'],
-                'open_date' => $extra_info['open_date'],
-                'price' => $extra_info['price'],
-                'customer' => $extra_info['customer'],
-                'after_sale' => $extra_info['after_sale'],
-                'team' => $extra_info['team'],
-                'award' => $extra_info['award']
+                'equity_2018_1' => $company['equity_1'],
+                'equity_2018_2' => $company['equity_percent_1'],
+                'equity_2019_1' => $company['equity_2'],
+                'equity_2019_2' => $company['equity_percent_2'],
+                'total_assets_2018_1' => $company['total_assets_1'],
+                'total_assets_2018_2' => $company['total_assets_percent_1'],
+                'total_assets_2019_1' => $company['total_assets_2'],
+                'total_assets_2019_2' => $company['total_assets_percent_2'],
+                'per_capita_income_2018_1' => $company['per_capita_income_1'],
+                'per_capita_income_2018_2' => $company['per_capita_income_percent_1'],
+                'per_capita_income_2019_1' => $company['per_capita_income_2'],
+                'per_capita_income_2019_2' => $company['per_capita_income_percent_2'],
+                'total_income_2018_1' => $company['total_income_1'],
+                'total_income_2018_2' => $company['total_income_percent_1'],
+                'total_income_2019_1' => $company['total_income_2'],
+                'total_income_2019_2' => $company['total_income_percent_2'],
+                'software_income_2018_1' => $company['software_income_1'],
+                'software_income_2018_2' => $company['software_income_percent_1'],
+                'software_income_2019_1' => $company['software_income_2'],
+                'software_income_2019_2' => $company['software_income_percent_2'],
+                'it_income_2018_1' => $company['it_income_1'],
+                'it_income_2018_2' => $company['it_income_percent_1'],
+                'it_income_2019_1' => $company['it_income_2'],
+                'it_income_2019_2' => $company['it_income_percent_2'],
+                'export_income_2018_1' => $company['export_income_1'],
+                'export_income_2018_2' => $company['export_income_percent_1'],
+                'export_income_2019_1' => $company['export_income_2'],
+                'export_income_2019_2' => $company['export_income_percent_2'],
+                'owner_equity_2018_1' => $company['owner_equity_1'],
+                'owner_equity_2018_2' => $company['owner_equity_percent_1'],
+                'owner_equity_2019_1' => $company['owner_equity_2'],
+                'owner_equity_2019_2' => $company['owner_equity_percent_2'],
+                'international_income_2018_1' => $company['international_income_1'],
+                'international_income_2018_2' => $company['international_income_percent_1'],
+                'international_income_2019_1' => $company['international_income_2'],
+                'international_income_2019_2' => $company['international_income_percent_2'],
+                'nomination_income_2018_1' => $company['nomination_income_1'],
+                'nomination_income_2018_2' => $company['nomination_income_percent_1'],
+                'nomination_income_2019_1' => $company['nomination_income_2'],
+                'nomination_income_2019_2' => $company['nomination_income_percent_2'],
+                'domestic_income_2018_1' => $company['domestic_income_1'],
+                'domestic_income_2018_2' => $company['domestic_income_percent_1'],
+                'domestic_income_2019_1' => $company['domestic_income_2'],
+                'domestic_income_2019_2' => $company['domestic_income_percent_2'],
+                'before_tax_profit_2018_1' => $company['before_tax_profit_1'],
+                'before_tax_profit_2018_2' => $company['before_tax_profit_percent_1'],
+                'before_tax_profit_2019_1' => $company['before_tax_profit_2'],
+                'before_tax_profit_2019_2' => $company['before_tax_profit_percent_2'],
+                'number_personnel_nominated_1' => $company['number_personnel_nominated_1'],
+                'number_personnel_nominated_2' => $company['number_personnel_nominated_2'],
+                'number_personnel_nominated_3' => $company['number_personnel_nominated_3'],
+                'description' => $wizard->toRichTextObject($company['overview']),
+                'main_service' => trim($groups,','),
+                'main_market' => implode(", ", (array)json_decode($company['main_market']))
             );
         }
-
         // read data to active sheet
-        $this->excel->getActiveSheet()->fromArray($data_export);
-
-        $filename='Danh_sach_san_pham_' . date("d-m-Y") . '.xls'; //save our workbook as this file name
-
-        header('Content-Type: application/vnd.ms-excel'); //mime type
-
-        header('Content-Disposition: attachment;filename="'.$filename.'"'); //tell browser what's the file name
-
-        header('Cache-Control: max-age=0'); //no cache
-
-        //save it to Excel5 format (excel 2003 .XLS file), change this to 'Excel2007' (and adjust the filename extension, also the header mime type)
-        //if you want to save it as .XLSX Excel 2007 format
-
-        $objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel5');
-
-        //force user to download the Excel file without writing it to server's HD
-        $objWriter->save('php://output');
+        $this->excel->getActiveSheet()->fromArray($data_export, NULL, 'A1');
+        $this->excel->getActiveSheet()->getStyle('A1:BC1')->getAlignment()->setWrapText(true); 
+        $this->excel->getActiveSheet()->getStyle('A1:BC1')->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
+        
+        
+        $filename='Danh_sach_doanh_nghiep_' . date("d-m-Y") . '.xlsx'; //save our workbook as this file name
+        
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="'.$filename.'"');
+        header('Cache-Control: max-age=0');
+        header('Cache-Control: max-age=1');
+        header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+        header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+        header('Cache-Control: cache, must-revalidate');
+        header('Pragma: public');
+        $writer = IOFactory::createWriter($this->excel, 'Xlsx');
+        $writer->save('php://output');
     }
     public function export_company_detail($id){
         //activate worksheet number 1
@@ -514,19 +557,103 @@ class Company extends Admin_Controller{
         // read data to active sheet
 
         $filename='Chi_tiet_doanh_nghiep_' . str_replace(' ', '-', $target_user['company']) . '_' . date("d-m-Y") . '.xls'; //save our workbook as this file name
+        
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="'.$filename.'"');
+        header('Cache-Control: max-age=0');
+        header('Cache-Control: max-age=1');
+        header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+        header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+        header('Cache-Control: cache, must-revalidate');
+        header('Pragma: public');
+        $writer = IOFactory::createWriter($this->excel, 'Xlsx');
+        $writer->save('php://output');
+        
+        // header('Content-Type: application/vnd.ms-excel'); //mime type
 
-        header('Content-Type: application/vnd.ms-excel'); //mime type
+        // header('Content-Disposition: attachment;filename="'.$filename.'"'); //tell browser what's the file name
 
-        header('Content-Disposition: attachment;filename="'.$filename.'"'); //tell browser what's the file name
+        // header('Cache-Control: max-age=0'); //no cache
 
-        header('Cache-Control: max-age=0'); //no cache
+        // //save it to Excel5 format (excel 2003 .XLS file), change this to 'Excel2007' (and adjust the filename extension, also the header mime type)
+        // //if you want to save it as .XLSX Excel 2007 format
 
-        //save it to Excel5 format (excel 2003 .XLS file), change this to 'Excel2007' (and adjust the filename extension, also the header mime type)
-        //if you want to save it as .XLSX Excel 2007 format
+        // $objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel5');
 
-        $objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel5');
-
-        //force user to download the Excel file without writing it to server's HD
-        $objWriter->save('php://output');
+        // //force user to download the Excel file without writing it to server's HD
+        // $objWriter->save('php://output');
     }
+
+    // BACKUP
+    // $data_export = array(
+    //     '0' => array(
+    //         'company' => 'Doanh nghiệp',
+    //         'phone' => 'Điện thoại',
+    //         'address' => 'Địa chỉ',
+    //         'website' => 'Website',
+    //         'legal_representative' => 'Tên người đại diện pháp luật',
+    //         'lp_position' => 'Chức danh',
+    //         'lp_email' => 'Email',
+    //         'lp_phone' => 'Di động',
+    //         'connector' => 'Tên người liên hệ với BTC',
+    //         'c_position' => 'Chức danh',
+    //         'c_email' => 'Email',
+    //         'c_phone' => 'Di động',
+    //         'link' => 'Link download PĐK của DN',
+    //         'equity_2018_1' => 'Vốn điều lệ năm 2018 số tuyệt đối (triệu VND)',
+    //         'equity_2018_2' => 'Vốn điều lệ năm 2018 so với năm trước (triệu VND)',
+    //         'equity_2019_1' => 'Vốn điều lệ năm 2019 số tuyệt đối (triệu VND)',
+    //         'equity_2019_2' => 'Vốn điều lệ năm 2019 so với năm trước (triệu VND)',
+    //         'total_assets_2018_1' => 'Tổng tài sản 2018 số tuyệt đối (triệu VNĐ)',
+    //         'total_assets_2018_2' => 'Tổng tài sản 2018 so với năm trước (triệu VNĐ)',
+    //         'total_assets_2019_1' => 'Tổng tài sản 2019 số tuyệt đối (triệu VNĐ)',
+    //         'total_assets_2019_2' => 'Tổng tài sản 2019 so với năm trước (triệu VNĐ)',
+    //         'per_capita_income_2018_1' => 'Bình quân doanh thu/đầu người 2018 số tuyệt đối (triệu VNĐ)',
+    //         'per_capita_income_2018_2' => 'Bình quân doanh thu/đầu người 2018 so với năm trước (triệu VNĐ)',
+    //         'per_capita_income_2019_1' => 'Bình quân doanh thu/đầu người 2019 số tuyệt đối (triệu VNĐ)',
+    //         'per_capita_income_2019_2' => 'Bình quân doanh thu/đầu người 2019 so với năm trước (triệu VNĐ)',
+    //         'total_income_2018_1' => 'Tổng doanh thu doanh nghiệp 2018 số tuyệt đối (triệu VNĐ)',
+    //         'total_income_2018_2' => 'Tổng doanh thu doanh nghiệp 2018 so với năm trước (triệu VNĐ)',
+    //         'total_income_2019_1' => 'Tổng doanh thu doanh nghiệp 2019 số tuyệt đối (triệu VNĐ)',
+    //         'total_income_2019_2' => 'Tổng doanh thu doanh nghiệp 2019 so với năm trước (triệu VNĐ)',
+    //         'software_income_2018_1' => 'Tổng doanh thu lĩnh vực phần mềm, giải pháp 2018 số tuyệt đối (triệu VNĐ)',
+    //         'software_income_2018_2' => 'Tổng doanh thu lĩnh vực phần mềm, giải pháp 2018 so với năm trước (triệu VNĐ)',
+    //         'software_income_2019_1' => 'Tổng doanh thu lĩnh vực phần mềm, giải pháp 2019 số tuyệt đối (triệu VNĐ)',
+    //         'software_income_2019_2' => 'Tổng doanh thu lĩnh vực phần mềm, giải pháp 2019 so với năm trước (triệu VNĐ)',
+    //         'it_income_2018_1' => 'Tổng doanh thu dịch vụ CNTT 2018 số tuyệt đối (triệu VNĐ)',
+    //         'it_income_2018_2' => 'Tổng doanh thu dịch vụ CNTT 2018 so với năm trước (triệu VNĐ)',
+    //         'it_income_2019_1' => 'Tổng doanh thu dịch vụ CNTT 2019 số tuyệt đối (triệu VNĐ)',
+    //         'it_income_2019_2' => 'Tổng doanh thu dịch vụ CNTT 2019 so với năm trước (triệu VNĐ)',
+    //         'export_income_2018_1' => 'Tổng doanh thu xuất khẩu 2018 số tuyệt đối (USD)',
+    //         'export_income_2018_2' => 'Tổng doanh thu xuất khẩu 2018 so với năm trước (USD)',
+    //         'export_income_2019_1' => 'Tổng doanh thu xuất khẩu 2019 số tuyệt đối (USD)',
+    //         'export_income_2019_2' => 'Tổng doanh thu xuất khẩu 2019 so với năm trước (USD)',
+    //         'owner_equity_2018_1' => 'Tổng doanh thu lĩnh vực đề cử 1 2018 số tuyệt đối',
+    //         'owner_equity_2018_2' => 'Tổng doanh thu lĩnh vực đề cử 1 2018 so với năm trước',
+    //         'owner_equity_2019_1' => 'Tổng doanh thu lĩnh vực đề cử 1 2019 số tuyệt đối',
+    //         'owner_equity_2019_2' => 'Tổng doanh thu lĩnh vực đề cử 1 2019 so với năm trước',
+    //         'international_income_2018_1' => 'Tổng doanh thu lĩnh vực đề cử 2 2018 số tuyệt đối',
+    //         'international_income_2018_2' => 'Tổng doanh thu lĩnh vực đề cử 2 2018 so với năm trước',
+    //         'international_income_2019_1' => 'Tổng doanh thu lĩnh vực đề cử 2 2019 số tuyệt đối',
+    //         'international_income_2019_2' => 'Tổng doanh thu lĩnh vực đề cử 2 2019 so với năm trước',
+    //         'nomination_income_2018_1' => 'Tổng doanh thu lĩnh vực đề cử 3 2018 số tuyệt đối',
+    //         'nomination_income_2018_2' => 'Tổng doanh thu lĩnh vực đề cử 3 2018 so với năm trước',
+    //         'nomination_income_2019_1' => 'Tổng doanh thu lĩnh vực đề cử 3 2019 số tuyệt đối',
+    //         'nomination_income_2019_2' => 'Tổng doanh thu lĩnh vực đề cử 3 2019 so với năm trước',
+    //         'domestic_income_2018_1' => 'Tổng số lao động của doanh nghiệp 2018 số tuyệt đối',
+    //         'domestic_income_2018_2' => 'Tổng số lao động của doanh nghiệp 2018 so với năm trước',
+    //         'domestic_income_2019_1' => 'Tổng số lao động của doanh nghiệp 2019 số tuyệt đối',
+    //         'domestic_income_2019_2' => 'Tổng số lao động của doanh nghiệp 2019 so với năm trước',
+    //         'before_tax_profit_2018_1' => 'Tổng số lập trình viên 2018 số tuyệt đối',
+    //         'before_tax_profit_2018_2' => 'Tổng số lập trình viên 2018 so với năm trước',
+    //         'before_tax_profit_2019_1' => 'Tổng số lập trình viên 2019 số tuyệt đối',
+    //         'before_tax_profit_2019_2' => 'Tổng số lập trình viên 2019 so với năm trước',
+    //         'number_personnel_nominated_1' => 'Số lượng nhân sự trong lĩnh vực đề cử 1',
+    //         'number_personnel_nominated_2' => 'Số lượng nhân sự trong lĩnh vực đề cử 2',
+    //         'number_personnel_nominated_3' => 'Số lượng nhân sự trong lĩnh vực đề cử 3',
+    //         'description' => 'Giới thiệu chung',
+    //         'main_service' => 'Lĩnh vực ứng cử',
+    //         'main_market' => 'Thị trường chính'
+    //     )
+    // );
 }

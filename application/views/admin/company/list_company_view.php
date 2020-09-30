@@ -34,7 +34,7 @@
 <div class="content-wrapper" style="min-height: 916px;">
     <div class="box-body pad table-responsive">
         <h3>Thông tin tổng hợp</h3><a type="button" href="<?php echo site_url('admin/company/export'); ?>" class="btn btn-success">EXPORT DATA THÔNG TIN CƠ BẢN</a>
-        <a type="button" href="<?php echo site_url('admin/company/export_product'); ?>" class="btn btn-success">EXPORT DATA LĨNH VỰC ỨNG CỬ</a>
+        <a type="button" href="<?php echo site_url('admin/company/export_company'); ?>" class="btn btn-success">EXPORT DATA LĨNH VỰC ỨNG CỬ</a>
     </div>
 
     <section class="content">

@@ -188,14 +188,14 @@
         <div class="modal-content">
             <div class="modal-header" style="background-color: #2a2b41">
 <!--                <button type="button" class="close" data-dismiss="modal">&times;</button>-->
-                <h4 style="color:white;">Cảm ơn Quý Công ty đã đăng ký tham gia Chương trình 50+10 Doanh nghiệp CNTT hàng đầu Việt Nam <?php echo !empty($eventYear) ? $eventYear : ''; ?>.</h4>
+                <h4 style="color:white;">Cảm ơn Quý Công ty đã đăng ký tham gia Chương trình Top 10 Doanh nghiệp CNTT Việt Nam 2020. <?php echo !empty($eventYear) ? $eventYear : ''; ?>.</h4>
             </div>
             <div class="modal-body">
-                <h4 style="font-weight:bold !important;">Để hoàn tất hồ sơ, vui lòng gửi lại BTC các tài liệu sau qua đường bưu điện:</h4>
-                <h4> 1. File Phiếu đăng ký theo mẫu đã tải (có dấu và chữ ký của lãnh đạo công ty)</h4>
-                <h4> 2. Giấy phép đăng ký kinh doanh (bản photo)</h4>
-                <h4> 3. Bằng khen, chứng chỉ (nếu có)</h4>
-                <h4 style="text-decoration: underline !important;">Địa chỉ gửi: </h4>
+                <h4 style="font-weight:bold !important;">Để hoàn tất hồ sơ, vui lòng upload những tài liệu sau lên hệ thống:</h4>
+                <h4> 1. Tải Phiếu đăng ký theo mẫu tại trang "Thông tin cơ bản"</h4>
+                <h4> 2. Upload lại phiếu đăng ký (đã tải + chữ ký điện tử) lên hệ thống</h4>
+                <h4> 3. Giấy đăng ký kinh doanh Chứng nhận; Bằng khen, chứng chỉ (nếu có)</h4>
+                <h4 style="text-decoration: underline !important;">Hoặc gửi bản cứng về địa chỉ: </h4>
                 <h4 style="font-weight:bold !important;"> Mr. Nguyễn Thế Anh</h4>
                 <h4 style="font-weight:bold !important;">Hiệp hội Phần mềm và Dịch vụ CNTT Việt Nam</h4>
                 <h4 style="font-weight:bold !important;">Tầng 11, tòa nhà Cung Trí thức thành phố, Số 1 Tôn Thất Thuyết, Cầu Giấy, Hà Nội</h4>
