@@ -137,7 +137,8 @@ class New_rating extends Member_Controller{
                 'comment' => $comment,
                 'rating' => json_encode($request),
                 'total' => $total,
-                'is_submit' => 1
+                'is_submit' => 1,
+                'year' => $this->data['eventYear']
             );
             $insert = $this->new_rating_model->insert('new_rating', $data);
             if($insert){
@@ -196,7 +197,8 @@ class New_rating extends Member_Controller{
                     'comment' => $comment,
                     'rating' => json_encode($request),
                     'total' => $total,
-                    'is_submit' => 0
+                    'is_submit' => 0,
+                    'year' => $this->data['eventYear']
                 );
                 $insert = $this->new_rating_model->insert('new_rating', $data);
                 if($insert){
