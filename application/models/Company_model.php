@@ -7,7 +7,7 @@ class Company_model extends CI_Model {
     }
 
     public function get_list_company_by_id($company_ids){
-        $query = $this->db->select('company.*, users.id as userId,users.company as companyName, users.username as companyUsername')
+        $query = $this->db->select('*, users.company as companyName, users.username as companyUsername')
             ->from('company')
             ->join('users', 'users.id = company.client_id')
             ->where_in('company.id', $company_ids);

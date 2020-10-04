@@ -40,17 +40,8 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                                     <td><h4><?php echo $company['company']; ?></h4></td>
                                 </tr>
                                 <tr>
-                                    <?php
-                                    $main_services = array(
-                                        1 => 'Các sản phẩm, giải pháp phần mềm tiêu biểu, được bình xét theo 24 lĩnh vực ứng dụng chuyên ngành',
-                                        2 => 'Các sản phẩm, giải pháp ứng dụng công nghệ 4.0',
-                                        3 => 'Các sản phẩm, giải pháp phần mềm mới',
-                                        4 => 'Các sản phẩm, giải pháp của doanh nghiệp khởi nghiệp',
-                                        5 => 'Các dịch vụ CNTT'
-                                    );
-                                    ?>
-                                    <td><h4>Nhóm sản phẩm </h4></td>
-                                    <td><h4><?php echo $main_service . ': ' . $main_services[$main_service]; ?></h4></td>
+                                    <td><h4>Nhóm lĩnh vực </h4></td>
+                                    <td><h4><?php echo $this->config->item('development/config_information')['groups'][$detail['name']]; ?></h4></td>
                                 </tr>
                             </table>
                         </div>
@@ -711,4 +702,3 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
         e.preventDefault();
     })
 </script>
-

@@ -206,6 +206,7 @@ class Company extends Admin_Controller{
         $data_export = array(
             '0' => array(
                 'company' => 'Doanh nghiệp',
+                'certificate_date' => 'Ngày thành lập',
                 'phone' => 'Điện thoại',
                 'address' => 'Địa chỉ',
                 'website' => 'Website',
@@ -223,18 +224,11 @@ class Company extends Admin_Controller{
 
         foreach($data as $key => $company){
             $extra_info = $this->information_model->fetch_company_by_id($company['id']);
-            $group = (array)json_decode($company['group']);
-            $groups = '';
-            if(!empty($group)){
-                foreach($group as $key => $value){
-                    $groups .= (!empty($this->data['groups'][$value]) ? $this->data['groups'][$value] : '').',';
-                }
-            }
-                
             $data_export[$key + 1] = array(
                 'company' => $extra_info['company'],
+                'certificate_date' => $extra_info['certificate_date'],
                 'phone' => $extra_info['phone'],
-                'address' => $extra_info['address'],
+                'address' => $extra_info['headquarters'],
                 'website' => $extra_info['website'],
                 'legal_representative' => $extra_info['legal_representative'],
                 'lp_position' => $extra_info['lp_position'],
@@ -247,11 +241,10 @@ class Company extends Admin_Controller{
                 'link' => $extra_info['link']
             );
         }
-        
         // read data to active sheet
         $this->excel->getActiveSheet()->fromArray($data_export, NULL, 'A1');
 
-        $filename='Danh_sach_doanh_nghiep_' . date("d-m-Y") . '.xlsx'; //save our workbook as this file name
+        $filename='Thong_tin_co_ban_doanh_nghiep_' . date("d-m-Y") . '.xlsx'; //save our workbook as this file name
         
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header('Content-Disposition: attachment;filename="'.$filename.'"');
@@ -412,7 +405,7 @@ class Company extends Admin_Controller{
         $this->excel->getActiveSheet()->getStyle('A1:BC1')->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
         
         
-        $filename='Danh_sach_doanh_nghiep_' . date("d-m-Y") . '.xlsx'; //save our workbook as this file name
+        $filename='Thong_tin_doanh_nghiep_' . date("d-m-Y") . '.xlsx'; //save our workbook as this file name
         
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header('Content-Disposition: attachment;filename="'.$filename.'"');
@@ -425,6 +418,196 @@ class Company extends Admin_Controller{
         $writer = IOFactory::createWriter($this->excel, 'Xlsx');
         $writer->save('php://output');
     }
+    
+    public function export_detail($identity, $year){
+        $company = $this->information_model->fetch_company_by_identity_and_year('company', $identity, $year);
+        
+        ob_start();
+        //activate worksheet number 1
+        $this->excel->setActiveSheetIndex(0);
+        //name the worksheet
+        $this->excel->getActiveSheet()->setTitle('Danh sach doanh nghiep');
+
+        // load database
+        $this->load->database();
+
+        // get all users in array formate
+        $data = $this->information_model->get_all_for_export('company');
+        
+        $wizard = new \PhpOffice\PhpSpreadsheet\Helper\Html();
+        $data_export = array(
+            '0' => array(
+                'company' => 'Doanh nghiệp',
+                'phone' => 'Điện thoại',
+                'address' => 'Địa chỉ',
+                'website' => 'Website',
+                'legal_representative' => 'Tên người đại diện pháp luật',
+                'lp_position' => 'Chức danh',
+                'lp_email' => 'Email',
+                'lp_phone' => 'Di động',
+                'connector' => 'Tên người liên hệ với BTC',
+                'c_position' => 'Chức danh',
+                'c_email' => 'Email',
+                'c_phone' => 'Di động',
+                'link' => 'Link download PĐK của DN',
+                'equity_2018_1' => 'Vốn điều lệ ' . ($this->data['eventYear'] - 2) . ' số tuyệt đối (triệu VND)',
+                'equity_2018_2' => 'Vốn điều lệ ' . ($this->data['eventYear'] - 2) . ' so với năm trước (triệu VND)',
+                'equity_2019_1' => 'Vốn điều lệ ' . ($this->data['eventYear'] - 1) . ' số tuyệt đối (triệu VND)',
+                'equity_2019_2' => 'Vốn điều lệ ' . ($this->data['eventYear'] - 1) . ' so với năm trước (triệu VND)',
+                'total_assets_2018_1' => 'Tổng tài sản ' . ($this->data['eventYear'] - 2) . ' số tuyệt đối (triệu VNĐ)',
+                'total_assets_2018_2' => 'Tổng tài sản ' . ($this->data['eventYear'] - 2) . ' so với năm trước (triệu VNĐ)',
+                'total_assets_2019_1' => 'Tổng tài sản ' . ($this->data['eventYear'] - 1) . ' số tuyệt đối (triệu VNĐ)',
+                'total_assets_2019_2' => 'Tổng tài sản ' . ($this->data['eventYear'] - 1) . ' so với năm trước (triệu VNĐ)',
+                'per_capita_income_2018_1' => 'Bình quân doanh thu/đầu người ' . ($this->data['eventYear'] - 2) . ' số tuyệt đối (triệu VNĐ)',
+                'per_capita_income_2018_2' => 'Bình quân doanh thu/đầu người ' . ($this->data['eventYear'] - 2) . ' so với năm trước (triệu VNĐ)',
+                'per_capita_income_2019_1' => 'Bình quân doanh thu/đầu người ' . ($this->data['eventYear'] - 1) . ' số tuyệt đối (triệu VNĐ)',
+                'per_capita_income_2019_2' => 'Bình quân doanh thu/đầu người ' . ($this->data['eventYear'] - 1) . ' so với năm trước (triệu VNĐ)',
+                'total_income_2018_1' => 'Tổng doanh thu doanh nghiệp ' . ($this->data['eventYear'] - 2) . ' số tuyệt đối (triệu VNĐ)',
+                'total_income_2018_2' => 'Tổng doanh thu doanh nghiệp ' . ($this->data['eventYear'] - 2) . ' so với năm trước (triệu VNĐ)',
+                'total_income_2019_1' => 'Tổng doanh thu doanh nghiệp ' . ($this->data['eventYear'] - 1) . ' số tuyệt đối (triệu VNĐ)',
+                'total_income_2019_2' => 'Tổng doanh thu doanh nghiệp ' . ($this->data['eventYear'] - 1) . ' so với năm trước (triệu VNĐ)',
+                'software_income_2018_1' => 'Tổng doanh thu lĩnh vực phần mềm, giải pháp ' . ($this->data['eventYear'] - 2) . ' số tuyệt đối (triệu VNĐ)',
+                'software_income_2018_2' => 'Tổng doanh thu lĩnh vực phần mềm, giải pháp ' . ($this->data['eventYear'] - 2) . ' so với năm trước (triệu VNĐ)',
+                'software_income_2019_1' => 'Tổng doanh thu lĩnh vực phần mềm, giải pháp ' . ($this->data['eventYear'] - 1) . ' số tuyệt đối (triệu VNĐ)',
+                'software_income_2019_2' => 'Tổng doanh thu lĩnh vực phần mềm, giải pháp ' . ($this->data['eventYear'] - 1) . ' so với năm trước (triệu VNĐ)',
+                'it_income_2018_1' => 'Tổng doanh thu dịch vụ CNTT ' . ($this->data['eventYear'] - 2) . ' số tuyệt đối (triệu VNĐ)',
+                'it_income_2018_2' => 'Tổng doanh thu dịch vụ CNTT ' . ($this->data['eventYear'] - 2) . ' so với năm trước (triệu VNĐ)',
+                'it_income_2019_1' => 'Tổng doanh thu dịch vụ CNTT ' . ($this->data['eventYear'] - 1) . ' số tuyệt đối (triệu VNĐ)',
+                'it_income_2019_2' => 'Tổng doanh thu dịch vụ CNTT ' . ($this->data['eventYear'] - 1) . ' so với năm trước (triệu VNĐ)',
+                'export_income_2018_1' => 'Tổng doanh thu xuất khẩu ' . ($this->data['eventYear'] - 2) . ' số tuyệt đối (USD)',
+                'export_income_2018_2' => 'Tổng doanh thu xuất khẩu ' . ($this->data['eventYear'] - 2) . ' so với năm trước (USD)',
+                'export_income_2019_1' => 'Tổng doanh thu xuất khẩu ' . ($this->data['eventYear'] - 1) . ' số tuyệt đối (USD)',
+                'export_income_2019_2' => 'Tổng doanh thu xuất khẩu ' . ($this->data['eventYear'] - 1) . ' so với năm trước (USD)',
+                'owner_equity_2018_1' => 'Tổng doanh thu lĩnh vực đề cử 1 ' . ($this->data['eventYear'] - 2) . ' số tuyệt đối',
+                'owner_equity_2018_2' => 'Tổng doanh thu lĩnh vực đề cử 1 ' . ($this->data['eventYear'] - 2) . ' so với năm trước',
+                'owner_equity_2019_1' => 'Tổng doanh thu lĩnh vực đề cử 1 ' . ($this->data['eventYear'] - 1) . ' số tuyệt đối',
+                'owner_equity_2019_2' => 'Tổng doanh thu lĩnh vực đề cử 1 ' . ($this->data['eventYear'] - 1) . ' so với năm trước',
+                'international_income_2018_1' => 'Tổng doanh thu lĩnh vực đề cử 2 ' . ($this->data['eventYear'] - 2) . ' số tuyệt đối',
+                'international_income_2018_2' => 'Tổng doanh thu lĩnh vực đề cử 2 ' . ($this->data['eventYear'] - 2) . ' so với năm trước',
+                'international_income_2019_1' => 'Tổng doanh thu lĩnh vực đề cử 2 ' . ($this->data['eventYear'] - 1) . ' số tuyệt đối',
+                'international_income_2019_2' => 'Tổng doanh thu lĩnh vực đề cử 2 ' . ($this->data['eventYear'] - 1) . ' so với năm trước',
+                'nomination_income_2018_1' => 'Tổng doanh thu lĩnh vực đề cử 3 ' . ($this->data['eventYear'] - 2) . ' số tuyệt đối',
+                'nomination_income_2018_2' => 'Tổng doanh thu lĩnh vực đề cử 3 ' . ($this->data['eventYear'] - 2) . ' so với năm trước',
+                'nomination_income_2019_1' => 'Tổng doanh thu lĩnh vực đề cử 3 ' . ($this->data['eventYear'] - 1) . ' số tuyệt đối',
+                'nomination_income_2019_2' => 'Tổng doanh thu lĩnh vực đề cử 3 ' . ($this->data['eventYear'] - 1) . ' so với năm trước',
+                'domestic_income_2018_1' => 'Tổng số lao động của doanh nghiệp ' . ($this->data['eventYear'] - 2) . ' số tuyệt đối',
+                'domestic_income_2018_2' => 'Tổng số lao động của doanh nghiệp ' . ($this->data['eventYear'] - 2) . ' so với năm trước',
+                'domestic_income_2019_1' => 'Tổng số lao động của doanh nghiệp ' . ($this->data['eventYear'] - 1) . ' số tuyệt đối',
+                'domestic_income_2019_2' => 'Tổng số lao động của doanh nghiệp ' . ($this->data['eventYear'] - 1) . ' so với năm trước',
+                'before_tax_profit_2018_1' => 'Tổng số lập trình viên ' . ($this->data['eventYear'] - 2) . ' số tuyệt đối',
+                'before_tax_profit_2018_2' => 'Tổng số lập trình viên ' . ($this->data['eventYear'] - 2) . ' so với năm trước',
+                'before_tax_profit_2019_1' => 'Tổng số lập trình viên ' . ($this->data['eventYear'] - 1) . ' số tuyệt đối',
+                'before_tax_profit_2019_2' => 'Tổng số lập trình viên ' . ($this->data['eventYear'] - 1) . ' so với năm trước',
+                'number_personnel_nominated_1' => 'Số lượng nhân sự trong lĩnh vực đề cử 1',
+                'number_personnel_nominated_2' => 'Số lượng nhân sự trong lĩnh vực đề cử 2',
+                'number_personnel_nominated_3' => 'Số lượng nhân sự trong lĩnh vực đề cử 3',
+                'description' => 'Giới thiệu chung',
+                'main_service' => 'Lĩnh vực ứng cử',
+                'main_market' => 'Thị trường chính'
+            )
+        );
+        
+        $extra_info = $this->information_model->fetch_company_by_id($company['id']);
+        $group = (array)json_decode($company['group']);
+        $groups = '';
+        if(!empty($group)){
+            foreach($group as $value){
+                $groups .= (!empty($this->data['groups'][$value]) ? $this->data['groups'][$value] : '').',';
+            }
+        }
+        $data_export[1] = array(
+            'company' => $extra_info['company'],
+            'phone' => $extra_info['phone'],
+            'address' => $extra_info['headquarters'],
+            'website' => $extra_info['website'],
+            'legal_representative' => $extra_info['legal_representative'],
+            'lp_position' => $extra_info['lp_position'],
+            'lp_email' => $extra_info['lp_email'],
+            'lp_phone' => $extra_info['lp_phone'],
+            'connector' => $extra_info['connector'],
+            'c_position' => $extra_info['c_position'],
+            'c_email' => $extra_info['c_email'],
+            'c_phone' => $extra_info['c_phone'],
+            'link' => $extra_info['link'],
+            'equity_2018_1' => $company['equity_1'],
+            'equity_2018_2' => $company['equity_percent_1'],
+            'equity_2019_1' => $company['equity_2'],
+            'equity_2019_2' => $company['equity_percent_2'],
+            'total_assets_2018_1' => $company['total_assets_1'],
+            'total_assets_2018_2' => $company['total_assets_percent_1'],
+            'total_assets_2019_1' => $company['total_assets_2'],
+            'total_assets_2019_2' => $company['total_assets_percent_2'],
+            'per_capita_income_2018_1' => $company['per_capita_income_1'],
+            'per_capita_income_2018_2' => $company['per_capita_income_percent_1'],
+            'per_capita_income_2019_1' => $company['per_capita_income_2'],
+            'per_capita_income_2019_2' => $company['per_capita_income_percent_2'],
+            'total_income_2018_1' => $company['total_income_1'],
+            'total_income_2018_2' => $company['total_income_percent_1'],
+            'total_income_2019_1' => $company['total_income_2'],
+            'total_income_2019_2' => $company['total_income_percent_2'],
+            'software_income_2018_1' => $company['software_income_1'],
+            'software_income_2018_2' => $company['software_income_percent_1'],
+            'software_income_2019_1' => $company['software_income_2'],
+            'software_income_2019_2' => $company['software_income_percent_2'],
+            'it_income_2018_1' => $company['it_income_1'],
+            'it_income_2018_2' => $company['it_income_percent_1'],
+            'it_income_2019_1' => $company['it_income_2'],
+            'it_income_2019_2' => $company['it_income_percent_2'],
+            'export_income_2018_1' => $company['export_income_1'],
+            'export_income_2018_2' => $company['export_income_percent_1'],
+            'export_income_2019_1' => $company['export_income_2'],
+            'export_income_2019_2' => $company['export_income_percent_2'],
+            'owner_equity_2018_1' => $company['owner_equity_1'],
+            'owner_equity_2018_2' => $company['owner_equity_percent_1'],
+            'owner_equity_2019_1' => $company['owner_equity_2'],
+            'owner_equity_2019_2' => $company['owner_equity_percent_2'],
+            'international_income_2018_1' => $company['international_income_1'],
+            'international_income_2018_2' => $company['international_income_percent_1'],
+            'international_income_2019_1' => $company['international_income_2'],
+            'international_income_2019_2' => $company['international_income_percent_2'],
+            'nomination_income_2018_1' => $company['nomination_income_1'],
+            'nomination_income_2018_2' => $company['nomination_income_percent_1'],
+            'nomination_income_2019_1' => $company['nomination_income_2'],
+            'nomination_income_2019_2' => $company['nomination_income_percent_2'],
+            'domestic_income_2018_1' => $company['domestic_income_1'],
+            'domestic_income_2018_2' => $company['domestic_income_percent_1'],
+            'domestic_income_2019_1' => $company['domestic_income_2'],
+            'domestic_income_2019_2' => $company['domestic_income_percent_2'],
+            'before_tax_profit_2018_1' => $company['before_tax_profit_1'],
+            'before_tax_profit_2018_2' => $company['before_tax_profit_percent_1'],
+            'before_tax_profit_2019_1' => $company['before_tax_profit_2'],
+            'before_tax_profit_2019_2' => $company['before_tax_profit_percent_2'],
+            'number_personnel_nominated_1' => $company['number_personnel_nominated_1'],
+            'number_personnel_nominated_2' => $company['number_personnel_nominated_2'],
+            'number_personnel_nominated_3' => $company['number_personnel_nominated_3'],
+            'description' => $wizard->toRichTextObject($company['overview']),
+            'main_service' => trim($groups,','),
+            'main_market' => implode(", ", (array)json_decode($company['main_market']))
+        );
+        // echo '<pre>';
+        // print_r($data_export);die;
+        
+        // read data to active sheet
+        $this->excel->getActiveSheet()->fromArray($data_export, NULL, 'A1');
+        $this->excel->getActiveSheet()->getStyle('A1:BO1')->getAlignment()->setWrapText(true); 
+        $this->excel->getActiveSheet()->getStyle('A1:BO1')->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
+        
+        
+        $filename= $extra_info['company'] . '_' . date("d-m-Y") . '.xlsx'; //save our workbook as this file name
+        
+        header('Content-Type: appl . ication/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="'.$filename.'"');
+        header('Cache-Control: max-age=0');
+        header('Cache-Control: max-age=1');
+        header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+        header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+        header('Cache-Control: cache, must-revalidate');
+        header('Pragma: public');
+        $writer = IOFactory::createWriter($this->excel, 'Xlsx');
+        $writer->save('php://output');
+    }
+    
+    
     public function export_company_detail($id){
         //activate worksheet number 1
 
