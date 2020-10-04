@@ -25,15 +25,13 @@ class Team extends Admin_Controller{
         $this->data['companys'] = $this->information_model->fetch_all_company_pagination();
 
         $companies = $this->information_model->get_all_company_by_year($this->data['eventYear']);
+        $products = $this->information_model->get_product($this->data['eventYear']);
         if ($companies) {
             foreach ($companies as $key => $value) {
                 $user = $this->users_model->fetch_by_id($value['client_id']);
                 $companies[$key]['company'] = $user['company'];
             }
         }
-        $this->data['all_companies'] = $companies;
-
-
 
 
 	    $products = $this->information_model->get_product();
@@ -43,6 +41,11 @@ class Team extends Admin_Controller{
                 $products[$key]['company'] = $user['company'];
             }
         }
+        // echo '<pre>';
+        // print_r($teams);
+        // echo '<pre>';
+        // print_r($products);die;
+        $this->data['all_companies'] = $companies;
         $this->data['products'] = $products;
         $this->data['teams'] = $teams;
         $this->render('admin/team/list_team_view');
@@ -51,7 +54,7 @@ class Team extends Admin_Controller{
 	public function create(){
 	    $name = $this->input->get('name');
 
-        $insert = $this->team_model->insert('team', array('name' => $name));
+        $insert = $this->team_model->insert('team', array('name' => $name, 'year' => $this->data['eventYear']));
         if($insert){
             return $this->output->set_status_header(200)
                 ->set_output(json_encode(array('name' => $name)));
@@ -154,22 +157,23 @@ class Team extends Admin_Controller{
 
     public function add_product(){
         $team_id = $this->input->get('team_id');
-        $client_id = $this->input->get('client_id');
-
-        $companyInfo = $this->information_model->fetch_company_by_client_id_and_year('company', $client_id, $this->data['eventYear']);
+        $product_id = $this->input->get('product_id');
+        $company_id = $this->input->get('company_id');
 
         $team = $this->team_model->fetch_by_id('team', $team_id);
-        $string_team_company = $team['company_id'];
-        $team_company = explode(',', $team['company_id']);
+        $string_team_products = $team['product_id'];
+        $string_team_companies = $team['company_id'];
+        $team_products = explode(',', $team['product_id']);
 
-        if($team['company_id'] == ''){
-            $update = $this->team_model->update('team', $team_id, array('company_id' => ',' . $companyInfo['id'] . ','));
+        if($team['product_id'] == ''){
+            $update = $this->team_model->update('team', $team_id, array('product_id' => ',' . $product_id . ',', 'company_id' => ',' . $company_id . ','));
         }else{
-            if(in_array($companyInfo['id'], $team_company)){
+            if(in_array($product_id, $team_products)){
                 $update = false;
             }else{
-                $string_team_company .= $companyInfo['id'] . ',';
-                $update = $this->team_model->update('team', $team_id, array('company_id' => $string_team_company));
+                $string_team_products .= $product_id . ',';
+                $string_team_companies .= $company_id . ',';
+                $update = $this->team_model->update('team', $team_id, array('product_id' => $string_team_products, 'company_id' => $string_team_companies));
             }
         }
         if($update){
@@ -177,7 +181,7 @@ class Team extends Admin_Controller{
                 ->set_output(json_encode(array('name' => $team['name'])));
         }
         return $this->output->set_status_header(200)
-            ->set_output(json_encode(array('message' => 'Có lỗi khi chọn doanh nghiệp hoặc doanh nghiệp đã tồn tại trong nhóm')));
+            ->set_output(json_encode(array('message' => 'Có lỗi khi chọn lĩnh vực hoặc lĩnh vực đã tồn tại trong nhóm')));
     }
 
     public function remove_team_product(){

@@ -2956,6 +2956,7 @@ class Information extends Client_Controller {
                 $data_insert[] = array(
                     'client_id' => $this->data['user']->id,
                     'name' => $value,
+                    'year' => $this->data['eventYear'],
                     'information_id' => $this->data['user']->information_id,
                     'identity' => $this->data['user']->username,
                     'created_at' => $this->author_info['created_at'],

@@ -101,6 +101,7 @@
                                         <td style="text-align: center;">
                                             <a href="<?php echo base_url('admin/company/basic/' . $value['identity']) ?>" title="Thông tin cơ bản"> <i class="fa fa-info-circle" aria-hidden="true"></i></a>
                                             <a href="<?php echo base_url('admin/company/info/' . $value['identity'] . '/' . $year) ?>" title="Thông tin lĩnh vực ứng cử"> <i class="fa fa-file" aria-hidden="true"></i></a>
+                                            <a href="<?php echo base_url('admin/company/export_detail/' . $value['identity'] . '/' . $year) ?>" title="Export"> <i class="fa fa-download" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>

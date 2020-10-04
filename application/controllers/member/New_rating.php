@@ -54,6 +54,7 @@ class New_rating extends Member_Controller{
     public function index($product_id=''){
         $id = $this->input->get('id');
         $main_service = $this->input->get('main_service');
+        // var_dump(empty($main_service));die;
         if(empty($main_service)){
             $this->session->set_flashdata('main_service_message', 'Sản phẩm bạn vừa chọn chưa được đặt lĩnh vực chính');
             redirect('member/');
