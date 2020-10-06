@@ -419,17 +419,13 @@ class Information_model extends CI_Model {
     }
 
     public function fetch_all_company_pagination($limit = NULL, $start = NULL) {
-        // $where = array();
-        // if ($this->input->get('group_id') >= 0 && $this->input->get('group_id') < 3 && is_numeric($this->input->get('group_id'))) {
-        //     $where['group'] = $this->input->get('group_id');
-        // }elseif($this->input->get('group_id') == 99 && is_numeric($this->input->get('group_id'))){
-        //     $where['group10'] = $this->input->get('group_id');
-        // }
         $this->db->select('company.*, users.company as company, status.is_final as final');
         $this->db->from('company');
         $this->db->join('users', 'users.id = company.client_id');
         $this->db->join('status', 'status.client_id = company.client_id');
+        //// HARD CODE ????? ////////////////////////
         $this->db->where('company.year', '2020');
+        //// HARD CODE ????? ////////////////////////
         $this->db->limit($limit, $start);
         $this->db->order_by("company.id", "desc");
 

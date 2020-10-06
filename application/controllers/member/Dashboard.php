@@ -110,8 +110,6 @@ class Dashboard extends Member_Controller {
 
     public function get_personal_products($user_id){
         $list_team = $this->team_model->get_current_user_team($user_id);
-        // echo '<pre>';
-        // print_r($list_team);die;
         if ( !empty($list_team) ) {
             foreach($list_team as $key => $value){
                 $output = array();
@@ -124,8 +122,6 @@ class Dashboard extends Member_Controller {
                     }
                     if($product_ids){
                         $products = $this->information_model->get_personal_products($product_ids);
-                        // echo '<pre>';
-                        // print_r($products);die;
                         if ($products) {
                             foreach($product_ids as $k => $val){
                                 foreach ($products as $it => $item) {
