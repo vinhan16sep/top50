@@ -41,10 +41,6 @@ class Team extends Admin_Controller{
                 $products[$key]['company'] = $user['company'];
             }
         }
-        // echo '<pre>';
-        // print_r($teams);
-        // echo '<pre>';
-        // print_r($products);die;
         $this->data['all_companies'] = $companies;
         $this->data['products'] = $products;
         $this->data['teams'] = $teams;

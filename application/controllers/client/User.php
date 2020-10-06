@@ -93,7 +93,7 @@ class User extends MY_Controller {
             );
             $result = $this->ion_auth->register($username, $password, $email, $additional_data, $group_ids);
             
-            // if($result){
+            if($result){
                 $this->load->model('status_model');
                 $status = array(
                     'client_id' => $result,
@@ -104,7 +104,7 @@ class User extends MY_Controller {
                     'year' => $this->data['eventYear']
                 );
                 $this->status_model->insert('status', $status);
-            // }
+            }
             $detail = $this->users_model->fetch_by_id($result);
             if($result){
                 $this->session->set_flashdata('register_success', 'Cảm ơn Qúy Công ty đã đăng ký tham gia Chương trình Top 10 Doanh nghiệp CNTT Việt Nam '.date('Y').'. Vui lòng truy cập email để kích hoạt tài khoản và khai hồ sơ.');
