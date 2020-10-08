@@ -244,6 +244,8 @@
 
                 <input type="radio" id="startup" name="selected_type" value="4">
                 <label for="startup">Startup</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" id="other" name="selected_type" value="14" checked="checked">
+                <label for="other">Đào tạo</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="radio" id="other" name="selected_type" value="99" checked="checked">
                 <label for="other">Khác</label>
                 <br><br>
@@ -416,6 +418,29 @@
 
     $('input[name="selected_type"]').change(function(){
         $('#selectClient').val(''); 
+        let selected_type = $('input[name="selected_type"]:checked').val();
+        $.ajax({
+            method: "GET",
+            url: "<?php echo base_url('admin/team/get_companies'); ?>",
+            data: {
+                selected_type: selected_type
+            },
+            success: function(result){
+                console.log(result);
+                let data = JSON.parse(result);
+                html = '';
+                if (data.companies.length > 0) {
+                    html += '<option value="">-- Chọn doanh nghiệp --</option>';
+                    $.each(data.companies, function(index, item){
+                        html += '<option data-clientid="' + item.client_id + '" value="' + item.id + '">' + item.company + '</option>';
+                    })
+                }else{
+                    $("#selectClient").prop('disabled', true);
+                    html += '<option value="">Không có DN chọn lĩnh vực này</option>';
+                }
+                $('#selectClient').html(html);
+            }
+        });
 
         html = '<option value="">-- Chọn lĩnh vực --</option>';
         $('#selectProducts').html(html);
@@ -434,12 +459,15 @@
                 let item_names_arr = JSON.parse(item_names_json).groups;
                 let data = JSON.parse(result);
                 html = '';
-                if (JSON.stringify(data.products).length > 0) {
+                if (data.products.length > 0) {
                     $("#selectProducts").prop('disabled', false);
                     html += '<option value="">-- Chọn lĩnh vực --</option>';
                     $.each(data.products, function(index, item){
                         if (selected_type == 4 && item.name != 4 
                                 || selected_type != 4 && item.name == 4) {
+                            html += '<option class="prod_opt" value="' + item.id + '" disabled>' + item_names_arr[item.name] + '</option>';
+                        } else if (selected_type == 14 && item.name != 14 
+                                || selected_type != 14 && item.name == 14) {
                             html += '<option class="prod_opt" value="' + item.id + '" disabled>' + item_names_arr[item.name] + '</option>';
                         } else {
                             html += '<option class="prod_opt" value="' + item.id + '">' + item_names_arr[item.name] + '</option>';

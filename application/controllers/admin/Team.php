@@ -22,7 +22,7 @@ class Team extends Admin_Controller{
 
 	    $this->data['leaders'] = $this->users_model->fetch_all_leaders();
         $this->data['members'] = $this->users_model->fetch_all_members();
-        $this->data['companys'] = $this->information_model->fetch_all_company_pagination();
+        $this->data['companys'] = $this->information_model->fetch_all_company_pagination_team_select();
 
         $companies = $this->information_model->get_all_company_by_year($this->data['eventYear']);
         $products = $this->information_model->get_product($this->data['eventYear']);
@@ -136,6 +136,13 @@ class Team extends Admin_Controller{
         }
         return $this->output->set_status_header(200)
             ->set_output(json_encode(array('message' => 'Có lỗi khi xoá thành viên hội đồng')));
+    }
+
+    public function get_companies(){
+        $stype = $this->input->get('selected_type');
+        $companies = $this->information_model->fetch_all_company_pagination_team_select($stype);
+        return $this->output->set_status_header(200)
+            ->set_output(json_encode(array('companies' => $companies)));
     }
 
     public function get_products(){
