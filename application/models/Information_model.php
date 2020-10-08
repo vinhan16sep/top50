@@ -432,6 +432,25 @@ class Information_model extends CI_Model {
         return $result = $this->db->get()->result_array();
     }
 
+    public function fetch_all_company_pagination_team_select($stype = 99) {
+        $this->db->select('company.*, users.company as company, status.is_final as final');
+        $this->db->from('company');
+        $this->db->join('users', 'users.id = company.client_id');
+        $this->db->join('status', 'status.client_id = company.client_id');
+        //// HARD CODE ????? ////////////////////////
+        $this->db->where('company.year', '2020');
+        if ($stype == 99) {
+            $stypes = array('["4"]', '["14"]', '["4","14"]', '["14","4"]');
+            $this->db->where_not_in('company.group', $stypes);
+        } else {
+            $this->db->like('company.group', '"' . $stype . '"');
+        }
+        //// HARD CODE ????? ////////////////////////
+        $this->db->order_by("company.id", "desc");
+
+        return $result = $this->db->get()->result_array();
+    }
+
     public function fetch_company_by_id($id = null){
         $this->db->select('company.*, users.*, information.*, company.id as company_id');
         $this->db->from('company');
