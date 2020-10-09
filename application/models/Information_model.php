@@ -445,6 +445,7 @@ class Information_model extends CI_Model {
         } else {
             $this->db->like('company.group', '"' . $stype . '"');
         }
+        $this->db->where('status.is_final', '1');
         //// HARD CODE ????? ////////////////////////
         $this->db->order_by("company.id", "desc");
 
@@ -744,5 +745,29 @@ class Information_model extends CI_Model {
         }
         
         return $this->db->get()->num_rows();
+    }
+
+    function get_all_product_update_batch(){
+        $this->db->select('*');
+        $this->db->from('product');
+        $this->db->group_by('client_id');
+
+        return $result = $this->db->get()->result_array();
+    }
+
+    function get_company_not_product($client_id_not_product){
+        $this->db->select('client_id, group, created_by, created_at, identity');
+        $this->db->from('company');
+        $this->db->where_in('client_id', $client_id_not_product);
+
+        return $result = $this->db->get()->result_array();
+
+    }
+
+    public function get_information_with_select_by_id($id){
+        $this->db->select('id');
+        $this->db->from('information');
+        $this->db->where('client_id', $id);
+        return $result = $this->db->get()->row_array();
     }
 }

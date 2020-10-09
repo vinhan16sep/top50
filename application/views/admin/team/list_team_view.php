@@ -83,7 +83,12 @@
                                                     <?php if (!empty($value)): ?>
                                                         <?php $stt++ ?>
                                                         <tr style="<?php echo ($stt % 2 == 0) ? 'background-color: #b7d7f3' : '' ; ?> ">
-                                                            <td><?php echo $this->config->item('development/config_information')['groups'][$tmpProductArray[$value]] ?></td>
+                                                            <td>
+                                                                <?php 
+                                                                    echo $this->config->item('development/config_information')['groups'][$tmpProductArray[$value]];
+                                                                    echo '&nbsp;&nbsp;<a href="javascript:void(0);" onclick="removeProduct(' . $team['id'] . ',' . $value . ');"><i style="color:red;" class="fa fa-remove" aria-hidden="true"></i></a>';
+                                                                ?>
+                                                            </td>
                                                         </tr>
                                                         <tr style="<?php echo ($stt % 2 == 0) ? 'background-color: #b7d7f3' : '' ; ?> ">
                                                             <td><?php echo $tmp_company_product_arr[$value] ?></td>

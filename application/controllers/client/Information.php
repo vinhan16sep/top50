@@ -3086,7 +3086,7 @@ class Information extends Client_Controller {
 
         // Now we can get the word count by counting array elments
         $this->form_validation->set_message('check_word_length', 'Tối đa khoảng 1000 từ.');
-        if (count($words_array) > 1500) {
+        if (count($words_array) > 2000) {
             return false;
         }else{
             return true;

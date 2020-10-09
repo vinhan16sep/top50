@@ -75,4 +75,11 @@ class Status_model extends CI_Model {
 //        $this->db->where('is_final', $is_final);
         return $result = $this->db->get()->result_array();
     }
+
+    public function get_all_final(){
+        $this->db->select('*');
+        $this->db->from('status');
+       $this->db->where('is_final', 1);
+        return $result = $this->db->get()->result_array();
+    }
 }
