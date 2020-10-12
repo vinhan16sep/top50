@@ -25,6 +25,8 @@ class MY_Controller extends CI_Controller {
         $this->data['all_years'] = $this->company_model->get_all_year();
         // get config
         $this->config->load('development/config_information', TRUE);
+
+        $this->data['global_stype'] = $this->config->item('development/config_information')['groups'];
     }
 
     protected function render($the_view = NULL, $template = 'master') {

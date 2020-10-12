@@ -79,7 +79,7 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                             <tr>
                                 <td rowspan="3">1</td>
                                 <td rowspan="3">Năng lực tổ chức</td>
-                                <td rowspan="3">10</td>
+                                <td rowspan="3">15</td>
                                 <td rowspan="3">
                                     <?php
                                     echo form_error('1', '<div class="error">', '</div>');
@@ -209,7 +209,7 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                             <tr>
                                 <td rowspan="3">3</td>
                                 <td rowspan="3">Chất lượng đào tạo</td>
-                                <td rowspan="3">15</td>
+                                <td rowspan="3">35</td>
                                 <td rowspan="3">
                                     <?php
                                     echo form_error('3', '<div class="error">', '</div>');
@@ -267,7 +267,7 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                             <tr>
                                 <td rowspan="2">4</td>
                                 <td rowspan="2">Hoạt động nghiên cứu, liên kết, kết nối</td>
-                                <td rowspan="2">50</td>
+                                <td rowspan="2">20</td>
                                 <td rowspan="2">
                                     <?php
                                     echo form_error('4', '<div class="error">', '</div>');
@@ -311,7 +311,7 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
                             <tr>
                                 <td rowspan="3">5</td>
                                 <td rowspan="3">Chất lượng hồ sơ, năng lực trình bày</td>
-                                <td rowspan="3">5</td>
+                                <td rowspan="3">10</td>
                                 <td rowspan="3">
                                     <?php
                                     echo form_error('5', '<div class="error">', '</div>');
@@ -398,19 +398,19 @@ $form_action = ($rating && $is_submit == 0) ? 'member/new_rating/update_rating/'
 </div>
 <script>
     $('.sub').change(function(){
-        let main1 = (parseInt($('#1_1').val()) * 0.4 + parseInt($('#1_2').val()) * 0.3 + parseInt($('#1_3').val()) * 0.3) * 0.1;
+        let main1 = (parseInt($('#1_1').val()) * 0.4 + parseInt($('#1_2').val()) * 0.3 + parseInt($('#1_3').val()) * 0.3) * 0.15;
         $('#1').val(Number(main1.toFixed(2)));
 
         let main2 = (parseInt($('#2_1').val()) * 0.55 + parseInt($('#2_2').val()) * 0.15 + parseInt($('#2_3').val()) * 0.15 + parseInt($('#2_4').val()) * 0.15) * 0.2;
         $('#2').val(Number(main2.toFixed(2)));
 
-        let main3 = (parseInt($('#3_1').val()) * 0.35 + parseInt($('#3_2').val()) * 0.3 + parseInt($('#3_3').val()) * 0.35) * 0.15;
+        let main3 = (parseInt($('#3_1').val()) * 0.35 + parseInt($('#3_2').val()) * 0.3 + parseInt($('#3_3').val()) * 0.35) * 0.35;
         $('#3').val(Number(main3.toFixed(2)));
 
-        let main4 = (parseInt($('#4_1').val()) * 0.5 + parseInt($('#4_2').val()) * 0.5) * 0.5;
+        let main4 = (parseInt($('#4_1').val()) * 0.5 + parseInt($('#4_2').val()) * 0.5) * 0.2;
         $('#4').val(Number(main4.toFixed(2)));
 
-        let main5 = (parseInt($('#5_1').val()) * 0.3 + parseInt($('#5_2').val()) * 0.4 + parseInt($('#5_3').val()) * 0.3) * 0.05;
+        let main5 = (parseInt($('#5_1').val()) * 0.3 + parseInt($('#5_2').val()) * 0.4 + parseInt($('#5_3').val()) * 0.3) * 0.1;
         $('#5').val(Number(main5.toFixed(2)));
 
         $('#totalRating').html(Number((main1 + main2 + main3 + main4 + main5).toFixed(2)));

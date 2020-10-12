@@ -95,19 +95,36 @@ class Company extends Member_Controller{
 	public function detail(){
         $this->load->helper('form');
         $this->load->model('users_model');
+        $this->load->model('status_model');
+        $year = $this->input->get('year');
+        // $identity = $this->input->get('client_id');
+        $identity = $this->input->get('identity');
 
-        if($this->input->get('year') && $this->input->get('client_id')){
+        if($this->input->get('year') && $this->input->get('identity')){
+            $this->load->helper('form');
+            $this->load->library('form_validation');
+            $this->data['year'] = $year;
+            $this->data['company'] = $this->information_model->fetch_company_by_identity_and_year('company', $identity, $year);
+            $this->data['groups'] = $this->config->item('development/config_information')['groups'];
+
+            $extra = $this->information_model->fetch_extra_by_identity('information', $identity);
+            $extra['basic_company'] = $this->users_model->fetchByIdentity($identity);
+            $this->data['extra'] = $extra;
+
+            $user = $this->users_model->fetchByIdentity($identity);
+            $this->data['reg_status'] = $this->status_model->fetch_by_client_id($user['id']);
+            ////////
+
             $this->data['year'] = $this->input->get('year');
-            $this->data['company'] = $company = $this->information_model->fetch_company_by_client_id_and_year('company', $this->input->get('client_id'), $this->input->get('year'));
+            // $this->data['company'] = $company = $this->information_model->fetch_company_by_client_id_and_year('company', $this->input->get('client_id'), $this->input->get('year'));
 
-            $member_id = json_decode($company['member_id']);
-            $members = $this->users_model->fetch_all_member_with_where($member_id);
-            $this->data['members'] = $members;
+            // $member_id = json_decode($company['member_id']);
+            // $members = $this->users_model->fetch_all_member_with_where($member_id);
+            // $this->data['members'] = $members;
             $this->render('member/company/detail_company_view');
         }else{
             redirect('member/dashboard', 'refresh');
         }
-
 
 	}
 

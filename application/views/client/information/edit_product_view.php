@@ -39,7 +39,6 @@
                         <div class="col-sm-9 col-md-9 col-sx-12">
                             <?php
                             $service = json_decode($product['service']);
-                            // print_r($series);die;
                             $options_1 = array(
                                 'Chính phủ điện tử' => 'Chính phủ điện tử',
                                 'Quản lý doanh nghiệp' => 'Quản lý doanh nghiệp',

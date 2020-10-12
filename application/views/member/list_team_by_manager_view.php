@@ -20,24 +20,11 @@
                             <table class="table table-bordered" style="width: 100%">
                                 <tr>
                                     <td  style="width: 20%"><h3>Sản phẩm: </h3></td>
-                                    <td><h3><?php echo $product['name']; ?></h3></td>
+                                    <td><h3><?php echo $global_stype[$product['name']]; ?></h3></td>
                                 </tr>
                                 <tr>
                                     <td><h4>Doanh nghiệp: </h4></td>
                                     <td><h4><?php echo $company['company']; ?></h4></td>
-                                </tr>
-                                <tr>
-                                    <?php
-                                        $main_services = array(
-                                            1 => 'Các sản phẩm, giải pháp phần mềm tiêu biểu, được bình xét theo 24 lĩnh vực ứng dụng chuyên ngành',
-                                            2 => 'Các sản phẩm, giải pháp ứng dụng công nghệ 4.0',
-                                            3 => 'Các sản phẩm, giải pháp phần mềm mới',
-                                            4 => 'Các sản phẩm, giải pháp của doanh nghiệp khởi nghiệp',
-                                            5 => 'Các dịch vụ CNTT'
-                                        );
-                                    ?>
-                                    <td><h4>Nhóm sản phẩm </h4></td>
-                                    <td><h4><?php echo $main_service . ': ' . $main_services[$main_service]; ?></h4></td>
                                 </tr>
                             </table>
                         </div>
@@ -60,6 +47,13 @@
                             </tr>
                             <?php if ($list_team): ?>
                                 <?php foreach ($list_team as $key => $value): ?>
+                                <?php
+                                if($product['name'] != '4' && $product['name'] != '14'){
+                                    $ms = '99';
+                                }else{
+                                    $ms = $value['name'];
+                                }
+                                ?>
                                     <tr>
                                         <td><?php echo $key + 1 ?></td>
                                         <td><?php echo $value['username'] ?></td>
@@ -81,7 +75,7 @@
                                         </td>
                                         <td align="center">
                                             <?php if ($value['is_rating'] == 1): ?>
-                                                <a href="<?php echo base_url('member/new_rating/index?id=' . $product_id . '&main_service=' . $main_service . '&member_id=' . $value['id']); ?>" data-toggle="tooltip" data-placement="top" title="Xem điểm của thành viên đã chấm">
+                                                <a href="<?php echo base_url('member/new_rating/index?id=' . $product_id . '&main_service=' . $ms . '&member_id=' . $value['id']); ?>" data-toggle="tooltip" data-placement="top" title="Xem điểm của thành viên đã chấm">
                                                     <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
                                                 </a>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;

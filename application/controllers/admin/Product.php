@@ -39,8 +39,6 @@ class Product extends Admin_Controller{
                 $result[$key]['is_rating'] = 0;
             }
         }
-        // echo '<pre>';
-        // print_r($result);die;
 
         $this->data['products'] = $result;
 

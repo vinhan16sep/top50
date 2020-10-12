@@ -148,14 +148,18 @@ class Team extends Admin_Controller{
     public function get_products(){
         $client_id = $this->input->get('client_id');
         $products = $this->information_model->get_all_product($client_id);
+        $res_products = [];
         foreach ($products as $key => $value) {
             $check_product_in_team = $this->team_model->check_exist_product_id('team', $value['id']);
-            if ( $check_product_in_team > 0 ) {
-                unset($products[$key]);
+            if ( $check_product_in_team == 0 ) {
+                array_push($res_products, [
+                    'id' => $value['id'],
+                    'name' => $value['name']
+                ]);
             }
         }
         return $this->output->set_status_header(200)
-            ->set_output(json_encode(array('products' => $products)));
+            ->set_output(json_encode(array('products' => $res_products)));
     }
 
     public function add_product(){

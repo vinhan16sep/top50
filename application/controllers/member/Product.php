@@ -24,23 +24,15 @@ class Product extends Member_Controller{
             $rating_search = '';
             $team_search = null;
             $main_service_search = null;
-            if($this->input->get('search')){
-                $keywords = $this->input->get('search');
-            }
             if($this->input->get('rating_search')){
                 $rating_search = $this->input->get('rating_search');
             }
             if($this->input->get('team_search')){
                 $team_search = $this->input->get('team_search');
             }
-            if($this->input->get('main_service_search')){
-                $main_service_search = $this->input->get('main_service_search');
-            }
 
-            $this->data['keywords'] = $keywords;
             $this->data['rating_search'] = $rating_search;
             $this->data['team_search'] = $team_search;
-            $this->data['main_service_search'] = $main_service_search;
 
             $status = $this->status_model->fetch_by_is_final(1);
             $client_ids = [];
@@ -178,7 +170,6 @@ class Product extends Member_Controller{
             $this->data['list_products_rating'] = $list_products_rating;
             $this->data['team'] = $team;
             $this->data['result'] = $result;
-
 
             $this->render('member/list_product_by_manager_view');
         }

@@ -62,7 +62,7 @@
                                                                         <a href="<?php echo base_url('member/basic/detail/' . $value['id'] . '?client_id=' . $value['client_id']) ?>" data-toggle="tooltip" data-placement="top" title="Thông tin cơ bản">
                                                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                                                         </a>
-                                                                        <a href="<?php echo base_url('member/company/detail/' . $value['company_id'] . '?year=' . $value['year'] . '&client_id=' . $value['client_id']) ?>" data-toggle="tooltip" data-placement="top" title="Thông tin doanh nghiệp">
+                                                                        <a href="<?php echo base_url('member/company/detail/' . $value['company_id'] . '?year=' . $value['year'] . '&identity=' . $value['identity']) ?>" data-toggle="tooltip" data-placement="top" title="Thông tin doanh nghiệp">
                                                                             <i class="fa fa-building" aria-hidden="true"></i>
                                                                         </a>
                                                                         <a href="<?php echo base_url('member/new_rating/index/?id=' . $value['id'] . '&main_service=' . $main_service); ?>" data-toggle="tooltip" data-placement="top" title="Chấm điểm">
