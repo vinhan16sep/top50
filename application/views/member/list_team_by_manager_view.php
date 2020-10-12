@@ -51,7 +51,7 @@
                                 if($product['name'] != '4' && $product['name'] != '14'){
                                     $ms = '99';
                                 }else{
-                                    $ms = $value['name'];
+                                    $ms = $product['name'];
                                 }
                                 ?>
                                     <tr>
