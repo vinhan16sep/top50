@@ -1,5 +1,3 @@
-
-
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <style>
     .error{
@@ -82,8 +80,20 @@
     .main_market p:before{
         content:"- ";
     }
-    .row-heading{
-        font-weight: bold !important;
+    textarea{
+        white-space: initial;
+    }
+    .tables-css{
+        margin-top: 15px;
+    }
+    .tables-css td{
+        line-height: 30px!important;
+        font-weight: initial!important;
+        text-align: left!important;
+    }
+    input[type="checkbox"]:checked[disabled] + label{
+        color:blue;
+        display: contents;
     }
 </style>
 <div class="content-wrapper" style="min-height: 916px;">
@@ -94,15 +104,41 @@
                     <div class="tab-content" style="padding-right: 40px;">
                         <div class="post">
                             <h2 style="text-align:center;">THÔNG TIN LĨNH VỰC ỨNG CỬ</h2>
-
-
-
+                            <h2 style="text-align:center;">Công ty <span style="color: red"><?php echo $extra['basic_company']['company']; ?></span></h2>
                  <hr style="border-bottom: 1px solid white;">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-sx-12">
+                            <strong style="font-size: 15px;">- Lĩnh vực bình chọn: Doanh nghiệp lựa chọn các lĩnh vực là thế mạnh của công ty trong 15 lĩnh vực sau đây để làm hồ sơ đăng ký tham gia. Mỗi doanh nghiệp được đăng ký tối đa 03 lĩnh vực.</strong>
+                        </div>
+                        <hr>
+                        <div class="col-xs-12 textarea-h">
+                            <?php
+                                $company['group'] = (array)json_decode($company['group'], true);
+                            ?>
+                            <div>
+                                <div class="row">
+                                    <?php foreach ($groups as $key => $value): ?>
+                                        <div class="col-md-6">
+                                            <label>
+                                                <?php echo form_checkbox('group[]', $key, in_array($key, $company['group']) ? true: false, 'disabled'); ?> <label for=""><?php echo $value ?></label>
+                                            </label>
+                                        </div>
+                                    <?php endforeach ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <hr style="border-bottom: 1px solid white;">
+                <div class="form-group">
+                    <h3>I. GIỚI THIỆU</h3>
+                </div>
                 <div class="form-group">
                     <div class="row">
                         <div class="col-xs-12">
                             <?php
-                            echo form_label('Giới thiệu doanh nghiệp (viết ngắn gọn đồng thời nêu rõ định hướng và mục tiêu phát triển doanh nghiệp – tối đa 100 từ)', 'overview', 'class="row-heading"');
+                            echo form_label('Giới thiệu doanh nghiệp', 'overview');
                             ?>
                         </div>
                         <hr>
@@ -110,7 +146,6 @@
                             <div>
                                 <textarea name="" id="" rows="10" style="width: 100%;border:none" class="form-control">
                                     <?php echo strip_tags(htmlspecialchars_decode($company['overview'])); ?>
-
                                 </textarea>
 
                             </div>
@@ -120,127 +155,31 @@
                 </div>
                 <hr style="border-bottom: 1px solid white;">
                 <div class="form-group">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <?php
-                            echo form_label('Lĩnh vực hoạt động, nêu rõ điểm mạnh, sự khác biệt của doanh nghiệp so với các đối thủ cạnh tranh (tối đa 100 từ)', 'active_area');
-                            ?>
-                        </div>
-                        <hr>
-                        <div class="col-xs-12 textarea-h">
-                            <div>
-                                <?php
-                                echo strip_tags(htmlspecialchars_decode($company['active_area']));
-                                ?></div>
-                        </div>
-                    </div>
-                </div>
-                <hr style="border-bottom: 1px solid white;">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <?php
-                            echo form_label('Tên các sản phẩm, dịch vụ chính của doanh nghiệp', 'product');
-                            ?>
-                        </div>
-                        <hr>
-                        <div class="col-xs-12 textarea-h">
-                            <div>
-                                <?php
-                                echo htmlspecialchars_decode($company['product']);
-                                ?></div>
-                        </div>
-                    </div>
-                </div>
-                <hr style="border-bottom: 1px solid white;">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <?php
-                            echo form_label('Sản phẩm dịch vụ chính của doanh nghiệp', 'main_service');
-                            ?>
-                        </div>
-                        <div class="col-xs-12 main_service">
-                            <?php if(!empty($company['main_service'])): ?>
-                                <?php $main_service = json_decode($company['main_service']) ?>
-                                <?php if($main_service): ?>
-                                    <?php foreach ($main_service as $key => $value): ?>
-                                        <p class="" style="padding-left:20px;"><?php echo $value ?></p>
-                                    <?php endforeach ?>
-                                <?php else: ?>
-                                    <div style="text-align:center">--------------------------------------------------------------------------------------------------------</div>
-                                <?php endif; ?>
-                            <?php else: ?>
-                                <div style="text-align:center">--------------------------------------------------------------------------------------------------------</div>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                    <hr style="border-bottom: 1px solid white;">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <?php
-                            echo form_label('Thị trường chính', 'main_service');
-                            ?>
-                        </div>
-                        <div class="col-xs-12 main_market">
-                            <?php if(!empty($company['main_market'])): ?>
-                                <?php $main_market = json_decode($company['main_market']) ?>
-                                <?php if($main_market): ?>
-                                    <?php foreach ($main_market as $key => $value): ?>
-                                        <p class="" style="padding-left:20px;"><?php echo $value ?></p>
-                                    <?php endforeach ?>
-                                <?php else: ?>
-                                    <div style="text-align:center">--------------------------------------------------------------------------------------------------------</div>
-                                <?php endif; ?>
-                            <?php else: ?>
-                                <div style="text-align:center">--------------------------------------------------------------------------------------------------------</div>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                </div>
-                <hr style="border-bottom: 1px solid white;">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <?php
-                            echo form_label('Kể tên 5 khách hàng tiêu biểu của doanh nghiệp:', 'product');
-                            ?>
-                        </div>
-                        <hr>
-                        <div class="col-xs-12 textarea-h">
-                            <div>
-                                <?php
-                                echo htmlspecialchars_decode($company['top5_customers']);
-                                ?></div>
-                        </div>
-                    </div>
-                </div>
-                <hr style="border-bottom: 1px solid white;">
-                <div class="form-group">
-                    <h3>II. NĂNG LỰC TÀI CHÍNH, KẾT QUẢ KINH DOANH, THỊ TRƯỜNG VÀ KHÁCH HÀNG</h3>
-                </div>
-                <div class="form-group">
-                    <h4>1. NĂNG LỰC TÀI CHÍNH</h4>
+                    <h3>II. SỐ LIỆU TÀI CHÍNH</h3>
                 </div>
                 <div class="form-group m-l-30">
                     <div class="row">
                         <div class="col-xs-12">
                             <table class="table table-bordered" >
                               <tr>
+                                <th colspan="1" rowspan="2">STT</th>
                                 <th colspan="2" rowspan="2">Chỉ số</th>
                                 <th colspan="4"><?php echo 'Năm ' . $rule2Year[0] ?></th>
                                 <th colspan="4"><?php echo 'Năm ' . $rule2Year[1] ?></th>
                               </tr>
                               <tr>
-                                <td colspan="2">Số tuyệt đối <i>(Triệu đồng)</i></td>
+                                <td colspan="2">Số tuyệt đối </td>
                                 <td colspan="2">So với năm trước <i>(%)</i></td>
-                                <td colspan="2">Số tuyệt đối <i>(Triệu đồng)</i></td>
+                                <td colspan="2">Số tuyệt đối </td>
                                 <td colspan="2">So với năm trước <i>(%)</i></td>
                               </tr>
                               <tr>
+                                <td colspan="1" style="width: 30px;">
+                                    1
+                                </td>
                                 <td colspan="2" style="width: 200px;">
                                     <?php
-                                        echo form_label('1. Vốn điều lệ', 'equity_1');
+                                        echo form_label('Vốn điều lệ (triệu VNĐ)', 'equity_1');
                                     ?>
                                 </td>
                                 <td colspan="2">
@@ -261,32 +200,12 @@
                                 </td>
                               </tr>
                               <tr>
+                                <td colspan="1" style="width: 30px;">
+                                    2
+                                </td>
                                 <td colspan="2">
                                     <?php
-                                        echo form_label('2. Vốn chủ sở hữu', 'owner_equity');
-                                    ?>
-                                </td>
-                                <td colspan="2">
-                                    <?php echo form_input('owner_equity_1', set_value('owner_equity_1',$company['owner_equity_1']), 'class="form-control"');
-                                    ?>
-                                </td>
-                                <td colspan="2">
-                                    <?php echo form_input('owner_equity_percent_1', set_value('owner_equity_percent_1',$company['owner_equity_percent_1']), 'class="form-control"');
-                                    ?>
-                                </td>
-                                <td colspan="2">
-                                    <?php echo form_input('owner_equity_2', set_value('owner_equity_2',$company['owner_equity_2']), 'class="form-control"');
-                                    ?>
-                                </td>
-                                <td colspan="2">
-                                    <?php echo form_input('owner_equity_percent_2', set_value('owner_equity_percent_2',$company['owner_equity_percent_2']), 'class="form-control"');
-                                    ?>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td colspan="2">
-                                    <?php
-                                        echo form_label('3. Tổng tài sản', 'total_equity');
+                                        echo form_label('Tổng tài sản (triệu VNĐ)', 'total_equity');
                                     ?>
                                 </td>
                                 <td colspan="2">
@@ -306,81 +225,16 @@
                                     ?>
                                 </td>
                               </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <hr style="border-bottom: 1px solid white;">
-                <div class="form-group">
-                    <h4>2. KẾT QUẢ KINH DOANH</h4>
-                </div>
-
-
-
-
-                <div class="form-group m-l-30" id="kd">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <table class="table table-bordered" >
-                              <tr>
-                                <th colspan="1" rowspan="2">STT</th>
-                                <th colspan="2" rowspan="2">Chỉ số</th>
-                                <th colspan="4"><?php echo 'Năm ' . $rule2Year[0] ?></th>
-                                <th colspan="4"><?php echo 'Năm ' . $rule2Year[1] ?></th>
-                                <th colspan="1" rowspan="2">6 tháng đầu năm 2019 Số tuyệt đối (triệu đồng)</th>
-                              </tr>
-                              <tr>
-                                <td colspan="2">Số tuyệt đối <i>(Triệu đồng)</i></td>
-                                <td colspan="2">So với năm trước <i>(%)</i></td>
-                                <td colspan="2">Số tuyệt đối <i>(Triệu đồng)</i></td>
-                                <td colspan="2">So với năm trước <i>(%)</i></td>
-                              </tr>
-
-
-                              <!-- 1 Tổng doanh thu doanh nghiệp -->
-                              <!-- name = name_a  -->
-                              <tr>
-                                <td colspan="1" style="width:30px;">
-                                    1
-                                </td>
-                                <td colspan="2" style="width: 200px;">
-                                    <?php
-                                        echo form_label('Tổng doanh thu doanh nghiệp', 'name_a_label');
-                                    ?>
-                                </td>
-                                <td colspan="2">
-                                    <?php echo form_input('total_income_1', set_value('total_income_1',$company['total_income_1']), 'class="form-control"');
-                                    ?>
-                                </td>
-                                <td colspan="2">
-                                    <?php echo form_input('total_income_percent_1', set_value('total_income_percent_1',$company['total_income_percent_1']), 'class="form-control"');
-                                    ?>
-                                </td>
-                                <td colspan="2">
-                                    <?php echo form_input('total_income_2', set_value('total_income_2',$company['total_income_2']), 'class="form-control"');
-                                    ?>
-                                </td>
-                                <td colspan="2">
-                                    <?php echo form_input('total_income_percent_2', set_value('total_income_percent_2',$company['total_income_percent_2']), 'class="form-control"');
-                                    ?>
-                                </td>
-                                <td colspan="2">
-                                    <?php echo form_input('total_income_6_months', set_value('total_income_6_months',$company['total_income_6_months']), 'class="form-control"');
-                                    ?>
-                                </td>
-                              </tr>
-
-
 
                               <!-- 2 Bình quân doanh thu/đầu người -->
                               <!-- name = name_b  -->
                               <tr>
                                 <td colspan="1"  style="width:30px;">
-                                    2
+                                    3
                                 </td>
                                 <td colspan="2">
                                     <?php
-                                        echo form_label('Bình quân doanh thu/đầu người', 'name_b_label');
+                                        echo form_label('Bình quân doanh thu/đầu người (triệu VNĐ)', 'name_b_label');
                                     ?>
                                 </td>
                                 <td colspan="2">
@@ -399,21 +253,48 @@
                                     <?php echo form_input('per_capita_income_percent_2', set_value('per_capita_income_percent_2',$company['per_capita_income_percent_2']), 'class="form-control"');
                                     ?>
                                 </td>
-                                <td colspan="1">
-                                    <?php echo form_input('per_capita_income_6_months', set_value('per_capita_income_6_months',$company['per_capita_income_6_months']), 'class="form-control"');
+                              </tr>
+
+
+
+                              <tr>
+                                <td colspan="1" style="width:30px;">
+                                    4
+                                </td>
+                                <td colspan="2" style="width: 200px;">
+                                    <?php
+                                        echo form_label('Tổng doanh thu doanh nghiệp (triệu VNĐ)', 'name_a_label');
+                                    ?>
+                                </td>
+                                <td colspan="2">
+                                    <?php echo form_input('total_income_1', set_value('total_income_1',$company['total_income_1']), 'class="form-control"');
+                                    ?>
+                                </td>
+                                <td colspan="2">
+                                    <?php echo form_input('total_income_percent_1', set_value('total_income_percent_1',$company['total_income_percent_1']), 'class="form-control"');
+                                    ?>
+                                </td>
+                                <td colspan="2">
+                                    <?php echo form_input('total_income_2', set_value('total_income_2',$company['total_income_2']), 'class="form-control"');
+                                    ?>
+                                </td>
+                                <td colspan="2">
+                                    <?php echo form_input('total_income_percent_2', set_value('total_income_percent_2',$company['total_income_percent_2']), 'class="form-control"');
                                     ?>
                                 </td>
                               </tr>
 
-                              <!-- 3 Tổng doanh thu lĩnh vực sản xuất phần mềm -->
+
+
+                              <!-- 5 Tổng doanh thu lĩnh vực phần mềm, giải pháp (triệu VNĐ) -->
                               <!-- name = name_c  -->
                               <tr>
                                 <td colspan="1"  style="width:30px;">
-                                    3
+                                    5
                                 </td>
                                 <td colspan="2">
                                     <?php
-                                        echo form_label('Tổng doanh thu lĩnh vực sản xuất phần mềm', 'name_c_label');
+                                        echo form_label('Tổng doanh thu lĩnh vực phần mềm, giải pháp (triệu VNĐ)', 'name_c_label');
                                     ?>
                                 </td>
                                 <td colspan="2">
@@ -432,21 +313,17 @@
                                     <?php echo form_input('software_income_percent_2', set_value('software_income_percent_2',$company['software_income_percent_2']), 'class="form-control"');
                                     ?>
                                 </td>
-                                <td colspan="1">
-                                    <?php echo form_input('software_income_6_months', set_value('software_income_6_months',$company['software_income_6_months']), 'class="form-control"');
-                                    ?>
-                                </td>
                               </tr>
 
-                              <!-- 4 Tổng doanh thu dịch vụ CNTT -->
+                              <!-- 6 Tổng doanh thu dịch vụ CNTT (triệu VNĐ) -->
                               <!-- name = name_d  -->
                               <tr>
                                 <td colspan="1"  style="width:30px;">
-                                    4
+                                    6
                                 </td>
                                 <td colspan="2">
                                     <?php
-                                        echo form_label('Tổng doanh thu dịch vụ CNTT', 'name_d_label');
+                                        echo form_label('Tổng doanh thu dịch vụ CNTT (triệu VNĐ)', 'name_d_label');
                                     ?>
                                 </td>
                                 <td colspan="2">
@@ -465,22 +342,18 @@
                                     <?php echo form_input('it_income_percent_2', set_value('it_income_percent_2',$company['it_income_percent_2']), 'class="form-control"');
                                     ?>
                                 </td>
-                                <td colspan="1">
-                                    <?php echo form_input('it_income_6_months', set_value('it_income_6_months',$company['it_income_6_months']), 'class="form-control"');
-                                    ?>
-                                </td>
                               </tr>
 
 
-                              <!-- 5 Tổng doanh thu xuất khẩu -->
+                              <!-- 7 Tổng doanh thu xuất khẩu (USD) -->
                               <!-- name = name_e  -->
                               <tr>
                                 <td colspan="1"  style="width:30px;">
-                                    5
+                                    7
                                 </td>
                                 <td colspan="2">
                                     <?php
-                                        echo form_label('Tổng doanh thu xuất khẩu', 'name_e_label');
+                                        echo form_label('Tổng doanh thu xuất khẩu (USD)', 'name_e_label');
                                     ?>
                                 </td>
                                 <td colspan="2">
@@ -499,53 +372,46 @@
                                     <?php echo form_input('export_income_percent_2', set_value('export_income_percent_2',$company['export_income_percent_2']), 'class="form-control"');
                                     ?>
                                 </td>
-                                <td colspan="1">
-                                    <?php echo form_input('export_income_6_months', set_value('export_income_6_months',$company['export_income_6_months']), 'class="form-control"');
+                              </tr>
+                              <!-- start 28/08/2020 -->
+                              <!-- 8 Tổng doanh thu lĩnh vực đề cử 1 -->
+                              <!-- name = name_h  -->
+                              <tr>
+                                <td colspan="1"  style="width:30px;">
+                                    8
+                                </td>
+                                <td colspan="2">
+                                    <?php
+                                        echo form_label('Tổng doanh thu lĩnh vực đề cử 1', 'name_k_label');
+                                    ?>
+                                </td>
+                                <td colspan="2">
+                                    <?php echo form_input('owner_equity_1', set_value('owner_equity_1',$company['owner_equity_1']), 'class="form-control"');
+                                    ?>
+                                </td>
+                                <td colspan="2">
+                                    <?php echo form_input('owner_equity_percent_1', set_value('owner_equity_percent_1',$company['owner_equity_percent_1']), 'class="form-control"');
+                                    ?>
+                                </td>
+                                <td colspan="2">
+                                    <?php echo form_input('owner_equity_2', set_value('owner_equity_2',$company['owner_equity_2']), 'class="form-control"');
+                                    ?>
+                                </td>
+                                <td colspan="2">
+                                    <?php echo form_input('owner_equity_percent_2', set_value('owner_equity_percent_2',$company['owner_equity_percent_2']), 'class="form-control"');
                                     ?>
                                 </td>
                               </tr>
 
-
-                              <!-- 6.1 Tổng doanh thu của lĩnh vực ứng cử -->
-                              <!-- name = name_f  -->
+                              <!-- 9 Tổng doanh thu lĩnh vực đề cử 2 (nếu có) -->
+                              <!-- name = name_h  -->
                               <tr>
-                                <td colspan="1" rowspan="3"  style="width:30px;">
-                                    6
+                                <td colspan="1"  style="width:30px;">
+                                    9
                                 </td>
-                                <td colspan="11">
-                                    <?php
-                                        echo form_label('Tổng doanh thu của lĩnh vực ứng cử:', 'name_f_label');
-                                    ?>
-                                </td>
-
-                               <!--  <td colspan="2">
-                                    <?php // echo form_input('international_income_1', set_value('international_income_1',$company['international_income_1']), 'class="form-control"');
-                                    ?>
-                                </td>
-                                <td colspan="2">
-                                    <?php // echo form_input('international_income_percent_1', set_value('international_income_percent_1',$company['international_income_percent_1']), 'class="form-control"');
-                                    ?>
-                                </td>
-                                <td colspan="2">
-                                    <?php // echo form_input('international_income_2', set_value('international_income_2',$company['international_income_2']), 'class="form-control"');
-                                    ?>
-                                </td>
-                                <td colspan="2">
-                                    <?php // echo form_input('international_income_percent_2', set_value('international_income_percent_2',$company['international_income_percent_2']), 'class="form-control"');
-                                    ?>
-                                </td>
-                                <td colspan="1">
-                                    <?php // echo form_input('international_income_6_months', set_value('international_income_6_months',$company['international_income_6_months']), 'class="form-control"');
-                                    ?>
-                                </td> -->
-                              </tr>
-
-                              <!-- 6.2 Thị trường quốc tế -->
-                              <!-- name = name_g  -->
-                              <tr>
                                 <td colspan="2">
                                     <?php
-                                        echo form_label('- Thị trường quốc tế', 'name_g_label');
+                                        echo form_label('Tổng doanh thu lĩnh vực đề cử 2 (nếu có)', 'name_k_label');
                                     ?>
                                 </td>
                                 <td colspan="2">
@@ -564,18 +430,47 @@
                                     <?php echo form_input('international_income_percent_2', set_value('international_income_percent_2',$company['international_income_percent_2']), 'class="form-control"');
                                     ?>
                                 </td>
-                                <td colspan="1">
-                                    <?php echo form_input('international_income_6_months', set_value('international_income_6_months',$company['international_income_6_months']), 'class="form-control"');
+                              </tr>
+
+                              <!-- 10 Tổng doanh thu lĩnh vực đề cử 3 (nếu có) -->
+                              <!-- name = name_h  -->
+                              <tr>
+                                <td colspan="1"  style="width:30px;">
+                                    10
+                                </td>
+                                <td colspan="2">
+                                    <?php
+                                        echo form_label('Tổng doanh thu lĩnh vực đề cử 3 (nếu có)', 'name_z_label');
+                                    ?>
+                                </td>
+                                <td colspan="2">
+                                    <?php echo form_input('nomination_income_1', set_value('nomination_income_1',$company['nomination_income_1']), 'class="form-control"');
+                                    ?>
+                                </td>
+                                <td colspan="2">
+                                    <?php echo form_input('nomination_income_percent_1', set_value('nomination_income_percent_1',$company['nomination_income_percent_1']), 'class="form-control"');
+                                    ?>
+                                </td>
+                                <td colspan="2">
+                                    <?php echo form_input('nomination_income_2', set_value('nomination_income_2',$company['nomination_income_2']), 'class="form-control"');
+                                    ?>
+                                </td>
+                                <td colspan="2">
+                                    <?php echo form_input('nomination_income_percent_2', set_value('nomination_income_percent_2',$company['nomination_income_percent_2']), 'class="form-control"');
                                     ?>
                                 </td>
                               </tr>
+                              <!-- end -->
 
-                              <!-- 6.3 Thị trường nội địa -->
+                              <!-- 11 Tổng số lao động của doanh nghiệp -->
                               <!-- name = name_h  -->
                               <tr>
+                                <td colspan="1"  style="width:30px;">
+                                    11
+                                </td>
                                 <td colspan="2">
                                     <?php
-                                        echo form_label('- Thị trường nội địa', 'name_h_label');
+                                        echo form_label('Tổng số lao động của doanh nghiệp', 'name_h_label');
                                     ?>
                                 </td>
                                 <td colspan="2">
@@ -594,21 +489,17 @@
                                     <?php echo form_input('domestic_income_percent_2', set_value('domestic_income_percent_2',$company['domestic_income_percent_2']), 'class="form-control"');
                                     ?>
                                 </td>
-                                <td colspan="1">
-                                    <?php echo form_input('domestic_income_6_months', set_value('domestic_income_6_months',$company['domestic_income_6_months']), 'class="form-control"');
-                                    ?>
-                                </td>
                               </tr>
 
-                              <!-- 7 Tổng lợi nhuận trước thuế của DN -->
+                              <!-- 12 Tổng số lập trình viên -->
                               <!-- name = name_i  -->
                               <tr>
                                 <td colspan="1" style="width:30px;">
-                                    7
+                                    12
                                 </td>
                                 <td colspan="2">
                                     <?php
-                                        echo form_label('Tổng lợi nhuận trước thuế của DN', 'name_i_label');
+                                        echo form_label('Tổng số lập trình viên', 'name_i_label');
                                     ?>
                                 </td>
                                 <td colspan="2">
@@ -627,20 +518,15 @@
                                     <?php echo form_input('before_tax_profit_percent_2', set_value('before_tax_profit_percent_2',$company['before_tax_profit_percent_2']), 'class="form-control"');
                                     ?>
                                 </td>
-                                <td colspan="1">
-                                    <?php echo form_input('before_tax_profit_6_months', set_value('before_tax_profit_6_months',$company['before_tax_profit_6_months']), 'class="form-control"');
-                                    ?>
-                                </td>
                               </tr>
+
                             </table>
                         </div>
                     </div>
                 </div>
+
                 <div class="form-group">
                     <h3>III. THÔNG TIN NHÂN LỰC</h3>
-                </div>
-                <div class="form-group">
-                    <h4>1. QUY MÔ NHÂN SỰ</h4>
                 </div>
 
                 <hr style="border-bottom: 1px solid white;">
@@ -648,13 +534,47 @@
                     <div class="row">
                         <div class="col-xs-12 text_input">
                             <div>
-                                - Tổng số nhân viên toàn thời gian (tính đến thời điểm nộp hồ sơ):
+                                <strong>1.</strong> Tổng số nhân viên toàn thời gian (tính đến thời điểm nộp hồ sơ):
                             </div>
                             <?php
-                                echo form_error('full_time_employee', '<div class="error">', '</div>');
                                 echo form_input('full_time_employee', set_value('full_time_employee',$company['full_time_employee']), 'class="form-control"');
                             ?>
                             người.
+                            <!-- start 28/08/2020 -->
+                            <div style='display: block!important;'>
+                                <div style="padding-left: 15px;">
+                                    <div class='text_input'>
+                                        <div>
+                                            - Số lượng nhân sự trong lĩnh vực đề cử 1:
+                                        </div>
+                                            <?php
+                                                echo form_input('number_personnel_nominated_1', set_value('number_personnel_nominated_1',$company['number_personnel_nominated_1']), 'class="form-control"');
+                                            ?>
+                                        người.
+                                    </div>
+                                    <br>
+                                    <div class='text_input'>
+                                        <div>
+                                            - Số lượng nhân sự trong lĩnh vực đề cử 2 (nếu có):
+                                        </div>
+                                            <?php
+                                                echo form_input('number_personnel_nominated_2', set_value('number_personnel_nominated_2',$company['number_personnel_nominated_2']), 'class="form-control"');
+                                            ?>
+                                        người.
+                                    </div>
+                                    <br>
+                                    <div class='text_input'>
+                                        <div>
+                                            - Số lượng nhân sự trong lĩnh vực đề cử 3 (nếu có):
+                                        </div>
+                                            <?php
+                                                echo form_input('number_personnel_nominated_3', set_value('number_personnel_nominated_3',$company['number_personnel_nominated_3']), 'class="form-control"');
+                                            ?>
+                                        người.
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end -->
                         </div>
                     </div>
                 </div>
@@ -662,10 +582,9 @@
                     <div class="row">
                         <div class="col-xs-12 text_input">
                             <div>
-                               - Độ tuổi trung bình:
+                               <strong>2.</strong> Độ tuổi trung bình:
                             </div>
                             <?php
-                                echo form_error('average_age', '<div class="error">', '</div>');
                                 echo form_input('average_age', set_value('average_age',$company['average_age']), 'class="form-control"');
                             ?>
                             tuổi.
@@ -676,206 +595,470 @@
                     <div class="row">
                         <div class="col-xs-12 text_input">
                             <div>
-                               - Tỷ lệ tăng/giảm nhân sự hàng năm trong 02 năm gần nhất:
+                               <strong>3.</strong> Tỷ lệ tăng/giảm nhân sự hàng năm trong 02 năm gần nhất:
                             </div><br>
-                            <div>
-                                2018:
+                            <div style="padding-left: 15px;font-weight: bold;">
+                                <div>
+                                    - 2018:
+                                </div>
+                                <?php
+                                    echo form_input('employee_change_percent_1', set_value('employee_change_percent_1',$company['employee_change_percent_1']), 'class="form-control"');
+                                ?>
+                                <div>
+                                    %;&nbsp;&nbsp;&nbsp;2019:
+                                </div>
+                                <?php
+                                    echo form_input('employee_change_percent_2', set_value('employee_change_percent_2',$company['employee_change_percent_2']), 'class="form-control"');
+                                ?>
+                                <div>
+                                    %;&nbsp;&nbsp;&nbsp;đến tháng 6.2020
+                                </div>
+                                <?php
+                                    echo form_input('employee_change_percent_3', set_value('employee_change_percent_3',$company['employee_change_percent_3']), 'class="form-control"');
+                                ?>
+                                %
                             </div>
-                            <?php
-                                echo form_error('employee_change_percent_1', '<div class="error">', '</div>');
-                                echo form_input('employee_change_percent_1', set_value('employee_change_percent_1',$company['employee_change_percent_1']), 'class="form-control"');
-                            ?>
-                            <div>
-                                %;   2019:
-                            </div>
-                            <?php
-                                echo form_error('employee_change_percent_2', '<div class="error">', '</div>');
-                                echo form_input('employee_change_percent_2', set_value('employee_change_percent_2',$company['employee_change_percent_2']), 'class="form-control"');
-                            ?>
-                            % (tính đến thời điểm nộp hồ sơ)
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <h4>2. TRÌNH ĐỘ NHÂN SỰ</h4>
-                </div>
-
-                <hr style="border-bottom: 1px solid white;">
-
-                <div class="form-group">
-                    <h5>a. Số nhân viên có thể sử dụng ngoại ngữ trong công việc (tính đến thời điểm nộp hồ sơ):</h5>
-                </div>
-                <div class="form-group h5 m-l-30">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <table class="table table-bordered" >
-                              <tr>
-                                <th colspan="2" style="width: 200px;">Ngoại ngữ</th>
-                                <th class="col-xs-3">Số người</th>
-                                <th class="col-xs-3">% trên tổng số nhân viên</th>
-                              </tr>
-                              <tr>
-
-                                <td colspan="2" style="text-align: center!important;">Tiếng Anh</td>
-                                <td>
-                                    <?php
-                                        echo form_error('english_employee', '<div class="error">', '</div>');
-                                        echo form_input('english_employee', set_value('english_employee',$company['english_employee']), 'class="form-control"');
-                                    ?>
-                                </td>
-                                <td>
-                                    <?php
-                                        echo form_error('english_employee_percent', '<div class="error">', '</div>');
-                                        echo form_input('english_employee_percent', set_value('english_employee_percent',$company['english_employee_percent']), 'class="form-control"');
-                                    ?>
-                                </td>
-                              </tr>
-                              <tr>
-
-                                <td colspan="2" style="text-align: center!important;">Tiếng Nhật</td>
-                                <td>
-                                    <?php
-                                        echo form_error('japanese_employee', '<div class="error">', '</div>');
-                                        echo form_input('japanese_employee', set_value('japanese_employee',$company['japanese_employee']), 'class="form-control"');
-                                    ?>
-                                </td>
-                                <td>
-                                    <?php
-                                        echo form_error('japanese_employee_percent', '<div class="error">', '</div>');
-                                        echo form_input('japanese_employee_percent', set_value('japanese_employee_percent',$company['japanese_employee_percent']), 'class="form-control"');
-                                    ?>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td colspan="1" style="width: 100px;">Ngoại ngữ khác (Ghi rõ)</td>
-                                <td colspan="1" style="width: 250px;">
-                                    <?php
-                                        echo form_input('other_language', set_value('other_language',$company['other_language']), 'class="form-control"');
-                                    ?>
-                                </td>
-                                <td>
-                                    <?php
-                                        echo form_error('other_language_employee', '<div class="error">', '</div>');
-                                        echo form_input('other_language_employee', set_value('other_language_employee',$company['other_language_employee']), 'class="form-control"');
-                                    ?>
-                                </td>
-                                <td>
-                                    <?php
-                                        echo form_error('other_language_employee_percent', '<div class="error">', '</div>');
-                                        echo form_input('other_language_employee_percent', set_value('other_language_employee_percent',$company['other_language_employee_percent']), 'class="form-control"');
-                                    ?>
-                                </td>
-                              </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <h5>b. Trình độ chuyên môn:</h5>
-                </div>
-                <div class="form-group h5 m-l-30">
-                    <div class="row">
-                        <div class="col-xs-12" style="padding-bottom: 15px;">
-                            <b>(Cấu trúc nhân sự theo trình độ học vấn, theo các vị trí công việc, các cấp độ kỹ năng, các vị trí chuyên môn,...):</b>
-                        </div>
-                        <div class="col-xs-12 textarea-h">
-                            <div>
-                             <?php
-                                echo htmlspecialchars_decode($company['qualification']);
-                            ?></div>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="form-group ">
-                    <h4 class="text_input">
-                        <div>3. Mức lương trung bình/năm 2018: </div>
+                    <div class="text_input">
+                        <div>
+                           <strong>4.</strong> Mức lương trung bình/năm 2019:
+                        </div>
                         <?php
-                            echo form_error('average_salary', '<div class="error">', '</div>');
                             echo form_input('average_salary', set_value('average_salary',$company['average_salary']), 'class="form-control"');
                         ?>
-                        triệu đồng/tháng/người.
-                    </h4>
+                        triệu VNĐ/tháng/người.
+                    </div>
                 </div>
 
                 <div class="form-group ">
-                    <h4 class="text_input">
-                        <div>4. Số nhân viên thuộc bộ phận chăm sóc khách hàng (nếu có): </div>
-                        <?php
-                            echo form_error('customer_supporter', '<div class="error">', '</div>');
-                            echo form_input('customer_supporter', set_value('customer_supporter',$company['customer_supporter']), 'class="form-control"');
-                        ?>
-                        người.
-                    </h4>
-                </div>
-
-                <div class="form-group ">
-                    <h4>5. Công tác đào tạo, bồi dưỡng nhân lực: </h4>
+                    <div>
+                       <strong>5.</strong> Công tác đào tạo, bồi dưỡng nhân lực:
+                    </div>
                 </div>
                 <div class="form-group m-l-30">
                     <div class="row">
+
                         <div class="col-xs-12 textarea-h">
                             <div>
-                             <?php
+                                <?php
                                 echo htmlspecialchars_decode($company['training_process']);
-                            ?></div>
+                                ?></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group ">
-                    <h4>6. Hoạt động tuyển dụng nhân sự: </h4>
+                    <div>
+                       <strong>6.</strong> Hoạt động tuyển dụng nhân sự:
+                    </div>
                 </div>
                 <div class="form-group h5">
-                    <h5 class="text_input">
-                        <div>- Số nhân viên thuộc bộ phận tuyển dụng nhân sự: </div>
+                    <h5 class="text_input" style="padding-left: 25px;">
+                        <div>- Chi phí cho hoạt động tuyển dụng nhân sự năm 2019: </div>
                         <?php
-                            echo form_error('recruitment_staff', '<div class="error">', '</div>');
-                            echo form_input('recruitment_staff', set_value('recruitment_staff',$company['recruitment_staff']), 'class="form-control"');
-                        ?>
-                        người.
-                    </h5>
-                    <h5 class="text_input">
-                        <div>- Chi phí cho hoạt động tuyển dụng nhân sự năm 2018: </div>
-                        <?php
-                            echo form_error('recruitment_budget', '<div class="error">', '</div>');
                             echo form_input('recruitment_budget', set_value('recruitment_budget',$company['recruitment_budget']), 'class="form-control"');
                         ?>
-                        triệu đồng
+                        triệu VNĐ
                     </h5>
                 </div>
 
-
-
+                <hr style="border-bottom: 1px solid white;">
                 <div class="form-group">
-                    <h3>VI. HOẠT ĐỘNG KHOA HỌC VÀ CÔNG NGHỆ</h3>
+                    <h3 style="text-transform: uppercase;">IV. Sản phẩm, dịch vụ, giải pháp, thị trường và khách hàng</h3>
                 </div>
                 <div class="form-group">
-                    <h4>1. Chi phí đầu tư cho hoạt động R&D năm 2018:</h4>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <strong>1.</strong> Tên các sản phẩm, dịch vụ chính của doanh nghiệp
+                        </div>
+                        <hr>
+                        <div class="col-xs-12 textarea-h">
+                            <div>
+                                <?php
+                                echo htmlspecialchars_decode($company['product']);
+                                ?></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- start 28/08/2020 -->
+                <hr style="border-bottom: 1px solid white;">
+                <div class="form-group">
+                    <strong>2.</strong> Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 1
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12 textarea-h">
+                            <div>
+                                <?php
+                                echo htmlspecialchars_decode($company['products_solutions_nominated_1']);
+                                ?></div>
+                        </div>
+                    </div>
                 </div>
                 <hr style="border-bottom: 1px solid white;">
+                <div class="form-group">
+                    <strong>3.</strong> Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 2 (nếu có)
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12 textarea-h">
+                            <div>
+                                <?php
+                                echo htmlspecialchars_decode($company['products_solutions_nominated_2']);
+                                ?></div>
+                        </div>
+                    </div>
+                </div>
+                <hr style="border-bottom: 1px solid white;">
+                <div class="form-group">
+                    <strong>4.</strong> Các sản phẩm/giải pháp chính trong lĩnh vực đề cử 3 (nếu có)
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12 textarea-h">
+                            <div>
+                                <?php
+                                echo htmlspecialchars_decode($company['products_solutions_nominated_3']);
+                                ?></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end -->
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <strong>5.</strong> Sản phẩm dịch vụ chính của doanh nghiệp
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-sx-12">
+                            <?php
+                            $new_check_main_service = array();
+                            $main_service = json_decode($company['main_service']);
+                            $options = array(
+                                'Chính phủ điện tử' => 'Chính phủ điện tử',
+                                'Y tế' => 'Y tế',
+                                'Giáo dục' => 'Giáo dục',
+                                'Giao thông' => 'Giao thông',
+                                'Thương mại điện tử' => 'Thương mại điện tử',
+                                'Fintech' => 'Fintech',
+                                'Chuyển đổi số' => 'Chuyển đổi số',
+                                'Sản xuất/dịch vụ cho DN' => 'Sản xuất/dịch vụ cho DN',
+                                'Nội dung số và giải trí điện tử' => 'Nội dung số và giải trí điện tử',
+                                'Viễn thông, hạ tầng dữ liệu' => 'Viễn thông, hạ tầng dữ liệu',
+                                'Bảo mật an toàn thông tin' => 'Bảo mật an toàn thông tin',
+                                'Phát triển ứng dụng cho mobile ' => 'Phát triển ứng dụng cho mobile ',
+                                'Digital Marketing' => 'Digital Marketing',
+                                'Đào tạo' => 'Đào tạo',
+                            );
+
+                            $check_main_service = false;
+                            if(!is_null($main_service) && $main_service != null){
+
+                                $check_main_service = array_diff($main_service, $options);
+                                if($check_main_service){
+                                    foreach ($check_main_service as $key => $value) {
+                                        $new_check_main_service[] = $value;
+                                    }
+                                }
+                            }
+                            echo '<label id="main_service[]-error" class="error" for="main_service[]"></label><br />';
+                            echo '<div class="row">';
+                                foreach ($options as $key => $value) {
+                                    echo '<div class="col-md-6">';
+                                        if(!is_null($main_service) && $main_service != null){
+                                            echo form_checkbox('main_service[]', $value, (in_array($value, $main_service, '')? true : false), 'class="btn-checkbox" disabled');
+                                            echo '<label for="">'.$key.'</label><br>';
+                                        }else{
+                                            echo form_checkbox('main_service[]', $value, false, 'class="btn-checkbox" disabled');
+                                            echo '<label for="">'.$key.'</label><br>';
+                                        }
+                                    echo '</div>';
+                                }
+                            echo '</div>';
+
+                            // echo form_dropdown('main_service', $options, '', 'class="form-control"');
+                            if($check_main_service){
+                                if($new_check_main_service[0] != ''){
+                                    echo form_checkbox('main_service[]', $new_check_main_service[0], true, 'class="btn-checkbox" id="anonymous-service" disabled');
+                                    echo '<label for="">Khác (nêu rõ)</label><br>';
+                                }else{
+                                    echo form_checkbox('main_service[]', '', false, 'class="btn-checkbox" id="anonymous-service" disabled');
+                                    echo '<label for="">Khác (nêu rõ)</label><br>';
+                                }
+                            }else{
+                                echo form_checkbox('main_service[]', '', false, 'class="btn-checkbox" id="anonymous-service" disabled');
+                                echo '<label for="">Khác (nêu rõ)</label><br>';
+                            }
+
+                            ?>
+                            <?php if($check_main_service): ?>
+                                <?php if ($new_check_main_service[0] != ''): ?>
+                                    <input type="text" name="anonymous-service" class="input-anonymous-service form-control" style="display: block;" value="<?php echo $new_check_main_service[0] ?>">
+                                <?php else: ?>
+                                    <input type="text" name="anonymous-service" class="input-anonymous-service form-control" style="display: none;">
+                                <?php endif ?>
+                            <?php else: ?>
+                                <input type="text" name="anonymous-service" class="input-anonymous-service form-control" style="display: none;">
+                            <?php endif ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-sx-12">
+                                <strong>6.</strong> Tỷ trọng thị trường theo khu vực địa lý năm 2019
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-sx-12">
+                                <div class="text_input">
+                                    <table class="tables-css table table-bordered" >
+                                        <tr>
+                                            <td>Thị trường nội địa: </td>
+                                            <td >
+                                                <?php
+                                                    echo form_input('proportion_market_local', set_value('proportion_market_local',$company['proportion_market_local']), 'class="form-control"');
+                                                ?>
+                                                %
+                                            </td>
+                                            <td>Thị trường Châu Âu: </td>
+                                            <td >
+                                                <?php
+                                                    echo form_input('proportion_market_europe', set_value('proportion_market_europe',$company['proportion_market_europe']), 'class="form-control"');
+                                                ?>
+                                                %
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Thị trường Mỹ: </td>
+                                            <td >
+                                                <?php
+                                                    echo form_input('proportion_market_america', set_value('proportion_market_america',$company['proportion_market_america']), 'class="form-control"');
+                                                ?>
+                                                %
+                                            </td>
+                                            <td style='width: 190px;'>Thị trường Nhật: </td>
+                                            <td >
+                                                <?php
+                                                    echo form_input('proportion_market_japan', set_value('proportion_market_japan',$company['proportion_market_japan']), 'class="form-control"');
+                                                ?>
+                                                %
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style='width: 190px;'>Thị trường quốc tế khác: </td>
+                                            <td >
+                                                <?php
+                                                    echo form_input('proportion_market_other_international', set_value('proportion_market_other_international',$company['proportion_market_other_international']), 'class="form-control"');
+                                                ?>
+                                                %
+                                            </td>
+                                            <td colspan="2"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-sx-12">
+                            <strong>7.</strong> Thị trường chính
+                            <?php
+                            $new_check = array();
+                            $main_market = json_decode($company['main_market'], true);
+                            $domestic = array(
+                                'Thị trường Chính phủ' => 'Thị trường Chính phủ',
+                                'Thị trường doanh nghiệp' => 'Thị trường doanh nghiệp',
+                                'Thị trường người tiêu dùng' => 'Thị trường người tiêu dùng',
+                            );
+                            $target = array(
+                                'Mỹ và các nước Bắc Mỹ' => 'Mỹ và các nước Bắc Mỹ',
+                                'Châu Âu' => 'Châu Âu',
+                                'Nhật Bản' => 'Nhật Bản',
+                                'Các nước trong khu vực' => 'Các nước trong khu vực'
+                            );
+                            $root = array(
+                                'Thị trường Chính phủ' => 'Thị trường Chính phủ',
+                                'Thị trường doanh nghiệp' => 'Thị trường doanh nghiệp',
+                                'Thị trường người tiêu dùng' => 'Thị trường người tiêu dùng',
+                                'Thị trường người tiêu dùng' => 'Thị trường người tiêu dùng',
+                                'Mỹ và các nước Bắc Mỹ' => 'Mỹ và các nước Bắc Mỹ',
+                                'Châu Âu' => 'Châu Âu',
+                                'Nhật Bản' => 'Nhật Bản',
+                                'Các nước trong khu vực' => 'Các nước trong khu vực',
+                                'Gia công xuất khẩu' => 'Gia công xuất khẩu',
+                                'Xuất khẩu SP/Giải pháp/Dịch vụ' => 'Xuất khẩu SP/Giải pháp/Dịch vụ',
+                                'Xuất khẩu nhân lực CNTT' => 'Xuất khẩu nhân lực CNTT'
+                            );
+                            $check = false;
+                            if(!is_null($main_market) && $main_market != null){
+
+                                if (!empty($main_market['khac'])) {
+                                    $root['khac'] = $main_market['khac'];
+                                }
+
+                                $check = array_diff($main_market, $root);
+                                if($check){
+                                    foreach ($check as $key => $value) {
+                                        $new_check[] = $value;
+                                    }
+                                }
+                            }
+
+                            ?>
+                        </div>
+
+                        <div class="col-sm-12 col-md-12 col-sx-12" style="padding-left: 30px;">
+                            <label style="margin-left: -15px" id="main_market[]-error" class="error" for="main_market[]"></label><br />
+                            <?php // echo form_error('main_market[]', '<div class="error"  style="margin-left: -15px">', '</div>'); ?>
+                            <strong style="margin-left: -15px">Trong nước</strong>
+                            <div class="row domestic-checkbox" style="margin-left: 20px">
+                                <?php
+                                foreach ($domestic as $key => $value) {
+                                    if(!is_null($main_market) && $main_market != null){
+                                        echo form_checkbox('main_market[]', $value, (in_array($value, $main_market, '')? true : false), 'class="btn-checkbox" disabled');
+                                        echo '<label for="">'.$key.'</label><br>';
+                                    }else{
+                                        echo form_checkbox('main_market[]', $value, false, 'class="btn-checkbox" disabled');
+                                        echo '<label for="">'.$key.'</label><br>';
+                                    }
+                                }
+                                echo form_checkbox('main_market[khac]', (!empty($main_market['khac']) ? $main_market['khac'] : ''), (!empty($main_market['khac'])? true : false), 'class="btn-checkbox" disabled id="checkbox_anonymous_domestic"');
+                                    echo '<label for="">Khác (nêu rõ)</label><br>';
+                                ?>
+
+                                <input type="text" id="anonymous_domestic" name="anonymous_domestic" value="<?php echo !empty($main_market['khac']) ? $main_market['khac'] : ''; ?>" class="input-anonymous_domestic form-control" style="display: none;">
+                            </div>
+                            <br>
+                            <strong style="margin-left: -15px">Quốc tế</strong>
+                            <div class="row" style="margin-left: 20px">
+                                <?php
+                                if(!is_null($main_market) && $main_market != null){
+                                    echo form_checkbox('main_market[]', 'Gia công xuất khẩu', (in_array('Gia công xuất khẩu', $main_market, '')? true : false), 'class="btn-checkbox" disabled');
+                                    echo '<label for="">Gia công xuất khẩu</label><br>';
+                                }else{
+                                    echo form_checkbox('main_market[]', 'Gia công xuất khẩu', false, 'class="btn-checkbox" disabled');
+                                    echo '<label for="">Gia công xuất khẩu</label><br>';
+                                }
+                                ?>
+                                <?php
+                                if(!is_null($main_market) && $main_market != null){
+                                    echo form_checkbox('main_market[]', 'Xuất khẩu SP/Giải pháp/Dịch vụ', (in_array('Xuất khẩu SP/Giải pháp/Dịch vụ', $main_market, '')? true : false), 'class="btn-checkbox" disabled');
+                                    echo '<label for="">Xuất khẩu SP/Giải pháp/Dịch vụ</label><br>';
+                                }else{
+                                    echo form_checkbox('main_market[]', 'Xuất khẩu SP/Giải pháp/Dịch vụ', false, 'class="btn-checkbox" disabled');
+                                    echo '<label for="">Xuất khẩu SP/Giải pháp/Dịch vụ</label><br>';
+                                }
+                                ?>
+                                <?php
+                                if(!is_null($main_market) && $main_market != null){
+                                    echo form_checkbox('main_market[]', 'Xuất khẩu nhân lực CNTT', (in_array('Xuất khẩu nhân lực CNTT', $main_market, '')? true : false), 'class="btn-checkbox" disabled');
+                                    echo '<label for="">Xuất khẩu nhân lực CNTT</label><br>';
+                                }else{
+                                    echo form_checkbox('main_market[]', 'Xuất khẩu nhân lực CNTT', false, 'class="btn-checkbox" disabled');
+                                    echo '<label for="">Xuất khẩu nhân lực CNTT</label><br>';
+                                }
+                                ?>
+                            </div>
+                            <div style="margin-left: 20px;margin-top: 5px;margin-bottom: 5px;">
+                                <strong>Thị trường xuất khẩu mục tiêu</strong><br>
+                                <div style="padding-left: 35px;">
+                                    <?php
+                                    foreach ($target as $key => $value) {
+                                        if(!is_null($main_market) && $main_market != null){
+                                            echo form_checkbox('main_market[]', $value, (in_array($value, $main_market, '')? true : false), 'class="btn-checkbox" disabled');
+                                            echo '<label for="">'.$key.'</label><br>';
+                                        }else{
+                                            echo form_checkbox('main_market[]', $value, false, 'class="btn-checkbox" disabled');
+                                            echo '<label for="">'.$key.'</label><br>';
+                                        }
+                                    }
+                                    if($check){
+                                        if($new_check[0] != ''){
+                                            echo form_checkbox('main_market[]', $new_check[0], true, 'class="btn-checkbox" disabled id="anonymous"');
+                                            echo '<label for="">Khác (nêu rõ)</label><br>';
+                                        }else{
+                                            echo form_checkbox('main_market[]', '', false, 'class="btn-checkbox" id="anonymous" disabled');
+                                            echo '<label for="">Khác (nêu rõ)</label><br>';
+                                        }
+                                    }else{
+                                        echo form_checkbox('main_market[]', '', false, 'class="btn-checkbox" id="anonymous" disabled');
+                                        echo '<label for="">Khác (nêu rõ)</label><br>';
+                                    }
+                                    ?>
+                                    <?php if($check): ?>
+                                        <?php if ($new_check[0] != ''): ?>
+                                            <input type="text" name="anonymous" class="input-anonymous form-control" style="display: block;" value="<?php echo $new_check[0] ?>">
+                                        <?php else: ?>
+                                            <input type="text" name="anonymous" class="input-anonymous form-control" style="display: none;">
+                                        <?php endif ?>
+                                    <?php else: ?>
+                                        <input type="text" name="anonymous" class="input-anonymous form-control" style="display: none;">
+                                    <?php endif ?>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <strong>8.</strong> Giới thiệu tóm tắt 05 khách hàng/dự án tiêu biểu doanh nghiệp đã thực hiện:
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-12 textarea-h">
+                                <div>
+                                    <?php
+                                    echo htmlspecialchars_decode($company['top5_customers']);
+                                    ?></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-group">
+                    <h3 style="text-transform: uppercase;">V. Năng lực công nghệ, R&D và quản lý</h3>
+                </div>
+                <div class="form-group">
+                    <strong>1.</strong> Các chứng chỉ về công nghệ/ các công nghệ doanh nghiệp đang sử dụng/các công nghệ là thế mạnh của doanh nghiệp (đặc biệt là các công nghệ mới của CMCN 4.0)
+                </div>
+                <div class="form-group h5 m-l-30">
+                    <div class="row">
+                        <div class="col-xs-12 textarea-h">
+                            <div>
+                                <?php
+                                echo htmlspecialchars_decode($company['technology_certificate']);
+                                ?></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>2.</strong> Chi phí đầu tư cho hoạt động R&D năm 2019:
+                </div>
                 <div class="form-group h5 m-l-30">
                     <div class="row">
                         <div class="col-xs-12">
                             <table class="table table-bordered" >
                               <tr>
                                 <th style="width: 200px;">Năm</th>
-                                <th>Tổng chi phí <i style="font-weight: 500;">(Triệu đồng)</i></th>
+                                <th>Tổng chi phí <i style="font-weight: 500;">(Triệu VNĐ)</i></th>
                                 <th>% trên tổng doanh thu</th>
                               </tr>
                               <tr>
-                                <td>2018</td>
+                                <td>2019</td>
                                 <td>
                                     <?php
-                                        echo form_error('investment_fund_r_and_d', '<div class="error">', '</div>');
                                         echo form_input('investment_fund_r_and_d', set_value('investment_fund_r_and_d',$company['investment_fund_r_and_d']), 'class="form-control"');
                                     ?>
                                 </td>
                                 <td>
                                     <?php
-                                        echo form_error('investment_fund_r_and_d_percent', '<div class="error">', '</div>');
                                         echo form_input('investment_fund_r_and_d_percent', set_value('investment_fund_r_and_d_percent',$company['investment_fund_r_and_d_percent']), 'class="form-control"');
                                     ?>
                                 </td>
@@ -883,86 +1066,174 @@
                             </table>
                         </div>
                     </div>
-                    <h5 class="text_input">
-                        <div>- Số lượng nhân viên bộ phận R&D năm 2018: </div>
+                </div>
+                <div class="form-group h5 m-l-30 m-l-30 text_input">
+                    <div><strong>3.</strong> Số lượng nhân viên bộ phận R&D năm 2019: </div>
+                    <div>
+
                         <?php
-                            echo form_error('staff_r_and_d', '<div class="error">', '</div>');
                             echo form_input('staff_r_and_d', set_value('staff_r_and_d',$company['staff_r_and_d']), 'class="form-control"');
                         ?>
                         người.
-                    </h5>
+                    </div>
                 </div>
+
 
                 <div class="form-group h5 m-l-30 m-l-30">
                     <div class="row">
-                        <div class="col-xs-12" style="padding-bottom: 15px;">
-                            <b>- Thành quả nổi bật của hoạt động R&D :</b>
-                        </div>
-                        <div class="col-xs-12 textarea-h">
-                            <div>
-                             <?php
-                                echo htmlspecialchars_decode($company['result_r_and_d']);
-                            ?></div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="form-group">
-                    <h4>2. Chế độ bảo mật của công ty và bảo mật cho khách hàng:</h4>
-                </div>
-                <div class="form-group h5 m-l-30">
-                    <div class="row">
-                        <div class="col-xs-12" style="padding-bottom: 15px;">
-                            <b>- Các chứng chỉ bảo mật – nếu có (nêu loại chứng chỉ đạt được, tổ chức cấp chứng chỉ, thời gian được cấp chứng chỉ,…. tối đa 100 từ)</b>
-                        </div>
-                        <div class="col-xs-12 textarea-h">
-                            <div>
-                             <?php
-                                echo strip_tags(htmlspecialchars_decode($company['security_certificate']));
-                            ?></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group h5 m-l-30">
-                    <div class="row">
-                        <div class="col-xs-12" style="padding-bottom: 15px;">
-                            <b>- Các quy trình/các biện pháp an ninh, bảo mật cơ sở dữ liệu và thông tin của công ty (tối đa 100 từ):</b>
-                        </div>
-                        <div class="col-xs-12 textarea-h">
-                            <div>
-                             <?php
-                                echo strip_tags(htmlspecialchars_decode($company['security_process']));
-                            ?></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <h4>3. Quản lý công nghệ, chất lượng: (các chứng chỉ công nghệ và quy trình chất lượng...)</h4>
-                </div>
-                <div class="form-group h5 m-l-30">
-                    <div class="row">
-                        <div class="col-xs-12 textarea-h">
-                            <div>
-                             <?php
-                                echo htmlspecialchars_decode($company['technique_certificate']);
-                            ?></div>
-                        </div>
-                    </div>
-                </div>
-                <h3 class="text-center">HOẠT ĐỘNG CỘNG ĐỒNG, CÁC GIẢI THƯỞNG, DANH HIỆU VÀ CÁC THÀNH TÍCH ĐẶC BIỆT DOANH NGHIỆP ĐÃ ĐẠT ĐƯỢC</h3>
-
-                <div class="form-group h5 m-l-30">
-                    <div class="row">
-                        <div class="col-xs-12 text-center" style="padding-bottom: 15px;">
-                            (Ghi rõ tên, thời gian nhận Giải thưởng, Danh hiệu và thành tích được công nhận trong hoạt động sản xuất kinh doanh, các hoạt động thể hiện trách nhiệm với xã hội của doanh nghiệp (CSR)
+                        <div class="col-xs-12" style="padding-bottom: 15px;padding-top:10px;">
+                            <strong>4.</strong> Thành quả nổi bật của hoạt động R&D năm 2019:
                         </div>
                         <div class="col-xs-12 textarea-h">
                             <div>
                                 <?php
-                                echo htmlspecialchars_decode($company['reward']);
+                                echo htmlspecialchars_decode($company['result_r_and_d']);
                                 ?></div>
                         </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <strong>5.</strong> Chế độ bảo mật của công ty và bảo mật cho khách hàng:
+                </div>
+                <div style="padding-left: 25px;">
+                    <div class="form-group h5 m-l-30">
+                        <div class="row">
+                            <div class="col-xs-12" style="padding-bottom: 15px;padding-top:10px;">
+                                <strong>a.</strong> Các chứng chỉ bảo mật – nếu có (nêu loại chứng chỉ đạt được, tổ chức cấp chứng chỉ, thời gian được cấp chứng chỉ,…. tối đa 100 từ)
+                            </div>
+                            <div class="col-xs-12 textarea-h">
+                                <div>
+                                    <?php
+                                        echo htmlspecialchars_decode($company['security_certificate']);
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group h5 m-l-30">
+                        <div class="row">
+                            <div class="col-xs-12" style="padding-bottom: 15px;padding-top:10px;">
+                                <strong>b.</strong> Các quy trình/các biện pháp an ninh, bảo mật cơ sở dữ liệu và thông tin của công ty (tối đa 100 từ):
+                            </div>
+
+                            <div class="col-xs-12 textarea-h">
+                                <div>
+                                    <?php
+                                        echo htmlspecialchars_decode($company['security_process']);
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>6.</strong> Năng lực quản lý, chất lượng: (Các chứng chỉ về quản lý, quy trình, chất lượng)
+                </div>
+                <div class="form-group h5 m-l-30">
+                    <div class="row">
+                        <div class="col-xs-12 textarea-h">
+                            <div>
+                                <?php
+                                    echo htmlspecialchars_decode($company['technique_certificate']);
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <strong>7.</strong> Các chứng chỉ năng lực đặc thù của lĩnh vực hoạt động (nếu có):
+                </div>
+                <div class="form-group h5 m-l-30">
+                    <div class="row">
+                        <div class="col-xs-12 textarea-h">
+                            <div>
+                                <?php
+                                    echo htmlspecialchars_decode($company['specific_certificate']);
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                    <h3 style="text-transform: uppercase;">VI. Các giải thưởng, danh hiệu, hoạt động CSR</h3>
+                </div>
+
+                <div class="form-group h5 m-l-30">
+                    <div class="row">
+                        <div class="col-xs-12" style="padding-bottom: 15px;padding-top:10px;">
+                            (Ghi rõ tên, thời gian nhận Giải thưởng, Danh hiệu và thành tích được công nhận trong các hoạt động thể hiện trách nhiệm với xã hội của doanh nghiệp (CSR))
+                        </div>
+                        <div class="col-xs-12 textarea-h">
+                            <div>
+                                <?php
+                                    echo htmlspecialchars_decode($company['reward']);
+                                ?>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <br>
+                <div class="form-group">
+                    <h3 style="text-transform: uppercase;">VII. Năng lực gọi vốn (dành riêng cho các DN Startup):</h3>
+                </div>
+
+                <div class="form-group h5 m-l-30 m-l-30 text_input" style='display: block!important;clear: both;'>
+                    <div><strong>1.</strong> Số lượng vốn gọi được </div>
+                    <div>
+                        <?php
+                            echo form_input('startup_amount_capital', set_value('startup_amount_capital',$company['startup_amount_capital']), 'class="form-control"');
+                        ?>
+                    </div>
+                </div>
+                <div class="form-group h5 m-l-30 m-l-30 text_input" style='display: block!important;clear: both;'>
+                    <div><strong>2.</strong> Số nhà đầu tư </div>
+                    <div>
+                        <?php
+                            echo form_input('startup_number_investors', set_value('startup_number_investors',$company['startup_number_investors']), 'class="form-control"');
+                        ?>
+                    </div>
+                </div>
+                <div class="form-group h5 m-l-30">
+                    <div class="row">
+                        <div class="col-xs-12" style="padding-bottom: 15px;padding-top:10px;">
+                            <strong>3.</strong>  Kế hoạch gọi vốn trong tương lai:
+                        </div>
+                        <div class="col-xs-12 textarea-h">
+                            <div>
+                                <?php
+                                    echo htmlspecialchars_decode($company['startup_plan_capital_future']);
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group h5 m-l-30">
+                    <div class="row">
+                        <div class="col-xs-12" style="padding-bottom: 15px;padding-top:10px;">
+                            <strong>4.</strong>  Kế hoạch IPO:
+                        </div>
+
+                        <div class="col-xs-12 textarea-h">
+                            <div>
+                                <?php
+                                echo htmlspecialchars_decode($company['startup_plan_ipo']);
+                                ?></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="row">
+                    <div class="col-xs-12 col-md-2 pull-left">
+                        <a href="<?php echo base_url('member/dashboard/index/' . $year); ?>" class="btn btn-default btn-block"><b>Quay lại</b></a>
                     </div>
                 </div>
 
@@ -984,7 +1255,7 @@
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #3c8dbc">
                     <!--                <button type="button" class="close" data-dismiss="modal">&times;</button>-->
-                    <h4 style="color:white;">Cảm ơn Quý Công ty đã đăng ký tham gia Chương trình 50+10 Doanh nghiệp CNTT hàng đầu Việt Nam <?php echo !empty($eventYear) ? $eventYear : ''; ?>.</h4>
+                    <h4 style="color:white;">Cảm ơn Quý Công ty đã đăng ký tham gia Chương trình Top 10 Doanh nghiệp CNTT Việt Nam <?php echo !empty($eventYear) ? $eventYear : ''; ?>.</h4>
                 </div>
                 <div class="modal-body">
                     <h4 style="font-weight:bold !important;">Mời quay lại trang Tổng quan để xem lại hồ sơ/ nộp cho Ban tổ chức</h4>
@@ -1003,6 +1274,23 @@
         }
     </script>
 <script type="text/javascript">
+    $('.domestic-checkbox #checkbox_anonymous_domestic').click(function(){
+        if ($(this).prop("checked") == true) {
+            $('.domestic-checkbox #anonymous_domestic').slideDown();
+        }else{
+            $('.domestic-checkbox #anonymous_domestic').slideUp();
+        }
+    });
+    if ($('.domestic-checkbox #checkbox_anonymous_domestic').prop("checked") == true) {
+        $('.domestic-checkbox #anonymous_domestic').slideDown();
+    }else{
+        $('.domestic-checkbox #anonymous_domestic').slideUp();
+    }
+    $('.domestic-checkbox #anonymous_domestic').change(function(){
+        let anonymous_domestic = $(this).val();
+        $('#checkbox_anonymous_domestic').val(anonymous_domestic);
+    });
+
     $('.tab-content input').attr('readonly','readonly');
     $('.tab-content textarea').attr('readonly','readonly');
     textarea_h = $('.textarea-h');

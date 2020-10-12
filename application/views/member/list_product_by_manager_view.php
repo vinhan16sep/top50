@@ -25,21 +25,8 @@
                         <?php endif ?>
                     </select>
                 </div>
-                <div class="col-lg-3">
-                    <select class="form-control" name="main_service_search">
-                        <option value="">Chọn nhóm dịch vụ chính...</option>
-                        <?php if ($team): ?>
-                            <option value="1" <?php echo $main_service_search == 1 ? 'selected' : '' ?> >Các sản phẩm, giải pháp phần mềm tiêu biểu, được bình xét theo 24 lĩnh vực ứng dụng chuyên ngành</option>
-                            <option value="2" <?php echo $main_service_search == 2 ? 'selected' : '' ?> >Các sản phẩm, giải pháp ứng dụng công nghệ 4.0</option>
-                            <option value="3" <?php echo $main_service_search == 3 ? 'selected' : '' ?> >Các sản phẩm, giải pháp phần mềm mới</option>
-                            <option value="4" <?php echo $main_service_search == 4 ? 'selected' : '' ?> >Các sản phẩm, giải pháp của doanh nghiệp khởi nghiệp</option>
-                            <option value="5" <?php echo $main_service_search == 5 ? 'selected' : '' ?> >Các dịch vụ CNTT</option>
-                        <?php endif ?>
-                    </select>
-                </div>
                 
                 <div class="col-lg-4">
-                    <input type="text" name="search" value="<?php echo $keywords ?>" placeholder="Tìm kiểm tên sản phẩm, dịch vụ..." class="form-control" style=" width: 70%; float: left;margin-right: 5px;">
                     <input type="submit" name="btn-search" value="Tìm Kiếm" class="btn btn-primary" style="float: left">
                 </div>
                 
@@ -49,29 +36,29 @@
                     <div class="tab-content" style="margin-bottom: 40px;">
                         <?php if ($result): ?>
                             <div class="post box-body">
-                                <table class="table table-striped table-bordered table-condensed">
+                                <table class="table table-striped table-bordered table-condensed" style="overflow:auto;">
                                     <th>STT</th>
-                                    <th>Tên sản phẩm / dịch vụ</th>
+                                    <th>Doanh nghiệp</th>
+                                    <th>Tên sản phẩm/dịch vụ</th>
                                     <th>Nhóm HĐ</th>
-                                    <!-- <th>Trạng thái</th> -->
-                                    <!-- <th>Điểm trung bình</th> -->
-                                    <!-- <th style="text-align: center;">Thao Tác</th> -->
+                                    <th>Điểm trung bình</th>
+                                    <th style="text-align: center;">Thao Tác</th>
                                     <?php foreach ($result as $key => $value): ?>
                                     <tr>
                                         <td><?php echo $number-- ?></td>
-                                        <td style="width: 40%;"><a href="<?php echo base_url('member/product/detail/' . $value['id']) ?>"><?php echo $value['name'] ?></a></td>
+                                        <td>
+                                            <?php echo $value['company'] ?>
+                                        </td>
+                                        <td style="width: 40%;"><a href="<?php echo base_url('member/product/detail/' . $value['id']) ?>"><?php echo $global_stype[$value['name']] ?></a></td>
                                         <td>
                                            <?php echo $value['team'] ?> 
                                         </td>
-                                        <!-- <td >
-                                            <?php // echo (in_array($value['id'], $list_products_rating) ? '<p class="label label-success">Đã có điểm</p>' : '<p class="label label-warning">Chưa chấm điểm</p>') ?>
-                                        </td> -->
-                                        <!-- <td>
-                                            <?php // echo $value['rating_medium'] ?>
-                                        </td> -->
-                                        <!-- <td style="text-align: center;">
+                                        <td>
+                                            <?php echo $value['rating_medium'] ?>
+                                        </td>
+                                        <td style="text-align: center;">
                                             <a href="<?php echo base_url('member/product/detail_rating/' .$value['team_id'] . '/' . $value['id']) ?>" class="btn btn-info">Điểm chi tiết</a>
-                                        </td> -->
+                                        </td>
                                     </tr>
                                 <?php endforeach ?>
                                 </table>

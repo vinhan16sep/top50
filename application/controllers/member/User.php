@@ -117,7 +117,6 @@ class User extends MY_Controller {
         $this->load->library('ion_auth');
         $this->load->library('email');
         $user = $this->ion_auth->user()->row();
-        // print_r($user);die;
         $this->load->helper('form');
         $this->load->library('form_validation');
 

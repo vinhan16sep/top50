@@ -584,8 +584,6 @@ class Company extends Admin_Controller{
             'main_service' => trim($groups,','),
             'main_market' => implode(", ", (array)json_decode($company['main_market']))
         );
-        // echo '<pre>';
-        // print_r($data_export);die;
         
         // read data to active sheet
         $this->excel->getActiveSheet()->fromArray($data_export, NULL, 'A1');

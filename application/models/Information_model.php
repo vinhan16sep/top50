@@ -707,8 +707,11 @@ class Information_model extends CI_Model {
     }
 
     public function fetch_product_by_client_ids_with_search_pagination($client_ids = array(), $limit = NULL, $start = NULL, $search = '', $main_service = '') {
-        $this->db->select('id, client_id, name, main_service');
-        $this->db->from('product');
+        $this->db->select(
+            'pr.id, pr.client_id, pr.name, pr.main_service, usr.company'
+        );
+        $this->db->from('product pr');
+        $this->db->join('users usr', 'pr.client_id = usr.id');
         $this->db->where('is_deleted', 0);
         $this->db->where_in('client_id', $client_ids);
         $this->db->limit($limit, $start);
