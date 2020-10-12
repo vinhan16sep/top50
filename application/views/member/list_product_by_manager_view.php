@@ -47,9 +47,9 @@
                                     <tr>
                                         <td><?php echo $number-- ?></td>
                                         <td>
-                                            <?php echo $value['company'] ?>
+                                            <a href="<?php echo base_url('member/company/detail?year=' . $eventYear . '&identity=' . $value['identity']) ?>"><?php echo $value['company'] ?></a>
                                         </td>
-                                        <td style="width: 40%;"><a href="<?php echo base_url('member/product/detail/' . $value['id']) ?>"><?php echo $global_stype[$value['name']] ?></a></td>
+                                        <td style="width: 40%;"><?php echo $global_stype[$value['name']] ?></td>
                                         <td>
                                            <?php echo $value['team'] ?> 
                                         </td>
