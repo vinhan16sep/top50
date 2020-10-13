@@ -48,8 +48,10 @@ class Team_model extends CI_Model {
     public function get_current_user_team($user_id){
         $query = $this->db->select('*')
             ->from('team')
+            ->group_start() 
             ->like('member_id', ',' . $user_id . ',')
             ->or_where('leader_id', $user_id)
+            ->group_end()
             ->where('is_deleted', 0);
         return $query->get()->result_array();
     }
