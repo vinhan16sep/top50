@@ -22,7 +22,7 @@ class Team extends Admin_Controller{
 
 	    $this->data['leaders'] = $this->users_model->fetch_all_leaders();
         $this->data['members'] = $this->users_model->fetch_all_members();
-        $this->data['companys'] = $this->information_model->fetch_all_company_pagination_team_select();
+        $this->data['companies'] = $this->information_model->fetch_all_company_pagination_team_select();
 
         $companies = $this->information_model->get_all_company_by_year($this->data['eventYear']);
         $products = $this->information_model->get_product($this->data['eventYear']);

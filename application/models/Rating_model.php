@@ -119,7 +119,7 @@ class Rating_model extends CI_Model {
 //        return $query->num_rows();
 //    }
 //
-//    public function count_companys() {
+//    public function count_companies() {
 //        $query = $this->db->select('*')
 //            ->from('company')
 //            ->get();

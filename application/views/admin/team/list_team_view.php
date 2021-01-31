@@ -256,8 +256,8 @@
                 <br><br>
                 <select id="selectClient" class="form-control" style="margin-bottom: 20px;" >
                     <option value="">-- Chọn doanh nghiệp --</option>
-                    <?php if($companys){ ?>
-                        <?php foreach($companys as $key => $company){ ?>
+                    <?php if($companies){ ?>
+                        <?php foreach($companies as $key => $company){ ?>
                             <option data-clientid="<?php echo $company['client_id'] ?>" value="<?php echo $company['id'] ?>"><?php echo $company['company']; ?></option>
                         <?php } ?>
                     <?php } ?>

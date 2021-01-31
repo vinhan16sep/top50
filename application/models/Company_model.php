@@ -25,4 +25,27 @@ class Company_model extends CI_Model {
         }
         return $output;
     }
+
+    public function fetch_company_by_identity_and_year($identity, $year){
+        $query = $this->db->select('*')
+            ->from('company')
+            ->where('identity', $identity)
+            ->where('year', $year)
+            ->limit(1)
+            ->get();
+
+        if($query->num_rows() == 1){
+            return $query->row_array();
+        }
+
+        return false;
+    }
+
+    public function fetch_company_by_identity($identity){
+        $query = $this->db->select('*')
+            ->from('company')
+            ->where('identity', $identity)
+            ->order_by("id", "desc");
+        return $query->get()->result_array();
+    }
 }
