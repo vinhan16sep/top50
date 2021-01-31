@@ -63,20 +63,36 @@
                                         <td>Số lượng nhân viên bộ phận R&D</td>
                                         <td>Tổng doanh thu doanh nghiệp năm <?php echo $rule2Year[0] ?></td>
                                         <td>Tổng doanh thu doanh nghiệp năm <?php echo $rule2Year[1] ?></td>
-                                        <td>Người quản lý</td>
+                                        <td style="display:none">Người quản lý</td>
                                         <td>Trạng thái</td>
                                         <td style="text-align: center;">Thao Tác</td>
                                     </tr>
                                 </thead>
-                                <?php foreach ($companies as $key => $value): ?>
+                                <?php foreach ($companies as $key => $value): 
+                                    if ($value['total_income_1'] != null && !empty($value['total_income_1'])) {
+                                        $total_income_1 = str_replace('.', '', $value['total_income_1']);
+                                        $total_income_1 = str_replace(',', '', $total_income_1);
+                                        $total_income_1 = number_format($total_income_1, 0, '.', ',');
+                                    } else {
+                                        $total_income_1 = '';
+                                    }
+
+                                    if ($value['total_income_2'] != null && !empty($value['total_income_2'])) {
+                                        $total_income_2 = str_replace('.', '', $value['total_income_2']);
+                                        $total_income_2 = str_replace(',', '', $total_income_2);
+                                        $total_income_2 = number_format($total_income_2, 0, '.', ',');
+                                    } else {
+                                        $total_income_2 = '';
+                                    }
+                                ?>
                                     <tr>
                                         <td style="width: 5%"><?php echo $number-- ?></td>
                                         <td><?php echo $value['company'] ?></td>
                                         <td><?php echo $value['full_time_employee'] ?></td>
                                         <td><?php echo $value['staff_r_and_d'] ?></td>
-                                        <td><?php echo $value['total_income_1'] ?></td>
-                                        <td><?php echo $value['total_income_2'] ?></td>
-                                        <td data-client="<?php echo $value['client_id'] ?>" data-company="<?php echo $value['id'] ?>">
+                                        <td><?php echo $total_income_1 ?></td>
+                                        <td><?php echo $total_income_2 ?></td>
+                                        <td style="display:none" data-client="<?php echo $value['client_id'] ?>" data-company="<?php echo $value['id'] ?>">
                                             <ul class="select2-selection__rendered ">
                                                 <?php if (!empty($value['member_name'])): ?>
                                                     <?php foreach ($value['member_name'] as $k => $val): ?>
@@ -102,6 +118,7 @@
                                             <a href="<?php echo base_url('admin/company/basic/' . $value['identity']) ?>" title="Thông tin cơ bản"> <i class="fa fa-info-circle" aria-hidden="true"></i></a>
                                             <a href="<?php echo base_url('admin/company/info/' . $value['identity'] . '/' . $year) ?>" title="Thông tin lĩnh vực ứng cử"> <i class="fa fa-file" aria-hidden="true"></i></a>
                                             <a href="<?php echo base_url('admin/company/export_detail/' . $value['identity'] . '/' . $year) ?>" title="Export"> <i class="fa fa-download" aria-hidden="true"></i></a>
+                                            <a href="<?php echo base_url('admin/analyze/index/' . $value['identity'] . '/' . $year) ?>" title="Thống kê"> <i class="fa fa-bar-chart" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>
@@ -164,10 +181,11 @@
     $(document).ready(function () {
         $('#dtBasicExample').DataTable({
             "columnDefs": [{
-                 "targets": [0,6,7,8],
+                 "targets": [1,6,7,8],
                  "orderable": false,
              }],
-             "order": [[1, "asc"]]
+             "order": [[0, "asc"]],
+             "pageLength": 5000,
         });
         $('.dataTables_length').addClass('bs-select');
     });

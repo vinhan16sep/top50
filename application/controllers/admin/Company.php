@@ -39,7 +39,7 @@ class Company extends Admin_Controller{
             'sort_order' => $this->input->get('sort_order'),
         );
         $this->data['criteria'] = $criteria;
-        $total_rows  = $this->information_model->count_companys($criteria);
+        $total_rows  = $this->information_model->count_companies($criteria);
 		$this->load->library('pagination');
 		$config = array();
 		$base_url = base_url('admin/company/index/' . $year);
@@ -110,7 +110,7 @@ class Company extends Admin_Controller{
         $this->data['extra'] = $extra;
 
         $user = $this->users_model->fetchByIdentity($identity);
-        $this->data['reg_status'] = $this->status_model->fetch_by_client_id($user['id']);
+        $this->data['reg_status'] = $this->status_model->fetch_by_client_id($user['id'], $this->data['eventYear']);
 
         $this->render('admin/company/info_view');
     }

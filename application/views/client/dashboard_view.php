@@ -134,12 +134,14 @@
                                     <?php endif; ?>
                                 <?php else: ?>
                                     <br>
-                                    <?php foreach ($company_submitted as $value){ ?>
-                                        <div>
-                                            <a style="display: inline;" href="<?php echo base_url('client/information/company?year=' . $value['year']) ?>" class="btn btn-primary btn-block"><b>Xem thông tin đã đăng ký <?php echo $value['year']; ?></b></a>
-                                        </div>
-                                        <hr>
-                                    <?php } ?>
+                                    <?php if (!empty($company_submitted)): ?>
+                                        <?php foreach ($company_submitted as $value){ ?>
+                                            <div>
+                                                <a style="display: inline;" href="<?php echo base_url('client/information/company?year=' . $value['year']) ?>" class="btn btn-primary btn-block"><b>Xem thông tin đã đăng ký <?php echo $value['year']; ?></b></a>
+                                            </div>
+                                            <hr>
+                                        <?php } ?>
+                                    <?php endif; ?>
                                 <?php endif; ?>
                             <?php }else{
                                 echo '<p style="color:red;">Doanh nghiệp cần điền đầy đủ thông tin đăng ký phía trên</p>';

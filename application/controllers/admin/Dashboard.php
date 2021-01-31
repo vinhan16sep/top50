@@ -12,17 +12,13 @@ class Dashboard extends Admin_Controller {
 		
 		// $this->update_batch();
 
-    	/* Total companys */
-    	$total_companys = $this->information_model->count_companys();
-
-    	/* total clients */
-    	$total_users = $this->users_model->count_all_users_groups();
+    	/* Total companies */
+    	$total_companies = $this->information_model->count_companies();
     	
     	/* total products */
     	$total_products = $this->information_model->count_all_product();
 
-    	$this->data['total_companys'] = $total_companys;
-    	$this->data['total_users'] = $total_users;
+    	$this->data['total_companies'] = $total_companies;
     	$this->data['total_products'] = $total_products;
         $this->render('admin/dashboard_view');
 	}
@@ -68,7 +64,7 @@ class Dashboard extends Admin_Controller {
 					'modified_at' => $val['created_at'],
 					'modified_by' => $val['created_by'],
 					'information_id' => $infomation['id'],
-					'year' => '2020',
+					'year' => '2020', // CHANGE ???
 					'identity' => $val['identity'],
 				];
 				$this->information_model->insert('product', $data);

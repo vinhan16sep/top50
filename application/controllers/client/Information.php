@@ -21,7 +21,7 @@ class Information extends Client_Controller {
         $this->load->library('session');
 
         $this->data['user'] = $this->ion_auth->user()->row();
-        $this->data['reg_status'] = $this->status_model->fetch_by_client_id($this->data['user']->id);
+        $this->data['reg_status'] = $this->status_model->fetch_by_client_id($this->data['user']->id, $this->data['eventYear']);
         $this->data['groups'] = $this->config->item('development/config_information')['groups'];
 
     }
@@ -88,7 +88,7 @@ class Information extends Client_Controller {
         $this->form_validation->set_rules('certificate_date', 'Ngày cấp', 'trim|date_formats', array(
             'date_formats' => '%s không đúng định dạng.',
         ));
-//        $this->form_validation->set_rules('link', 'Link download PĐK của DN', 'trim|required');
+        $this->form_validation->set_rules('link', 'Link download PĐK của DN', 'trim|required');
 
         if ($this->form_validation->run() == FALSE) {
             if($this->data['reg_status'] == 1){
@@ -131,6 +131,7 @@ class Information extends Client_Controller {
                     'c_position' => $this->input->post('c_position'),
                     'c_email' => $this->input->post('c_email'),
                     'c_phone' => $this->input->post('c_phone'),
+                    'link' => $this->input->post('link'),
 
                     'identity' => $this->data['user']->username,
                     'created_at' => $this->author_info['created_at'],
@@ -209,7 +210,7 @@ class Information extends Client_Controller {
         $this->form_validation->set_rules('certificate_date', 'Ngày cấp', 'trim|date_formats', array(
             'date_formats' => '%s không đúng định dạng.',
         ));
-//        $this->form_validation->set_rules('link', 'Link download PĐK của DN', 'trim|required');
+        $this->form_validation->set_rules('link', 'Link download PĐK của DN', 'trim|required');
 
         $id = isset($request_id) ? (int) $request_id : (int) $this->input->post('id');
         $this->data['extra'] = $this->information_model->fetch_by_user_identity('information', $this->data['user']->username);
@@ -251,7 +252,7 @@ class Information extends Client_Controller {
                     'c_email' => $this->input->post('c_email'),
                     'c_phone' => $this->input->post('c_phone'),
                     'website' => $this->input->post('website'),
-//                    'link' => $this->input->post('link'),
+                    'link' => $this->input->post('link'),
                     'modified_at' => $this->author_info['modified_at'],
                     'modified_by' => $this->author_info['modified_by']
                 );
@@ -291,7 +292,7 @@ class Information extends Client_Controller {
             $this->load->library('pagination');
             $config = array();
             $base_url = base_url() . 'client/information/company';
-            $total_rows = $this->information_model->count_companies($this->data['user']->username);
+            $total_rows = $this->information_model->count_companies_by_identity($this->data['user']->username);
             $per_page = 10;
             $uri_segment = 4;
             foreach ($this->pagination_con($base_url, $total_rows, $per_page, $uri_segment) as $key => $value) {

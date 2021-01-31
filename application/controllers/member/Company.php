@@ -112,7 +112,7 @@ class Company extends Member_Controller{
             $this->data['extra'] = $extra;
 
             $user = $this->users_model->fetchByIdentity($identity);
-            $this->data['reg_status'] = $this->status_model->fetch_by_client_id($user['id']);
+            $this->data['reg_status'] = $this->status_model->fetch_by_client_id($user['id'], $this->data['eventYear']);
             ////////
 
             $this->data['year'] = $this->input->get('year');

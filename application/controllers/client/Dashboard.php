@@ -10,7 +10,18 @@ class Dashboard extends Client_Controller {
         }
         $this->load->model('status_model');
         $this->data['user'] = $this->ion_auth->user()->row();
-        $this->data['reg_status'] = $this->status_model->fetch_by_client_id($this->data['user']->id);
+        $this->data['reg_status'] = $this->status_model->fetch_by_client_id($this->data['user']->id, $this->data['eventYear']);
+        if(empty($this->data['reg_status'])){
+            $status = array(
+                'client_id' => $this->data['user']->id,
+                'is_information' => 1,
+                'is_company' => 0,
+                'is_product' => 0,
+                'is_final' => 0,
+                'year' => $this->data['eventYear'],
+            );
+            $this->status_model->insert('status', $status);
+        }
     }
 
     public function index(){

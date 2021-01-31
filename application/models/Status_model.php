@@ -55,10 +55,11 @@ class Status_model extends CI_Model {
         return false;
     }
     
-    public function fetch_by_client_id($id = null){
+    public function fetch_by_client_id($id = null, $eventYear = null){
         $this->db->select('*');
         $this->db->from('status');
         $this->db->where('client_id', $id);
+        $this->db->where('year', $eventYear);
         return $result = $this->db->get()->row_array();
     }
     

@@ -115,20 +115,18 @@ class Information_model extends CI_Model {
         return $query->num_rows();
     }
 
-    public function count_companys() {
+    public function count_companies($criteria = null) {
         $where = array();
-        if ($this->input->get('group_id') >= 0 && $this->input->get('group_id') < 3 && is_numeric($this->input->get('group_id'))) {
-            $where['group'] = $this->input->get('group_id');
-        }elseif($this->input->get('group_id') == 99 && is_numeric($this->input->get('group_id'))){
-            $where['group10'] = $this->input->get('group_id');
+        $this->db->select('*');
+        $this->db->join('users', 'users.id = company.client_id');
+        if ($criteria != null) {
+            if (!empty($criteria['year']) && $criteria['year'] && $criteria['year'] != '') {
+                $this->db->where('year', $criteria['year']);
+            }
         }
-        $query = $this->db->select('*')
-            ->join('users', 'users.id = company.client_id')
-            ->where($where)
-            ->from('company')
-            ->get();
-
-        return $query->num_rows();
+        $this->db->where($where);
+        $this->db->from('company');
+        return $this->db->get()->num_rows();
     }
 
     public function count_all_product() {
@@ -418,13 +416,14 @@ class Information_model extends CI_Model {
         return false;
     }
 
-    public function fetch_all_company_pagination($limit = NULL, $start = NULL) {
+    public function fetch_all_company_pagination($limit = NULL, $start = NULL, $criteria) {
         $this->db->select('company.*, users.company as company, status.is_final as final');
         $this->db->from('company');
         $this->db->join('users', 'users.id = company.client_id');
         $this->db->join('status', 'status.client_id = company.client_id');
         //// HARD CODE ????? ////////////////////////
-        $this->db->where('company.year', '2020');
+        $this->db->where('company.year', $criteria['year']);
+        $this->db->where('status.year', $criteria['year']);
         //// HARD CODE ????? ////////////////////////
         $this->db->limit($limit, $start);
         $this->db->order_by("company.id", "desc");
@@ -664,7 +663,7 @@ class Information_model extends CI_Model {
         return false;
     }
 
-    public function count_companies($identity) {
+    public function count_companies_by_identity($identity) {
         $query = $this->db->select('*')
             ->from('company')
             ->where('identity', $identity)
@@ -773,4 +772,15 @@ class Information_model extends CI_Model {
         $this->db->where('client_id', $id);
         return $result = $this->db->get()->row_array();
     }
+
+    function get_product_by_identity_and_year($identity, $year){
+        $this->db->select('*');
+        $this->db->from('product');
+        $this->db->where_in('identity', $identity);
+        $this->db->where_in('year', $year);
+
+        return $result = $this->db->get()->result_array();
+
+    }
+
 }

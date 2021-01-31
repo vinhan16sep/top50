@@ -416,7 +416,7 @@ class Client_Controller extends MY_Controller {
         $this->data['page_title'] = 'TRANG DOANH NGHIỆP';
 
         $this->load->model('status_model');
-        $this->data['status'] = $this->status_model->fetch_by_client_id($this->ion_auth->user()->row()->id);
+        $this->data['status'] = $this->status_model->fetch_by_client_id($this->ion_auth->user()->row()->id, $this->data['eventYear']);
 
         $this->load->model('information_model');
         $this->data['company_submitted'] = $this->information_model->fetch_by_identity('company', $this->data['identity']);
